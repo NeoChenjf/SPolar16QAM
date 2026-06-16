@@ -1,0 +1,35 @@
+function plot_ber_vs_snr(p_list, snr_dB, BER_matrix, fig_dir)
+% PLOT_BER_VS_SNR - 绘制不同 p 下的 BER vs SNR 曲线
+%
+% 输入：
+%   p_list     - p 值向量 (nP x 1)
+%   snr_dB     - SNR 向量 (1 x nSNR)
+%   BER_matrix - BER 矩阵 (nP x nSNR)
+%   fig_dir    - 图表保存目录
+
+    markers = {'o', 's', 'd', '^', 'v', '>', '<', 'p', 'h', '+'};
+    colors = lines(length(p_list));
+
+    fig = figure('Position', [100 100 800 600], 'Visible', 'off');
+    hold on;
+    for ip = 1:length(p_list)
+        mk = markers{mod(ip-1, length(markers)) + 1};
+        semilogy(snr_dB, BER_matrix(ip,:), ['-' mk], ...
+                 'Color', colors(ip,:), ...
+                 'LineWidth', 1.5, ...
+                 'MarkerSize', 5, ...
+                 'DisplayName', sprintf('p = %.2f', p_list(ip)));
+    end
+    hold off;
+    xlabel('SNR (dB)', 'FontSize', 12);
+    ylabel('BER', 'FontSize', 12);
+    title('BER vs SNR（不同整形参数 p）', 'FontSize', 14);
+    legend('Location', 'southwest', 'FontSize', 9);
+    grid on;
+    set(gca, 'FontSize', 11);
+    ylim([1e-5, 1]);
+
+    saveas(fig, fullfile(fig_dir, 'ber_vs_snr.pdf'));
+    saveas(fig, fullfile(fig_dir, 'ber_vs_snr.png'));
+    close(fig);
+end

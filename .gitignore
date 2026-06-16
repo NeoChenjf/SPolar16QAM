@@ -1,0 +1,25 @@
+# Experiment outputs
+16QAM_Polar/results/
+16QAM_Polar/v2/results/
+*.fig
+*.mat
+*.png
+*.xlsx
+
+# Large reference and presentation assets
+*.pdf
+*.pptx
+*.zip
+*.mp4
+*.bak
+
+# Local/editor clutter
+.claude/
+.vscode/
+.config/
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+questions.txt
+*.base

@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run MATLAB Script",
+      "type": "shell",
+      "command": "\"D:\\matlab\\bin\\matlab.exe\"",
+      
+      "args": [
+        "-batch",
+        "run('${file}')"
+      ],
+      "problemMatcher": [],
+      "group": "build"
+    }
+  ]
+}
