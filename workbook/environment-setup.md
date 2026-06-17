@@ -23,21 +23,27 @@ octave --eval "pkg load communications signal; disp('pkg ok')"
 > 若 `pkg install -forge` 因 Forge 源问题失败，可从 https://gnu-octave.github.io/packages/
 > 下载对应 `.tar.gz` 后 `pkg install <file>.tar.gz`。
 
-实测搭建状态（2026-06-17，Apple M3 Pro / arm64）：
+实测搭建状态（2026-06-17，Apple M3 Pro / arm64，**端到端已跑通**）：
 
 | 组件 | 版本 / 状态 |
 |------|------|
 | Octave | **11.3.0（已装，`brew install octave`，arm64 原生）** |
-| control | ⏳ 未装 |
-| signal | ⏳ 未装 |
-| communications | ⏳ **未装** —— `pkg install -forge` 一次性解析三包时，卡在 communications 的 SourceForge 下载超时并整批回滚 |
+| communications | 已用 `pkg install -nodeps communications-1.2.7.tar.gz` 装上（提供 `de2bi`/`bi2de`）；但其 `qammod/qamdemod` **签名与 MATLAB 不兼容**，已被 compat 层遮蔽 |
+| signal / control | 未装，**不需要**（项目只用内置 `fft`；`bitrevorder` 由 compat 层提供） |
 
-> **已知源问题**：`communications` 官方只托管在 SourceForge
-> (`downloads.sourceforge.net/.../communications-1.2.7.tar.gz`)，本网络环境下载超时；
-> `signal` 新版有 GitHub 源（`github.com/gnu-octave/octave-signal/releases/download/1.4.7/signal-1.4.7.tar.gz`，可达）。
-> 续装建议：逐个装、给 SourceForge 长超时/多镜像重试，或先 `curl` 下到本地再 `pkg install 本地tar.gz`。
-> communications package 未就绪前，`qammod/qamdemod/de2bi/bi2de/bitrevorder` 不可用，
-> 端到端仿真跑不了；可先用项目纯数学 `llr_16qam_gray_LSE`（不依赖 package）做局部验证。
+> **关键决定：用 compat 兼容层，而非依赖 Octave 的 communications qammod。**
+> Octave communications 的 `qammod` 不接受 `'gray'`/`'UnitAveragePower'`/`'InputType'`/`'OutputType','llr'`
+> 等 MATLAB name-value 参数（直接报 "too many inputs"），且 `bitrevorder` 属 signal package
+> （需 control 编译，含 Fortran）。因此在 `16QAM_Polar/v2/compat/octave/` 实现了 MATLAB 口径一致的
+> `qammod.m` / `qamdemod.m` / `bitrevorder.m` / `sgtitle.m`，`setup_paths.m` **仅在 Octave 下**
+> 用 `-begin` 把该目录加到路径最前以遮蔽 package 同名函数。**MATLAB 下这些 compat 文件不生效**，用原生。
+>
+> compat 正确性已通过自洽闭环验证：16 个星座点 qammod→qamdemod(llr)→硬判决全部还原对应 bit（0 失配）、
+> bitrevorder 与标准位反转一致、bit 往返一致、平均功率归一化=1。
+
+下载来源备查（如需在别处复装 communications）：
+- communications 1.2.7：SourceForge（`downloads.sourceforge.net/.../communications-1.2.7.tar.gz`，可能超时，多镜像/本地 `curl` 后 `pkg install -nodeps 本地tar.gz`）
+- signal 1.4.7：GitHub（`github.com/gnu-octave/octave-signal/releases/download/1.4.7/signal-1.4.7.tar.gz`）——本项目用不到
 
 ---
 
@@ -61,9 +67,12 @@ scripts/run_matlab.sh 'p=0.3; disp(p)'      # 任意 Octave 语句
 | # | 差异 | 影响 | 应对 |
 |---|------|------|------|
 | D1 | **随机数发生器实现不同** | 即使固定 `cfg.seed`，Octave 与 MATLAB **不会**产生逐比特相同结果 | 验证看**统计趋势**（BER-SNR 曲线形状/量级），不要求与历史 MATLAB 结果逐点对齐 |
-| D2 | **qammod/qamdemod 口径** | `'gray'` 比特序 / `'UnitAveragePower'` 归一化 / `'OutputType','llr'`+`'NoiseVariance'` 的 LLR，Octave 不保证与 MATLAB 逐位一致 | 以 `check_env` 的 (d) 校验为准；若 qamdemod LLR 口径不一致，仿真改用项目自带纯数学 `llr_16qam_gray_LSE`（见第 5 步） |
-| D3 | **`de2bi/bi2de` 来自 package** | 未 `pkg load communications` 时报"未定义" | 用 `run_matlab.sh` 调用（已自动 load）；或手动 `pkg load communications` |
-| D4 | 部分绘图/字体行为 | 图样式细节可能不同 | 只影响外观，不影响数值结论 |
+| D2 | **qammod/qamdemod 签名不兼容** | Octave communications 的 qammod 不接受 `'gray'`/`'UnitAveragePower'`/`'InputType'`/`'OutputType','llr'`，直接报 "too many inputs" | **已解决**：`compat/octave/qammod.m`+`qamdemod.m` 复刻 MATLAB 口径（qamdemod LLR 复用项目 `llr_16qam_gray_LSE`），`setup_paths` 仅 Octave 下遮蔽 package 同名函数 |
+| D3 | **`bitrevorder` 属 signal package** | 不装 signal/control 时未定义 | **已解决**：`compat/octave/bitrevorder.m` 标准位反转实现，不依赖 package |
+| D4 | **`sgtitle` Octave 无此函数** | 绘图收尾报 "sgtitle undefined" | **已解决**：`compat/octave/sgtitle.m` 兼容版（headless 下静默跳过，不影响数值） |
+| D5 | **`de2bi/bi2de` 来自 communications package** | 未 load 时未定义 | 用 `run_matlab.sh`（已 `pkg load communications`，该 package 已 `-nodeps` 装上） |
+| D6 | **GBK 注释告警** | `phi.m`/`phi_inverse.m` 含非 UTF-8 中文注释 → Octave 提示 "Invalid UTF-8 byte sequences have been replaced" | 纯告警，不影响计算；如需消除可把这些 `.m` 转存为 UTF-8 |
+| D7 | 部分绘图/字体行为 | 图样式细节可能不同 | 只影响外观，不影响数值结论 |
 
 > D1/D2 是科研复现里最容易被误读成"算法出 bug"的两点，特此显著标注。
 
@@ -82,14 +91,27 @@ scripts/run_matlab.sh run_single          # 4) 端到端冒烟
 
 ---
 
-## 5. qamdemod 口径不一致时的兜底（按需，仅当第 4 步实测到差异）
+## 5. Octave 兼容层（compat/octave/，已实施）
 
-项目自带纯数学 LLR `modulation/llr_16qam_gray_LSE.m` 不依赖 qamdemod 的 LLR 实现，跨环境一致。
-若 `check_env`/`run_single` 发现 Octave qamdemod LLR 口径不对：
+为消除 D2/D3/D4 的不兼容，在 `16QAM_Polar/v2/compat/octave/` 实现了 MATLAB 口径一致的替代：
 
-- 在 `core/sim_shaped_polar_16qam.m` 的 LLR 计算处加**环境开关**（`exist('OCTAVE_VERSION','builtin')`）：
-  Octave 走 `llr_16qam_gray_LSE`，MATLAB 保持 `qamdemod`。
-- 改动最小、可回退；按硬规则记入 `周报` 与 `workbook/troubleshooting-history.md`。
+| 文件 | 作用 |
+|------|------|
+| `qammod.m` | 16QAM Gray 调制（integer/bit 输入、UnitAveragePower），I=高2bit、Q=低2bit、Gray 电平映射 |
+| `qamdemod.m` | 16QAM 解调；`OutputType='llr'` 直接复用项目 `llr_16qam_gray_LSE`，与 qammod 共用同一星座 |
+| `bitrevorder.m` | 位反转重排（GA.m 用），不依赖 signal package |
+| `sgtitle.m` | 多子图总标题兼容（headless 静默跳过） |
+
+接入方式（`setup_paths.m`）：
+```matlab
+if exist('OCTAVE_VERSION','builtin') ~= 0
+    addpath(fullfile(project_root,'compat','octave'), '-begin');  % 仅 Octave，放最前遮蔽 package
+end
+```
+**MATLAB 下不加这个目录**，用原生 Communications Toolbox —— 算法代码零改动、可回退。
+
+正确性验证（已通过）：16 星座点 qammod→qamdemod(llr)→硬判决 0 失配；bitrevorder/bit 往返一致；
+`run_single` 端到端 BER 随 SNR 单调下降。若改了 compat 或换码长，重跑 `check_env` + 上述闭环即可。
 
 ---
 
