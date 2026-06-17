@@ -14,7 +14,8 @@
 *.bak
 
 # Local/editor clutter
-.claude/
+.claude/*
+!.claude/skills/
 .vscode/
 .config/
 .DS_Store

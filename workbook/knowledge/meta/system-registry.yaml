@@ -1,0 +1,27 @@
+# 科研系统登记表 — 对标 hic-spec 的 system-registry.yaml
+# 本项目即单一 system；如未来拆多课题可在 systems 下追加条目。
+
+config:
+  loop_mode: interactive        # interactive（逐层确认）| unattended（无人值守）
+  rks_threshold: 75             # interactive 达标阈值
+  rks_target: 90                # unattended 目标分
+  max_rounds_per_system: 3
+  convergence_delta: 1.0
+
+systems:
+  - id: spolar16qam
+    name: 16QAM 概率成形极化码 信息-能量协同传输
+    path: .
+    code_root: 16QAM_Polar/v2
+    knowledge_root: workbook/knowledge
+    status: passed              # pending | scanning | iterating | passed | review | converged
+    rks: 94.1
+    rounds: 1
+    last_scan: "20260617"
+    notes: "首次接入 spec-harness：L1×6 / L2×6 / L3×26，全量提取当前 v2 代码"
+    layers:
+      L1: 6
+      L2: 6
+      L3: 26
+    rks_history:
+      - { ts: "20260617", rks: 94.1 }

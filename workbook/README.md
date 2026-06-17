@@ -22,11 +22,14 @@ Always read:
 | `data-management.md` | Data/results storage, large files, sensitive files |
 | `rule-reflection-hook.md` | End-of-task check for whether new durable rules should be added |
 | `troubleshooting-history.md` | Historical bug and fix log |
+| `environment-setup.md` | Run environment (GNU Octave on this machine, no MATLAB). Install, the `scripts/run_matlab.sh` CLI wrapper, and the known Octave↔MATLAB differences. |
+| `knowledge/` | Research spec-harness: L1 research domains / L2 experiment flows / L3 method contracts (modeled on hic-spec). Structured, AI-readable index of the project. See `knowledge/README.md`. |
 
 ## Scenario Guide
 
 | Scenario | Read |
 | --- | --- |
+| Setting up / running the simulation | `environment-setup.md` (use `scripts/run_matlab.sh`) |
 | MATLAB code or script change | `mandatory-rules.md`, `matlab-specific.md`, `code-experiment-standards.md` |
 | New or changed experiment | `mandatory-rules.md`, `code-experiment-standards.md`, `quality-assurance.md` |
 | BER theory-vs-simulation analysis | `mandatory-rules.md`, `code-experiment-standards.md`, `quality-assurance.md` |

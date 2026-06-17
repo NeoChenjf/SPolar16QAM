@@ -1,8 +1,8 @@
 # 下一步执行计划：阶段 B 收束到 B4/B5
 
-> 更新时间：2026-06-14  
-> 当前状态：B1/B2/B3 已完成并文档化；B4 脚本已初步新建但尚未验收  
-> 下一位 Agent 的目标：先修正并验证 B4 full-chain 策略验证口径，再进入 B5 论文二初稿  
+> 更新时间：2026-06-17  
+> 当前状态：B1/B2/B3 已完成并文档化；B4 脚本已初步新建但尚未验收；注意原「项目整体计划书」中B4为低复杂度优化，现已由用户确认为 full-chain 策略验证。  
+> 下一位 Agent / 用户的目标：由用户在本地环境协助运行验证 B4 full-chain 策略验证脚本（因Agent环境无法直接运行MATLAB），而后由 Agent 负责梳理结果并编写 B4 总结文档，再进入 B5 论文二初稿。  
 
 ---
 
@@ -240,7 +240,7 @@ bad_channel_energy_only
 3. 修复自适应帧数 seed 重复问题，例如按 `(p, snr, seed, batch)` 生成可复现但不同的 batch seed；
 4. smoke mode 默认保留，full mode 只能由用户授权后运行。
 
-### Step 3：静态检查
+### Step 3：静态检查（需要用户配合在MATLAB本地环境执行）
 
 在 MATLAB 中执行：
 
@@ -250,9 +250,9 @@ setup_paths;
 checkcode('experiments/multicarrier/run_b4_fullchain_strategy_validation.m','-id')
 ```
 
-把结果写入 B4 文档。
+将结果直接告诉 Agent，或者将结果写入 B4 相关的临时记录中。
 
-### Step 4：只跑 smoke
+### Step 4：只跑 smoke（需要用户配合在MATLAB本地环境执行）
 
 在 MATLAB 中执行：
 
