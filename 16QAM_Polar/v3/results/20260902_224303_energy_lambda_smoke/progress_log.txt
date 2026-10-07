@@ -1,0 +1,26 @@
+START 2026-09-02 22:43:03
+START M=8 lambda=0
+DONE M=8 lambda=0 status=exact KL=0 TV=0 E_model=1.000000 E_emp=0.994792
+START M=8 lambda=0.25
+DONE M=8 lambda=0.25 status=exact KL=0 TV=3.858e-10 E_model=1.110094 E_emp=1.086979
+START M=8 lambda=0.5
+DONE M=8 lambda=0.5 status=exact KL=0 TV=5.411e-09 E_model=1.214342 E_emp=1.177865
+START M=16 lambda=0
+DONE M=16 lambda=0 status=exact KL=0 TV=0 E_model=1.000000 E_emp=0.996406
+START M=16 lambda=0.25
+DONE M=16 lambda=0.25 status=exact KL=1.524e-16 TV=2.557e-09 E_model=1.079734 E_emp=1.053906
+START M=16 lambda=0.5
+DONE M=16 lambda=0.5 status=exact KL=2.502e-16 TV=2.431e-09 E_model=1.157900 E_emp=1.122969
+START M=32 lambda=0
+DONE M=32 lambda=0 status=exact KL=0 TV=0 E_model=1.000000 E_emp=1.007452
+START M=32 lambda=0.25
+DONE M=32 lambda=0.25 status=approximate-pass KL=0.0007172 TV=0.01865 E_model=1.129015 E_emp=1.096815
+START M=32 lambda=0.5
+DONE M=32 lambda=0.5 status=approximate-pass KL=0.002613 TV=0.03392 E_model=1.264091 E_emp=1.207692
+START M=64 lambda=0
+DONE M=64 lambda=0 status=exact KL=0 TV=0 E_model=1.000000 E_emp=1.006436
+START M=64 lambda=0.25
+DONE M=64 lambda=0.25 status=approximate-pass KL=0.0005603 TV=0.01262 E_model=1.093097 E_emp=1.054167
+START M=64 lambda=0.5
+DONE M=64 lambda=0.5 status=approximate-pass KL=0.002163 TV=0.02607 E_model=1.190070 E_emp=1.131845
+DONE 2026-09-02 22:43:16 overall_pass=1

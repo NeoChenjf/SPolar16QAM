@@ -1,0 +1,8 @@
+START 2026-09-03 22:16:30
+START M=64 lambda=0
+DONE M=64 lambda=0 TV=0.012610 upper95=0.018774 formal_pass=1
+START M=64 lambda=0.25
+DONE M=64 lambda=0.25 TV=0.022318 upper95=0.026795 formal_pass=1
+START M=64 lambda=0.5
+DONE M=64 lambda=0.5 TV=0.029400 upper95=0.033099 formal_pass=1
+DONE 2026-09-03 22:16:55 overall_pass=1

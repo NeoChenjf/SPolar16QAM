@@ -33,6 +33,11 @@ function result = sim_shaped_polar_16qam(p, snr_dB, cfg)
     N = cfg.N;
     M = cfg.M;
     nFrames = cfg.num_frames;
+    collect = isfield(cfg, 'collect_energy_frames') && cfg.collect_energy_frames;
+    if collect
+        validateattributes(cfg.collect_energy_frames, {'logical'}, {'scalar'});
+        frame_stats = zeros(nFrames, 13, nSNR);
+    end
 
     % 设置随机种子
     if cfg.seed > 0
@@ -189,10 +194,18 @@ function result = sim_shaped_polar_16qam(p, snr_dB, cfg)
 
                 % BER / BLER
                 nfails = sum(info_hat ~= origin{b});
+                if collect
+                    frame_stats(iFrame, 5+b, iSNR) = nfails;
+                    frame_stats(iFrame, 9+b, iSNR) = nfails > 0;
+                end
                 ber_acc(b) = ber_acc(b) + nfails;
                 if nfails > 0
                     bler_acc(b) = bler_acc(b) + 1;
                 end
+            end
+            if collect
+                frame_stats(iFrame, 1:5, iSNR) = [iFrame, N, ...
+                    sum(abs(txSym).^2), sum(abs(txSym).^4), 2*sigma_noise^2];
             end
         end
 
@@ -203,6 +216,12 @@ function result = sim_shaped_polar_16qam(p, snr_dB, cfg)
             MI_per_bit(b, iSNR)   = mi_acc(b) / nFrames;
         end
         spow_vec(iSNR) = spow_acc / nFrames;
+        if collect && isfield(cfg, 'energy_checkpoint')
+            rng_before_callback = rng;
+            callback_cleanup = onCleanup(@() rng(rng_before_callback));
+            cfg.energy_checkpoint(iSNR, frame_stats(:,:,iSNR), K_vec, S_vec);
+            clear callback_cleanup;
+        end
 
         % 进度显示
         K_total = sum(K_vec);
@@ -227,6 +246,12 @@ function result = sim_shaped_polar_16qam(p, snr_dB, cfg)
     result.p         = p;
     result.snr_dB    = snr_dB;
     result.cfg       = cfg;
+    if collect
+        result.energy_frames = frame_stats;
+        result.energy_frame_columns = {'frame_id','symbols','sum_abs2', ...
+            'sum_abs4','N0','errors1','errors2','errors3','errors4', ...
+            'block_errors1','block_errors2','block_errors3','block_errors4'};
+    end
 
 end
 

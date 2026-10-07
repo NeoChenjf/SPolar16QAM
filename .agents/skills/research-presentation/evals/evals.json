@@ -1,0 +1,29 @@
+{
+  "skill_name": "research-presentation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "参考上一版开题PPT的模板，把三份实验阶段材料整理成5分钟中期汇报PPT，并生成逐页讲稿和Speaker Notes。重点是让评委看懂三项任务之间的逻辑、关键定量证据和结论边界。",
+      "expected_output": "A template-faithful research deck and synchronized script with a unique role per slide, evidence traceability, timed transitions, and complete QA.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "这页左右两张图关系不清楚。左边是model和empirical能量曲线，右边是64QAM的PMF TV复核。请改PPT和讲稿，让人一眼看懂两图关系、横纵轴、PMF和TV全称、95%上界与5%门限，并避免把TV解释成实际值比理论值小。",
+      "expected_output": "A corrected two-figure slide and narration that explicitly distinguish overview and focused validation, quantify uncertainty, and prevent directional misinterpretation of TV distance.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "最后三页比较散：一页是独立验证，一页是结论，一页是下一步。请按统一思路重构，保留24 dB失败和28 dB保护带的因果过程，并确保讲稿能在规定时间内直接照读。",
+      "expected_output": "A causal validation slide, an evidence-to-conclusion-to-boundary synthesis slide, and a gap-to-action-to-acceptance roadmap, with synchronized timed narration.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "参考我开题答辩讲稿的语言风格，把当前5分钟中期汇报讲稿改得深入浅出，并同步到Speaker Notes。评委应当只听一遍就理解PMF、TV、BER、Goodput和概率整形参数，但不能牺牲统计边界，也不要照读图例。",
+      "expected_output": "A timed, plain-language script that extracts only communication style from the reference, introduces technical terms before relying on them, follows each slide's visible reading order, gives decisive quantitative evidence and boundaries, and remains identical to Speaker Notes.",
+      "files": []
+    }
+  ]
+}

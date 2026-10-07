@@ -554,6 +554,6 @@ AWGN 描述加性噪声，Rayleigh 描述信道增益的随机衰落。二者可
 
 之后进入 B3 时，所有策略判断都应回到同一口径：
 
-```text
+```zstext
 BER / Goodput / Energy / 信息子载波占比 / 分组阈值
 ```

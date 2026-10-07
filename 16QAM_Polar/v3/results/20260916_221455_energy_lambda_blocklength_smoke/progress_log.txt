@@ -1,0 +1,10 @@
+START 2026-09-16 22:14:55 mode=smoke
+START M=8 lambda=0 N=256
+DONE M=8 lambda=0 N=256 E_target=1.000000 E_model=1.000000 E_emp=1.020833 TV_emp_target_upper95=0.113281
+START M=8 lambda=0 N=1024
+DONE M=8 lambda=0 N=1024 E_target=1.000000 E_model=1.000000 E_emp=1.007812 TV_emp_target_upper95=0.032227
+START M=8 lambda=0.5 N=256
+DONE M=8 lambda=0.5 N=256 E_target=1.214342 E_model=1.214342 E_emp=1.177083 TV_emp_target_upper95=0.054161
+START M=8 lambda=0.5 N=1024
+DONE M=8 lambda=0.5 N=1024 E_target=1.214342 E_model=1.214342 E_emp=1.175781 TV_emp_target_upper95=0.042142
+DONE 2026-09-16 22:15:02 rows=4

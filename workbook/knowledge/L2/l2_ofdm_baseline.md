@@ -15,7 +15,7 @@ Stage B / B1 的**最小 OFDM 全链路基线**：均匀 p、AWGN OFDM、SC 译�
 |---|------|--------|------|
 | 1 | 初始化（含 v2 root bootstrap） | （setup_paths/config） | 从 mfilename 定位根 |
 | 2 | 单载波端到端仿真 | l3_sim_shaped_polar_16qam | 复用主仿真核心 |
-| 3 | OFDM 调制/解调（子载波映射 + CP） | （脚本内联，多载波模块在建） | n_subcarriers=64, cp_ratio=1/4 |
+| 3 | OFDM 调制/解调（子载波映射 + CP） | l3_ofdm_channel_roundtrip | n_subcarriers=64, cp_ratio=1/4；B1以单位冲激响应调用共享核心 |
 | 4 | 指标统计 | l3_compute_goodput, l3_compute_energy | — |
 
 ## Inputs
@@ -28,6 +28,7 @@ Stage B / B1 的**最小 OFDM 全链路基线**：均匀 p、AWGN OFDM、SC 译�
 - ⚠️ **Stage B 硬规则**：不得在与三个计划基线（好信道信息、好信道能量成形、坏信道纯能量传输）
   对照前，宣称某多载波策略"最优"（`AGENTS.md` Non-Negotiables）。
 - 产物须落时间戳 results/ 目录并更新 Stage B 文档。
+- 共享OFDM核心重构后，单位冲激、有限多径、深衰落保护与B1最小回归必须通过。
 
 ## Weekly Report
 - 周报/阶段B/B1：OFDM baseline阶段文档.md

@@ -1,0 +1,26 @@
+START 2026-09-03 16:03:56
+START M=8 lambda=0
+DONE M=8 lambda=0 minBER=0 maxBER=0.4938 totalErrors=19343
+START M=8 lambda=0.25
+DONE M=8 lambda=0.25 minBER=0 maxBER=0.493 totalErrors=19103
+START M=8 lambda=0.5
+DONE M=8 lambda=0.5 minBER=0 maxBER=0.497 totalErrors=18772
+START M=16 lambda=0
+DONE M=16 lambda=0 minBER=0 maxBER=0.5096 totalErrors=35381
+START M=16 lambda=0.25
+DONE M=16 lambda=0.25 minBER=0 maxBER=0.498 totalErrors=34903
+START M=16 lambda=0.5
+DONE M=16 lambda=0.5 minBER=0 maxBER=0.5001 totalErrors=34684
+START M=32 lambda=0
+DONE M=32 lambda=0 minBER=0 maxBER=0.4734 totalErrors=49303
+START M=32 lambda=0.25
+DONE M=32 lambda=0.25 minBER=0 maxBER=0.4718 totalErrors=48789
+START M=32 lambda=0.5
+DONE M=32 lambda=0.5 minBER=0 maxBER=0.435 totalErrors=47597
+START M=64 lambda=0
+DONE M=64 lambda=0 minBER=0 maxBER=0.4924 totalErrors=59720
+START M=64 lambda=0.25
+DONE M=64 lambda=0.25 minBER=0 maxBER=0.488 totalErrors=58439
+START M=64 lambda=0.5
+DONE M=64 lambda=0.5 minBER=0 maxBER=0.4818 totalErrors=57329
+DONE 2026-09-03 16:04:22

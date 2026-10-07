@@ -1,0 +1,14 @@
+[energy smoke] M=8 lambda=0.00 | exact | target-model TV=0 | empirical TV upper95=0.0196 | E=0.9948
+[energy smoke] M=8 lambda=0.25 | exact | target-model TV=3.858e-10 | empirical TV upper95=0.0262 | E=1.0870
+[energy smoke] M=8 lambda=0.50 | exact | target-model TV=5.411e-09 | empirical TV upper95=0.0330 | E=1.1779
+[energy smoke] M=16 lambda=0.00 | exact | target-model TV=0 | empirical TV upper95=0.0269 | E=0.9964
+[energy smoke] M=16 lambda=0.25 | exact | target-model TV=2.557e-09 | empirical TV upper95=0.0367 | E=1.0539
+[energy smoke] M=16 lambda=0.50 | exact | target-model TV=2.431e-09 | empirical TV upper95=0.0375 | E=1.1230
+[energy smoke] M=32 lambda=0.00 | exact | target-model TV=0 | empirical TV upper95=0.0391 | E=1.0075
+[energy smoke] M=32 lambda=0.25 | approximate-pass | target-model TV=0.01865 | empirical TV upper95=0.0419 | E=1.0968
+[energy smoke] M=32 lambda=0.50 | approximate-pass | target-model TV=0.03392 | empirical TV upper95=0.0487 | E=1.2077
+[energy smoke] M=64 lambda=0.00 | exact | target-model TV=0 | empirical TV upper95=0.0515 | E=1.0064
+[energy smoke] M=64 lambda=0.25 | approximate-pass | target-model TV=0.01262 | empirical TV upper95=0.0586 | E=1.0542
+[energy smoke] M=64 lambda=0.50 | approximate-pass | target-model TV=0.02607 | empirical TV upper95=0.0648 | E=1.1318
+[run_gray_qam_energy_smoke] overall_pass=1
+[run_gray_qam_energy_smoke] saved: C:\Users\11956\Desktop\研究生毕设\16QAM_Polar\v3\results\20260902_224303_energy_lambda_smoke

@@ -1,5 +1,9 @@
 # 运行环境搭建（Environment Setup）
 
+## 2026-09-12 Windows复核
+
+当前Windows工作区发现MATLAB R2020b，MATLAB/Communication Toolbox许可查询均为1；通过 `scripts/run_matlab_local.ps1 "check_env; test_energy_tradeoff"` 验证。Windows PowerShell包装自动cd v2、setup_paths、透传退出码。原Bash脚本在此检出为CRLF而不能直接在WSL执行，WSL未发现Octave；本次未改原包装或安装依赖。以下Mac记录为历史环境，不应覆盖当前实测。
+
 本机（Apple M3 Pro / arm64）**无 MATLAB License**，统一用免费的 **GNU Octave** 运行
 `16QAM_Polar/v2/` 仿真，并通过 `scripts/run_matlab.sh` 让 agent 一键调用。本文件是
 环境的**可复现配置 + 已知差异清单**，换机时照此复现。

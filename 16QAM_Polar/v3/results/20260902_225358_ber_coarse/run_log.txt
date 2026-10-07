@@ -1,0 +1,12 @@
+[BER coarse] M=8 lambda=0.00 | BER range 0 ... 0.4938
+[BER coarse] M=8 lambda=0.25 | BER range 0 ... 0.493
+[BER coarse] M=8 lambda=0.50 | BER range 0 ... 0.497
+[BER coarse] M=16 lambda=0.00 | BER range 0 ... 0.5096
+[BER coarse] M=16 lambda=0.25 | BER range 0 ... 0.498
+[BER coarse] M=16 lambda=0.50 | BER range 0 ... 0.5001
+[BER coarse] M=32 lambda=0.00 | BER range 0 ... 0.4734
+[BER coarse] M=32 lambda=0.25 | BER range 0 ... 0.4718
+[BER coarse] M=32 lambda=0.50 | BER range 0 ... 0.435
+[BER coarse] M=64 lambda=0.00 | BER range 0 ... 0.4924
+[BER coarse] M=64 lambda=0.25 | BER range 0 ... 0.488
+[BER coarse] M=64 lambda=0.50 | BER range 0 ... 0.4818

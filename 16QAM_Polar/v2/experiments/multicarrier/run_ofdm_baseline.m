@@ -336,24 +336,17 @@ function result = local_sim_shaped_polar_16qam_ofdm(p, snr_dB, cfg)
             spow_frame = mean(abs(txSym).^2);
             spow_acc = spow_acc + spow_frame;
 
-            txGrid = reshape(txSym, nSub, nOfdmSymbols);
-            txTimeNoCp = ifft(txGrid, nSub, 1);
-            txTimeCp = [txTimeNoCp(end-nCp+1:end, :); txTimeNoCp];
-            time_power_acc = time_power_acc + mean(abs(txTimeCp(:)).^2);
-
             switch cfg.snr_mode
                 case 'fixed_n0'
                     sigma_noise_freq = sqrt(cfg.snr_ref_power) * sigma;
                 otherwise
                     sigma_noise_freq = sqrt(spow_frame) * sigma;
             end
-            sigma_noise_time = sigma_noise_freq / sqrt(nSub);
-            rxTimeCp = txTimeCp + sigma_noise_time * ...
-                (randn(size(txTimeCp)) + 1j*randn(size(txTimeCp)));
-
-            rxTimeNoCp = rxTimeCp(nCp+1:end, :);
-            rxGrid = fft(rxTimeNoCp, nSub, 1);
-            rxSym = rxGrid(:);
+            txGrid = reshape(txSym, nSub, nOfdmSymbols);
+            channel_result = ofdm_channel_roundtrip(txGrid, 1, ...
+                sigma_noise_freq, nCp, struct());
+            time_power_acc = time_power_acc + channel_result.tx_time_power;
+            rxSym = channel_result.rx_grid_equalized(:);
 
             if isfield(cfg, 'llr_use_legacy_noisevar') && cfg.llr_use_legacy_noisevar
                 noise_var_for_llr = 2 * sigma^2;

@@ -1,0 +1,50 @@
+START 2026-09-16 22:54:30 mode=formal
+START M=8 lambda=0 N=256
+DONE M=8 lambda=0 N=256 E_target=1.000000 E_model=1.000000 E_emp=0.996094 TV_emp_target_upper95=0.019141
+START M=8 lambda=0 N=1024
+DONE M=8 lambda=0 N=1024 E_target=1.000000 E_model=1.000000 E_emp=0.997266 TV_emp_target_upper95=0.011255
+START M=8 lambda=0.25 N=256
+DONE M=8 lambda=0.25 N=256 E_target=1.110094 E_model=1.110094 E_emp=1.083073 TV_emp_target_upper95=0.028785
+START M=8 lambda=0.25 N=1024
+DONE M=8 lambda=0.25 N=1024 E_target=1.110094 E_model=1.110094 E_emp=1.086523 TV_emp_target_upper95=0.019777
+START M=8 lambda=0.5 N=256
+DONE M=8 lambda=0.5 N=256 E_target=1.214342 E_model=1.214342 E_emp=1.171354 TV_emp_target_upper95=0.036388
+START M=8 lambda=0.5 N=1024
+DONE M=8 lambda=0.5 N=1024 E_target=1.214342 E_model=1.214342 E_emp=1.181966 TV_emp_target_upper95=0.025747
+START M=16 lambda=0 N=256
+DONE M=16 lambda=0 N=256 E_target=1.000000 E_model=1.000000 E_emp=0.994375 TV_emp_target_upper95=0.030566
+START M=16 lambda=0 N=1024
+DONE M=16 lambda=0 N=1024 E_target=1.000000 E_model=1.000000 E_emp=0.999727 TV_emp_target_upper95=0.014038
+START M=16 lambda=0.25 N=256
+DONE M=16 lambda=0.25 N=256 E_target=1.079734 E_model=1.079734 E_emp=1.041094 TV_emp_target_upper95=0.040361
+START M=16 lambda=0.25 N=1024
+DONE M=16 lambda=0.25 N=1024 E_target=1.079734 E_model=1.079734 E_emp=1.058086 TV_emp_target_upper95=0.021921
+START M=16 lambda=0.5 N=256
+DONE M=16 lambda=0.5 N=256 E_target=1.157900 E_model=1.157900 E_emp=1.117344 TV_emp_target_upper95=0.042355
+START M=16 lambda=0.5 N=1024
+DONE M=16 lambda=0.5 N=1024 E_target=1.157900 E_model=1.157900 E_emp=1.123125 TV_emp_target_upper95=0.030894
+START M=32 lambda=0 N=256
+DONE M=32 lambda=0 N=256 E_target=1.000000 E_model=1.000000 E_emp=1.016947 TV_emp_target_upper95=0.039551
+START M=32 lambda=0 N=1024
+DONE M=32 lambda=0 N=1024 E_target=1.000000 E_model=1.000000 E_emp=0.997145 TV_emp_target_upper95=0.019214
+START M=32 lambda=0.25 N=256
+DONE M=32 lambda=0.25 N=256 E_target=1.134752 E_model=1.129015 E_emp=1.089784 TV_emp_target_upper95=0.046543
+START M=32 lambda=0.25 N=1024
+DONE M=32 lambda=0.25 N=1024 E_target=1.134752 E_model=1.129015 E_emp=1.098152 TV_emp_target_upper95=0.031114
+START M=32 lambda=0.5 N=256
+DONE M=32 lambda=0.5 N=256 E_target=1.274527 E_model=1.264091 E_emp=1.204688 TV_emp_target_upper95=0.059241
+START M=32 lambda=0.5 N=1024
+DONE M=32 lambda=0.5 N=1024 E_target=1.274527 E_model=1.264091 E_emp=1.217743 TV_emp_target_upper95=0.051027
+START M=64 lambda=0 N=256
+DONE M=64 lambda=0 N=256 E_target=1.000000 E_model=1.000000 E_emp=1.000037 TV_emp_target_upper95=0.047070
+START M=64 lambda=0 N=1024
+DONE M=64 lambda=0 N=1024 E_target=1.000000 E_model=1.000000 E_emp=0.999814 TV_emp_target_upper95=0.025098
+START M=64 lambda=0.25 N=256
+DONE M=64 lambda=0.25 N=256 E_target=1.097579 E_model=1.093097 E_emp=1.053609 TV_emp_target_upper95=0.059449
+START M=64 lambda=0.25 N=1024
+DONE M=64 lambda=0.25 N=1024 E_target=1.097579 E_model=1.093097 E_emp=1.062881 TV_emp_target_upper95=0.035717
+START M=64 lambda=0.5 N=256
+DONE M=64 lambda=0.5 N=256 E_target=1.198719 E_model=1.190070 E_emp=1.127046 TV_emp_target_upper95=0.074752
+START M=64 lambda=0.5 N=1024
+DONE M=64 lambda=0.5 N=1024 E_target=1.198719 E_model=1.190070 E_emp=1.147247 TV_emp_target_upper95=0.052302
+DONE 2026-09-16 22:55:21 rows=24

@@ -25,7 +25,7 @@ seed = 42;
 n_subcarriers = 64;
 cp_ratio = 1/4;
 channel_taps = 16;
-snr_grid = 8:2:20;
+snr_grid = 0:2:20;
 strategy_names = { ...
     'uniform_p05', ...
     'uniform_p03', ...
@@ -56,7 +56,7 @@ end
 if strcmpi(run_mode, 'smoke')
     num_realizations = min(num_realizations, 2);
     seed_list = seed_list(1:min(numel(seed_list), 1));
-    snr_grid = snr_grid(1:min(numel(snr_grid), 2));
+    snr_grid = 0:5:20;
     min_frames = min(min_frames, 5);
     max_frames = min(max_frames, 10);
     target_errors = min(target_errors, 5);
@@ -144,6 +144,7 @@ function T_block = local_simulate_p_blocks(p_values, snr_grid, seed_list, cfg, .
 
                 while total_frames < max_frames
                     batch_frames = min(min_frames, max_frames - total_frames);
+                    cfg_run.seed = local_batch_seed(seed, ip, is, n_batches + 1);
                     cfg_run.num_frames = batch_frames;
                     result = sim_shaped_polar_16qam(p, snr_db, cfg_run);
                     K_total = sum(result.K);
@@ -279,6 +280,10 @@ end
 
 function h = local_rayleigh_channel(channel_taps)
     h = (randn(channel_taps, 1) + 1j * randn(channel_taps, 1)) / sqrt(2 * channel_taps);
+end
+
+function batch_seed = local_batch_seed(base_seed, p_index, snr_index, batch_index)
+    batch_seed = base_seed + 10000 * p_index + 100 * snr_index + batch_index;
 end
 
 function group_labels = local_rank_and_group(H_abs2)
@@ -419,8 +424,10 @@ function local_write_readme(out_dir, run_mode, strategy_names, snr_grid, ...
     fprintf(fid, 'RUN COMMAND\n');
     fprintf(fid, '  cd(''16QAM_Polar/v2''); setup_paths; run(''experiments/multicarrier/run_b4_fullchain_strategy_validation.m'');\n\n');
     fprintf(fid, 'SCOPE\n');
-    fprintf(fid, '  Grouped block full-chain validation. This is not per-subcarrier polar encoding.\n');
-    fprintf(fid, '  Strategies are aggregated over high/mid/low Rayleigh reliability groups.\n\n');
+    fprintf(fid, '  B4a grouped block full-chain validation.\n');
+    fprintf(fid, '  This script is not strict per-subcarrier OFDM polar encoding.\n');
+    fprintf(fid, '  It first simulates p-level full-chain blocks, then aggregates strategies over high/mid/low Rayleigh reliability groups.\n');
+    fprintf(fid, '  A later B4b strict OFDM-Rayleigh script should be used for per-subcarrier OFDM validation.\n\n');
     fprintf(fid, 'PARAMETERS\n');
     fprintf(fid, '  run_mode: %s\n', run_mode);
     fprintf(fid, '  strategies: %s\n', strjoin(strategy_names, ', '));
@@ -429,6 +436,9 @@ function local_write_readme(out_dir, run_mode, strategy_names, snr_grid, ...
     fprintf(fid, '  seed_list: %s\n', mat2str(seed_list));
     fprintf(fid, '  adaptive frames: min=%d, max=%d, target_errors=%d\n\n', ...
         min_frames, max_frames, target_errors);
+    fprintf(fid, 'REPRODUCIBILITY\n');
+    fprintf(fid, '  Each adaptive Monte Carlo batch uses a deterministic derived seed: base_seed + 10000*p_index + 100*snr_index + batch_index.\n');
+    fprintf(fid, '  This avoids repeating identical random streams across batches for the same p/SNR point.\n\n');
     fprintf(fid, 'OUTPUTS\n');
     fprintf(fid, '  b4_p_block_results.csv\n');
     fprintf(fid, '  b4_strategy_realization_results.csv\n');

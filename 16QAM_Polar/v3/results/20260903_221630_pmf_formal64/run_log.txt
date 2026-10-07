@@ -1,0 +1,5 @@
+[PMF formal64] lambda=0.00 | TV=0.0126 upper95=0.0188 pass=1
+[PMF formal64] lambda=0.25 | TV=0.0223 upper95=0.0268 pass=1
+[PMF formal64] lambda=0.50 | TV=0.0294 upper95=0.0331 pass=1
+[run_gray_qam_pmf_formal64] overall_pass=1
+[run_gray_qam_pmf_formal64] saved: C:\Users\11956\Desktop\研究生毕设\16QAM_Polar\v3\results\20260903_221630_pmf_formal64

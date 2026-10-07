@@ -16,7 +16,7 @@
 | L1 领域专家认知（边界/状态机/护栏） | L1 研究领域（问题/假设/物理量/理论边界/护栏） | `L1/` |
 | L2 工作流编排 | L2 实验流程（pipeline/参数/产物/验收） | `L2/` |
 | L3 原子工具契约 | L3 方法契约（.m 函数签名/公式/数值坑/依赖） | `L3/` |
-| KCS 知识完备度评分 | RKS 科研完备度评分（五维） | `.claude/skills/.../rks_evaluate.py` |
+| KCS 知识完备度评分 | RKS 科研完备度评分（五维） | `.agents/skills/.../rks_evaluate.py` |
 
 ## 目录结构
 ```
@@ -67,7 +67,7 @@ workbook/knowledge/
 - 全流程 + 评分 → skill `research-scan-orchestrator`
 - 快速打分：
   ```bash
-  python3 .claude/skills/research-scan-orchestrator/scripts/rks_evaluate.py \
+  python .agents/skills/research-scan-orchestrator/scripts/rks_evaluate.py \
     --project-root . --system-id spolar16qam --append-ledger --write-report
   ```
 

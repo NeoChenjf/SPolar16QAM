@@ -1,0 +1,25 @@
+[blocklength compare] M=8 lambda=0.00 N=256 | E target/model/emp=1.0000/1.0000/0.9961 | TV95(emp,target)=0.0191
+[blocklength compare] M=8 lambda=0.00 N=1024 | E target/model/emp=1.0000/1.0000/0.9973 | TV95(emp,target)=0.0113
+[blocklength compare] M=8 lambda=0.25 N=256 | E target/model/emp=1.1101/1.1101/1.0831 | TV95(emp,target)=0.0288
+[blocklength compare] M=8 lambda=0.25 N=1024 | E target/model/emp=1.1101/1.1101/1.0865 | TV95(emp,target)=0.0198
+[blocklength compare] M=8 lambda=0.50 N=256 | E target/model/emp=1.2143/1.2143/1.1714 | TV95(emp,target)=0.0364
+[blocklength compare] M=8 lambda=0.50 N=1024 | E target/model/emp=1.2143/1.2143/1.1820 | TV95(emp,target)=0.0257
+[blocklength compare] M=16 lambda=0.00 N=256 | E target/model/emp=1.0000/1.0000/0.9944 | TV95(emp,target)=0.0306
+[blocklength compare] M=16 lambda=0.00 N=1024 | E target/model/emp=1.0000/1.0000/0.9997 | TV95(emp,target)=0.0140
+[blocklength compare] M=16 lambda=0.25 N=256 | E target/model/emp=1.0797/1.0797/1.0411 | TV95(emp,target)=0.0404
+[blocklength compare] M=16 lambda=0.25 N=1024 | E target/model/emp=1.0797/1.0797/1.0581 | TV95(emp,target)=0.0219
+[blocklength compare] M=16 lambda=0.50 N=256 | E target/model/emp=1.1579/1.1579/1.1173 | TV95(emp,target)=0.0424
+[blocklength compare] M=16 lambda=0.50 N=1024 | E target/model/emp=1.1579/1.1579/1.1231 | TV95(emp,target)=0.0309
+[blocklength compare] M=32 lambda=0.00 N=256 | E target/model/emp=1.0000/1.0000/1.0169 | TV95(emp,target)=0.0396
+[blocklength compare] M=32 lambda=0.00 N=1024 | E target/model/emp=1.0000/1.0000/0.9971 | TV95(emp,target)=0.0192
+[blocklength compare] M=32 lambda=0.25 N=256 | E target/model/emp=1.1348/1.1290/1.0898 | TV95(emp,target)=0.0465
+[blocklength compare] M=32 lambda=0.25 N=1024 | E target/model/emp=1.1348/1.1290/1.0982 | TV95(emp,target)=0.0311
+[blocklength compare] M=32 lambda=0.50 N=256 | E target/model/emp=1.2745/1.2641/1.2047 | TV95(emp,target)=0.0592
+[blocklength compare] M=32 lambda=0.50 N=1024 | E target/model/emp=1.2745/1.2641/1.2177 | TV95(emp,target)=0.0510
+[blocklength compare] M=64 lambda=0.00 N=256 | E target/model/emp=1.0000/1.0000/1.0000 | TV95(emp,target)=0.0471
+[blocklength compare] M=64 lambda=0.00 N=1024 | E target/model/emp=1.0000/1.0000/0.9998 | TV95(emp,target)=0.0251
+[blocklength compare] M=64 lambda=0.25 N=256 | E target/model/emp=1.0976/1.0931/1.0536 | TV95(emp,target)=0.0594
+[blocklength compare] M=64 lambda=0.25 N=1024 | E target/model/emp=1.0976/1.0931/1.0629 | TV95(emp,target)=0.0357
+[blocklength compare] M=64 lambda=0.50 N=256 | E target/model/emp=1.1987/1.1901/1.1270 | TV95(emp,target)=0.0748
+[blocklength compare] M=64 lambda=0.50 N=1024 | E target/model/emp=1.1987/1.1901/1.1472 | TV95(emp,target)=0.0523
+[run_gray_qam_blocklength_compare] saved: C:\Users\11956\Desktop\研究生毕设\16QAM_Polar\v3\results\20260916_225430_energy_lambda_blocklength_formal

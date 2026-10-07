@@ -1,0 +1,14 @@
+[BER refine] M=8 lambda=0.00 | repetitions=3 valid_points=6
+[BER refine] M=8 lambda=0.25 | repetitions=3 valid_points=5
+[BER refine] M=8 lambda=0.50 | repetitions=3 valid_points=5
+[BER refine] M=16 lambda=0.00 | repetitions=3 valid_points=6
+[BER refine] M=16 lambda=0.25 | repetitions=3 valid_points=6
+[BER refine] M=16 lambda=0.50 | repetitions=3 valid_points=7
+[BER refine] M=32 lambda=0.00 | repetitions=3 valid_points=6
+[BER refine] M=32 lambda=0.25 | repetitions=3 valid_points=6
+[BER refine] M=32 lambda=0.50 | repetitions=3 valid_points=7
+[BER refine] M=64 lambda=0.00 | repetitions=3 valid_points=6
+[BER refine] M=64 lambda=0.25 | repetitions=3 valid_points=7
+[BER refine] M=64 lambda=0.50 | repetitions=3 valid_points=7
+[run_gray_qam_ber_refine] overall_pass=1
+[run_gray_qam_ber_refine] saved: C:\Users\11956\Desktop\研究生毕设\16QAM_Polar\v3\results\20260903_210444_ber_refine

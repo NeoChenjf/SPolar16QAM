@@ -7,6 +7,21 @@
 
 ## 使用说明
 
+### ENERGY-20260912. 恢复参数中NaN占位误判不一致
+- **问题**：相同配置含p_fixed中的NaN，isequal误判参数变化。
+- **触发场景**：联合能量实验从completed_blocks恢复。
+- **解决办法**：排除运行timestamp后用isequaln核对配置；核对引擎及仿真源码，恢复输出到新目录。
+- **验证**：完整恢复及删除一个完成块后的恢复均与原逐帧/汇总数据精确一致；帧数变更被拒绝。
+- **相关文件**：`16QAM_Polar/v2/experiments/rectifier/run_16qam_energy_tradeoff.m`、`diagnostics/rectifier/test_energy_tradeoff_recovery.m`。
+- **日期**：2026-09-12。
+
+### ENERGY-20260912-2. 工作点表按错误行序拼接指标
+- **问题**：summary按p/SNR排序，工作点按SNR分组，直接横拼会将CI/均值附到错误点。
+- **触发场景**：初版新写出逻辑静态自审。
+- **解决办法**：用(p,SNR)键ismember连接；审计重新计算工作点并核对整行。
+- **相关文件**：`run_16qam_energy_tradeoff.m`、`verify_energy_tradeoff_results.m`。
+- **日期**：2026-09-12。
+
 本文档记录所有已解决的问题，便于未来 Agent 查阅和避免重复踩坑。  
 新增问题请追加在对应分类末尾，按时间倒序排列。
 
@@ -23,6 +38,20 @@
 ---
 
 ## MATLAB 相关
+
+### 16. 标量单位冲激响应产生行向量频响，导致OFDM均衡维度不匹配
+- **问题**：共享OFDM核心在`h=1`的AWGN退化测试中，`bsxfun`报两个输入数组的非单一维度不匹配。
+- **触发场景**：MATLAB R2020b执行`fft(h, n_subcarriers)`且`h`为标量时返回行向量，而`rx_grid`按子载波使用列维度。
+- **解决办法**：将频响统一规范为列向量：`H = reshape(fft(h, n_subcarriers), [], 1)`；保留单位冲激、多径和深衰落测试覆盖。
+- **相关文件**：`16QAM_Polar/v2/core/ofdm_channel_roundtrip.m`、`16QAM_Polar/v2/diagnostics/multicarrier/test_ofdm_channel_core.m`
+- **日期**：2026-09-17
+
+### 15. v3 setup_paths 多回退一级，v2 polar 路径不存在
+- **问题**：`test_unit0_gray_qam` 虽能通过星座与 LLR 测试，但 `setup_paths` 报警告，尝试加入不存在的 `研究生毕设/v2/polar`。
+- **触发场景**：从 `16QAM_Polar/v3` 调用 `setup_paths`；该函数把 `v3_root` 连续调用两次 `fileparts` 后再拼接 `v2/polar`。
+- **解决办法**：将 v2 polar 路径改为 `fullfile(fileparts(v3_root),'v2','polar')`，即以 `16QAM_Polar` 为父目录。
+- **相关文件**：`16QAM_Polar/v3/setup_paths.m`，`周报/高阶调制/README.md`
+- **日期**：2026-08-26
 
 ### 14. MATLAB 图中策略名下划线被渲染为下标
 - **问题**：B3 策略对比图直接使用 `good_channel_information` 等内部策略 ID 作为横轴标签和图例标签，MATLAB TeX 解释器会把 `_` 后的字符渲染为下标，导致图中文字显示错误。
@@ -136,6 +165,62 @@
 
 ## 代码错误
 
+### 10. source-MC内部重置RNG污染payload与AWGN随机流
+- **问题**：source-MC构造函数调用`rng(seed)`后未恢复调用者状态；主仿真虽先设置`cfg.seed`，其后payload/AWGN实际从最后一个source构造随机状态继续，无法独立冻结构造并更换运行seed。
+- **触发场景**：为BER局部重复设计“固定S/I/F、只更换payload/AWGN seed”时审计随机数调用链。
+- **解决办法**：source-MC函数用`onCleanup`保存/恢复调用者RNG；核心新增可选`cfg.source_mc_seed`作为离线构造seed，`cfg.seed`继续只控制运行随机性。用随机序列前后相等断言及双seed同S集合检查验证。
+- **相关文件**：`16QAM_Polar/v3/polar/build_stream_partition_source_mc_ga.m`，`16QAM_Polar/v3/core/sim_shaped_polar_gray_qam.m`，`16QAM_Polar/v3/run_gray_qam_ber_refine.m`
+- **日期**：2026-09-03
+
+### 9. 单SNR掩盖K向量方向错误，多SNR BER计算维度失败
+- **问题**：`sim_shaped_polar_gray_qam`把各流K经转置保存为行向量，`BER_per_bit = bit_errors ./ (K * frames)`在单SNR时退化为行向量乘标量而未报错，多SNR时变成两个行向量矩阵乘法并失败。
+- **触发场景**：新增BER coarse后，以M=8、N=8、SNR=[0,4]做微型运行，MATLAB在核心函数第77行报告矩阵乘法维度不正确。
+- **解决办法**：K、S_size、F_size统一保持`m×1`列向量，使`K * frames`形成`m×nSNR`的每流总比特数矩阵；重跑双SNR微型检查。
+- **相关文件**：`16QAM_Polar/v3/core/sim_shaped_polar_gray_qam.m`，`周报/高阶调制/README.md`
+- **日期**：2026-09-02
+
+### 8. exact PMF 拟合的 KL 出现负机器零
+- **问题**：能量模型预检在若干可精确表达的4-PAM点输出约`-1e-16`的KL；这是浮点求和舍入，但KL按定义不能为负，直接落盘会干扰阈值解释。
+- **触发场景**：对`lambda=0.25/0.5`运行`build_energy_lambda_spec`并打印`D_KL(P_target||P_model)`。
+- **解决办法**：两个KL计算入口均把最终求和值钳制为`max(0,value)`；不改变优化目标、PMF或exact/approximate阈值。
+- **相关文件**：`16QAM_Polar/v3/modulation/fit_axis_latent_p.m`，`16QAM_Polar/v3/modulation/build_energy_lambda_spec.m`，`周报/高阶调制/README.md`
+- **日期**：2026-09-02
+
+### 7. source-MC 将高条件熵位置误选为 S
+- **问题**：source-MC+GA 输出几乎均匀，经验 latent p 约为0.5、平均能量为1，PMF TV上界达到0.4186。
+- **触发场景**：`build_stream_partition_source_mc_ga` 按条件熵降序选择 `|S|=N(1-H2(p))` 个位置。
+- **解决办法**：`N(1-H2(p))` 对应低条件熵、可由SC预测的位置，改为按条件熵升序选S。高熵位置属于承载自由度，不应作为该规模的shaping集合。
+- **相关文件**：`16QAM_Polar/v3/polar/build_stream_partition_source_mc_ga.m`，`周报/高阶调制/README.md`
+- **日期**：2026-08-30
+
+### 6. GF(2) 枚举矩阵保留 uint16，auto relation 线性代数失败
+- **问题**：`test_unit0_pmf_relation` 在验证 `T*T^{-1}=I` 时，MATLAB 报 `MTIMES (*) 不完全支持整数类`。
+- **触发场景**：`enumerate_gf2_invertible` 使用 `bitget(uint16(...))` 构造矩阵并直接返回；后续与 `gf2_inverse` 返回的 double 相乘。
+- **解决办法**：枚举器将每个候选矩阵显式转换为 double；测试断言也显式以 double 相乘。GF(2) 元素仍限定为 0/1，数学定义不变。
+- **相关文件**：`16QAM_Polar/v3/modulation/enumerate_gf2_invertible.m`，`16QAM_Polar/v3/diagnostics/test_unit0_pmf_relation.m`，`周报/高阶调制/README.md`
+- **日期**：2026-08-26
+
+### 5. OOK legacy 审计入口回退目录层级错误
+- **问题**：`run_ook_shapedpolar_legacy_plot.m` 不能找到 `gettest.m`，MATLAB 提示错误路径为 `v2....\\ShapedPolarS`。
+- **触发场景**：从 `16QAM_Polar/v2` 运行新建 OOK legacy 审计入口。
+- **解决办法**：将 `legacy_dir` 从 `fullfile(v2_root, '..', '..', 'ShapedPolarS')` 修正为 `fullfile(v2_root, '..', 'ShapedPolarS')`，使其正确指向 `16QAM_Polar/ShapedPolarS`。
+- **相关文件**：`16QAM_Polar/v2/experiments/ook_shaped_polar/run_ook_shapedpolar_legacy_plot.m`，`周报/原始Shape/README.md`
+- **日期**：2026-08-26
+
+### 4. MATLAB 对数图未显式设置 y 轴刻度导致视觉误读
+- **问题**：OOK gettest-style BER/BLER 图虽然使用 `semilogy`，但 MATLAB 自动 y 轴刻度在结果复核时不够直观，容易看成普通线性坐标或与参考图口径不一致。
+- **触发场景**：运行 `run_ook_gettest_style.m` 后检查 BER/BLER PNG，横轴已为 `-5~10 dB`，但 y 轴未清晰显示 `10^0` 到 `10^-5` 的对数刻度。
+- **解决办法**：在绘图函数中显式设置 `set(gca, 'YScale', 'log', 'YTick', 10.^(-5:0))`，并用已保存的 `ook_gettest_style_curves.mat` 重画正式结果图，无需重跑 Monte Carlo。
+- **相关文件**：`16QAM_Polar/OOK/run_ook_gettest_style.m`，`周报/原始Shape/README.md`
+- **日期**：2026-07-04
+
+### 3. OOK 复现函数忽略 overrides 参数
+- **问题**：`simulate_ook_shaped_polar.m` 的 `local_defaults` 使用 `if nargin < 2`，但该 local function 只有一个输入参数，导致每次调用都会重置为空 struct，外部传入的 `snr_grid`、`num_frames` 等 overrides 全部失效。
+- **触发场景**：运行 `run_ook_gettest_style.m` 的格式 smoke 时，入口显示 `snr_grid=[-5 0 5]`，但核心函数仍返回默认 6 个 SNR 点，触发矩阵赋值维度错误。
+- **解决办法**：将判断修正为 `if nargin < 1 || isempty(opts)`，保留传入 opts；重新运行 gettest-style 格式 smoke 通过。
+- **相关文件**：`16QAM_Polar/OOK/simulate_ook_shaped_polar.m`，`16QAM_Polar/OOK/run_ook_gettest_style.m`
+- **日期**：2026-07-04
+
 ### 2. Layer1 理论 BER 近邻近似长期低估仿真
 - **问题**：Layer1 无编码对账中，理论 BER 使用高SNR近邻近似，导致 fixed_n0 下与仿真实线存在明显量级偏差，高 SNR 还会触及理论下限。
 - **触发场景**：运行 `run_layer1_uncoded_ber_reconcile_v2.m` 后，`ber_theory` 在中高 SNR 段显著低于 `ber_sim`，并在高 SNR 出现裁剪饱和。
@@ -153,6 +238,13 @@
 ---
 
 ## 实验设计
+
+### 2. B4a adaptive batch 复用同一随机种子
+- **问题**：B4a 分组块 full-chain 验证中，同一个 `(p, snr, seed)` 的多个 adaptive batch 复用同一个 `cfg_run.seed`，会重复相同随机流，导致 Monte Carlo 批次不独立。
+- **触发场景**：`run_b4_fullchain_strategy_validation.m` 在 `while total_frames < max_frames` 循环中反复调用 `sim_shaped_polar_16qam(p, snr_db, cfg_run)`，但 batch 间未更新 seed。
+- **解决办法**：新增可复现派生 seed：`base_seed + 10000*p_index + 100*snr_index + batch_index`，每个 batch 调用前写入 `cfg_run.seed`；README 同步记录该口径。
+- **相关文件**：`16QAM_Polar/v2/experiments/multicarrier/run_b4_fullchain_strategy_validation.m`，`周报/阶段B/B4：full-chain策略验证.md`
+- **日期**：2026-06-28
 
 ### 1. 理论 full-chain BER 合成口径被误读为精确定量预测
 - **问题**：纯理论 full-chain 曲线使用 `P_code * R_geo` 相对风险缩放口径，容易被误读为编码侧 BER 与几何侧 BER 的精确联合概率，且与 Monte Carlo full-chain BER 存在数量级偏差。
@@ -173,3 +265,42 @@
 
 - **2026-02-25**：v2.0 重构，精简格式
 - **2026-01-27**：初始创建
+### 17. B4b pilot对数BER图退化为线性轴
+- **问题**：先执行`hold on`后调用`semilogy`时，当前MATLAB图轴没有切换到对数刻度；`bad_channel_energy_only`的零错点也不能直接用于对数绘图。
+- **触发场景**：`run_b4_strict_ofdm_rayleigh_validation.m`的5 realization × 2帧pilot，28/32 dB出现聚合BER=0。
+- **解决办法**：绘图时将非正BER替换为`NaN`，使用`plot`后显式设定`YScale='log'`，保留原始CSV数值；正式统计需为零错点报告置信上界，而非以零值进入对数图。
+- **相关文件**：`16QAM_Polar/v2/experiments/multicarrier/run_b4_strict_ofdm_rayleigh_validation.m`
+- **日期**：2026-09-17
+### 18. B4b formal自适应帧数导致控制台接收能量显示放大
+- **问题**：正式模式中高SNR零错点会运行到`max_frames=50`，但进度打印仍使用配置的`num_frames=5`作分母，控制台`Erx`显示被放大十倍。
+- **触发场景**：2026-09-17正式运行的第1个realization，纯能量策略28 dB以上。
+- **解决办法**：打印使用实际`frames_used`；正式完成或恢复时从checkpoint重建START/DONE进度日志，避免中断点已写partial但缺DONE造成审计不一致。
+- **相关文件**：`16QAM_Polar/v2/experiments/multicarrier/run_b4_strict_ofdm_rayleigh_validation.m`
+- **日期**：2026-09-17
+
+### 19. 高SNR粗扫图的BER轴显示为线性刻度
+- **问题**：MATLAB绘制高SNR误码率粗扫时，零错点上界附近的图被显示为线性纵轴，导致低BER点挤在底部，且零错说明互相重叠。
+- **触发场景**：新增`run_16qam_ber_high_snr_coarse.m`首次导出图像检查。
+- **解决办法**：显式设置坐标轴`YScale='log'`，以零错误95%上界作为叉号位置，不把样本BER=0直接放进对数图；图例只保留一项公共上界说明。
+- **相关文件**：`16QAM_Polar/v2/experiments/rectifier/run_16qam_ber_high_snr_coarse.m`
+- **日期**：2026-09-23
+
+### 20. 中期考评填写稿删图后仍保留旧图解释
+- **问题**：填写稿删除码长比较等PPT未展示的图后，正文仍声称“N=256与N=1024对照”的改善幅度，图文不一致。
+- **触发场景**：只核对媒体、图注和图号，未逐段检查图前后的研究结论与后文引用。
+- **解决办法**：按当前PPT逐段复核填写稿，将能量图与64QAM分布图明确写成不同样本、不同任务；同步修正有限SNR零错表述、16QAM工作点说明、24 dB切换规则时态和28—40 dB验证范围，并增加删图后的文字审查规则。
+- **相关文件**：`中期相关/附件1：学术学位研究生学位论文中期考评表-陈俊峰-填写稿.docx`，`workbook/communication-documentation.md`，`周报/阶段B/B5：论文二初稿.md`
+- **日期**：2026-09-24
+
+### 21. 中期考评填写稿的有限SNR段落缺少可见证据定位
+- **问题**：删除BER图后，有限SNR验证仍以两段曲线细节展开；相邻64QAM图的文字没有说明坐标和门限，读者难以将结论对应到表或图。
+- **触发场景**：按PPT保留图像后，仅消除错误的旧图说法，未重组无图段落与保留图像的阅读顺序。
+- **解决办法**：将有限SNR结果收束为表1“误码有效”门禁的说明；把64QAM段落改为图2的横纵轴、三点数值与5%门限解读；末段明确表1、图1、图2各承担的证据作用。
+- **相关文件**：`中期相关/附件1：学术学位研究生学位论文中期考评表-陈俊峰-填写稿.docx`，`周报/阶段B/B5：论文二初稿.md`
+- **日期**：2026-09-24
+
+### 22. Pareto图的黑色空心圈被自动命名为data1
+- **问题**：MATLAB为未指定`DisplayName`的非支配点黑色空心圈自动生成`data1`，读者易将其误解为第七种策略；原圈线较细，也不容易在图中辨认。
+- **解决办法**：对空心圈显式设置`DisplayName='Nondominated (black ring)'`并放大圈线，重新生成分析图，同步替换PPT第17页和中期考评填写稿图8。
+- **相关文件**：`16QAM_Polar/v2/experiments/multicarrier/run_b4b_paired_policy_analysis.m`，`中期相关/基于自适应无线数能内生传输的编码方案研究-中期汇报.pptx`，`中期相关/附件1：学术学位研究生学位论文中期考评表-陈俊峰-填写稿.docx`
+- **日期**：2026-09-29

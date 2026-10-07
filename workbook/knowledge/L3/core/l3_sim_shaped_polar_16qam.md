@@ -1,5 +1,9 @@
 # L3 · sim_shaped_polar_16qam
 
+## 2026-09-12 可选能量采集
+
+`cfg.collect_energy_frames=true`增加`result.energy_frames`（frames×13×SNR）和列名；列为frame_id、symbols、sum_abs2、sum_abs4、N0、四路errors、四路block_errors。默认不采集，旧通信行为不变。可选`energy_checkpoint(index,frames,K,S)`逐SNR调用，回调前后恢复RNG；异常传播。fixed_esn0复噪声总方差为`2*spow_frame*10^(-snr_label/10)`。单元测试核对统计开关及回调对BER和RNG无影响。
+
 - **method_id**: l3_sim_shaped_polar_16qam
 - **file_path**: 16QAM_Polar/v2/core/sim_shaped_polar_16qam.m
 - **module**: core

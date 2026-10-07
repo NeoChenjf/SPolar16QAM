@@ -4,6 +4,7 @@
 > 阶段边界：先建立可复现实验链路，再做子载波级自适应整形；不把 SCL、整流器硬件模型、USRP 上板作为阶段 B 起步阻塞项  
 > 计划来源：`项目整体计划书.md` 中“阶段 B：多载波系统构建（2026.05 - 2026.09）”
 > 文档结构：本文为阶段 B 总纲；B1/B2/B3 细化见 `周报/阶段B/` 下各阶段文档
+> 最新学习入口：`学习文档/多载波OFDM瑞利信道-loop/README.md`（2026-09-17设计稿，等待首版编码架构确认）
 
 阶段 B 的核心问题是：在多载波信道中，不同子载波具有不同可靠性，单一全局整形参数 `p` 可能不是最合适的选择。因此本阶段要把阶段 A 中已经建立的 `p -> BER / Goodput / Energy` 机制迁移到 OFDM 场景，进一步研究子载波级或子载波分组级的动态概率整形策略。
 
@@ -39,7 +40,7 @@
 | B1 | OFDM AWGN baseline 与可视化诊断 | 统一 `p` 的 AWGN OFDM full-chain baseline、PSD/频域资源网格/星座图 |
 | B2 | Rayleigh 子载波可靠性画像 | `|H_k|^2`、等效 `gamma_k`、MI proxy、high/mid/low 分组 |
 | B3 | 统一 `p` baseline 与三类子载波策略对比 | 统一 `p`、好信道偏信息、好信道偏能量整形、差子载波纯传能 |
-| B4 | 低复杂度优化算法 | 查表、贪心、分组优化或近似凸松弛 |
+| B4 | full-chain 策略验证 | B4a 分组块 full-chain 验证；B4b 严格 OFDM Rayleigh full-chain 增强 |
 | B5 | 论文二材料整理与初稿 | 多载波概率整形极化码论文二素材 |
 
 本阶段的最终目标不是只证明 OFDM 可运行，而是形成一个可以支撑论文二的问题链条：
@@ -253,7 +254,7 @@ Rayleigh 可靠性验收：
 
 ## 8. 下一步执行清单
 
-B1 已完成 AWGN OFDM baseline 和可视化诊断。B2 已完成第一版 Rayleigh 子载波可靠性画像。B3 已完成第一版 proxy-level 子载波策略对比，后续应先讨论哪些策略值得进入 full-chain BER / Goodput 验证。
+B1 已完成 AWGN OFDM baseline 和可视化诊断。B2 已完成第一版 Rayleigh 子载波可靠性画像。B3 已完成第一版 proxy-level 子载波策略对比。B4a分组块smoke、B4b严格OFDM-Rayleigh六策略smoke和两轮瀑布区pilot均已完成。正式网格已预登记为20—40 dB六点，待补checkpoint/resume并授权长跑，之后进入优化与B5结果收束。
 
 当前 B3 脚本路径：
 
@@ -273,17 +274,46 @@ B1 已完成 AWGN OFDM baseline 和可视化诊断。B2 已完成第一版 Rayle
 16QAM_Polar/v2/results/20260614_212900_subcarrier_strategy_compare/
 ```
 
+当前 B4a 脚本路径：
+
+```text
+16QAM_Polar/v2/experiments/multicarrier/run_b4_fullchain_strategy_validation.m
+```
+
+当前 B4a 阶段文档：
+
+```text
+周报/阶段B/B4：full-chain策略验证.md
+```
+
+当前 B4a smoke 结果目录：
+
+```text
+16QAM_Polar/v2/results/20260628_143653_b4_fullchain_strategy_validation_smoke/
+```
+
 下一步建议：
 
 1. 保留 `uniform_p05` 作为统一通信 baseline；
 2. 保留 `good_channel_information` 和 `good_channel_energy_shaping` 作为两条相反假设；
 3. 保留 `bad_channel_energy_only` 作为传统纯传能对照，但不再作为主图的第三条方向性策略标签；
-4. 进入 full-chain 前，先定义子载波级 `p_k` 如何接入 polar bit-level 编码、16QAM LLR 和 Goodput 统计。
+4. B4a 只作为分组块近似验证，不写最终策略最优；
+5. B4b严格OFDM-Rayleigh smoke已完成，当前不能把轻量结果写成最终排序；
+6. pilot已把正式统计网格冻结为`[20,24,28,32,36,40] dB`，且formal入口已具备checkpoint/resume与零错上界；B5可先写方法与边界，结果结论等待正式数据。
 
 ---
 
 ## 9. 变更记录
 
+- **2026-09-22**：完成科研 Agent 环境选型与项目级部署。对比通用学术、AI Scientist、Nature 写作、无人值守 ML、AI/ML 工程、Codex 原生与 AI4S 等候选后，选择 Codex 原生、人在环的 ARS-Codex 作为通用学术层，部署 `academic-research-suite` v3.22.0；将既有 `research-meta-extractor`、`research-spec-checker`、`research-scan-orchestrator` 同步到 Codex 原生 `.agents/skills/`。`AGENTS.md` 合并全部项目规则并成为唯一真相源，删除 `CLAUDE.md`，新增自然语言 Skill 自动路由和权限边界；未启用 hook、跨模型上传或长 MATLAB 仿真。验证：4 个 Skill 均通过 `quick_validate.py`，路径与前置元数据检查通过。Rule reflection: added/updated `AGENTS.md` because project-level Skill discovery and routing must remain a durable repository rule.
+- **2026-09-17**：为B4b正式统计增加受控`formal`模式：须`formal_authorized=true`才可启动；支持逐重复partial CSV、resume跳过、5—50帧/200错误自适应停止和零错95%上界。默认smoke回归、未授权formal拒绝、两轮历史审计及重构后的高SNR pilot审计均通过。实际长仿真未运行，等待用户授权。Rule reflection: no new durable rule
+- **2026-09-17**：完成B4b formal控制路径微型验证。结果`20260917_205835_b4_strict_ofdm_rayleigh_formal_controlpath_test`仅含1 SNR、1 realization、1帧；首次写6条partial记录，resume后6条全部跳过，独立审计PASS。该验证不构成正式统计，也不替代用户授权长跑。Rule reflection: no new durable rule
+- **2026-09-17**：完成B4b两轮受限pilot。`[20,24,28,32] dB`与`[32,36,40] dB`各使用5个realization、每点2帧，结果目录分别为`20260917_194823_b4_strict_ofdm_rayleigh_pilot`和`20260917_194950_b4_strict_ofdm_rayleigh_pilot_high_snr`，审计均PASS。pilot将普通策略的正式瀑布区定位在24—40 dB，将纯能量策略的有效区定位在20—24 dB，因此预登记正式网格为六点20—40 dB。修复MATLAB对数BER图：零错点不进对数图，显式设`YScale=log`。Rule reflection: no new durable rule
+- **2026-09-17**：完成B4b严格OFDM-Rayleigh full-chain smoke。抽取`ofdm_channel_roundtrip.m`并让B1共用；新增三组独立polar块共同装帧、16-tap Rayleigh、逐子载波ZF/LLR/SC、六策略同信道同噪声比较和审计。权威目录`16QAM_Polar/v2/results/20260917_112216_b4_strict_ofdm_rayleigh_smoke/`在4.42秒内生成36条重复、18条汇总、128条信道记录和四类三格式图，审计PASS。当前8—20 dB BER主要为0.14—0.49，故不直接启动长跑，推荐先做20—32 dB短pilot。同步更新loop、中期进度表、L1/L2/L3和故障历史。Rule reflection: no new durable rule
+- **2026-09-17**：依据任务一、任务二两份中期PPT材料复核单载波完备性：通用8/16/32/64QAM五类门禁和固定16QAM同批帧BER/Goodput/发送能量正式实验均已闭合，因此主线不再回到高阶调制理论补阻塞项，转入多载波OFDM瑞利信道分析。新增`学习文档/多载波OFDM瑞利信道-loop/`，首版协议已冻结：high/mid/low三组独立`N=1024` polar块映射到共同OFDM时频网格，最长组决定帧长并显式记录padding；加噪前接收信号均方为策略主指标，含噪接收均方为诊断，发送端QAM/OFDM均方为公平性辅助；共享OFDM核心从B1抽取；纯能量组发送真实`p=0.1`整形波形且payload为0。同步更新`中期相关/截至2026年9月中期终态进度表.md`；未运行MATLAB，B4b技术状态仍为未完成。Rule reflection: no new durable rule
+- **2026-06-28**：按用户反馈加宽 B4a SNR 范围。`run_b4_fullchain_strategy_validation.m` 的 full 默认 SNR 改为 `0:2:20`，默认 smoke 改为 `0:5:20`；重新运行 smoke 输出 `16QAM_Polar/v2/results/20260628_143653_b4_fullchain_strategy_validation_smoke/`。B4 文档中的 BER、Goodput、Pareto 图和图片分析已切换到新结果，便于观察低/中/高 SNR 趋势；该结果仍为 smoke，不做最终策略排序。Rule reflection: no new durable rule
+- **2026-06-28**：补充 B4a smoke 图文说明。`周报/阶段B/B4：full-chain策略验证.md` 新增 BER、CP 修正 Goodput、Goodput-Energy Pareto 三张结果图及图片分析，用于说明图中能支持链路验收和图表模板检查，但不能支持最终策略排序；`CLAUDE.md` 新增测试/验证结果应尽量附关键图片和图片分析的规则。Rule reflection: added/updated `CLAUDE.md` because result documentation should include figures and figure analysis for readability.
+- **2026-06-28**：B4a 分组块 full-chain 策略验证完成 smoke。`run_b4_fullchain_strategy_validation.m` 修复 adaptive batch 重复 seed 风险，每个 batch 使用可复现派生 seed；MATLAB `check_env` 通过，默认 smoke 输出 `16QAM_Polar/v2/results/20260628_143653_b4_fullchain_strategy_validation_smoke/`，包含 block/strategy/summary CSV、MAT、README、run_log 和 BER/Goodput/Pareto 图。该结果只说明 B4a 链路与产物结构可用，不能写成最终策略排序，也不能写成严格逐子载波 OFDM Rayleigh full-chain。新增 `周报/阶段B/B4：full-chain策略验证.md`，后续进入 B4b 严格 OFDM Rayleigh smoke 与 B5 初稿。Rule reflection: no new durable rule
 - **2026-06-17**：**运行环境打通，端到端仿真可跑**（接续当日早些时候的环境搭建）。Octave communications package 的 `qammod/qamdemod` 签名与 MATLAB 不兼容（不接受 `'gray'`/`'UnitAveragePower'`/`'OutputType','llr'` 等参数，直接报 "too many inputs"），`bitrevorder` 又属 signal package（需 control 编译）。**解决方案**：新增 `16QAM_Polar/v2/compat/octave/`（`qammod.m`/`qamdemod.m`/`bitrevorder.m`/`sgtitle.m`），复刻 MATLAB 口径；`qamdemod` 的 LLR 复用项目纯数学 `llr_16qam_gray_LSE`，与 qammod 共用同一星座。`setup_paths.m` **仅 Octave 下** `addpath(...,'-begin')` 把 compat 放最前以遮蔽 package 同名函数，**MATLAB 下不生效、用原生**，算法代码零改动。**验证**：(1) compat 自洽闭环——16 星座点 qammod→qamdemod(llr)→硬判决 0 失配、bitrevorder/bit 往返一致、平均功率归一化=1；(2) `check_env` 全绿；(3) `run_single` 端到端 exit 0、无 error、BER 随 SNR 单调下降（4.94e-01@0dB → 3.08e-02@20dB，p=0.3/100帧/SC，耗时约 250s）。communications package 仅用 `-nodeps` 装上以提供 `de2bi/bi2de`；signal/control **不需要**。详见 `workbook/environment-setup.md`。**影响范围**：新增 compat 层 + `setup_paths.m` 仅加一段 Octave 分支路径，未改任何算法逻辑或 `config.m`。Rule reflection: no new durable rule（compat 方案与验证法已沉淀于 `environment-setup.md`）。
 - **2026-06-17**：搭建本机运行环境（GNU Octave 路线，agent 可驱动 CLI）。本机（Apple M3 Pro/arm64，无 MATLAB License）`brew install octave` 装好 **Octave 11.3.0**（arm64 原生）；新增 agent 一键调用包装 `scripts/run_matlab.sh`（自动 cd v2 + pkg load + setup_paths + 退出码透传）、环境自检脚本 `16QAM_Polar/v2/diagnostics/check_env.m`、`workbook/environment-setup.md`（安装/CLI/已知 Octave↔MATLAB 差异清单），并在 `workbook/README.md`、`CLAUDE.md` 增加环境入口。`.gitignore` 由 `.claude/` 调整为 `.claude/*` + `!.claude/skills/`，使本会话所建科研 skill 可入库，`settings.local.json` 仍忽略。**影响范围**：仅新增环境脚手架/文档与 .gitignore 规则，未改动任何 `.m` 算法代码或 `config.m`。Rule reflection: no new durable rule。
 - **2026-06-17**：统一 agent 指引为单一真相源。`CLAUDE.md` 改写为中文并作为唯一真相源（合并了原 `AGENTS.md` 独有的当前阶段入口、`cfg_local` 覆盖、results 时间戳目录、阶段 B 三基线对照等条款）；`AGENTS.md` 退化为仅引用 `CLAUDE.md` 的极简文件。**目的**：消除两份指引各自维护、反复同步备份的负担。**影响范围**：仅 agent 指引文档，未改动任何 `.m` 代码、`config.m` 或知识库内容。Rule reflection: no new durable rule。

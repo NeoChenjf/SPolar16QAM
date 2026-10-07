@@ -6,7 +6,7 @@ function LLR = llr_16qam_gray_LSE(y, sigma)
 %   INPUT:
 %     y     : received complex symbols (vector)
 %     sigma : noise std per real dimension (I/Q), i.e.,
-%             nI,nQ ~ N(0, sigma^2)
+%             nI,nQ ~ N(0, sigma^2). May be scalar or one value per symbol.
 %
 %   OUTPUT:
 %     LLR   : column vector of bit LLRs, length = 4*length(y)
@@ -19,6 +19,15 @@ function LLR = llr_16qam_gray_LSE(y, sigma)
 
     y = y(:);
     Ns = length(y);
+    sigma = sigma(:);
+    if isscalar(sigma)
+        sigma = repmat(sigma, Ns, 1);
+    elseif numel(sigma) ~= Ns
+        error('llr_16qam_gray_LSE: sigma must be scalar or match numel(y).');
+    end
+    if any(~isfinite(sigma)) || any(sigma <= 0)
+        error('llr_16qam_gray_LSE: sigma values must be finite and positive.');
+    end
     LLR = zeros(4*Ns, 1);
 
     % --- Build MATLAB-consistent Gray 16QAM constellation and bit labels ---
@@ -39,10 +48,9 @@ function LLR = llr_16qam_gray_LSE(y, sigma)
     end
 
     % Complex AWGN: nI,nQ~N(0,sigma^2) => p(y|s) ∝ exp(-|y-s|^2/(2*sigma^2))
-    denom = 2*sigma^2;
-
     for k = 1:Ns
         % distance metrics to all 16 constellation points
+        denom = 2*sigma(k)^2;
         d = abs(y(k) - const).^2 / denom;   % 16x1
 
         % bit-wise LLR: log P(b=0|y)/P(b=1|y)

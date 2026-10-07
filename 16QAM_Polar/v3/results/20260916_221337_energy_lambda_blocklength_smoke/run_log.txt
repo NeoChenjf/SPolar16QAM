@@ -1,0 +1,5 @@
+[blocklength compare] M=8 lambda=0.00 N=256 | E target/model/emp=1.0000/1.0000/1.0208 | TV95(emp,target)=0.1133
+[blocklength compare] M=8 lambda=0.00 N=1024 | E target/model/emp=1.0000/1.0000/1.0078 | TV95(emp,target)=0.0322
+[blocklength compare] M=8 lambda=0.50 N=256 | E target/model/emp=1.2143/1.2143/1.1771 | TV95(emp,target)=0.0542
+[blocklength compare] M=8 lambda=0.50 N=1024 | E target/model/emp=1.2143/1.2143/1.1758 | TV95(emp,target)=0.0421
+[run_gray_qam_blocklength_compare] saved: C:\Users\11956\Desktop\研究生毕设\16QAM_Polar\v3\results\20260916_221337_energy_lambda_blocklength_smoke
