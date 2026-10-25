@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "scope_id": "spolar16qam-mainline-2026-10",
+  "current_revision_index": "workbook/knowledge/meta/current-revisions.json",
+  "lanes": {
+    "mainline_16qam": {
+      "role": "primary",
+      "method_paths": ["16QAM_Polar/v2/core", "16QAM_Polar/v2/polar", "16QAM_Polar/v2/modulation", "16QAM_Polar/v2/analysis"],
+      "flow_paths": ["16QAM_Polar/v2/diagnostics", "16QAM_Polar/v2/experiments"]
+    },
+    "multi_qam_transferability": {
+      "role": "supporting",
+      "paths": [
+        "16QAM_Polar/v3/run_gray_qam.m",
+        "16QAM_Polar/v3/run_gray_qam_pmf_formal64.m",
+        "16QAM_Polar/v3/run_gray_qam_energy_smoke.m",
+        "16QAM_Polar/v3/run_gray_qam_blocklength_compare.m",
+        "16QAM_Polar/v3/run_gray_qam_ber_refine.m",
+        "16QAM_Polar/v3/run_gray_qam_ber_coarse.m",
+        "16QAM_Polar/v3/core/sim_shaped_polar_gray_qam.m",
+        "16QAM_Polar/v3/modulation",
+        "16QAM_Polar/v3/polar/shape_stream_sc.m",
+        "16QAM_Polar/v3/polar/sc_decode_forced_full.m",
+        "16QAM_Polar/v3/polar/build_stream_partition_source_mc_ga.m",
+        "16QAM_Polar/v3/polar/build_stream_partition_ga.m",
+        "16QAM_Polar/v3/analysis/cluster_bootstrap_tv.m",
+        "16QAM_Polar/v3/analysis/paired_cluster_difference_ci.m"
+      ]
+    }
+  },
+  "exclude_globs": ["**/results/**", "**/source_snapshot/**", "**/archive/**", "**/deprecated/**"]
+}
+

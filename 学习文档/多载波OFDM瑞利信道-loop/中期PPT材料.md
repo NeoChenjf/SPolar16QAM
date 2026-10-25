@@ -363,3 +363,49 @@ $$
 - **2026-09-22中期PPT结构精简**：将原“正式三指标页”和“配对/Pareto页”合并为一页。三图保留BER、Goodput和Energy总体对比，页面下方补充同一Rayleigh realization下的配对结论，避免重复展示性能图。低复杂度策略页改为固定28 dB的多约束对照，复用正式统计离线计算：默认$\mathrm{BER}_{U95}\leq0.10$、$G_{L95}\geq0.25$选择`uniform_p01`；将Goodput下限提高到0.32和0.34分别选择`uniform_p03`和`uniform_p05`；将BER上限收紧到0.06且Goodput下限取0.30时选择`good_channel_information`；当BER上限0.03与Goodput下限0.30无可行项时回退`uniform_p05`，但不把回退写成满足约束。复算目录为`16QAM_Polar/v2/results/20260922_191535_midterm_constraint_recheck/`。这些新门限只用于说明约束敏感性，尚未经过独立样本验证；原默认约束与28 dB保护带的独立验证结论保持不变。Rule reflection: no new durable rule
 - **2026-09-20图形修订**：第2页新增正式Energy-by-strategy图，不再以SNR表示接收能量。每个策略先在同一Rayleigh realization内折叠六个SNR点，再使用30个独立realization计算均值和95%区间；图、统计CSV与独立审计均来自`20260920_211759_b4b_energy_by_strategy`，审计PASS。Rule reflection: no new durable rule
 - **2026-09-17最终核对**：已统一正式六策略、配对统计、第一批独立失败和第三批保护带PASS四层证据；已删除“尚待独立验证”的旧讲稿口径。最终推荐规则只使用第三批测试前已冻结的28 dB保护带。Rule reflection: no new durable rule
+
+## 2026-10-09 整形构造版本更新与结果边界
+
+阶段B的新实验固定 $K$ 与 $|S|$，按 Bernoulli 源条件熵选取 $S$，再在剩余位置按各信道SNR下的通信GA可靠性选 $I/F$；每帧用当前消息和全零冻结位条件化生成整形位。源熵估计与构造参数在每个 $p$ 固定，不逐帧或逐SNR重估。原B4的GA前缀集合和保护带策略仅为历史版本，须由新训练集重新估计，不沿用旧码本。
+
+构造层证据已通过：$N=1024$五个$p$的联合PMF pooled单侧95%上界为0.0080–0.0262，三个逐seed最大上界为0.0146–0.0274；$N=256/1024$的新消息条件化数据均通过TV≤0.05门禁。独立源熵图和码长对照图见本目录的[偏差定位结论](整形分布偏差定位结论.md)末尾修订及[重建清单](../shaped_polar验证loop/理论更新与图重建/整形理论更新与仿真图重建清单.md)。这些证据不代表OFDM通信改善，也不支撑等功率收益。
+
+正式OFDM六策略数据、约束码本和seed1042/2042验证仍待运行；必须按新构造重新训练、在独立seed上验证，并报告约束不满足率。未完成前，不把旧保护带规则称为当前策略。
+
+
+## 2026-10-09 纯能量基线语义修正（待smoke验收）
+
+代码审计发现，旧版bad_channel_energy_only虽然把low组排除在BER/Goodput分母外，却仍为该组随机生成信息位并发射，故旧图中的“纯能量”名称与载荷不一致。新版本仅对low组固定零payload，仍使用该组p=.1、原S/I/F构造和消息条件化整形；该组不计为信息子载波。加入零payload断言后再进行B4 pilot/正式运行。历史B4数据保留，但只代表旧定义，不能与修正版本直接合并或作同一baseline结论。
+
+## 2026-10-09 新构造B4正式统计与独立验证
+
+正式训练：`16QAM_Polar/v2/results/20261009_203109_b4_source_entropy_formal/`，seed42、30个Rayleigh realization、SNR标签[20,24,28,32,36,40] dB、六策略、每重复至少5帧、达到200个错误则停、最多50帧。训练重复表1080行、汇总36行、信道表1920行；唯一键、START/DONE、rate/Goodput/padding恒等式、信息子载波比例、逐组payload计数与图审计通过，low组纯能量策略payload one总数为0。正式输出为F10–F15。
+
+训练策略由训练集独立生成：一般最大能量码本在20/24 dB按预定规则回退到最大Goodput的uniform_p05，28–40 dB选uniform_p01。保护带候选在未查看验证集前冻结（训练BER上界≤.08、Goodput下界≥.27，优先最大接收能量；无可行项时最大Goodput回退）。
+
+一般码本的独立验证seed1042目录为`results/20261009_211124_b4_source_entropy_holdout1042/`，分析`results/20261009_223148_b4b_fixed_policy_holdout_analysis/`：28/32/36/40 dB通过原BER上界≤.10和Goodput下界≥.25；20/24 dB是训练时已标注的最大Goodput回退，不算通信门槛通过。符合门槛点的接收能量代理相对uniform_p05为正，幅度约0.0096绝对功率单位（须注意该数据不是等功率实验）。
+
+保护带候选seed2042独立验证目录为`results/20261009_223251_b4_source_entropy_guardband2042/`，分析`results/20261009_230741_b4b_guardband_policy_test_analysis/`：28–40 dB均通过原BER/Goodput门槛；低SNR的20/24仍按预注册规则回退最大Goodput，未声称通过约束。逐SNR策略为28 dB good_channel_information、32 dB good_channel_energy_shaping、36/40 dB uniform_p01；接收RF均方代理相对uniform_p05差值约0.00224/0.00833/0.01063/0.01063。seed2042未参与冻结，结果未用于调参。
+
+边界：三批图均沿用原信道、功率、噪声、Goodput资源分母，用于隔离构造变化。接收能量是加噪前时域均方代理，不等于整流器直流输出；当前策略间发射符号功率不同，也不证明等功率收益。独立样本只支持这套信道/门槛/候选策略的有限验证，不代表任意单次CSI保证。保护带候选通过不意味着整个研究目标完成。
+
+图索引：训练F10–F15位于`20261009_210714_b4b_source_entropy_training_policy_analysis/figures/`；一般码本F16/F17位于`20261009_223148_b4b_fixed_policy_holdout_analysis/figures/`；保护带F18位于`20261009_230741_b4b_guardband_policy_test_analysis/figures/`。各图有PNG/PDF/FIG，数值CSV与MAT同目录。
+
+
+## 2026-10-24 等功率机制对照与P2追加
+
+本文件的旧码本、保护带与28—40 dB可行结论属于原发送功率/训练协议，不直接迁移到当前等功率优化。P1六策略正式结果仍有效；本轮五个全信息策略对照新增随机S与供体S，保留原S/I/F、LLR与SC，按I统计有效载荷。纯能量策略仅保留原P1边界参照，不宣称新的策略最优。
+
+旧S冻结0对照非均匀，不能与新随机S混称。新随机S已完成生成矩阵证明与3seed×8码字探索；正式1%功率、3×80 PMF及独立模型预测门禁仍待预算批准。当前参考图和理论说明见[结论入口](机制对照与P2/等功率机制与P2当前结论.md)；新增图不是旧F10—F18的正式替代。
+
+Revision metadata: revision_id=p2_bbd04f68367e_20261024; current_status=current; supersedes=[baseline_p2_bbd04f68367e].
+
+
+## 2026-10-25 学习文档归档路径补充
+
+本段仅更新阅读位置，原研究结论和历史路径文字保留。当前文档位置：
+
+- [等功率机制与P2当前结论.md](机制对照与P2/等功率机制与P2当前结论.md)
+- [整形理论更新与仿真图重建清单.md](../shaped_polar验证loop/理论更新与图重建/整形理论更新与仿真图重建清单.md)
+
+Revision metadata: revision_id=learning_relocation_6d7c56c8dc_20261025; current_status=current; supersedes=[p2_bbd04f68367e_20261024].

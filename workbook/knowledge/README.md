@@ -75,3 +75,37 @@ workbook/knowledge/
 - 改了 .m / run_* / 研究方向 → 同步更新对应 L3 / L2 / L1（并按硬规则更新周报）。
 - L1 护栏只引用 `workbook/mandatory-rules.md` 等既有规则，不另立规则。
 - 知识库只读代码，不触发 MATLAB 长跑仿真。
+
+
+## 2026-10-10 当前研究范围与机器索引
+
+主线/支撑边界见`meta/research-scope.json`；修订解析入口为`meta/current-revisions.json`；假设与证据状态登记见`meta/research-claims.json`。当前RKS扫描仅度量结构覆盖和引用完整性，报告须列实际纳入范围，不能把100%解释为科学验证。B4等功率P1流程见`L2/l2_b4_equal_power_p1.md`。
+
+Revision metadata: revision_id=knowledge_scope_index_20261010; current_status=current; supersedes=[baseline].
+
+
+## 2026-10-11 当前证据入口与扫描结果
+
+当前多载波结论以`workbook/knowledge/L1/l1_multicarrier_ofdm.md`最后追加的P1说明为准；运行契约、实际参数和验收记录见`workbook/knowledge/L2/l2_b4_equal_power_p1.md`；runner和分析器契约见对应L3末尾。机器索引为`meta/current-revisions.json`，假设证据状态为`meta/research-claims.json`。读取器只将索引中唯一`current`修订视为有效，历史段落留作追溯。
+
+RKS报告`reports/rks-20261011_000500.md`得分70.5/100，明确仅为结构完整度，不是研究通过率：当前范围35/35方法契约、6/31入口流程、12/18假设引用、88/88引用完整性、10/18逐假设护栏；18项主张中1项有本轮P1证据但整体仍为inconclusive，其他17项not_assessed。仍有入口契约和假设/护栏关联缺口，需在后续治理中分批补齐。
+
+Revision metadata: revision_id=knowledge_reading_entry_p1_20261011; current_status=current; supersedes=[prior_reading_entry].
+
+## 2026-10-11 最终当前阅读快照
+
+本轮最终扫描报告为`workbook/knowledge/reports/rks-20261011_002100.md`：35/35方法契约、6/31当前入口流程、12/18有效假设引用、88/88跨层完整性、9/17适用护栏，结构分70.1/100。当前L1/L2/L3文件均登记在`meta/current-revisions.json`；对带修订链的L2/L3，扫描器按索引ID只读取最新有效追加段，初始未修订文档以baseline current登记。1条P1假设证据为inconclusive，17条仍not_assessed。流程与假设关联覆盖不完整是后续治理任务；结构分不代表理论或实验结论通过。
+
+Revision metadata: revision_id=knowledge_reading_entry_p1_final_20261011; current_status=current; supersedes=[knowledge_scope_index_20261010].
+
+## 2026-10-11 最终报告编号校正
+
+最终可复现扫描报告为`workbook/knowledge/reports/rks-20261011_002500.md`，结果70.1/100；它按current revision slices重新计算了coverage，替代本文件前一段引用的较早报告。报告范围和结构分项为方法35/35、流程6/31、假设引用12/18、完整性88/88、适用护栏9/17。科研证据状态仍为1条inconclusive、17条not_assessed。
+
+Revision metadata: revision_id=knowledge_reading_entry_p1_report_final_20261011; current_status=current; supersedes=[knowledge_reading_entry_p1_final_20261011].
+
+## 2026-10-11 最终报告动态入口
+
+最终扫描报告路径由`workbook/knowledge/reports/LATEST_RKS_REPORT.txt`指向。当前范围、当前修订切片和分项结果以该指针所指报告为准；历史RKS报告保留用于审计，不覆盖。
+
+Revision metadata: revision_id=knowledge_rks_dynamic_pointer_20261011; current_status=current; supersedes=[knowledge_reading_entry_p1_report_final_20261011].

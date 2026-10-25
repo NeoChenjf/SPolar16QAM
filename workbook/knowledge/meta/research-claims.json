@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "allowed_evidence_states": [
+    "not_assessed",
+    "supporting",
+    "contradicting",
+    "inconclusive"
+  ],
+  "claims": [
+    {
+      "claim_id": "l1_16qam_modulation_llr#H1",
+      "l1_path": "workbook/knowledge/L1/l1_16qam_modulation_llr.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_16qam_modulation_llr#H2",
+      "l1_path": "workbook/knowledge/L1/l1_16qam_modulation_llr.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_channel_snr#H1",
+      "l1_path": "workbook/knowledge/L1/l1_channel_snr.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_general_gray_qam_shaping#H1",
+      "l1_path": "workbook/knowledge/L1/l1_general_gray_qam_shaping.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_general_gray_qam_shaping#H2",
+      "l1_path": "workbook/knowledge/L1/l1_general_gray_qam_shaping.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_general_gray_qam_shaping#H3",
+      "l1_path": "workbook/knowledge/L1/l1_general_gray_qam_shaping.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_general_gray_qam_shaping#H4",
+      "l1_path": "workbook/knowledge/L1/l1_general_gray_qam_shaping.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_metrics_tradeoff#H1",
+      "l1_path": "workbook/knowledge/L1/l1_metrics_tradeoff.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_metrics_tradeoff#H2",
+      "l1_path": "workbook/knowledge/L1/l1_metrics_tradeoff.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_multicarrier_ofdm#H1",
+      "l1_path": "workbook/knowledge/L1/l1_multicarrier_ofdm.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_multicarrier_ofdm#H2",
+      "l1_path": "workbook/knowledge/L1/l1_multicarrier_ofdm.md",
+      "evidence_state": "inconclusive",
+      "supporting_evidence": [
+        {
+          "path": "workbook/knowledge/L2/l2_b4_equal_power_p1.md",
+          "experiment_id": "b4_equal_power_p1_seed3142_formal_20261010",
+          "construction_version": "fixed-KS_source-conditional-entropy-S_remaining-GA-IF_per-frame-message-conditioned",
+          "parameters": "16QAM; Nsc=64; CP=16; three N=1024 blocks; 6 strategies; 30 channels; 50 fixed frames; SNR=[16,20,24,28,32,36,40] dB; target time-domain TX power=1",
+          "seed": "formal=3142; calibration=7001,7002,7003; final independent validation=7121,7122,7123; pilot=42",
+          "source_hash": "fe49af2bef19f39a05042e3080e899dbcd985400f65ed3f446237483a5c3dcde",
+          "data_path": "16QAM_Polar/v2/results/20261010_220806_b4_equal_power_p1_formal/b4b_repetition_results.csv",
+          "figure_path": "16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1/analysis_rerun_20261011_002445/figures/paired_differences.png",
+          "acceptance_record_path": "16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1/analysis_rerun_20261011_002445/README.txt"
+        }
+      ],
+      "scope": "Equal-transmit-power P1 confirms distinct communication/RF tradeoffs in the tested six-strategy candidate set; it does not establish a generally superior or globally optimal policy."
+    },
+    {
+      "claim_id": "l1_ook_shaped_polar#H1",
+      "l1_path": "workbook/knowledge/L1/l1_ook_shaped_polar.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_ook_shaped_polar#H2",
+      "l1_path": "workbook/knowledge/L1/l1_ook_shaped_polar.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_polar_coding#H1",
+      "l1_path": "workbook/knowledge/L1/l1_polar_coding.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_polar_coding#H2",
+      "l1_path": "workbook/knowledge/L1/l1_polar_coding.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_probabilistic_shaping#H1",
+      "l1_path": "workbook/knowledge/L1/l1_probabilistic_shaping.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_probabilistic_shaping#H2",
+      "l1_path": "workbook/knowledge/L1/l1_probabilistic_shaping.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_probabilistic_shaping#H3",
+      "l1_path": "workbook/knowledge/L1/l1_probabilistic_shaping.md",
+      "evidence_state": "not_assessed",
+      "supporting_evidence": [],
+      "scope": "pending review"
+    },
+    {
+      "claim_id": "l1_probabilistic_shaping#H4",
+      "l1_path": "workbook/knowledge/L1/l1_probabilistic_shaping.md",
+      "evidence_state": "inconclusive",
+      "supporting_evidence": [
+        {
+          "path": "16QAM_Polar/v2/results/20261025_000154_p2_uniformity_exact/README.txt",
+          "experiment_id": "p2_exact_auxiliary_21_cases_20261025",
+          "construction_version": "source_entropy_S_GA_IF_random_fair_I_union_S",
+          "parameters": "N1024; p=.5/.3/.1; SNR16:4:40; F=0; four independent streams",
+          "seed": "sourceMC=9001;200 source codewords; deterministic generator audit",
+          "source_hash": "d6516db326c17bb9fe0b601af131cebeb8ccdb2d4f3103923852ec589b2c5e9d",
+          "data_path": "16QAM_Polar/v2/results/20261025_000154_p2_uniformity_exact/exact_uniformity.csv",
+          "figure_path": "16QAM_Polar/v2/results/20261025_000154_p2_uniformity_exact/uniformity_exact.png",
+          "acceptance_record_path": "16QAM_Polar/v2/results/20261025_000154_p2_uniformity_exact/README.txt"
+        }
+      ],
+      "scope": "Structural coverage confirmed; 3x80 empirical gate pending; no performance superiority claim"
+    }
+  ]
+}

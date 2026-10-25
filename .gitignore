@@ -24,3 +24,14 @@ Thumbs.db
 *.log
 questions.txt
 *.base
+
+# Local agent/rendering caches and temporary Office files
+.codex/
+.codex_tmp/
+.chart-data-*/
+__pycache__/
+*.pyc
+~$*
+
+# Outputs produced from an experiments working directory
+16QAM_Polar/v2/experiments/results/

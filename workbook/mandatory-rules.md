@@ -92,3 +92,16 @@ Before explaining a theory-vs-simulation BER gap:
 - **2026-05-20**: Added BER waterfall rule.
 - **2026-03-04**: Added explanation style and rate-ceiling rules.
 - **2026-02-25**: v2.0 modular workbook created.
+
+
+## Append-only文档维护规则（2026-10-09）
+
+- `学习文档/` 下已有Markdown一律只在文件末尾追加；禁止删除、替换、重排已有文字或原位勾选。修正采用有日期的补充章节，指出被更新的旧结论及新证据。
+- 新建Markdown作为首版写入；其后也只追加。
+- 每轮任务状态以文件末尾最新的完整清单快照为准，快照保留固定编号、未完成项和证据链接；旧快照不可改写。
+- 历史数据和图片不覆盖。新版本另存时间戳目录，再追加索引。
+- 源码不受此规则限制；代码修改仍须保留历史结果的可复现性。
+
+## Append-only scope clarification (2026-10-09)
+
+This clause supersedes the narrower `学习文档/` scope above: append-only applies to every repository Markdown document, including `AGENTS.md`, learning documents, weekly reports, stage documents, project plans, workbook rules, and L1/L2/L3 contracts. Existing text is not edited in place. Corrections and status changes are dated appendices; checklists use new complete snapshots. Code and generated non-Markdown data remain governed by their own reproducibility rules.

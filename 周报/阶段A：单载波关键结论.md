@@ -468,3 +468,71 @@ $$
 - **2026-05-21**：新增阶段 A 汇总叠加图和统一口径 final global curve 脚本。
 - **2026-05-21**：回填阶段 A SC 收尾复验结果，确认 `p=0.4` code-only 局部反转未复现，`p=0.1` full-chain 中低 SNR 有局部 tradeoff。
 - **2026-05-21**：创建本文档，作为阶段 A 单载波关键结论主文档。
+
+## 2026-10-09 新构造及数据版本边界
+
+阶段A code-only 与 full-chain 新构造采用固定源熵 $S$，逐SNR依据GA在剩余位置重选 $I/F$；整形器每帧根据真实payload生成 $S$。构造seed、独立源熵holdout和PMF门禁证据见[最新构造记录](../../学习文档/shaped_polar验证loop/最新认知与执行基线.md)。旧曲线仍为旧集合规则，不能直接与后续等功率方案混比。
+
+阶段A full-chain正式重建共用16QAM能量权衡正式数据；当前一批因发现“逐SNR重选I/F”要求而中止并保留检查点，尚无有效新正式性能图。code-only正式曲线随后单独运行，不重复full-chain长跑。
+
+## 2026-10-09 Stage A link correction
+
+本页上一节的“最新构造记录”相对路径多退了一层；正确链接为[最新构造记录](../学习文档/shaped_polar验证loop/最新认知与执行基线.md)。
+
+
+## 2026-10-09 近似模型索引修正
+
+在理论/模拟复核中发现，上一版估计器只跳过GA排序中的$|S|$个位置，没有按源熵选出的实际$S$索引剔除，故不能用于新构造的I集合。已修正为逐SNR排除实际S索引后选I；full-chain Monte Carlo链路不调用该估计器，本次正式性能统计不受这一修正影响。旧理论估计暂不引用，F19应以修正代码重跑并与新构造模拟比较。规则反思：本次发现“数量相同不代表集合相同”的假设越界；新增复核点是构造/估计器必须共享具体集合索引，并在L2/L3契约写明适用分支。
+
+
+Rule reflection: added/updated [workbook/quality-assurance.md] with the invariant that estimators must use explicit S/I/F indices; set cardinality alone does not establish identical partition placement.
+
+## 2026-10-09 19:35 正式单载波曲线重建（append-only）
+
+新结果目录：`16QAM_Polar/v2/results/20261009_183509_16qam_energy_tradeoff_formal/`；阶段A展示图派生目录：`16QAM_Polar/v2/results/20261009_193403_phaseA_figures_from_energy_tradeoff/`。本轮数据为N=1024、每个seed/p/SNR点300帧、seed 42/43/44、p={0.5,0.4,0.3,0.2,0.1}、SNR标签8–20 dB，共58,500帧；CSV/MAT、帧计数、去重、误码/能量分母、工作点join及图文件审计通过。实际Es/N0=标签−3.0103 dB，能量以p=0.5归一，属于加噪前RF代理量，非直流收能。
+
+14 dB标签下，p从0.5降到0.1时归一RF能量由1.000升至1.615，但BER由0.381升至0.315，Goodput由0.310降至0.251；20 dB标签下BER依次约为0.0134、0.0302、0.0544、0.0802、0.0996。观察到成形提高能量代理量的同时牺牲通信性能；这不是等发射功率比较，也未证明直流收益。三seed t区间仅是有限重复的描述区间。
+
+重建图：F04 full-chain BER、F05 Goodput—RF能量、F06 BER—SNR、F07 全SNR能量—p及14 dB专图、F08 BER—能量、F09 Goodput—能量/Pareto。F04/F05/F07的PNG/PDF/FIG位于派生目录；F06/F08/F09位于正式结果目录。PMF证据仍见F02/F03，不与本段混为同一批实验。
+
+后续先完成code-only F19及OFDM pilot/正式与独立验证；随后按项目计划进入等功率P1。不得将本轮固定星座幅度下的能量差称为等功率收益或RF-DC效率。
+
+Rule reflection: no new durable rule. The MATLAB R2020b path-concatenation failure was a local implementation defect; existing `fullfile()`/character-path guidance is sufficient. The failure and recovery are recorded in `workbook/troubleshooting-history.md`.
+
+## 2026-10-09 F19 code-only理论差距重建
+
+F19由source-entropy S集合、余位GA选I、实际I索引直接传入BER估计后重建。结果：`16QAM_Polar/v2/results/20261009_193607_phaseA_sc_final_global_curves/`保存五次重复及实际理论集合，后处理图/汇总在`20261009_202540_phaseA_codeonly_gap_analysis/`。在SNR标签3 dB，仿真/理论BER比值p=.5/.4/.3/.2/.1约131/66.6/22.9/9.78/1.37；3.25 dB约91.8/129/33.4/11.2/1.52。当前近似模型对p≥.2的绝对BER明显过于乐观，不适合直接当优化约束；小p走势相对接近但仍不能视为精确预测。普通SC接收度量没有额外源先验，码长/集合与构造改变均须控制，冻结位F=0不是唯一已证实原因。F19已通过集合索引、5重复、原始错误/帧数、图数值及视觉检查。
+
+接下来P2拆开验证实际源PMF下的匹配接收度量与bit-channel可靠性，并记录模型适用边界；不以新增闭式BER为这轮完成条件。
+
+## 2026-10-09 新构造曲线与模型边界追加
+
+阶段A当前正式图已由`20261009_183509_16qam_energy_tradeoff_formal`与派生目录`20261009_193403_phaseA_figures_from_energy_tradeoff`重建。195个配置重复点、58,500帧完成数值审计和PNG/PDF/FIG视觉复核；p=.1在标签14 dB下的BER/Goodput/RF均方代理分别为.315/.251/1.615，p=.5为.381/.310/1。由于固定星座缩放使发射功率随p变化，结果不能解释为等功率收益。该SNR标签对应Es/N0标签−3.0103 dB。
+
+F19 code-only正式比较显示当前GA/SC近似对绝对BER可能严重乐观（p≥.2的sim/theory比值约9.78至131以上，随点变化）；它目前不适合作绝对BER约束预测。此前不正确的S集合近似已修复，但源熵构造选择本身不代表接收LLR/译码器匹配，也不支持“冻结全零单因素解释”。结果与适用边界、后续P2任务见清单最终快照。
+
+
+## 2026-10-24 当前状态追加：辅助S方案恢复推进，正式预算待确认
+
+用户已同意尝试独立随机S与独立供体S并继续原路径，取代前文“暂停新增对照”的中间状态。已完成独立P2实现、17配置短pilot、21组生成矩阵覆盖审计、3seed×8码字/S统计、原接收端回归与检查点/版本拒绝测试。源MC直接复用P1的200样本seed9001模板；未改共享config或旧正式结果。
+
+随机S修复原S冻结0对照的非均匀问题：p=.3/.1实际24码字TV(均匀)=.00688/.00903，供体S为.04236/.31283。供体不是均匀目标。小校准尚未通过正式1%门禁；模型仅实现并完成合成/短训练smoke，未达独立精度或速度科研验收。冻结S旧对照只留诊断，不称GA错误或原整形PMF失败。
+
+当前阅读入口：学习文档/等功率机制与P2当前结论.md；唯一任务入口：学习文档/等功率机制对照与P2执行清单.md；正式预算：学习文档/P2正式实验预算与执行顺序.md。首轮23job、414366帧，实测点估计18.8小时、建议预留23—30小时；具体批准前不启动。
+
+本轮当前完成的是代码/理论诊断/材料准备。正式1%功率、3×80 PMF、单载波代表点、独立模型预测及正式图均未完成。P2之后才进入P3的27组合；P4非线性收能、CSI/削顶及P5 USRP、CRC/净吞吐/RF–DC标定仍开放。多QAM仅为外推支撑。
+
+Rule reflection: added/updated workbook/quality-assurance.md，因为辅助S对照必须保留接收掩码、独立供体及有效载荷语义，并禁止把未测量通信记为零错误。所有Markdown采用追加；本上下文自审，不声称独立reviewer。源码自审/简化后最终检查另见清单最新快照。
+
+Revision metadata: revision_id=p2_a34a6d110af5_20261024; current_status=current; supersedes=[baseline_p2_a34a6d110af5].
+
+
+## 2026-10-25 学习文档归档路径补充
+
+本段仅更新阅读位置，原研究结论和历史路径文字保留。当前文档位置：
+
+- [等功率机制对照与P2执行清单.md](../学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制对照与P2执行清单.md)
+- [等功率机制与P2当前结论.md](../学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制与P2当前结论.md)
+- [P2正式实验预算与执行顺序.md](../学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/P2正式实验预算与执行顺序.md)
+
+Revision metadata: revision_id=learning_relocation_ef46896787_20261025; current_status=current; supersedes=[p2_a34a6d110af5_20261024].

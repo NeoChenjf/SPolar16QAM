@@ -29,3 +29,11 @@ MATLAB Gray 16QAM 的**精确 MAP（log-sum-exp）逐比特 LLR**，均匀先验
 
 ## Health
 healthy
+
+
+## 2026-10-10 追加：接收端固定噪声下的星座幅度尺度
+
+当前签名接受可选第三参数`amplitude_scale`（默认1）。距离度量使用`|y-a·s_m|²/(2σ²)`，其中σ仍为均衡后每实维噪声标准差；幅度缩放只作用于候选星座点，不缩放物理噪声。P1接收端必须传入同一策略冻结的发射尺度。既有两参数调用口径不变。直接全星座似然回归见`diagnostics/multicarrier/test_b4_equal_power_scaling.m`。
+
+
+Revision metadata: revision_id=l3_llr_scale_20261010; current_status=current; supersedes=[baseline].

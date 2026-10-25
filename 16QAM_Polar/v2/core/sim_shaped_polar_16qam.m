@@ -64,6 +64,15 @@ function result = sim_shaped_polar_16qam(p, snr_dB, cfg)
         K_vec(b) = ceil(S_comp / 2);
     end
 
+    source_mode = isfield(cfg, 'partition_mode') && strcmp(cfg.partition_mode, 'source_entropy');
+    if source_mode
+        assert(isfield(cfg, 'source_partition_state'), 'source_partition_state is required.');
+        partition = cfg.source_partition_state;
+        assert(partition.N==N && max(abs(partition.p_vec-p_vec))<1e-12, 'Partition/config mismatch.');
+        K_vec=partition.K; S_vec=partition.S_size;
+        partition.I_by_snr=cell(nSNR,4); partition.F_by_snr=cell(nSNR,4);
+    end
+
     %% ===== 预计算：译码辅助结构 =====
     lambda_offset = 2.^(0:log2(N));
     llr_layer_vec = get_llr_layer(N);
@@ -92,9 +101,21 @@ function result = sim_shaped_polar_16qam(p, snr_dB, cfg)
         prior_llr_vec = cell(1, 4);     % SCL 先验 LLR（整形位非零）
 
         for b = 1:4
-            [shaped_bits_pre{b}, fb_dec(:,b), SI_set{b}, I_set{b}, S_set_c{b}] = ...
-                prepare_one_bit(p_vec(b), S_vec(b), K_vec(b), N, ...
-                                channels_ordered, lambda_offset, llr_layer_vec, bit_layer_vec);
+            if source_mode
+                S_set_c{b}=partition.S{b};
+                remaining=channels_ordered(~ismember(channels_ordered,S_set_c{b}));
+                I_set{b}=sort(remaining(1:K_vec(b))); I_set{b}=I_set{b}(:);
+                F_set=sort(remaining(K_vec(b)+1:end));
+                partition.I_by_snr{iSNR,b}=I_set{b};
+                partition.F_by_snr{iSNR,b}=F_set;
+                SI_set{b}=sort([S_set_c{b};I_set{b}]);
+                fb_dec(:,b)=ones(N,1); fb_dec(I_set{b},b)=0; fb_dec(S_set_c{b},b)=0;
+                shaped_bits_pre{b}=zeros(S_vec(b),1);
+            else
+                [shaped_bits_pre{b}, fb_dec(:,b), SI_set{b}, I_set{b}, S_set_c{b}] = ...
+                    prepare_one_bit(p_vec(b), S_vec(b), K_vec(b), N, ...
+                                    channels_ordered, lambda_offset, llr_layer_vec, bit_layer_vec);
+            end
 
             % 构造先验 LLR 向量：整形位 ln((1-p)/p)，信息位 0，冻结位无关
             prior_llr_vec{b} = zeros(N, 1);
@@ -117,8 +138,14 @@ function result = sim_shaped_polar_16qam(p, snr_dB, cfg)
             for b = 1:4
                 code = zeros(N, 1);
                 origin{b} = randi([0 1], K_vec(b), 1);
-                code(I_set{b})    = origin{b};
-                code(S_set_c{b})  = shaped_bits_pre{b};
+                if source_mode
+                    stream=struct('p',p_vec(b),'S_size',S_vec(b),'K',K_vec(b), ...
+                        'F_size',numel(partition.F_by_snr{iSNR,b}),'I',I_set{b}, ...
+                        'S',S_set_c{b},'F',partition.F_by_snr{iSNR,b});
+                    [code,~]=shape_stream_sc(origin{b},stream);
+                else
+                    code(I_set{b})=origin{b}; code(S_set_c{b})=shaped_bits_pre{b};
+                end
                 xxx_enc(:,b) = polar_encoder(code);
             end
 
@@ -246,6 +273,7 @@ function result = sim_shaped_polar_16qam(p, snr_dB, cfg)
     result.p         = p;
     result.snr_dB    = snr_dB;
     result.cfg       = cfg;
+    if source_mode, result.partition = partition; end
     if collect
         result.energy_frames = frame_stats;
         result.energy_frame_columns = {'frame_id','symbols','sum_abs2', ...

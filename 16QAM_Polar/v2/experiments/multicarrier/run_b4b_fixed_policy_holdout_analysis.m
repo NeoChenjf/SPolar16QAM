@@ -1,7 +1,7 @@
 %% RUN_B4B_FIXED_POLICY_HOLDOUT_ANALYSIS
 % Evaluate the frozen B4b codebook on independent Rayleigh realizations.
 
-clear; clc; close all;
+clearvars -except b4b_holdout_overrides; clc; close all;
 script_dir = fileparts(mfilename('fullpath'));
 v2_root = fullfile(script_dir, '..', '..');
 addpath(v2_root); setup_paths();
@@ -11,6 +11,12 @@ training_dir = fullfile(cfg.output_dir, '20260917_215938_b4b_paired_policy_analy
 holdout_dir = fullfile(cfg.output_dir, '20260917_221105_b4b_fixed_policy_holdout');
 ber_limit = 0.1;
 goodput_floor = 0.25;
+if exist('b4b_holdout_overrides','var')
+    if isfield(b4b_holdout_overrides,'training_dir'), training_dir=b4b_holdout_overrides.training_dir; end
+    if isfield(b4b_holdout_overrides,'holdout_dir'), holdout_dir=b4b_holdout_overrides.holdout_dir; end
+    if isfield(b4b_holdout_overrides,'ber_limit'), ber_limit=b4b_holdout_overrides.ber_limit; end
+    if isfield(b4b_holdout_overrides,'goodput_floor'), goodput_floor=b4b_holdout_overrides.goodput_floor; end
+end
 
 TrainPolicy = readtable(fullfile(training_dir, 'policy_selection.csv'));
 TrainSummary = readtable(fullfile(training_dir, 'strategy_summary_with_ci.csv'));
@@ -104,7 +110,7 @@ assert(fid >= 0, 'Cannot create holdout README.');
 cleanup_fid = onCleanup(@() fclose(fid));
 fprintf(fid, 'B4b FROZEN CODEBOOK INDEPENDENT HOLDOUT\n\n');
 fprintf(fid, 'Training analysis: %s\nHoldout formal result: %s\n', training_dir, holdout_dir);
-fprintf(fid, 'Frozen rule: 20 dB uniform_p05; 24-40 dB uniform_p01.\n');
+fprintf(fid, 'Frozen policy is loaded from training_dir/policy_selection.csv and applied unchanged.\n');
 fprintf(fid, 'Limits: BER upper95 <= %.6g; Goodput lower95 >= %.6g.\n', ...
     ber_limit, goodput_floor);
 fprintf(fid, 'Overall status: %s\n', status);
@@ -112,6 +118,10 @@ fprintf(fid, 'Failed SNRs: %s\n', mat2str(V.snr_dB(~V.point_pass).'));
 fprintf(fid, 'No policy retuning was performed on holdout data.\n');
 fprintf(fid, 'Energy remains a pre-noise receive-signal proxy, not RF-DC efficiency.\n');
 
+input_files = {fullfile(training_dir,'policy_selection.csv'), ...
+    fullfile(training_dir,'strategy_summary_with_ci.csv'), ...
+    fullfile(holdout_dir,'b4b_strategy_summary.csv')};
+local_write_provenance(out_dir,mfilename('fullpath'),input_files);
 fprintf('Frozen policy holdout analysis: %s (%s)\n', out_dir, status);
 
 function local_save(fig, fig_dir, name)
@@ -119,4 +129,25 @@ function local_save(fig, fig_dir, name)
     exportgraphics(fig, fullfile(fig_dir, [name '.png']), 'Resolution', 300);
     exportgraphics(fig, fullfile(fig_dir, [name '.pdf']), 'ContentType', 'vector');
     close(fig);
+end
+
+function local_write_provenance(out_dir,script_path,input_files)
+    snapshot=fullfile(out_dir,'source_snapshot'); mkdir(snapshot);
+    [~,~,script_ext]=fileparts(script_path);
+    if isempty(script_ext), script_path=[script_path '.m']; end
+    files=[{script_path},input_files];
+    fid=fopen(fullfile(out_dir,'sha256_manifest.txt'),'w');
+    assert(fid>=0,'Cannot create provenance manifest.');
+    cleanup=onCleanup(@()fclose(fid)); %#ok<NASGU>
+    for i=1:numel(files)
+        path=files{i}; [~,name,ext]=fileparts(path);
+        copyfile(path,fullfile(snapshot,[name ext]));
+        input=fopen(path,'rb'); assert(input>=0,'Cannot read %s.',path);
+        input_cleanup=onCleanup(@()fclose(input)); %#ok<NASGU>
+        bytes=fread(input,Inf,'*uint8');
+        md=java.security.MessageDigest.getInstance('SHA-256'); md.update(bytes);
+        hex=lower(reshape(dec2hex(typecast(md.digest(),'uint8'),2).',1,[]));
+        fprintf(fid,'%s  %s\n',hex,path);
+        clear input_cleanup;
+    end
 end

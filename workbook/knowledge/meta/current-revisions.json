@@ -1,0 +1,3085 @@
+{
+  "schema_version": 1,
+  "description": "Append-only current-version index. Only entries with status=current are authoritative; revisions must link prior versions with supersedes.",
+  "documents": [
+    {
+      "path": "学习文档/shaped_polar验证loop/理论更新与图重建/新构造结果的边界与读图说明.md",
+      "revision_id": "boundary_reading_v1",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "analyzed",
+      "scope": "Fixed-16QAM source-entropy S construction and existing formal figures"
+    },
+    {
+      "path": "学习文档/知识库与Harness治理/知识库与Harness治理缺口说明.md",
+      "revision_id": "harness_audit_v1",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "static_audit",
+      "scope": "RKS scanner and knowledge-base process"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4_equal_power_p1.md",
+      "revision_id": "b4_equal_power_p1_v1",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "execution_in_progress",
+      "scope": "Fixed-16QAM equal-time-average-power OFDM-Rayleigh strategy comparison"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_analyze_b4_equal_power_p1.md",
+      "revision_id": "analyze_b4_equal_power_p1_v1",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "implementation_pending_formal_input",
+      "scope": "P1 result audit and figures"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_channel_snr.md",
+      "revision_id": "l1_channel_snr_p1_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_channel_snr.md",
+      "revision_id": "l1_channel_snr_p1_20261010",
+      "status": "historical",
+      "supersedes": [
+        "l1_channel_snr_p1_20261010__baseline"
+      ],
+      "evidence_status": "revised_contract",
+      "scope": "Fixed-16QAM equal-power P1"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_multicarrier_ofdm.md",
+      "revision_id": "l1_multicarrier_ofdm_scope_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_multicarrier_ofdm.md",
+      "revision_id": "l1_multicarrier_ofdm_scope_20261010",
+      "status": "historical",
+      "supersedes": [
+        "l1_multicarrier_ofdm_scope_20261010__baseline"
+      ],
+      "evidence_status": "revised_contract",
+      "scope": "Fixed-16QAM equal-power P1"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_metrics_tradeoff.md",
+      "revision_id": "l1_metrics_p1_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_metrics_tradeoff.md",
+      "revision_id": "l1_metrics_p1_20261010",
+      "status": "historical",
+      "supersedes": [
+        "l1_metrics_p1_20261010__baseline"
+      ],
+      "evidence_status": "revised_contract",
+      "scope": "Fixed-16QAM equal-power P1"
+    },
+    {
+      "path": "workbook/knowledge/L3/modulation/l3_llr_16qam_gray_LSE.md",
+      "revision_id": "l3_llr_scale_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "workbook/knowledge/L3/modulation/l3_llr_16qam_gray_LSE.md",
+      "revision_id": "l3_llr_scale_20261010",
+      "status": "current",
+      "supersedes": [
+        "l3_llr_scale_20261010__baseline"
+      ],
+      "evidence_status": "revised_contract",
+      "scope": "Fixed-16QAM equal-power P1"
+    },
+    {
+      "path": "AGENTS.md",
+      "revision_id": "study_scope_16qam_mainline_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "AGENTS.md",
+      "revision_id": "study_scope_16qam_mainline_20261010",
+      "status": "current",
+      "supersedes": [
+        "study_scope_16qam_mainline_20261010__baseline"
+      ],
+      "evidence_status": "current_scope_or_contract"
+    },
+    {
+      "path": "workbook/README.md",
+      "revision_id": "workbook_environment_entry_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "workbook/README.md",
+      "revision_id": "workbook_environment_entry_20261010",
+      "status": "current",
+      "supersedes": [
+        "workbook_environment_entry_20261010__baseline"
+      ],
+      "evidence_status": "current_scope_or_contract"
+    },
+    {
+      "path": "workbook/knowledge/README.md",
+      "revision_id": "knowledge_scope_index_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "workbook/knowledge/README.md",
+      "revision_id": "knowledge_scope_index_20261010",
+      "status": "historical",
+      "supersedes": [
+        "knowledge_scope_index_20261010__baseline"
+      ],
+      "evidence_status": "current_scope_or_contract"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_b4_strict_ofdm_rayleigh_validation.md",
+      "revision_id": "b4_runner_equal_power_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_b4_strict_ofdm_rayleigh_validation.md",
+      "revision_id": "b4_runner_equal_power_20261010",
+      "status": "historical",
+      "supersedes": [
+        "b4_runner_equal_power_20261010__baseline"
+      ],
+      "evidence_status": "current_scope_or_contract"
+    },
+    {
+      "path": "next_plan.md",
+      "revision_id": "next_plan_p1_current_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "next_plan.md",
+      "revision_id": "next_plan_p1_current_20261010",
+      "status": "historical",
+      "supersedes": [
+        "next_plan_p1_current_20261010__baseline"
+      ],
+      "evidence_status": "current_scope_or_contract"
+    },
+    {
+      "path": "项目整体计划书.md",
+      "revision_id": "overall_scope_16qam_20261010__baseline",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "项目整体计划书.md",
+      "revision_id": "overall_scope_16qam_20261010",
+      "status": "historical",
+      "supersedes": [
+        "overall_scope_16qam_20261010__baseline"
+      ],
+      "evidence_status": "current_scope_or_contract"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/等功率P1/等功率P1与知识库治理执行清单.md",
+      "revision_id": "p1_harness_execution_checklist_v1",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "execution_in_progress",
+      "scope": "Current P1 and knowledge-base governance checklist"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_channel_snr.md",
+      "revision_id": "l1_channel_snr_noise_conversion_20261010",
+      "status": "historical",
+      "supersedes": [
+        "l1_channel_snr_p1_20261010"
+      ],
+      "evidence_status": "revised_contract",
+      "scope": "P1 time-domain noise power and FFT-domain sigma conversion"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4_equal_power_p1.md",
+      "revision_id": "b4_equal_power_p1_noise_conversion_20261010",
+      "status": "historical",
+      "supersedes": [
+        "b4_equal_power_p1_v1"
+      ],
+      "evidence_status": "execution_in_progress",
+      "scope": "Corrected equal-time-power P1 protocol"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_b4_strict_ofdm_rayleigh_validation.md",
+      "revision_id": "b4_runner_noise_conversion_20261010",
+      "status": "historical",
+      "supersedes": [
+        "b4_runner_equal_power_20261010"
+      ],
+      "evidence_status": "smoke_pass_formal_in_progress",
+      "scope": "B4 runner noise and amplitude scaling contract"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4_equal_power_p1.md",
+      "revision_id": "b4_equal_power_p1_formal_20261011",
+      "status": "historical",
+      "supersedes": [
+        "b4_equal_power_p1_noise_conversion_20261010"
+      ],
+      "evidence_status": "formal_complete_power_gate_pass_tradeoff_inconclusive",
+      "scope": "Fixed-16QAM equal-time-average-power OFDM-Rayleigh P1 formal evidence"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_b4_strict_ofdm_rayleigh_validation.md",
+      "revision_id": "b4_runner_equal_power_formal_20261011",
+      "status": "historical",
+      "supersedes": [
+        "b4_runner_noise_conversion_20261010"
+      ],
+      "evidence_status": "formal_complete_noise_and_power_gates_pass",
+      "scope": "Equal-power P1 physical noise, fixed scaling and formal protocol"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_analyze_b4_equal_power_p1.md",
+      "revision_id": "analyze_b4_equal_power_p1_formal_20261011",
+      "status": "historical",
+      "supersedes": [
+        "analyze_b4_equal_power_p1_v1"
+      ],
+      "evidence_status": "formal_data_audit_and_figures_complete",
+      "scope": "P1 raw-count audit, paired cluster bootstrap, Wilson summaries and figure generation"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_multicarrier_ofdm.md",
+      "revision_id": "l1_multicarrier_p1_equal_power_20261011",
+      "status": "historical",
+      "supersedes": [
+        "l1_multicarrier_ofdm_scope_20261010"
+      ],
+      "evidence_status": "p1_formal_tradeoff_inconclusive_for_general_superiority",
+      "scope": "Fixed-power six-strategy comparison; no universal winner established"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_channel_snr.md",
+      "revision_id": "l1_channel_snr_p1_formal_20261011",
+      "status": "current",
+      "supersedes": [
+        "l1_channel_snr_noise_conversion_20261010"
+      ],
+      "evidence_status": "noise_calibration_and_formal_denominator_verified",
+      "scope": "P1 time-domain N0, FFT sigma conversion and finite zero-error bounds"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/等功率P1/等功率P1与知识库治理执行清单.md",
+      "revision_id": "p1_harness_execution_checklist_v2",
+      "status": "historical",
+      "supersedes": [
+        "p1_harness_execution_checklist_v1"
+      ],
+      "evidence_status": "all_listed_deliverables_completed_with_remaining_research_gaps",
+      "scope": "Governance and P1 execution complete; P2/P3/P4/P5 remain future gates"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4_equal_power_p1.md",
+      "revision_id": "b4_equal_power_p1_validation_seed_correction_20261011",
+      "status": "historical",
+      "supersedes": [
+        "b4_equal_power_p1_formal_20261011"
+      ],
+      "evidence_status": "formal_complete_validation_seed_corrected",
+      "scope": "Final independent power validation used seeds 7121, 7122, 7123"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4_equal_power_p1.md",
+      "revision_id": "b4_equal_power_p1_acceptance_contract_20261011",
+      "status": "historical",
+      "supersedes": [
+        "b4_equal_power_p1_validation_seed_correction_20261011"
+      ],
+      "evidence_status": "formal_complete_acceptance_contract_linked",
+      "scope": "P1 entry path disambiguation and acceptance guardrails"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_multicarrier_ofdm.md",
+      "revision_id": "l1_multicarrier_p1_current_snapshot_20261011",
+      "status": "historical",
+      "supersedes": [
+        "l1_multicarrier_p1_equal_power_20261011"
+      ],
+      "evidence_status": "current_revision_snapshot_with_machine_contract",
+      "scope": "Current P1 claim status and executable L2 path/guardrails"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4_equal_power_p1.md",
+      "revision_id": "b4_equal_power_p1_current_snapshot_20261011",
+      "status": "historical",
+      "supersedes": [
+        "b4_equal_power_p1_acceptance_contract_20261011"
+      ],
+      "evidence_status": "current_revision_snapshot_with_machine_contract",
+      "scope": "Current P1 claim status and executable L2 path/guardrails"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_16qam_energy_tradeoff.md",
+      "revision_id": "baseline_b52ba82965e0",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_16qam_modulation_llr.md",
+      "revision_id": "baseline_067e7a1c5f3d",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_general_gray_qam_shaping.md",
+      "revision_id": "baseline_432544e56e38",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_ook_shaped_polar.md",
+      "revision_id": "baseline_7b27a44960bf",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_polar_coding.md",
+      "revision_id": "baseline_14622dfcb59c",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_probabilistic_shaping.md",
+      "revision_id": "baseline_08fb05905251",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_16qam_ber_high_snr_coarse.md",
+      "revision_id": "baseline_2cc564219cfc",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_16qam_energy_tradeoff.md",
+      "revision_id": "baseline_9f3619fc6bab",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_blocklength_comparison.md",
+      "revision_id": "baseline_f36949f355f7",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_energy_by_strategy_figure.md",
+      "revision_id": "baseline_66a7abcf8eb1",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_fixed_policy_holdout_analysis.md",
+      "revision_id": "baseline_8eddf632922d",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_guardband_policy_test_analysis.md",
+      "revision_id": "baseline_99bcc81ec4d7",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_paired_policy_analysis.md",
+      "revision_id": "baseline_525b9aa09a71",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_partition_snapshot_supplement.md",
+      "revision_id": "baseline_cc371698c3b5",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_shaping_mechanism_audit.md",
+      "revision_id": "baseline_b7aeb5b41cfa",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_source_entropy_holdout_audit.md",
+      "revision_id": "baseline_84f242740c28",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_source_partition_audit.md",
+      "revision_id": "baseline_2d1a86c27d95",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4b_strict_ofdm_rayleigh_smoke.md",
+      "revision_id": "baseline_fa075f96076a",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_find_waterfall_and_refine.md",
+      "revision_id": "baseline_0510e473025c",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_ofdm_baseline.md",
+      "revision_id": "baseline_b3dc46cb3908",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_ook_reproduce_smoke.md",
+      "revision_id": "baseline_0c8829f5fda1",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_phaseA_sc_source_entropy_curves.md",
+      "revision_id": "baseline_bc2d6711c1a4",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_run_single.md",
+      "revision_id": "baseline_2209678c1f9e",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_run_sweep.md",
+      "revision_id": "baseline_117caddd6974",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_sc_ga_only_curve.md",
+      "revision_id": "baseline_836b5184a0f4",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_sc_theory_vs_sim.md",
+      "revision_id": "baseline_c8d5ebd754ee",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_v3_gray_qam_ber_coarse.md",
+      "revision_id": "baseline_44c62b2d8f03",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_v3_gray_qam_ber_refine.md",
+      "revision_id": "baseline_142439fcf43e",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_v3_gray_qam_blocklength_compare.md",
+      "revision_id": "baseline_b314e49d86ae",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_v3_gray_qam_energy_smoke.md",
+      "revision_id": "baseline_a6a2ad1d1ba1",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_v3_gray_qam_pmf_formal64.md",
+      "revision_id": "baseline_9630d04e62be",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_extract_weekly_report_from_sweep.md",
+      "revision_id": "baseline_9b2a2104246c",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_plot_ber_vs_snr.md",
+      "revision_id": "baseline_cdbe30b8479f",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_plot_cost_curves.md",
+      "revision_id": "baseline_3a1cacdb746e",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_plot_goodput_vs_snr.md",
+      "revision_id": "baseline_a8213e0f0074",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_plot_mi_vs_snr.md",
+      "revision_id": "baseline_75fedf064058",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_plot_pareto.md",
+      "revision_id": "baseline_adce005bf8cb",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_rebuild_b4b_partition_snapshot_supplement.md",
+      "revision_id": "baseline_67379895af5b",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_rebuild_phaseA_codeonly_gap_analysis.md",
+      "revision_id": "baseline_b84fd46d8bff",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_rebuild_phaseA_figures_from_energy_results.md",
+      "revision_id": "baseline_e20cc178b113",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_compute_cost.md",
+      "revision_id": "baseline_46e909528f3e",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_compute_energy.md",
+      "revision_id": "baseline_acdcf26584a2",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_compute_energy_tradeoff_stats.md",
+      "revision_id": "baseline_9679c71ed7f3",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_compute_goodput.md",
+      "revision_id": "baseline_54ca5de8b89a",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_energy_tradeoff_points.md",
+      "revision_id": "baseline_62ef61adeeb0",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_estimate_ber_hat_sc_dual.md",
+      "revision_id": "baseline_fe74b0cca78c",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_ofdm_channel_roundtrip.md",
+      "revision_id": "baseline_989f0eb04348",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_rebuild_16qam_energy_tradeoff_figures.md",
+      "revision_id": "baseline_bd4678ea8f3d",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_sim_shaped_polar_16qam.md",
+      "revision_id": "baseline_630b15dec0ff",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_write_energy_csv.md",
+      "revision_id": "baseline_23c19ca9a933",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_test_source_entropy_partition.md",
+      "revision_id": "baseline_95313405f02b",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_energy_by_strategy.md",
+      "revision_id": "baseline_85b3ab71c8db",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_fixed_policy_holdout_analysis.md",
+      "revision_id": "baseline_a17afd07ac5a",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_guardband_policy_test_analysis.md",
+      "revision_id": "baseline_faaac07e878b",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_strict_smoke.md",
+      "revision_id": "baseline_7d99621ef003",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_freeze_b4b_guardband_candidate.md",
+      "revision_id": "baseline_49142794c46e",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_b4b_fixed_policy_holdout_analysis.md",
+      "revision_id": "baseline_704546920e50",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_b4b_guardband_policy_test_analysis.md",
+      "revision_id": "baseline_d5844f690553",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_b4b_paired_policy_analysis.md",
+      "revision_id": "baseline_f3dd1c8eddcc",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_b4b_partition_snapshot_supplement.md",
+      "revision_id": "baseline_d7c063ba1809",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/modulation/l3_llr_16qam_gray_LSE_prior.md",
+      "revision_id": "baseline_2a3c61a064c6",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/modulation/l3_parallel_to_serial_bits.md",
+      "revision_id": "baseline_3aa562458f51",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/ook/l3_simulate_ook_shaped_polar.md",
+      "revision_id": "baseline_04b9f2b42b04",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_build_source_entropy_partition.md",
+      "revision_id": "baseline_b548c478774c",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_derivative_phi.md",
+      "revision_id": "baseline_a4602c9ffb1c",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_GA.md",
+      "revision_id": "baseline_6ff19f97370e",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_get_bit_layer.md",
+      "revision_id": "baseline_36dfd13542f6",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_get_GN.md",
+      "revision_id": "baseline_8873df6b1e74",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_get_llr_layer.md",
+      "revision_id": "baseline_070e52478c47",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_phi.md",
+      "revision_id": "baseline_b922263c8bcc",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_phi_inverse.md",
+      "revision_id": "baseline_99b51dceb800",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_polar_encoder.md",
+      "revision_id": "baseline_b46fc4a8212f",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_SC_decoder.md",
+      "revision_id": "baseline_58f7759ef961",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_SC_decoder_prior.md",
+      "revision_id": "baseline_5cf867ca5000",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_SCL_decoder.md",
+      "revision_id": "baseline_41dabad408ce",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/polar/l3_SCL_decoder_prior.md",
+      "revision_id": "baseline_c2176ea461af",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/analysis/l3_v3_cluster_bootstrap_tv.md",
+      "revision_id": "baseline_fe6b5796ac92",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/analysis/l3_v3_paired_cluster_difference_ci.md",
+      "revision_id": "baseline_f2b8129ef4e0",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/core/l3_v3_config.md",
+      "revision_id": "baseline_e6434674bfe9",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/core/l3_v3_empirical_latent_p.md",
+      "revision_id": "baseline_c14018b19cc0",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/core/l3_v3_setup_paths.md",
+      "revision_id": "baseline_6d2f15e19284",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/core/l3_v3_sim_shaped_polar_gray_qam.md",
+      "revision_id": "baseline_5346b5efa9c4",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_run_pmf_blocklength_compare.md",
+      "revision_id": "baseline_f9f11808bf75",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_run_s_construction_compare.md",
+      "revision_id": "baseline_f195a1d63537",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_run_source_construction_compare.md",
+      "revision_id": "baseline_e5f5dd829635",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_run_source_mc_blocklength_compare.md",
+      "revision_id": "baseline_a8a41f85be89",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_test_unit0_bsc_ga_partition.md",
+      "revision_id": "baseline_881a50cefdd9",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_test_unit0_finite_noise_llr.md",
+      "revision_id": "baseline_95bd91641d61",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_test_unit0_forced_sc.md",
+      "revision_id": "baseline_da0789d7d150",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_test_unit0_gray_qam.md",
+      "revision_id": "baseline_875d65baad72",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_test_unit0_noiseless_roundtrip.md",
+      "revision_id": "baseline_1e06b0725d25",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_test_unit0_pmf_relation.md",
+      "revision_id": "baseline_7f9a0783395f",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/diagnostics/l3_v3_test_unit0_relation_registry.md",
+      "revision_id": "baseline_b3697d67a24b",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/l3_v3_run_gray_qam.md",
+      "revision_id": "baseline_0f8d30fe3132",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/l3_v3_run_gray_qam_ber_coarse.md",
+      "revision_id": "baseline_c0242e5cca92",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/l3_v3_run_gray_qam_ber_refine.md",
+      "revision_id": "baseline_e0a670e8c36b",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/l3_v3_run_gray_qam_energy_smoke.md",
+      "revision_id": "baseline_b16cedf8816a",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/l3_v3_run_gray_qam_pmf_formal64.md",
+      "revision_id": "baseline_2bef015ad55d",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_axis_pmf_from_latent.md",
+      "revision_id": "baseline_82b5669b5f1d",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_build_cartesian_gray_qam.md",
+      "revision_id": "baseline_8d960bf0fced",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_build_energy_lambda_spec.md",
+      "revision_id": "baseline_b6ffc1ffc695",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_build_qam_model_pmf.md",
+      "revision_id": "baseline_e58be8f346d0",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_enumerate_gf2_invertible.md",
+      "revision_id": "baseline_4399e44df820",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_fit_axis_latent_p.md",
+      "revision_id": "baseline_1f0de50f1525",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_frozen_gray_pam8_relation.md",
+      "revision_id": "baseline_ea38a9ee2e6c",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_frozen_gray_pam_relation.md",
+      "revision_id": "baseline_442add084889",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_gf2_inverse.md",
+      "revision_id": "baseline_b6d15aab1b11",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_llr_gray_qam_latent_lse.md",
+      "revision_id": "baseline_8c365ff66659",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_map_latent_bits_to_qam.md",
+      "revision_id": "baseline_b3d5f6f1d418",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/modulation/l3_v3_select_auto_gf2_relation.md",
+      "revision_id": "baseline_bc02b5e74890",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/polar/l3_v3_bsc_bhattacharyya.md",
+      "revision_id": "baseline_03f5f2b2c312",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/polar/l3_v3_build_stream_partition_bsc_ga.md",
+      "revision_id": "baseline_96f836806893",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/polar/l3_v3_build_stream_partition_ga.md",
+      "revision_id": "baseline_67cb28d9e305",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/polar/l3_v3_build_stream_partition_source_mc_ga.md",
+      "revision_id": "baseline_a5747dd459fc",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/polar/l3_v3_sc_decode_forced_full.md",
+      "revision_id": "baseline_ac84a8d612f8",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/v3/polar/l3_v3_shape_stream_sc.md",
+      "revision_id": "baseline_d06339ba4118",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "baseline_indexed_pending_review",
+      "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_b4_strict_ofdm_rayleigh_validation.md",
+      "revision_id": "b4_runner_equal_power_contract_snapshot_20261011",
+      "status": "current",
+      "supersedes": [
+        "b4_runner_equal_power_formal_20261011"
+      ],
+      "evidence_status": "current_method_contract_snapshot",
+      "scope": "Exact method path and final P1 validation status"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_analyze_b4_equal_power_p1.md",
+      "revision_id": "analyze_b4_equal_power_p1_contract_snapshot_20261011",
+      "status": "historical",
+      "supersedes": [
+        "analyze_b4_equal_power_p1_formal_20261011"
+      ],
+      "evidence_status": "current_method_contract_snapshot",
+      "scope": "Exact method path and final P1 validation status"
+    },
+    {
+      "path": "workbook/knowledge/README.md",
+      "revision_id": "knowledge_reading_entry_p1_final_20261011",
+      "status": "historical",
+      "supersedes": [
+        "knowledge_scope_index_20261010"
+      ],
+      "evidence_status": "deliverables_complete_known_research_gaps",
+      "scope": "Current revision reading and final RKS summary"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/等功率P1/等功率P1与知识库治理执行清单.md",
+      "revision_id": "p1_harness_execution_checklist_v3",
+      "status": "historical",
+      "supersedes": [
+        "p1_harness_execution_checklist_v2"
+      ],
+      "evidence_status": "deliverables_complete_known_research_gaps",
+      "scope": "Final complete snapshot of governance and equal-power P1 execution"
+    },
+    {
+      "path": "workbook/knowledge/README.md",
+      "revision_id": "knowledge_reading_entry_p1_report_final_20261011",
+      "status": "historical",
+      "supersedes": [
+        "knowledge_reading_entry_p1_final_20261011"
+      ],
+      "evidence_status": "final_rks_pointer",
+      "scope": "Final current-revision RKS report reading entry"
+    },
+    {
+      "path": "项目整体计划书.md",
+      "revision_id": "overall_p1_rks_final_20261011",
+      "status": "historical",
+      "supersedes": [
+        "overall_scope_16qam_20261010"
+      ],
+      "evidence_status": "final_rks_pointer",
+      "scope": "Project status with final current-revision scan"
+    },
+    {
+      "path": "next_plan.md",
+      "revision_id": "next_plan_p1_complete_20261011",
+      "status": "historical",
+      "supersedes": [
+        "next_plan_p1_current_20261010"
+      ],
+      "evidence_status": "p1_formal_complete",
+      "scope": "P1 result and P2/P3 next plan before final RKS pointer"
+    },
+    {
+      "path": "next_plan.md",
+      "revision_id": "next_plan_p1_rks_final_20261011",
+      "status": "historical",
+      "supersedes": [
+        "next_plan_p1_complete_20261011"
+      ],
+      "evidence_status": "final_rks_pointer",
+      "scope": "P1 completion and final structural scan pointer"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4_equal_power_p1.md",
+      "revision_id": "b4_equal_power_p1_final_figures_20261011",
+      "status": "historical",
+      "supersedes": [
+        "b4_equal_power_p1_current_snapshot_20261011"
+      ],
+      "evidence_status": "final_figures_verified",
+      "scope": "Final P1 data and Pareto figure pointer"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_analyze_b4_equal_power_p1.md",
+      "revision_id": "analyze_b4_equal_power_p1_final_figures_20261011",
+      "status": "current",
+      "supersedes": [
+        "analyze_b4_equal_power_p1_contract_snapshot_20261011"
+      ],
+      "evidence_status": "final_figures_verified",
+      "scope": "Final readable P1 analysis output and SNR-panel Pareto rendering"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/等功率P1/等功率P1与知识库治理执行清单.md",
+      "revision_id": "p1_harness_execution_checklist_v4",
+      "status": "historical",
+      "supersedes": [
+        "p1_harness_execution_checklist_v3"
+      ],
+      "evidence_status": "final_delivery_snapshot",
+      "scope": "Final complete checklist snapshot with final Pareto figure pointer"
+    },
+    {
+      "path": "workbook/knowledge/README.md",
+      "revision_id": "knowledge_rks_dynamic_pointer_20261011",
+      "status": "current",
+      "supersedes": [
+        "knowledge_reading_entry_p1_report_final_20261011"
+      ],
+      "evidence_status": "final_delivery_snapshot",
+      "scope": "Dynamic pointer to the latest immutable RKS report"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_b4_equal_power_p1.md",
+      "revision_id": "b4_equal_power_p1_per_seed_power_audit_20261011",
+      "status": "current",
+      "supersedes": [
+        "b4_equal_power_p1_final_figures_20261011"
+      ],
+      "evidence_status": "per_seed_validation_all_18_within_one_percent",
+      "scope": "Final independent power validation seed-level audit and result path"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制与P2当前结论.md",
+      "revision_id": "p2_d041be8e87de_20261024",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/P2正式实验预算与执行顺序.md",
+      "revision_id": "p2_c0ef110bf963_20261024",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/中期材料P2修订清单.md",
+      "revision_id": "p2_f158f1f733f8_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/next_plan.md",
+      "revision_id": "baseline_p2_3b747b0c734b",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/next_plan.md",
+      "revision_id": "p2_3b747b0c734b_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_3b747b0c734b"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/协调协议.md",
+      "revision_id": "baseline_p2_9f07674a7c88",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/协调协议.md",
+      "revision_id": "p2_9f07674a7c88_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_9f07674a7c88"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/最新认知与执行基线.md",
+      "revision_id": "baseline_p2_906a4fb5e7f3",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/最新认知与执行基线.md",
+      "revision_id": "p2_906a4fb5e7f3_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_906a4fb5e7f3"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/进度表.md",
+      "revision_id": "baseline_p2_8655f0def553",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/进度表.md",
+      "revision_id": "p2_8655f0def553_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_8655f0def553"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/问题记录.md",
+      "revision_id": "baseline_p2_5ed6c00de690",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/问题记录.md",
+      "revision_id": "p2_5ed6c00de690_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_5ed6c00de690"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/loop设计.md",
+      "revision_id": "baseline_p2_c3b8a3bd006d",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/loop设计.md",
+      "revision_id": "p2_c3b8a3bd006d_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_c3b8a3bd006d"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/next_plan.md",
+      "revision_id": "baseline_p2_407e7f30b678",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/next_plan.md",
+      "revision_id": "p2_407e7f30b678_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_407e7f30b678"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/README.md",
+      "revision_id": "baseline_p2_30a5059b71a5",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/README.md",
+      "revision_id": "p2_30a5059b71a5_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_30a5059b71a5"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+      "revision_id": "baseline_p2_bbd04f68367e",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+      "revision_id": "p2_bbd04f68367e_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_bbd04f68367e"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/协调协议.md",
+      "revision_id": "baseline_p2_ca18cc78c92e",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/协调协议.md",
+      "revision_id": "p2_ca18cc78c92e_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_ca18cc78c92e"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/整形分布偏差定位结论.md",
+      "revision_id": "baseline_p2_1f6692d21412",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/整形分布偏差定位结论.md",
+      "revision_id": "p2_1f6692d21412_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_1f6692d21412"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/进度表.md",
+      "revision_id": "baseline_p2_b9fb8f5dcb78",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/进度表.md",
+      "revision_id": "p2_b9fb8f5dcb78_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_b9fb8f5dcb78"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/问题记录.md",
+      "revision_id": "baseline_p2_7e5e76b93f02",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/问题记录.md",
+      "revision_id": "p2_7e5e76b93f02_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_7e5e76b93f02"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/需求澄清.md",
+      "revision_id": "baseline_p2_5eabd0fc66a5",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/需求澄清.md",
+      "revision_id": "p2_5eabd0fc66a5_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_5eabd0fc66a5"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/理论更新与图重建/整形图重建当前验收状态.md",
+      "revision_id": "baseline_p2_35cc14130014",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/理论更新与图重建/整形图重建当前验收状态.md",
+      "revision_id": "p2_35cc14130014_20261024",
+      "status": "current",
+      "supersedes": [
+        "baseline_p2_35cc14130014"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/理论更新与图重建/整形理论更新与仿真图重建清单.md",
+      "revision_id": "baseline_p2_6d2dbf9ff4dd",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/理论更新与图重建/整形理论更新与仿真图重建清单.md",
+      "revision_id": "p2_6d2dbf9ff4dd_20261024",
+      "status": "current",
+      "supersedes": [
+        "baseline_p2_6d2dbf9ff4dd"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/理论更新与图重建/新构造结果的边界与读图说明.md",
+      "revision_id": "p2_66aa5784cc3e_20261024",
+      "status": "current",
+      "supersedes": [
+        "boundary_reading_v1"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/等功率P1/等功率P1与知识库治理执行清单.md",
+      "revision_id": "p2_a6b964671e09_20261024",
+      "status": "current",
+      "supersedes": [
+        "p1_harness_execution_checklist_v4"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/loop设计.md",
+      "revision_id": "baseline_p2_9ebc23c3eb2b",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/loop设计.md",
+      "revision_id": "p2_9ebc23c3eb2b_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_9ebc23c3eb2b"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/next_plan.md",
+      "revision_id": "baseline_p2_59613168210b",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/next_plan.md",
+      "revision_id": "p2_59613168210b_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_59613168210b"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+      "revision_id": "baseline_p2_d1a87d4ed67b",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+      "revision_id": "p2_d1a87d4ed67b_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_d1a87d4ed67b"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+      "revision_id": "baseline_p2_e8ec4e9eed91",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+      "revision_id": "p2_e8ec4e9eed91_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_e8ec4e9eed91"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/协调协议.md",
+      "revision_id": "baseline_p2_09b890cc238c",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/协调协议.md",
+      "revision_id": "p2_09b890cc238c_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_09b890cc238c"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/定量分析文献依据.md",
+      "revision_id": "baseline_p2_3cedcf6dad8f",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/定量分析文献依据.md",
+      "revision_id": "p2_3cedcf6dad8f_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_3cedcf6dad8f"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/进度表.md",
+      "revision_id": "baseline_p2_000767079488",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/进度表.md",
+      "revision_id": "p2_000767079488_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_000767079488"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/问题记录.md",
+      "revision_id": "baseline_p2_f6de7142f64c",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/问题记录.md",
+      "revision_id": "p2_f6de7142f64c_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_f6de7142f64c"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/需求澄清.md",
+      "revision_id": "baseline_p2_44100e3a6aac",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/需求澄清.md",
+      "revision_id": "p2_44100e3a6aac_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_44100e3a6aac"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/验证与审查.md",
+      "revision_id": "baseline_p2_81005a128ac9",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/验证与审查.md",
+      "revision_id": "p2_81005a128ac9_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_81005a128ac9"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/高阶调制理论/方法.md",
+      "revision_id": "baseline_p2_c90b188cf2e0",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "学习文档/高阶调制理论/方法.md",
+      "revision_id": "p2_c90b188cf2e0_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_c90b188cf2e0"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_p2_decode_block.md",
+      "revision_id": "p2_d461b5468860_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_p2_prepare_state.md",
+      "revision_id": "p2_78ec07aca9c2_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_p2_seed.md",
+      "revision_id": "p2_421a0dd5587e_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/core/l3_p2_transmit_block.md",
+      "revision_id": "p2_4bd96d8621f6_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_analyze_p2_auxiliary.md",
+      "revision_id": "p2_60c0a9218cbf_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_analyze_p2_mechanism.md",
+      "revision_id": "p2_98d4ecd098d1_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_audit_acceptance.md",
+      "revision_id": "p2_2ba73e3970f0_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_calibrate_model.md",
+      "revision_id": "p2_e54319683654_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_distribution_reference.md",
+      "revision_id": "p2_81264488457a_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_evaluate_predictions.md",
+      "revision_id": "p2_af33d7ab1101_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_freeze_model.md",
+      "revision_id": "p2_fda2166d4d30_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_freeze_power.md",
+      "revision_id": "p2_976f15b92b1d_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_llr_reference.md",
+      "revision_id": "p2_52d75da2a5cf_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_paired_summary.md",
+      "revision_id": "p2_09bb97d8e4fc_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_predict_ga.md",
+      "revision_id": "p2_d71818a686a2_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/analysis/l3_p2_uniformity_contract.md",
+      "revision_id": "p2_7d3da005829a_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_test_p2_mechanism.md",
+      "revision_id": "p2_459e31da9ee3_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_test_p2_resume_contract.md",
+      "revision_id": "p2_779cae078252_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_p2_default_config.md",
+      "revision_id": "p2_4a88beebe192_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_p2_auxiliary_preflight.md",
+      "revision_id": "p2_5adb2ca07cc7_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_p2_mechanism.md",
+      "revision_id": "p2_7b035b6109f5_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_p2_preflight.md",
+      "revision_id": "p2_bdcd31be334f_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_p2_registered_job.md",
+      "revision_id": "p2_08ae3dcbc763_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_run_p2_uniformity_audit.md",
+      "revision_id": "p2_9bf221165210_20261024",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_auxiliary_preflight.md",
+      "revision_id": "p2_1b4c9677187e_20261024",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_mechanism.md",
+      "revision_id": "p2_8488d00608d2_20261024",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_preflight.md",
+      "revision_id": "p2_db82504e9e0f_20261024",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_registered_job.md",
+      "revision_id": "p2_ebeaac85e879_20261024",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_uniformity_audit.md",
+      "revision_id": "p2_452cbe971bfc_20261024",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_probabilistic_shaping.md",
+      "revision_id": "p2_1bb1d23189ab_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_08fb05905251"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_multicarrier_ofdm.md",
+      "revision_id": "p2_038f888b61ec_20261024",
+      "status": "current",
+      "supersedes": [
+        "l1_multicarrier_p1_current_snapshot_20261011"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_metrics_tradeoff.md",
+      "revision_id": "p2_af47b0441cc3_20261024",
+      "status": "current",
+      "supersedes": [
+        "l1_metrics_p1_20261010"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/quality-assurance.md",
+      "revision_id": "baseline_p2_d0a46f9f3a5a",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "workbook/quality-assurance.md",
+      "revision_id": "p2_d0a46f9f3a5a_20261024",
+      "status": "current",
+      "supersedes": [
+        "baseline_p2_d0a46f9f3a5a"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "周报/阶段B/B4：full-chain策略验证.md",
+      "revision_id": "baseline_p2_50c489765c24",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "周报/阶段B/B4：full-chain策略验证.md",
+      "revision_id": "p2_50c489765c24_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_50c489765c24"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "周报/阶段B/阶段B：多载波系统构建.md",
+      "revision_id": "baseline_p2_7c122b77c530",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "周报/阶段B/阶段B：多载波系统构建.md",
+      "revision_id": "p2_7c122b77c530_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_7c122b77c530"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "周报/阶段B/B5：论文二初稿.md",
+      "revision_id": "baseline_p2_58b6f0f5864b",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "周报/阶段B/B5：论文二初稿.md",
+      "revision_id": "p2_58b6f0f5864b_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_58b6f0f5864b"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "周报/阶段A：单载波关键结论.md",
+      "revision_id": "baseline_p2_a34a6d110af5",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "周报/阶段A：单载波关键结论.md",
+      "revision_id": "p2_a34a6d110af5_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_a34a6d110af5"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "项目整体计划书.md",
+      "revision_id": "p2_edaae8f1e0c6_20261024",
+      "status": "historical",
+      "supersedes": [
+        "overall_p1_rks_final_20261011"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "next_plan.md",
+      "revision_id": "p2_7d6303cf812a_20261024",
+      "status": "historical",
+      "supersedes": [
+        "next_plan_p1_rks_final_20261011"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/troubleshooting-history.md",
+      "revision_id": "baseline_p2_0c96688d915a",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "historical_snapshot"
+    },
+    {
+      "path": "workbook/troubleshooting-history.md",
+      "revision_id": "p2_0c96688d915a_20261024",
+      "status": "historical",
+      "supersedes": [
+        "baseline_p2_0c96688d915a"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制对照与P2执行清单.md",
+      "revision_id": "p2_b599b666f458_20261024",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 auxiliary controls; formal budget and research acceptance pending"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_probabilistic_shaping.md",
+      "revision_id": "p2_probabilistic_shaping_auxiliary_h4_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_1bb1d23189ab_20261024"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "Actual P2 workflow and auxiliary-control hypothesis"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_uniformity_audit.md",
+      "revision_id": "p2_p2_uniformity_audit_actual_pipeline_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_452cbe971bfc_20261024"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "Actual P2 workflow and auxiliary-control hypothesis"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_preflight.md",
+      "revision_id": "p2_p2_preflight_actual_pipeline_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_db82504e9e0f_20261024"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "Actual P2 workflow and auxiliary-control hypothesis"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_auxiliary_preflight.md",
+      "revision_id": "p2_p2_auxiliary_preflight_actual_pipeline_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_1b4c9677187e_20261024"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "Actual P2 workflow and auxiliary-control hypothesis"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_registered_job.md",
+      "revision_id": "p2_p2_registered_job_actual_pipeline_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_ebeaac85e879_20261024"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "Actual P2 workflow and auxiliary-control hypothesis"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_mechanism.md",
+      "revision_id": "p2_p2_mechanism_actual_pipeline_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_8488d00608d2_20261024"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "Actual P2 workflow and auxiliary-control hypothesis"
+    },
+    {
+      "path": "workbook/knowledge/L1/l1_probabilistic_shaping.md",
+      "revision_id": "p2_probabilistic_shaping_clean_snapshot_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_probabilistic_shaping_auxiliary_h4_20261025"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 closeout snapshot, formal budget pending"
+    },
+    {
+      "path": "workbook/troubleshooting-history.md",
+      "revision_id": "p2_rks_claim_history_fix_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_0c96688d915a_20261024"
+      ],
+      "evidence_status": "pilot_and_static_only",
+      "scope": "P2 closeout snapshot, formal budget pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制与P2当前结论.md",
+      "revision_id": "p2_reading_preflight_final_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_d041be8e87de_20261024"
+      ],
+      "evidence_status": "preflight_complete_formal_pending",
+      "scope": "P2 auxiliary preflight closeout, budget approval pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/P2正式实验预算与执行顺序.md",
+      "revision_id": "p2_budget_preflight_final_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_c0ef110bf963_20261024"
+      ],
+      "evidence_status": "preflight_complete_formal_pending",
+      "scope": "P2 auxiliary preflight closeout, budget approval pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制对照与P2执行清单.md",
+      "revision_id": "p2_checklist_snapshot_v2_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_b599b666f458_20261024"
+      ],
+      "evidence_status": "preflight_complete_formal_pending",
+      "scope": "P2 auxiliary preflight closeout, budget approval pending"
+    },
+    {
+      "path": "周报/阶段B/B4：full-chain策略验证.md",
+      "revision_id": "p2_b4_preflight_closed_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_50c489765c24_20261024"
+      ],
+      "evidence_status": "preflight_complete_formal_pending",
+      "scope": "P2 auxiliary preflight closeout, budget approval pending"
+    },
+    {
+      "path": "next_plan.md",
+      "revision_id": "p2_next_preflight_closed_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_7d6303cf812a_20261024"
+      ],
+      "evidence_status": "preflight_complete_formal_pending",
+      "scope": "P2 auxiliary preflight closeout, budget approval pending"
+    },
+    {
+      "path": "项目整体计划书.md",
+      "revision_id": "p2_overall_preflight_closed_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_edaae8f1e0c6_20261024"
+      ],
+      "evidence_status": "preflight_complete_formal_pending",
+      "scope": "P2 auxiliary preflight closeout, budget approval pending"
+    },
+    {
+      "path": "workbook/troubleshooting-history.md",
+      "revision_id": "p2_resume_closeout_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_rks_claim_history_fix_20261025"
+      ],
+      "evidence_status": "preflight_complete_formal_pending",
+      "scope": "P2 auxiliary preflight closeout, budget approval pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制对照与P2执行清单.md",
+      "revision_id": "p2_checklist_snapshot_v3_running_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_checklist_snapshot_v2_20261025"
+      ],
+      "evidence_status": "formal_execution_running",
+      "scope": "User-approved frozen P2 protocol; gate results pending"
+    },
+    {
+      "path": "周报/阶段B/B4：full-chain策略验证.md",
+      "revision_id": "p2_b4_approved_running_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_b4_preflight_closed_20261025"
+      ],
+      "evidence_status": "formal_execution_running",
+      "scope": "User-approved frozen P2 protocol; gate results pending"
+    },
+    {
+      "path": "next_plan.md",
+      "revision_id": "p2_next_approved_running_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_next_preflight_closed_20261025"
+      ],
+      "evidence_status": "formal_execution_running",
+      "scope": "User-approved frozen P2 protocol; gate results pending"
+    },
+    {
+      "path": "项目整体计划书.md",
+      "revision_id": "p2_overall_approved_running_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_overall_preflight_closed_20261025"
+      ],
+      "evidence_status": "formal_execution_running",
+      "scope": "User-approved frozen P2 protocol; gate results pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/P2正式实验预算与执行顺序.md",
+      "revision_id": "p2_budget_approved_running_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_budget_preflight_final_20261025"
+      ],
+      "evidence_status": "formal_execution_running",
+      "scope": "User-approved frozen P2 protocol; gate results pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制与P2当前结论.md",
+      "revision_id": "p2_reading_approved_running_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_reading_preflight_final_20261025"
+      ],
+      "evidence_status": "formal_execution_running",
+      "scope": "User-approved frozen P2 protocol; gate results pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_p2_execute_batch_job.md",
+      "revision_id": "l3_p2_execute_batch_job_v1_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "formal_execution_running",
+      "scope": "User-approved frozen P2 protocol; gate results pending"
+    },
+    {
+      "path": "workbook/knowledge/L3/experiments/l3_p2_batch_power_check.md",
+      "revision_id": "l3_p2_batch_power_check_v1_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "formal_execution_running",
+      "scope": "User-approved frozen P2 protocol; gate results pending"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_approved_batch.md",
+      "revision_id": "l2_p2_approved_batch_v1_20261025",
+      "status": "historical",
+      "supersedes": [],
+      "evidence_status": "formal_execution_running",
+      "scope": "User-approved frozen P2 protocol; gate results pending"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/P2阶段进度与写作交接-2026-10-25.md",
+      "revision_id": "p2_handoff_report_20261025_v1",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "power_gate_failed_downstream_unexecuted",
+      "scope": "2026-10-25 actual P2 stop; read-only evidence summary and writing handoff"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制与P2当前结论.md",
+      "revision_id": "p2_reading_gate_failed_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_reading_approved_running_20261025"
+      ],
+      "evidence_status": "power_gate_failed_downstream_unexecuted",
+      "scope": "2026-10-25 actual P2 stop; read-only evidence summary and writing handoff"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/P2正式实验预算与执行顺序.md",
+      "revision_id": "p2_budget_gate_failed_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_budget_approved_running_20261025"
+      ],
+      "evidence_status": "power_gate_failed_downstream_unexecuted",
+      "scope": "2026-10-25 actual P2 stop; read-only evidence summary and writing handoff"
+    },
+    {
+      "path": "周报/阶段B/B4：full-chain策略验证.md",
+      "revision_id": "p2_b4_gate_failed_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_b4_approved_running_20261025"
+      ],
+      "evidence_status": "power_gate_failed_downstream_unexecuted",
+      "scope": "2026-10-25 actual P2 stop; read-only evidence summary and writing handoff"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_approved_batch.md",
+      "revision_id": "p2_batch_gate_failed_20261025",
+      "status": "historical",
+      "supersedes": [
+        "l2_p2_approved_batch_v1_20261025"
+      ],
+      "evidence_status": "power_gate_failed_downstream_unexecuted",
+      "scope": "2026-10-25 actual P2 stop; read-only evidence summary and writing handoff"
+    },
+    {
+      "path": "next_plan.md",
+      "revision_id": "p2_next_handoff_gate_failed_20261025",
+      "status": "historical",
+      "supersedes": [
+        "p2_next_approved_running_20261025"
+      ],
+      "evidence_status": "power_gate_failed_downstream_unexecuted",
+      "scope": "2026-10-25 actual P2 stop; read-only evidence summary and writing handoff"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/等功率机制对照与P2执行清单.md",
+      "revision_id": "p2_checklist_snapshot_v4_gate_failed_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_checklist_snapshot_v3_running_20261025"
+      ],
+      "evidence_status": "power_gate_failed_downstream_unexecuted",
+      "scope": "2026-10-25 actual P2 stop; read-only evidence summary and writing handoff"
+    },
+    {
+      "path": "学习文档/README.md",
+      "revision_id": "learning_navigation_20261025_v1",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/机制对照与P2/README.md",
+      "revision_id": "learning_folder_b8e17cdd_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/等功率P1/README.md",
+      "revision_id": "learning_folder_5e0196b3_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/理论更新与图重建/README.md",
+      "revision_id": "learning_folder_6cd87911_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/知识库与Harness治理/README.md",
+      "revision_id": "learning_folder_cd160895_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "next_plan.md",
+      "revision_id": "learning_relocation_561192d8b3_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_next_handoff_gate_failed_20261025"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "项目整体计划书.md",
+      "revision_id": "learning_relocation_e22afe4d42_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_overall_approved_running_20261025"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_approved_batch.md",
+      "revision_id": "learning_relocation_e29b66eb63_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_batch_gate_failed_20261025"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_auxiliary_preflight.md",
+      "revision_id": "learning_relocation_1af2048d3b_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_p2_auxiliary_preflight_actual_pipeline_20261025"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_mechanism.md",
+      "revision_id": "learning_relocation_abab7cc64f_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_p2_mechanism_actual_pipeline_20261025"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_preflight.md",
+      "revision_id": "learning_relocation_06e5f8f642_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_p2_preflight_actual_pipeline_20261025"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_registered_job.md",
+      "revision_id": "learning_relocation_f88c5f5381_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_p2_registered_job_actual_pipeline_20261025"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "workbook/knowledge/L2/l2_p2_uniformity_audit.md",
+      "revision_id": "learning_relocation_ebbeccc147_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_p2_uniformity_audit_actual_pipeline_20261025"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "周报/阶段A：单载波关键结论.md",
+      "revision_id": "learning_relocation_ef46896787_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_a34a6d110af5_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "周报/阶段B/B4：full-chain策略验证.md",
+      "revision_id": "learning_relocation_ed9ccf9c6e_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_b4_gate_failed_20261025"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "周报/阶段B/B5：论文二初稿.md",
+      "revision_id": "learning_relocation_65b995687d_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_58b6f0f5864b_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "周报/阶段B/阶段B：多载波系统构建.md",
+      "revision_id": "learning_relocation_b0fe01d5f6_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_7c122b77c530_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/loop设计.md",
+      "revision_id": "learning_relocation_63a5b01bb0_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/next_plan.md",
+      "revision_id": "learning_relocation_f55bc6a27a_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_3b747b0c734b_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/协调协议.md",
+      "revision_id": "learning_relocation_ec1e0e6bd3_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_9f07674a7c88_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/最新认知与执行基线.md",
+      "revision_id": "learning_relocation_89e43ae8b2_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_906a4fb5e7f3_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/进度表.md",
+      "revision_id": "learning_relocation_3305e7f337_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_8655f0def553_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/问题记录.md",
+      "revision_id": "learning_relocation_39d01ba44d_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_5ed6c00de690_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/loop设计.md",
+      "revision_id": "learning_relocation_516ef30cf7_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_c3b8a3bd006d_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/next_plan.md",
+      "revision_id": "learning_relocation_a58dd6c111_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_407e7f30b678_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/README.md",
+      "revision_id": "learning_relocation_613c2e5a2e_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_30a5059b71a5_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+      "revision_id": "learning_relocation_6d7c56c8dc_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_bbd04f68367e_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/协调协议.md",
+      "revision_id": "learning_relocation_e2971df6b4_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_ca18cc78c92e_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/整形分布偏差定位结论.md",
+      "revision_id": "learning_relocation_3b8a5b1097_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_1f6692d21412_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/进度表.md",
+      "revision_id": "learning_relocation_30696241aa_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_b9fb8f5dcb78_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/问题记录.md",
+      "revision_id": "learning_relocation_09c719642a_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_7e5e76b93f02_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/多载波OFDM瑞利信道-loop/需求澄清.md",
+      "revision_id": "learning_relocation_9f8376bc54_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_5eabd0fc66a5_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/方法.md",
+      "revision_id": "learning_relocation_b499f0cd57_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_c90b188cf2e0_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/loop设计.md",
+      "revision_id": "learning_relocation_52bddf505c_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_9ebc23c3eb2b_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/next_plan.md",
+      "revision_id": "learning_relocation_944a51ed10_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_59613168210b_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+      "revision_id": "learning_relocation_4729dae392_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_d1a87d4ed67b_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+      "revision_id": "learning_relocation_742e2d7d21_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_e8ec4e9eed91_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/协调协议.md",
+      "revision_id": "learning_relocation_8a14581fb4_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_09b890cc238c_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/定量分析文献依据.md",
+      "revision_id": "learning_relocation_31d5ca28cb_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_3cedcf6dad8f_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/进度表.md",
+      "revision_id": "learning_relocation_708fd9dd3f_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_000767079488_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/问题记录.md",
+      "revision_id": "learning_relocation_a68b8ff600_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_f6de7142f64c_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/需求澄清.md",
+      "revision_id": "learning_relocation_cc4078db6b_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_44100e3a6aac_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/16QAM整流效率-loop/验证与审查.md",
+      "revision_id": "learning_relocation_259474a406_20261025",
+      "status": "current",
+      "supersedes": [
+        "p2_81005a128ac9_20261024"
+      ],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/loop设计.md",
+      "revision_id": "learning_relocation_e98e1909ca_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/next_plan.md",
+      "revision_id": "learning_relocation_f2742a4dc8_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+      "revision_id": "learning_relocation_d6bf9b312f_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+      "revision_id": "learning_relocation_30fdb61c23_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/协调协议.md",
+      "revision_id": "learning_relocation_7bcf055efd_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/多载波任意GrayQAM能量分布可调理论说明.md",
+      "revision_id": "learning_relocation_1f1c25464d_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/进度表.md",
+      "revision_id": "learning_relocation_dfdf675253_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/问题记录.md",
+      "revision_id": "learning_relocation_79ee380a03_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/需求澄清.md",
+      "revision_id": "learning_relocation_3e9fa9e1ec_20261025",
+      "status": "current",
+      "supersedes": [],
+      "evidence_status": "documentation_only",
+      "scope": "Learning document relocation; scientific state unchanged"
+    }
+  ]
+}

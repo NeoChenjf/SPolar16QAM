@@ -24,3 +24,7 @@
 ## Validation
 
 对`results/20260917_112216_b4_strict_ofdm_rayleigh_smoke/`运行结果：36条重复记录、18条汇总记录、128条信道记录，START/DONE各36，49个OFDM符号，padding 2.0408%，全部检查PASS。对高SNR pilot同样通过：90条重复记录、18条汇总记录、320条信道记录，START/DONE各90。
+
+## 2026-10-09 pure-energy semantic gate and formal audit
+
+The audit now asserts `payload_ones_low==0` for every `bad_channel_energy_only` repetition, in addition to the information-subcarrier fraction and Goodput/rate identities. Applied to seed42, seed1042, and seed2042 formal outputs; each passed with 1080 repetition rows, 36 summary rows, 1920 channel rows and matching 1080 START/DONE events. This validates data structure and strategy payload semantics, not a BER guarantee or strategy optimality.

@@ -38,3 +38,15 @@
 
 ## Health
 degraded — 近似/经验模型，作趋势工具用，不作最终定量依据。
+
+## 2026-10-09 集合选择修订与适用边界
+
+若传入`opts.partition_state`，此模型从其固定S计数和K读取结构，并在每个评估SNR下依据当前GA可靠性、排除source-entropy S后重新选I；reference同理。它仍是GA位级近似，并未建模逐payload源整形与现有未加先验SC接收度量间的完整联合统计，必须视为趋势诊断，不能以其输出替代Monte Carlo或宣称严格BER预测。
+
+
+## 2026-10-09 修订勘误：I必须排除实际S索引
+
+上一节曾写为按源S数量跳过GA排序的前$|S|$位。这对源熵选择的非GA连续集合不成立，已更正为：每个SNR从GA顺序中删除`opts.partition_state.S{b}`的实际索引，再从余位选择前K个I；reference partition同理。旧模式仍按S数量跳过，保持兼容。该模型仍只用GA可靠性逐位近似，不包含消息条件化分布与接收度量的完整联合效应。最新回归和F19正式图尚未完成。
+
+
+修正后返回字段`model.I_set_by_snr`与`model.reference_I_set_by_snr`明确给出各SNR/bit-stream实际采用的GA信息索引，便于与固定source-S逐项核验。`S_selector`按集合向量语义只用于source-entropy分支，legacy数量跳过函数保持独立。

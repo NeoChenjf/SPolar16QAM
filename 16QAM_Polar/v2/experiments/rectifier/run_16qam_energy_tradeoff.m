@@ -6,6 +6,8 @@ function out = run_16qam_energy_tradeoff(mode, resume_source)
     root=fileparts(fileparts(fileparts(mfilename('fullpath')))); addpath(root); setup_paths;
     cfg=config(); cfg.decoder='SC'; cfg.snr_mode='fixed_esn0';
     cfg.collect_energy_frames=true; cfg.llr_use_legacy_noisevar=false;
+    cfg.partition_mode='source_entropy'; cfg.source_samples=200; cfg.source_seed=9001;
+    cfg.sigma_design=10^(-20/20);
     ps=[.5,.4,.3,.2,.1]; seeds=[42,43,44]; snrs=8:20;
     cfg.num_frames=300;
     if strcmp(mode,'smoke'), snrs=[8,14,20]; cfg.num_frames=2; end
@@ -32,7 +34,7 @@ function out = run_16qam_energy_tradeoff(mode, resume_source)
     if exist(out,'dir'), error('energy:OutputExists','Refuse overwrite.'); end
     mkdir(out); mkdir(fullfile(out,'partial')); mkdir(fullfile(out,'figures'));
     diary(fullfile(out,'run_log.txt')); cleanup=onCleanup(@() diary('off'));
-    started=tic; engine=version; protocol='2026-09-12';
+    started=tic; engine=version; protocol='2026-10-09-source-entropy-S-per-SNR-GA-IF';
     save(fullfile(out,'params.mat'),'cfg','ps','seeds','snrs','engine','protocol','mode');
     % Source snapshot gives exact reproducibility even in an uncommitted tree.
     source_dir=fullfile(out,'source_snapshot'); mkdir(source_dir);
@@ -40,7 +42,31 @@ function out = run_16qam_energy_tradeoff(mode, resume_source)
     for k=1:numel(source_dirs), copyfile(fullfile(root,source_dirs{k}),fullfile(source_dir,source_dirs{k})); end
     copyfile(mfilename('fullpath') + ".m",fullfile(source_dir,'run_16qam_energy_tradeoff.m'));
     copyfile(fullfile(root,'config.m'),source_dir); copyfile(fullfile(root,'setup_paths.m'),source_dir);
+    v3polar=fullfile(root,'..','v3','polar'); v3snapshot=fullfile(source_dir,'v3_polar'); mkdir(v3snapshot);
+    v3files={'build_stream_partition_source_mc_ga.m','shape_stream_sc.m','sc_decode_forced_full.m'};
+    for vi=1:numel(v3files),copyfile(fullfile(v3polar,v3files{vi}),v3snapshot);end
+    source_files={fullfile(root,'experiments','rectifier','run_16qam_energy_tradeoff.m'), ...
+        fullfile(root,'core','sim_shaped_polar_16qam.m'), ...
+        fullfile(root,'core','estimate_ber_hat_sc_dual.m'), ...
+        fullfile(root,'polar','build_source_entropy_partition.m'), ...
+        fullfile(v3polar,'build_stream_partition_source_mc_ga.m'), ...
+        fullfile(v3polar,'shape_stream_sc.m'),fullfile(v3polar,'sc_decode_forced_full.m')};
+    hashfid=fopen(fullfile(out,'source_sha256_manifest.txt'),'w'); if hashfid<0,error('energy:WriteFailed','source hashes');end
+    hashcleanup=onCleanup(@()fclose(hashfid));
+    for vi=1:numel(source_files)
+        sf=fopen(source_files{vi},'rb'); bytes=fread(sf,Inf,'*uint8'); fclose(sf);
+        md=java.security.MessageDigest.getInstance('SHA-256');md.update(bytes);
+        digest=typecast(md.digest(),'uint8');hex=lower(reshape(dec2hex(digest,2)',1,[]));
+        fprintf(hashfid,'%s  %s\n',hex,source_files{vi});
+    end
+    clear hashcleanup;
     fprintf('mode=%s N=%d frames=%d output=%s\n',mode,cfg.N,cfg.num_frames,out);
+    source_partitions=cell(size(ps));
+    for ip=1:numel(ps)
+        p_vec=cfg.p_fixed; p_vec(isnan(p_vec))=ps(ip);
+        source_partitions{ip}=build_source_entropy_partition( ...
+            cfg.N,p_vec,cfg.sigma_design,cfg.source_samples,cfg.source_seed);
+    end
     blocks=cell(numel(seeds),numel(ps)); rep=[]; frames=[];
     frame_headers={'seed','p','snr_label_dB','esn0_actual_dB','frame_id','symbols','sum_abs2','sum_abs4','N0', ...
         'errors1','errors2','errors3','errors4','block_errors1','block_errors2','block_errors3','block_errors4', ...
@@ -48,6 +74,7 @@ function out = run_16qam_energy_tradeoff(mode, resume_source)
     for s=1:numel(seeds)
         for ip=1:numel(ps)
             cfg_run=cfg; cfg_run.seed=seeds(s);
+            cfg_run.source_partition_state=source_partitions{ip};
             cfg_run.energy_checkpoint=@checkpoint;
             if isempty(recovered{s,ip})
                 result=sim_shaped_polar_16qam(ps(ip),snrs,cfg_run);
@@ -82,6 +109,7 @@ function out = run_16qam_energy_tradeoff(mode, resume_source)
     save(fullfile(out,'results.mat'),'raw_rep','rep','summary','points','frames','blocks','elapsed','cfg','ps','snrs','seeds','mode');
     fid=fopen(fullfile(out,'README.txt'),'w'); if fid<0,error('energy:WriteFailed','README');end
     fprintf(fid,'16QAM energy tradeoff %s\nEngine: %s\nN=%d frames=%d seeds=[42 43 44]\n',mode,engine,cfg.N,cfg.num_frames);
+    fprintf(fid,'Construction: fixed K and |S|; source conditional entropy selects S; remaining positions are GA-ranked for I/F at each SNR; every frame conditions S on its current payload with F=0.\n');
     fprintf(fid,'Fixed constellation scaling; empirical paired p=0.5 baseline=1. RF proxy, no RF-DC efficiency.\n');
     fprintf(fid,'v2 SNR parameter: actual Es/N0 = label - 3.01029995664 dB.\nGoodput=R*(1-BER), not packet throughput.\n');
     fprintf(fid,'CI: three-seed Student t, df=2, 95%%; limited precision. Pareto is descriptive within SNR.\n');

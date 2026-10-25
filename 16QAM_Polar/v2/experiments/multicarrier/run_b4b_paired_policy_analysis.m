@@ -100,6 +100,7 @@ local_plot_policy(fig_dir, Policy, strategies);
 local_plot_tradeoff(fig_dir, S, Pareto, strategies);
 local_write_readme(out_dir, source_result_dir, reference_strategy, ...
     ber_limit, goodput_floor, height(T), height(P), height(Policy));
+local_write_provenance(out_dir,mfilename('fullpath'),{source_csv});
 
 fprintf('B4b paired policy analysis complete: %s\n', out_dir);
 
@@ -329,4 +330,25 @@ function local_write_readme(out_dir, source_dir, reference, ber_limit, ...
     fprintf(fid, 'Signaling: one of six policy indices, requiring ceil(log2(6)) = 3 bits/update.\n\n');
     fprintf(fid, 'LIMITS\nOffline selection on the same formal corpus is descriptive, not held-out proof.\n');
     fprintf(fid, 'Energy is a receive-signal proxy, not RF-DC conversion efficiency.\n');
+end
+
+function local_write_provenance(out_dir,script_path,input_files)
+    snapshot=fullfile(out_dir,'source_snapshot'); mkdir(snapshot);
+    [~,~,script_ext]=fileparts(script_path);
+    if isempty(script_ext), script_path=[script_path '.m']; end
+    files=[{script_path},input_files];
+    fid=fopen(fullfile(out_dir,'sha256_manifest.txt'),'w');
+    assert(fid>=0,'Cannot create provenance manifest.');
+    cleanup=onCleanup(@()fclose(fid)); %#ok<NASGU>
+    for i=1:numel(files)
+        path=files{i}; [~,name,ext]=fileparts(path);
+        copyfile(path,fullfile(snapshot,[name ext]));
+        input=fopen(path,'rb'); assert(input>=0,'Cannot read %s.',path);
+        input_cleanup=onCleanup(@()fclose(input)); %#ok<NASGU>
+        bytes=fread(input,Inf,'*uint8');
+        md=java.security.MessageDigest.getInstance('SHA-256'); md.update(bytes);
+        hex=lower(reshape(dec2hex(typecast(md.digest(),'uint8'),2).',1,[]));
+        fprintf(fid,'%s  %s\n',hex,path);
+        clear input_cleanup;
+    end
 end

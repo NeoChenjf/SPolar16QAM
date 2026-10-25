@@ -1,5 +1,6 @@
-function stream = build_stream_partition_source_mc_ga(N, p, sigma_design, n_samples, seed)
+function stream = build_stream_partition_source_mc_ga(N, p, sigma_design, n_samples, seed, sc_options)
 %BUILD_STREAM_PARTITION_SOURCE_MC_GA Estimate source-polar entropies for S.
+    if nargin < 6, sc_options = struct(); end
     if nargin < 4 || isempty(n_samples), n_samples = 300; end
     if nargin >= 5 && ~isempty(seed)
         caller_rng = rng;
@@ -15,7 +16,7 @@ function stream = build_stream_partition_source_mc_ga(N, p, sigma_design, n_samp
         entropy_acc = zeros(N, 1); known_mask = true(N, 1);
         for is = 1:n_samples
             x = rand(N, 1) < p; u = polar_encoder(double(x));
-            [~, L] = sc_decode_forced_full(source_llr, known_mask, u);
+            [~, L] = sc_decode_forced_full(source_llr, known_mask, u, [], sc_options);
             prob1 = 1 ./ (1 + exp(max(min(L, 700), -700)));
             prob1 = min(max(prob1, eps), 1-eps);
             entropy_acc = entropy_acc - prob1 .* log2(prob1) - (1-prob1) .* log2(1-prob1);

@@ -8,12 +8,13 @@
 % 用途：
 %   生成论文级“统一口径”全局曲线，避免混合旧轻量点和局部复验点。
 
-clear; clc; close all;
+clearvars -except phaseA_overrides; clc; close all;
 
 script_dir = fileparts(mfilename('fullpath'));
-v2_root = fullfile(script_dir, '..', '..');
+v2_root = fileparts(fileparts(script_dir));
 addpath(v2_root);
 setup_paths();
+v2_root_parent=fileparts(v2_root); addpath(fullfile(v2_root_parent,'v3','polar'));
 
 cfg_base = config();
 
@@ -21,6 +22,8 @@ cfg_base = config();
 cfg_local = cfg_base;
 cfg_local.decoder = 'SC';
 cfg_local.snr_mode = 'fixed_esn0';
+cfg_local.partition_mode='source_entropy'; cfg_local.source_samples=200; cfg_local.source_seed=9001;
+cfg_local.sigma_design=10^(-20/20);
 
 code_p_list = [0.5, 0.4, 0.3, 0.2, 0.1];
 code_snr_grid = 1:0.25:3.25;
@@ -34,6 +37,17 @@ full_p_list = [0.5, 0.4, 0.3, 0.2, 0.1];
 full_snr_grid = 8:1:20;
 full_seeds = [42, 43, 44];
 full_num_frames = 300;
+do_fullchain = true;
+if exist('phaseA_overrides','var')
+    if isfield(phaseA_overrides,'skip_fullchain'), do_fullchain=~phaseA_overrides.skip_fullchain; end
+    if isfield(phaseA_overrides,'code_p_list'), code_p_list=phaseA_overrides.code_p_list; end
+    if isfield(phaseA_overrides,'code_snr_grid'), code_snr_grid=phaseA_overrides.code_snr_grid; end
+    if isfield(phaseA_overrides,'code_n_rep'), code_n_rep=phaseA_overrides.code_n_rep; end
+    if isfield(phaseA_overrides,'code_num_frames_min'), code_num_frames_min=phaseA_overrides.code_num_frames_min; end
+    if isfield(phaseA_overrides,'code_num_frames_max'), code_num_frames_max=phaseA_overrides.code_num_frames_max; end
+    if isfield(phaseA_overrides,'code_min_total_bit_errors'), code_min_total_bit_errors=phaseA_overrides.code_min_total_bit_errors; end
+    if isfield(phaseA_overrides,'code_seed_base'), code_seed_base=phaseA_overrides.code_seed_base; end
+end
 
 opts = struct();
 opts.disable_geom = true;
@@ -50,6 +64,7 @@ out_dir = fullfile(cfg_local.output_dir, [datestr(now, 'yyyymmdd_HHMMSS') '_phas
 fig_dir = fullfile(out_dir, 'figures');
 if ~exist(out_dir, 'dir'); mkdir(out_dir); end
 if ~exist(fig_dir, 'dir'); mkdir(fig_dir); end
+local_snapshot_sources(out_dir,script_dir,v2_root);
 
 log_file = fullfile(out_dir, 'run_log.txt');
 diary(log_file);
@@ -72,7 +87,8 @@ nCodeS = numel(code_snr_grid);
 code_ber = nan(code_n_rep, nCodeP, nCodeS);
 code_frames = nan(code_n_rep, nCodeP, nCodeS);
 code_errors = nan(code_n_rep, nCodeP, nCodeS);
-code_theory = local_compute_theory(code_p_list, code_snr_grid, cfg_local, opts);
+[code_theory, code_I_sets, code_partitions] = local_compute_theory( ...
+    code_p_list, code_snr_grid, cfg_local, opts);
 
 fprintf('\n========== CODE-ONLY FINAL GLOBAL ==========\n');
 for rep = 1:code_n_rep
@@ -81,11 +97,15 @@ for rep = 1:code_n_rep
     for ip = 1:nCodeP
         p = code_p_list(ip);
         fprintf('\nCode-only p=%.2f\n', p);
+        cfg_point = cfg_local;
+        cfg_point.source_partition_state = build_source_entropy_partition( ...
+            cfg_point.N, local_p_vec(cfg_point,p), cfg_point.sigma_design, ...
+            cfg_point.source_samples, cfg_point.source_seed);
         for is = 1:nCodeS
             snr_db = code_snr_grid(is);
             local_append_progress(out_dir, sprintf('START code-only rep=%d p=%.2f SNR=%+.2f dB', rep, p, snr_db));
             [code_ber(rep, ip, is), code_frames(rep, ip, is), code_errors(rep, ip, is)] = ...
-                local_sim_sc_point(p, snr_db, cfg_local, aux, code_num_frames_min, ...
+                local_sim_sc_point(p, snr_db, cfg_point, aux, code_num_frames_min, ...
                 code_num_frames_max, code_min_total_bit_errors);
             fprintf('  SNR=%+5.2f dB | BER=%.3e | Theory=%.3e | frames=%d | errors=%d\n', ...
                 snr_db, code_ber(rep, ip, is), code_theory(ip, is), ...
@@ -100,8 +120,11 @@ T_code_rep = local_write_codeonly_repetitions(fullfile(out_dir, 'codeonly_final_
     code_p_list, code_snr_grid, code_ber, code_frames, code_errors, code_theory);
 T_code_summary = local_summarize_codeonly(T_code_rep);
 writetable(T_code_summary, fullfile(out_dir, 'codeonly_final_summary.csv'));
+local_write_theory_partition_indices(out_dir,code_p_list,code_snr_grid,code_I_sets,code_partitions);
 
 %% ===== full-chain final global =====
+T_full_summary = table();
+if do_fullchain
 nFullP = numel(full_p_list);
 nFullS = numel(full_snr_grid);
 nSeeds = numel(full_seeds);
@@ -116,12 +139,19 @@ full_e_theory = nan(nSeeds, nFullP);
 full_e_norm = nan(nSeeds, nFullP);
 
 fprintf('\n========== FULL-CHAIN FINAL GLOBAL ==========\n');
+full_source_partitions = cell(size(full_p_list));
+for ip = 1:numel(full_p_list)
+    full_source_partitions{ip} = build_source_entropy_partition( ...
+        cfg_local.N, local_p_vec(cfg_local,full_p_list(ip)), cfg_local.sigma_design, ...
+        cfg_local.source_samples, cfg_local.source_seed);
+end
 for iseed = 1:nSeeds
     seed = full_seeds(iseed);
     for ip = 1:nFullP
         p = full_p_list(ip);
         cfg_run = cfg_local;
         cfg_run.seed = seed;
+        cfg_run.source_partition_state=full_source_partitions{ip};
         cfg_run.num_frames = full_num_frames;
         cfg_run.p_candidates = full_p_list;
         cfg_run.SNR_dB = full_snr_grid;
@@ -153,21 +183,34 @@ T_full_rep = local_write_fullchain_repetitions(fullfile(out_dir, 'fullchain_fina
     full_frames, full_errors, full_r_total, full_e_theory, full_e_norm);
 T_full_summary = local_summarize_fullchain(T_full_rep);
 writetable(T_full_summary, fullfile(out_dir, 'fullchain_final_summary.csv'));
+end
 
 %% ===== 绘图 =====
 local_plot_codeonly(fig_dir, T_code_summary, code_p_list);
-local_plot_fullchain_ber(fig_dir, T_full_summary, full_p_list);
-local_plot_fullchain_goodput(fig_dir, T_full_summary, full_p_list);
-local_plot_fullchain_energy(fig_dir, T_full_summary, full_p_list);
+if do_fullchain
+    local_plot_fullchain_ber(fig_dir, T_full_summary, full_p_list);
+    local_plot_fullchain_goodput(fig_dir, T_full_summary, full_p_list);
+    local_plot_fullchain_energy(fig_dir, T_full_summary, full_p_list);
+end
 
 save(fullfile(out_dir, 'phaseA_sc_final_global_curves.mat'), ...
     'cfg_local', 'code_p_list', 'code_snr_grid', 'code_n_rep', ...
     'full_p_list', 'full_snr_grid', 'full_seeds', 'full_num_frames', ...
-    'T_code_summary', 'T_full_summary');
+    'T_code_summary', 'T_full_summary','do_fullchain', ...
+    'code_theory','code_I_sets','code_partitions');
 
-local_write_readme(out_dir, code_p_list, code_snr_grid, code_n_rep, ...
-    code_num_frames_min, code_num_frames_max, code_min_total_bit_errors, ...
-    full_p_list, full_snr_grid, full_seeds, full_num_frames);
+if do_fullchain
+    local_write_readme(out_dir, code_p_list, code_snr_grid, code_n_rep, ...
+        code_num_frames_min, code_num_frames_max, code_min_total_bit_errors, ...
+        full_p_list, full_snr_grid, full_seeds, full_num_frames);
+else
+    fid=fopen(fullfile(out_dir,'README.txt'),'w'); c=onCleanup(@()fclose(fid));
+    fprintf(fid,'Phase A code-only global curves; no full-chain simulation in this run.\n');
+    fprintf(fid,'Construction: source conditional entropy selects S; GA ranks I/F in the remainder; per-frame payload-conditioned S precoding.\n');
+    fprintf(fid,'p=%s; SNR=%s; repetitions=%d; min/max frames=%d/%d; min bit errors=%d.\n', ...
+        mat2str(code_p_list),mat2str(code_snr_grid),code_n_rep,code_num_frames_min,code_num_frames_max,code_min_total_bit_errors);
+    fprintf(fid,'Output codeonly_final_repetitions.csv, codeonly_final_summary.csv, source snapshot and figures/final_codeonly_ber_vs_snr.*.\n');
+end
 
 fprintf('\n========== DONE ==========\n');
 fprintf('Saved to: %s\n', out_dir);
@@ -190,12 +233,43 @@ function local_append_progress(out_dir, msg)
     fclose(fid);
 end
 
-function ber_theory = local_compute_theory(p_list, snr_grid, cfg, opts)
+function [ber_theory, I_sets, partitions] = local_compute_theory(p_list, snr_grid, cfg, opts)
     ber_theory = zeros(numel(p_list), numel(snr_grid));
+    I_sets = cell(numel(p_list),numel(snr_grid),4);
+    partitions = cell(numel(p_list),1);
     for ip = 1:numel(p_list)
-        model = estimate_ber_hat_sc_dual(p_list(ip), snr_grid, cfg, opts);
+        cfg.partition_mode='source_entropy'; cfg.source_samples=200; cfg.source_seed=9001; cfg.sigma_design=10^(-20/20);
+        p=p_list(ip); pv=local_p_vec(cfg,p); refv=cfg.p_fixed; refv(isnan(refv))=0.5;
+        opts.partition_state=build_source_entropy_partition(cfg.N,pv,cfg.sigma_design,cfg.source_samples,cfg.source_seed);
+        partitions{ip}=opts.partition_state;
+        opts.reference_partition_state=build_source_entropy_partition(cfg.N,refv,cfg.sigma_design,cfg.source_samples,cfg.source_seed);
+        model = estimate_ber_hat_sc_dual(p, snr_grid, cfg, opts);
         ber_theory(ip, :) = model.BER_hat;
+        for is=1:numel(snr_grid)
+            for b=1:4, I_sets{ip,is,b}=model.I_set_by_snr{is,b}; end
+        end
     end
+end
+
+function local_write_theory_partition_indices(out_dir,p_list,snr_grid,I_sets,partitions)
+    rows=cell(numel(p_list)*numel(snr_grid)*4,8); row=0;
+    for ip=1:numel(p_list)
+        state=partitions{ip};
+        for is=1:numel(snr_grid)
+            for b=1:4
+                row=row+1;
+                rows(row,:)={p_list(ip),snr_grid(is),b,state.K(b),state.S_size(b), ...
+                    mat2str(state.S{b}(:).'),mat2str(I_sets{ip,is,b}(:).'), ...
+                    state.fingerprint{b}};
+            end
+        end
+    end
+    T=cell2table(rows,'VariableNames', ...
+        {'p','snr_dB','bit_stream','K','S_size','S_indices','I_indices','partition_fingerprint'});
+    T.p=cell2mat(rows(:,1)); T.snr_dB=cell2mat(rows(:,2));
+    T.bit_stream=cell2mat(rows(:,3)); T.K=cell2mat(rows(:,4));
+    T.S_size=cell2mat(rows(:,5));
+    writetable(T,fullfile(out_dir,'codeonly_theory_partition_indices.csv'));
 end
 
 function T = local_write_codeonly_repetitions(file_path, p_list, snr_grid, ber_all, frames_all, errors_all, theory)
@@ -457,40 +531,23 @@ end
 function [ber_sim, total_frames, total_errors] = local_sim_sc_point(p, snr_db, cfg, aux, num_frames_min, num_frames_max, min_total_bit_errors)
     N = aux.N;
     sigma = 10^(-snr_db / 20);
-    channels = GA(sigma, N);
-    [~, channels_ordered] = sort(channels, 'descend');
-
     p_vec_cur = cfg.p_fixed;
     p_vec_cur(isnan(p_vec_cur)) = p;
-
-    K_vec = zeros(1, 4);
-    S_vec = zeros(1, 4);
-    SI_set = cell(1, 4);
-    I_set = cell(1, 4);
-    S_set = cell(1, 4);
+    partition = cfg.source_partition_state;
+    K_vec = partition.K;
+    S_vec = partition.S_size;
     frozen_bits_dec = zeros(N, 4);
-    shaped_bits = cell(1, 4);
+    [~,channels_ordered]=sort(GA(sigma,N),'descend');
+    SI_set = cell(1, 4); I_set = cell(1,4); S_set = partition.S; F_set=cell(1,4);
 
     for b = 1:4
-        pb = p_vec_cur(b);
-        if pb > 0 && pb < 1
-            hb = -pb * log2(pb) - (1 - pb) * log2(1 - pb);
-        else
-            hb = 0;
-        end
-        S_vec(b) = ceil(N * (1 - hb));
-        K_vec(b) = ceil((N - S_vec(b)) / 2);
-
-        I_pos = channels_ordered(S_vec(b) + 1 : S_vec(b) + K_vec(b));
-        S_pos = channels_ordered(1 : S_vec(b));
-
-        I_set{b} = sort(I_pos);
-        S_set{b} = sort(S_pos);
-        SI_set{b} = sort(channels_ordered(1 : S_vec(b) + K_vec(b)));
+        remaining=channels_ordered(~ismember(channels_ordered,S_set{b}));
+        I_set{b}=sort(remaining(1:K_vec(b))); I_set{b}=I_set{b}(:);
+        F_set{b}=setdiff((1:N).',[S_set{b};I_set{b}]);
+        SI_set{b} = sort([S_set{b}; I_set{b}]);
 
         frozen_bits_dec(:, b) = ones(N, 1);
         frozen_bits_dec(SI_set{b}, b) = 0;
-        shaped_bits{b} = randi([0, 1], S_vec(b), 1);
     end
 
     bit_err_acc = zeros(4, 1);
@@ -500,11 +557,10 @@ function [ber_sim, total_frames, total_errors] = local_sim_sc_point(p, snr_db, c
         total_frames = total_frames + 1;
         for b = 1:4
             info = randi([0, 1], K_vec(b), 1);
-            u = zeros(N, 1);
-            u(I_set{b}) = info;
-            u(S_set{b}) = shaped_bits{b};
-
-            x = polar_encoder(u);
+            stream = struct('p', p_vec_cur(b), 'S_size', S_vec(b), ...
+                'K', K_vec(b), 'F_size', numel(F_set{b}), ...
+                'I', I_set{b}, 'S', S_set{b}, 'F', F_set{b});
+            [~, x] = shape_stream_sc(info, stream);
             tx = 1 - 2 * x;
             y = tx + sigma * randn(N, 1);
             llr = 2 * y / max(sigma^2, eps);
@@ -531,4 +587,36 @@ function [ber_sim, total_frames, total_errors] = local_sim_sc_point(p, snr_db, c
     end
     ber_sim = sum(K_vec(:) .* ber_per_bit(:)) / max(sum(K_vec), 1);
     total_errors = sum(bit_err_acc);
+end
+
+function pv=local_p_vec(cfg,p)
+    pv=cfg.p_fixed; pv(isnan(pv))=p;
+end
+
+function local_snapshot_sources(out_dir,script_dir,v2_root)
+    v3_root=fullfile(v2_root,'..','v3','polar');
+    files={fullfile(script_dir,'run_phaseA_sc_final_global_curves.m'), ...
+        fullfile(v2_root,'core','sim_shaped_polar_16qam.m'), ...
+        fullfile(v2_root,'core','estimate_ber_hat_sc_dual.m'), ...
+        fullfile(v2_root,'polar','build_source_entropy_partition.m'), ...
+        fullfile(v2_root,'polar','GA.m'),fullfile(v2_root,'polar','SC_decoder.m'), ...
+        fullfile(v2_root,'polar','polar_encoder.m'), ...
+        fullfile(v2_root,'modulation','parallel_to_serial_bits.m'), ...
+        fullfile(v2_root,'modulation','llr_16qam_gray_LSE.m'), ...
+        fullfile(v3_root,'shape_stream_sc.m'), ...
+        fullfile(v3_root,'sc_decode_forced_full.m'), ...
+        fullfile(v3_root,'build_stream_partition_source_mc_ga.m')};
+    folder=fullfile(out_dir,'source_snapshot'); mkdir(folder);
+    fid=fopen(fullfile(out_dir,'sha256_manifest.txt'),'w');
+    if fid<0,error('Cannot create source hash manifest.');end
+    cleanup=onCleanup(@()fclose(fid));
+    for k=1:numel(files)
+        if exist(files{k},'file')~=2,error('Missing source: %s',files{k});end
+        [~,name,ext]=fileparts(files{k}); copyfile(files{k},fullfile(folder,[name ext]));
+        stream=fopen(files{k},'rb'); bytes=fread(stream,Inf,'*uint8'); fclose(stream);
+        md=java.security.MessageDigest.getInstance('SHA-256'); md.update(bytes);
+        digest=typecast(md.digest(),'uint8'); hex=lower(reshape(dec2hex(digest,2)',1,[]));
+        fprintf(fid,'%s  %s\n',hex,files{k});
+    end
+    clear cleanup;
 end

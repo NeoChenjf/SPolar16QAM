@@ -48,3 +48,9 @@ AWGN → 软解调 LLR → SC/SCL 译码 → BER/BLER/MI 统计。这是整个�
 
 ## Health
 healthy — 主仿真核心；注意 legacy LLR 口径开关默认关闭。
+
+## 2026-10-09 构造模式契约追加
+
+当`cfg.partition_mode='source_entropy'`时，输入`cfg.source_partition_state`提供固定S、K及源熵构造元数据；函数使用每个SNR对应的GA排序，从S以外选择I/F，并把当前SNR集合记录到`result.partition.I_by_snr/F_by_snr`。每帧`shape_stream_sc`使用当帧payload和F=0产生S，编码、译码统计都使用同一SNR下I。默认旧模式保持兼容。
+
+适用边界：source entropy selector的有限样本估计和全零F约束是构造定义的一部分；默认SC接收度量未增加非均匀先验，本函数不证明PMF渐近精确，也不代表等功率或RF–DC结果。

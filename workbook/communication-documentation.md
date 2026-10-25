@@ -61,3 +61,21 @@ When removing or replacing a research figure, audit the surrounding paragraphs, 
 - **2026-05-20**: Added rule reflection result to weekly report entries.
 - **2026-05-20**: Simplified communication and reporting rules.
 - **2026-02-25**: v2.0 modular workbook created.
+
+
+## Append-only文档维护规则（2026-10-09）
+
+- `学习文档/` 下已有Markdown一律只在文件末尾追加；禁止删除、替换、重排已有文字或原位勾选。修正采用有日期的补充章节，指出被更新的旧结论及新证据。
+- 新建Markdown作为首版写入；其后也只追加。
+- 每轮任务状态以文件末尾最新的完整清单快照为准，快照保留固定编号、未完成项和证据链接；旧快照不可改写。
+- 历史数据和图片不覆盖。新版本另存时间戳目录，再追加索引。
+- 源码不受此规则限制；代码修改仍须保留历史结果的可复现性。
+
+## Append-only scope clarification (2026-10-09)
+
+This clause supersedes the narrower `学习文档/` scope above: append-only applies to every repository Markdown document, including `AGENTS.md`, learning documents, weekly reports, stage documents, project plans, workbook rules, and L1/L2/L3 contracts. Existing text is not edited in place. Corrections and status changes are dated appendices; checklists use new complete snapshots. Code and generated non-Markdown data remain governed by their own reproducibility rules.
+
+
+## 2026-10-10 历史快照与当前勾选阅读入口
+
+append-only任务台账保留历史快照。交付时同时提供明确的当前阅读入口，注明快照日期和生效范围；可勾选的状态应使用独立`- [ ]`/`- [x]`任务列表，表格状态写“已交付/待验证”等文字。区分“交付完成”“科学证据支持”“硬件就绪”，不能用交付勾选替代研究假设通过。

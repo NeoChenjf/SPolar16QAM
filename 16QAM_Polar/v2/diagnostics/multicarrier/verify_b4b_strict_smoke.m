@@ -90,6 +90,8 @@ function report = verify_b4b_strict_smoke(result_dir)
     end
 
     energy_only = strcmp(T.strategy, 'bad_channel_energy_only');
+    assert(all(T.payload_ones_low(energy_only) == 0), ...
+        'Pure-energy low group must use an all-zero payload in every repetition.');
     assert(all(abs(T.info_subcarrier_fraction(energy_only) - 43/64) < 1e-12), ...
         'Energy-only information-subcarrier fraction mismatch.');
     assert(all(abs(T.info_subcarrier_fraction(~energy_only) - 1) < 1e-12), ...
@@ -140,8 +142,8 @@ function report = verify_b4b_strict_smoke(result_dir)
     fprintf(fid, 'Checks: unique keys, channel table/groups, finite/range metrics, ');
     fprintf(fid, 'rate identity, Goodput identity, padding identity, ');
     if has_run_mode
-        fprintf(fid, 'information fractions, figures, BER log axis.\n');
+    fprintf(fid, 'pure-energy payload semantics, information fractions, figures, BER log axis.\n');
     else
-        fprintf(fid, 'information fractions, figures, legacy-figure compatibility.\n');
+        fprintf(fid, 'pure-energy payload semantics, information fractions, figures, legacy-figure compatibility.\n');
     end
 end

@@ -51,3 +51,10 @@ Always read:
 - **2026-05-20**: Added rule reflection hook to workbook index.
 - **2026-05-20**: Simplified workbook index and clarified file responsibilities.
 - **2026-02-25**: v2.0 modular workbook created.
+
+
+## 2026-10-10 当前环境与研究入口补充
+
+当前Windows工作区使用MATLAB R2020b及`scripts/run_matlab_local.ps1`；本文件早期Octave/Mac说明保留为历史环境记录。研究扫描以`.agents/skills/research-scan-orchestrator/scripts/rks_evaluate.py`的当前实现和`workbook/knowledge/meta/research-scope.json`为入口。RKS是结构审计，不是研究结论验证。固定16QAM为主线，多QAM仅用于外推能力支撑验证。
+
+Revision metadata: revision_id=workbook_environment_entry_20261010; current_status=current; supersedes=[baseline].

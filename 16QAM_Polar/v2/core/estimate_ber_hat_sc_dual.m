@@ -93,6 +93,15 @@ function model = estimate_ber_hat_sc_dual(p, snr_dB, cfg, opts)
 
     [S_vec, K_vec] = local_get_SK(N, p_vec);
     [S_ref_vec, K_ref_vec] = local_get_SK(N, p_ref_vec);
+    use_partition = isfield(opts,'partition_state') && isfield(opts,'reference_partition_state');
+    if use_partition
+        assert(opts.partition_state.N==N && opts.reference_partition_state.N==N);
+        assert(max(abs(opts.partition_state.p_vec-p_vec))<1e-12 && ...
+            max(abs(opts.reference_partition_state.p_vec-p_ref_vec))<1e-12, ...
+            'Partition probabilities must match the modeled and reference sources.');
+        K_vec=opts.partition_state.K; S_vec=opts.partition_state.S_size;
+        K_ref_vec=opts.reference_partition_state.K; S_ref_vec=opts.reference_partition_state.S_size;
+    end
 
     BER_hat_per_bit = zeros(4, nSNR);
     A_rel_loss = ones(4, nSNR);
@@ -101,6 +110,8 @@ function model = estimate_ber_hat_sc_dual(p, snr_dB, cfg, opts)
     B_geom_q_gamma = nan(1, nSNR);
     B_geom_pe_abs = zeros(1, nSNR);
     B_geom_pe_abs_per_bit = zeros(4, nSNR);
+    I_sets_by_snr = cell(nSNR, 4);
+    I_ref_sets_by_snr = cell(nSNR, 4);
 
     [prob_inner, prob_middle, prob_outer] = local_radius_probabilities(p);
 
@@ -131,8 +142,15 @@ function model = estimate_ber_hat_sc_dual(p, snr_dB, cfg, opts)
         code_high_weight = 1 + opts.code_high_eta / (1 + exp(-(snr_dB(iSNR) - opts.code_high_mid_db) / max(opts.code_high_slope_db, 1e-6)));
 
         for b = 1:4
-            I_set = local_get_I_set(order_desc, S_vec(b), K_vec(b));
-            I_ref_set = local_get_I_set(order_desc, S_ref_vec(b), K_ref_vec(b));
+            if use_partition
+                I_set=local_get_I_excluding_S(order_desc,opts.partition_state.S{b},K_vec(b));
+                I_ref_set=local_get_I_excluding_S(order_desc,opts.reference_partition_state.S{b},K_ref_vec(b));
+            else
+                I_set = local_get_I_set(order_desc, S_vec(b), K_vec(b));
+                I_ref_set = local_get_I_set(order_desc, S_ref_vec(b), K_ref_vec(b));
+            end
+            I_sets_by_snr{iSNR,b} = I_set;
+            I_ref_sets_by_snr{iSNR,b} = I_ref_set;
 
             geom_ratio_b = 1 + geom_mask(b) * (geom_ratio - 1);
             B_geom_ratio_per_bit(b, iSNR) = geom_ratio_b;
@@ -189,6 +207,8 @@ function model = estimate_ber_hat_sc_dual(p, snr_dB, cfg, opts)
     model.radius_prob = struct('inner', prob_inner, 'middle', prob_middle, 'outer', prob_outer);
     model.geom_mask = geom_mask;
     model.opts = opts;
+    model.I_set_by_snr = I_sets_by_snr;
+    model.reference_I_set_by_snr = I_ref_sets_by_snr;
 end
 
 
@@ -210,6 +230,12 @@ end
 
 function I_set = local_get_I_set(order_desc, S_size, K_size)
     idx = order_desc(S_size + 1 : S_size + K_size);
+    I_set = sort(idx, 'ascend');
+end
+
+function I_set = local_get_I_excluding_S(order_desc, S_indices, K_size)
+    remaining = order_desc(~ismember(order_desc, S_indices(:)));
+    idx = remaining(1:K_size);
     I_set = sort(idx, 'ascend');
 end
 

@@ -1,12 +1,13 @@
-function LLR = llr_16qam_gray_LSE(y, sigma)
+function LLR = llr_16qam_gray_LSE(y, sigma, amplitude_scale)
 %LLR_16QAM_GRAY_LSE  Exact MAP (LSE) bit-wise LLR for MATLAB Gray 16QAM
 %
-%   LLR = llr_16qam_gray_LSE(y, sigma)
+%   LLR = llr_16qam_gray_LSE(y, sigma, amplitude_scale)
 %
 %   INPUT:
 %     y     : received complex symbols (vector)
 %     sigma : noise std per real dimension (I/Q), i.e.,
 %             nI,nQ ~ N(0, sigma^2). May be scalar or one value per symbol.
+%     amplitude_scale : positive TX constellation scale (default 1).
 %
 %   OUTPUT:
 %     LLR   : column vector of bit LLRs, length = 4*length(y)
@@ -18,6 +19,9 @@ function LLR = llr_16qam_gray_LSE(y, sigma)
 %       qammod(bits,16,'gray','InputType','bit','UnitAveragePower',true)
 
     y = y(:);
+    if nargin < 3 || isempty(amplitude_scale), amplitude_scale = 1; end
+    validateattributes(amplitude_scale, {'numeric'}, ...
+        {'scalar','real','finite','positive'});
     Ns = length(y);
     sigma = sigma(:);
     if isscalar(sigma)
@@ -51,7 +55,7 @@ function LLR = llr_16qam_gray_LSE(y, sigma)
     for k = 1:Ns
         % distance metrics to all 16 constellation points
         denom = 2*sigma(k)^2;
-        d = abs(y(k) - const).^2 / denom;   % 16x1
+        d = abs(y(k) - amplitude_scale .* const).^2 / denom;   % 16x1
 
         % bit-wise LLR: log P(b=0|y)/P(b=1|y)
         for b = 1:4

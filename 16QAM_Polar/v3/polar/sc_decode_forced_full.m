@@ -1,6 +1,8 @@
-function [u_hat, decision_llr] = sc_decode_forced_full(llr, known_mask, known_bits, prior_llr)
+function [u_hat, decision_llr] = sc_decode_forced_full(llr, known_mask, known_bits, prior_llr, options)
 %SC_DECODE_FORCED_FULL SC decoder with arbitrary known u positions.
 % Used by v3 shaping: I/F are forced at the precoder, F only at receiver.
+% Optional options.exact uses sum-product; options.uniforms samples unknown bits.
+% Defaults retain min-sum hard decisions. Sampling needs finite source LLRs.
 
     llr = llr(:); known_mask = logical(known_mask(:)); known_bits = known_bits(:);
     N = numel(llr);
@@ -17,6 +19,15 @@ function [u_hat, decision_llr] = sc_decode_forced_full(llr, known_mask, known_bi
     prior_llr = prior_llr(:);
     if numel(prior_llr) ~= N, error('v3:PriorShape', 'prior_llr must have length N.'); end
 
+    if nargin < 5, options = struct(); end
+    exact = isfield(options, 'exact') && options.exact;
+    sample = isfield(options, 'uniforms');
+    if sample
+        uniforms = options.uniforms(:);
+        validateattributes(uniforms, {'numeric'}, {'real','finite','>=',0,'<',1,'numel',N});
+        if ~exact, error('v3:SamplingMetric', 'Sampling requires exact source LLRs.'); end
+    end
+
     n = round(log2(N));
     lambda_offset = 2.^(0:n);
     llr_layer_vec = get_llr_layer(N);
@@ -27,14 +38,12 @@ function [u_hat, decision_llr] = sc_decode_forced_full(llr, known_mask, known_bi
             case 0
                 index_1 = lambda_offset(n);
                 for beta = 0:(index_1 - 1)
-                    P(beta + index_1) = sign(llr(beta + 1)) * sign(llr(beta + 1 + index_1)) * ...
-                        min(abs(llr(beta + 1)), abs(llr(beta + 1 + index_1)));
+                    P(beta + index_1) = local_f(llr(beta + 1), llr(beta + 1 + index_1), exact);
                 end
                 for i_layer = (n - 2):-1:0
                     index_1 = lambda_offset(i_layer + 1); index_2 = lambda_offset(i_layer + 2);
                     for beta = index_1:(index_2 - 1)
-                        P(beta) = sign(P(beta + index_1)) * sign(P(beta + index_2)) * ...
-                            min(abs(P(beta + index_1)), abs(P(beta + index_2)));
+                        P(beta) = local_f(P(beta + index_1), P(beta + index_2), exact);
                     end
                 end
             case N / 2
@@ -45,8 +54,7 @@ function [u_hat, decision_llr] = sc_decode_forced_full(llr, known_mask, known_bi
                 for i_layer = (n - 2):-1:0
                     index_1 = lambda_offset(i_layer + 1); index_2 = lambda_offset(i_layer + 2);
                     for beta = index_1:(index_2 - 1)
-                        P(beta) = sign(P(beta + index_1)) * sign(P(beta + index_2)) * ...
-                            min(abs(P(beta + index_1)), abs(P(beta + index_2)));
+                        P(beta) = local_f(P(beta + index_1), P(beta + index_2), exact);
                     end
                 end
             otherwise
@@ -58,8 +66,7 @@ function [u_hat, decision_llr] = sc_decode_forced_full(llr, known_mask, known_bi
                 for i_layer = (llr_layer - 1):-1:0
                     index_1 = lambda_offset(i_layer + 1); index_2 = lambda_offset(i_layer + 2);
                     for beta = index_1:(index_2 - 1)
-                        P(beta) = sign(P(beta + index_1)) * sign(P(beta + index_2)) * ...
-                            min(abs(P(beta + index_1)), abs(P(beta + index_2)));
+                        P(beta) = local_f(P(beta + index_1), P(beta + index_2), exact);
                     end
                 end
         end
@@ -67,6 +74,9 @@ function [u_hat, decision_llr] = sc_decode_forced_full(llr, known_mask, known_bi
         decision_llr(phi + 1) = P(1) + prior_llr(phi + 1);
         if known_mask(phi + 1)
             decision = known_bits(phi + 1);
+        elseif sample
+            decision = uniforms(phi + 1) < exp(-max(decision_llr(phi + 1), 0)) / ...
+                (1 + exp(-abs(decision_llr(phi + 1))));
         else
             decision = decision_llr(phi + 1) < 0;
         end
@@ -87,5 +97,12 @@ function [u_hat, decision_llr] = sc_decode_forced_full(llr, known_mask, known_bi
                 C(beta + index_2, 1) = C(beta, 2);
             end
         end
+    end
+end
+
+function value = local_f(a, b, exact)
+    value = sign(a) * sign(b) * min(abs(a), abs(b));
+    if exact
+        value = value + log1p(exp(-abs(a + b))) - log1p(exp(-abs(a - b)));
     end
 end
