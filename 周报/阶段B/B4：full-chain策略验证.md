@@ -1487,3 +1487,7 @@ verify_a0_saved复核120实际帧/360组计数通过，Goodput表生成；模板
 拟同步本会话代码/契约/loop/阶段与规则，目标origin git@github.com:NeoChenjf/SPolar16QAM.git 的master；此前自动审批拒绝背景仍保留，需要具体目标/payload授权后推送。提交前验证结果及最终SHA以本轮回复为准，不为提交记录再造提交。Rule reflection: added/updated AGENTS.md and workbook/communication-documentation.md because 用户明确要求交接提示词默认支持阶段级连续自主执行。
 
 收尾验证补充：远端master只读核对为2ac332c，与本地提交前HEAD一致。暂存审查49个本会话路径；凭据模式未命中（非完整安全审计）。5个新MATLAB诊断入口仅去除文件末尾冗余空行以通过diff检查，运行逻辑未改，历史source快照保持。未重新跑实验。
+
+
+## 2026-11-10 收尾推送批准与Skill授权语义更新
+用户明确批准ef51ac7推送至git@github.com:NeoChenjf/SPolar16QAM.git的master，并要求今后显式调用session-closeout默认提交/推送当前项目。使用skill-creator更新全局Skill的描述、授权/目标解析流程和openai.yaml，quick_validate通过；自动选择Skill不凭空扩大授权，用户不推送限制及平台审批边界保留。全局Skill位于用户目录，不包含在项目Git中。追加AGENTS规则与本条记录为本次新请求的独立改动。远端推前为2ac332c，正常非强制同步本会话诊断/契约/报告/交接/规则及本条更新，不含ignored实验数据；最终同步SHA以回复与Git状态为准。Rule reflection: added/updated AGENTS.md because 用户明确设置session-closeout默认同步偏好。
