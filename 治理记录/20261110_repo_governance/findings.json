@@ -1,0 +1,1408 @@
+{
+  "totals": {
+    "16QAM_Polar": [
+      20052,
+      8694423705
+    ],
+    "中期相关": [
+      18,
+      429881963
+    ],
+    "开题相关": [
+      9,
+      279367626
+    ],
+    "参考文献Polar": [
+      23,
+      116699725
+    ],
+    "治理记录": [
+      198,
+      85386590
+    ],
+    "研究生参考文献": [
+      8,
+      12852083
+    ],
+    "参考文献2026": [
+      18,
+      4833251
+    ],
+    "周报": [
+      51,
+      3285914
+    ],
+    "学习文档": [
+      97,
+      2765061
+    ],
+    "workbook": [
+      258,
+      749883
+    ],
+    "scripts": [
+      17,
+      88895
+    ],
+    ".claude": [
+      11,
+      32852
+    ],
+    "next_plan.md": [
+      1,
+      29093
+    ],
+    "项目整体计划书.md": [
+      1,
+      24427
+    ],
+    "AGENTS.md": [
+      1,
+      24331
+    ],
+    "仓库整理报告-2026-10-28.md": [
+      1,
+      5991
+    ],
+    "README.md": [
+      1,
+      2689
+    ],
+    ".vscode": [
+      3,
+      1585
+    ],
+    ".gitignore": [
+      1,
+      707
+    ],
+    ".codex": [
+      1,
+      0
+    ]
+  },
+  "result_batches": {
+    "20261109_115203_p2_grid_study": [
+      5158,
+      5283548564
+    ],
+    "20261107_111152_p2_v2_strategy_batch_pilot_strategy_training_f0197d58": [
+      668,
+      648860727
+    ],
+    "20261107_114837_p2_v2_strategy_batch_pilot_strategy_test_aa2b0752": [
+      641,
+      616571525
+    ],
+    "20261107_104154_p2_v2_batch_pilot_test_seen_033e7056": [
+      289,
+      218696765
+    ],
+    "20261107_105616_p2_v2_batch_pilot_test_unseen_92681c0c": [
+      282,
+      215740845
+    ],
+    "20261025_014304_p2_formal_power_calibration_b1274c41": [
+      221,
+      113736193
+    ],
+    "20261025_023419_p2_formal_power_validation_e076d21b": [
+      221,
+      113733722
+    ],
+    "20261025_011837_p2_formal_power_calibration_0d8ec80b": [
+      221,
+      113733378
+    ],
+    "20261025_020727_p2_formal_power_calibration_efa2f683": [
+      221,
+      113733358
+    ],
+    "20261025_031555_p2_formal_power_validation_bcb56c0f": [
+      221,
+      113731068
+    ],
+    "20261025_025539_p2_formal_power_validation_7ab6a2be": [
+      221,
+      113730321
+    ],
+    "20261107_103450_p2_v2_batch_pilot_model_calibration_8641bc0e": [
+      187,
+      109441982
+    ],
+    "20261107_102740_p2_v2_batch_pilot_power_calibration_7bdade56": [
+      149,
+      83411512
+    ],
+    "20261024_232527_p2_pilot_pilot": [
+      93,
+      36852795
+    ],
+    "20261106_170258_p2_common_env_pilot_strategy_test_7d9fec20": [
+      116,
+      34589578
+    ],
+    "20261106_170217_p2_common_env_pilot_strategy_training_b657112d": [
+      118,
+      34567961
+    ],
+    "20261024_234024_p2_pilot_model_calibration_0290b3e2": [
+      99,
+      32263721
+    ],
+    "20261107_122246_p2_v2_strategy_batch_pilot_strategy_test_54e20150": [
+      128,
+      31763353
+    ],
+    "20261009_183509_16qam_energy_tradeoff_formal": [
+      262,
+      24342677
+    ],
+    "20260915_122326_16qam_energy_tradeoff_formal": [
+      256,
+      23393505
+    ],
+    "20261106_170923_p2_common_env_pilot_strategy_training_b54a9de1": [
+      99,
+      22714384
+    ],
+    "20261106_213309_p2_common_env_pilot_model_calibration_5afe6200": [
+      113,
+      21101035
+    ],
+    "20261024_232507_p2_auxiliary_preflight": [
+      121,
+      20082234
+    ],
+    "20261109_115937_prediction_validation_independent": [
+      402,
+      19965164
+    ],
+    "20261106_171343_p2_common_env_pilot_model_calibration_4347fed4": [
+      89,
+      18814972
+    ],
+    "20261106_205937_p2_common_env_pilot_strategy_training_bd1fe191": [
+      105,
+      18811515
+    ],
+    "20261106_171512_p2_common_env_pilot_test_seen_4a3a8174": [
+      87,
+      18754209
+    ],
+    "202604结果.zip": [
+      1,
+      17529619
+    ],
+    "20261106_205927_p2_common_env_pilot_strategy_training_7cbb58bc": [
+      105,
+      17487236
+    ],
+    "20261024_222234_p2_pilot_pilot": [
+      66,
+      17370011
+    ],
+    "20261009_193506_b4b_partition_snapshot_supplement": [
+      14,
+      14714751
+    ],
+    "20261010_220626_b4_equal_power_p1": [
+      221,
+      12135223
+    ],
+    "20261024_221322_p2_pilot_pilot": [
+      64,
+      9101012
+    ],
+    "20261024_220555_p2_pilot_pilot": [
+      61,
+      9088077
+    ],
+    "20261024_222842_p2_pilot_pilot": [
+      55,
+      8250594
+    ],
+    "202603结果.zip": [
+      1,
+      7946899
+    ],
+    "20261106_172200_p2_common_env_pilot_strategy_training_d315f961": [
+      75,
+      7728263
+    ],
+    "20261106_165829_p2_common_env_pilot_model_calibration_37402adf": [
+      73,
+      7693103
+    ],
+    "20261106_165900_p2_common_env_pilot_test_seen_2345a5ce": [
+      72,
+      7679825
+    ],
+    "20261024_232600_p2_pilot_pmf": [
+      59,
+      7400280
+    ],
+    "20261024_232618_p2_pilot_pmf": [
+      59,
+      7400212
+    ],
+    "20261024_232635_p2_pilot_pmf": [
+      59,
+      7399994
+    ],
+    "20261024_232507_p2_pilot_power_calibration": [
+      59,
+      7182064
+    ],
+    "20261024_232517_p2_pilot_power_calibration": [
+      59,
+      7182013
+    ],
+    "20261106_210209_p2_common_env_pilot_model_calibration_c207b50f": [
+      86,
+      6726053
+    ],
+    "20261106_165340_p2_common_env_pilot_model_calibration_7557f295": [
+      71,
+      6553544
+    ],
+    "20261106_165514_p2_common_env_pilot_test_seen_89d0251b": [
+      70,
+      6540624
+    ],
+    "20261106_171304_p2_common_env_pilot_model_calibration_d3f24d14": [
+      68,
+      6430945
+    ],
+    "20261106_213856_p2_future_diagnostic_smoke_model_calibration_a94fd1d8": [
+      96,
+      6398626
+    ],
+    "20261106_210202_p2_common_env_pilot_model_calibration_fb3313d0": [
+      86,
+      6350045
+    ],
+    "20260603_000515_subcarrier_strategy_compare": [
+      11,
+      6136525
+    ],
+    "20260602_235630_subcarrier_strategy_compare": [
+      11,
+      6135396
+    ],
+    "20260526_182757_subcarrier_strategy_compare": [
+      11,
+      6129107
+    ],
+    "20260614_210559_subcarrier_strategy_compare": [
+      11,
+      6108952
+    ],
+    "20260614_212900_subcarrier_strategy_compare": [
+      11,
+      6086510
+    ],
+    "20260614_211040_subcarrier_strategy_compare": [
+      11,
+      6084755
+    ],
+    "20260614_211439_subcarrier_strategy_compare": [
+      11,
+      6084283
+    ],
+    "20261009_175723_16qam_energy_tradeoff_formal": [
+      140,
+      5663126
+    ],
+    "20261024_222227_p2_pilot_power_calibration": [
+      53,
+      4800139
+    ],
+    "20261024_222219_p2_pilot_power_calibration": [
+      53,
+      4800122
+    ],
+    "20260524_162953_ofdm_visual_check": [
+      21,
+      4532050
+    ],
+    "20260524_163654_ofdm_visual_check": [
+      21,
+      4492292
+    ],
+    "20260524_163538_ofdm_visual_check": [
+      21,
+      4492198
+    ],
+    "20261106_171339_p2_common_env_pilot_power_calibration_edf2d1ba": [
+      69,
+      4388187
+    ],
+    "20261106_171300_p2_common_env_pilot_power_calibration_073a6b9e": [
+      69,
+      4388021
+    ],
+    "20261024_221259_p2_pilot_power_calibration": [
+      51,
+      4291384
+    ],
+    "20261024_221312_p2_pilot_power_calibration": [
+      51,
+      4291380
+    ],
+    "20261024_220537_p2_pilot_power_calibration": [
+      48,
+      4279175
+    ],
+    "20261024_220547_p2_pilot_power_calibration": [
+      48,
+      4279167
+    ],
+    "20260524_162511_ofdm_visual_check": [
+      21,
+      4097808
+    ],
+    "20261024_222219_p2_preflight": [
+      56,
+      3249312
+    ],
+    "20261024_221258_p2_preflight": [
+      57,
+      3229714
+    ],
+    "20260524_161926_ofdm_visual_check": [
+      18,
+      3163565
+    ],
+    "20261010_220806_b4_equal_power_p1_formal": [
+      36,
+      2594829
+    ],
+    "20261106_164823_p2_common_env_smoke_model_calibration_8409de82": [
+      62,
+      2252961
+    ],
+    "20261024_222311_p2_pilot_singlecarrier": [
+      49,
+      2224243
+    ],
+    "20261106_164801_p2_common_env_smoke_pilot_96e034a9": [
+      62,
+      2147849
+    ],
+    "20261009_223251_b4_source_entropy_guardband2042": [
+      34,
+      2020817
+    ],
+    "20261009_203109_b4_source_entropy_formal": [
+      34,
+      2015139
+    ],
+    "20261009_211124_b4_source_entropy_holdout1042": [
+      34,
+      2011656
+    ],
+    "20261024_221045_p2_pilot_reanalysis": [
+      25,
+      1955813
+    ],
+    "20261106_165035_p2_common_env_pilot_pmf_a2ef0652": [
+      63,
+      1863291
+    ],
+    "20260917_210504_b4_strict_ofdm_rayleigh_formal": [
+      21,
+      1809835
+    ],
+    "20261009_210714_b4b_source_entropy_training_policy_analysis": [
+      22,
+      1734225
+    ],
+    "20261106_163215_p2_common_env_smoke_power_calibration_b44be893": [
+      68,
+      1694759
+    ],
+    "20261109_115406_prediction_validation_smoke": [
+      25,
+      1674982
+    ],
+    "20261106_163219_p2_common_env_smoke_test_unseen_7d4b898a": [
+      64,
+      1649945
+    ],
+    "20261009_180433_b4b_source_partition_holdout_audit": [
+      15,
+      1645047
+    ],
+    "20261106_164821_p2_common_env_smoke_power_calibration_9cf35b52": [
+      63,
+      1587045
+    ],
+    "20261107_122435_p2_v2_strategy_batch_pilot_strategy_test_97917028": [
+      102,
+      1526392
+    ],
+    "20261010_220640_p1_equal_power_pilot_seed42": [
+      35,
+      1449448
+    ],
+    "20261009_210617_b4b_source_entropy_training_policy_analysis": [
+      20,
+      1441405
+    ],
+    "20261009_210511_b4b_source_entropy_training_policy_analysis": [
+      20,
+      1441370
+    ],
+    "20260929_192407_b4b_paired_policy_analysis": [
+      19,
+      1436819
+    ],
+    "20260929_192740_b4b_paired_policy_analysis": [
+      19,
+      1435461
+    ],
+    "20260917_215938_b4b_paired_policy_analysis": [
+      20,
+      1423105
+    ],
+    "20260524_171245_rayleigh_subcarrier_profile": [
+      17,
+      1416800
+    ],
+    "20261009_183402_16qam_energy_tradeoff_smoke": [
+      112,
+      1408087
+    ],
+    "20260917_215732_b4b_paired_policy_analysis": [
+      20,
+      1374746
+    ],
+    "20261010_215709_p1_equal_power_pilot_seed42": [
+      35,
+      1299146
+    ],
+    "20261024_221416_p2_pilot_singlecarrier": [
+      48,
+      1256440
+    ],
+    "20261009_175608_16qam_energy_tradeoff_smoke": [
+      108,
+      1214319
+    ],
+    "20260521_150555_phaseA_sc_final_global_curves": [
+      22,
+      1195435
+    ],
+    "20260521_145529_phaseA_sc_summary_figures": [
+      16,
+      1179656
+    ],
+    "20261010_212320_p1_equal_power_smoke_final": [
+      35,
+      1176776
+    ],
+    "20261010_205714_p1_equal_power_smoke": [
+      35,
+      1175856
+    ],
+    "20260523_175018_phaseA_sc_mechanism_figures": [
+      26,
+      1164628
+    ],
+    "20260523_151621_phaseA_sc_mechanism_figures": [
+      26,
+      1114685
+    ],
+    "20261009_202719_b4_source_entropy_strict_pilot": [
+      35,
+      1070672
+    ],
+    "20261009_202222_phaseA_codeonly_gap_analysis": [
+      13,
+      1067670
+    ],
+    "20261009_202051_phaseA_codeonly_gap_analysis": [
+      13,
+      1066352
+    ],
+    "20261009_202540_phaseA_codeonly_gap_analysis": [
+      13,
+      1058158
+    ],
+    "20261109_114304_prediction_redesign_development": [
+      10,
+      1044170
+    ],
+    "20261009_193607_phaseA_sc_final_global_curves": [
+      24,
+      1036420
+    ],
+    "20260917_221105_b4b_fixed_policy_holdout": [
+      21,
+      1028094
+    ],
+    "20260917_223848_b4b_guardband_policy_test": [
+      21,
+      1021108
+    ],
+    "20261109_115118_prediction_candidate_frozen": [
+      11,
+      968572
+    ],
+    "20261010_214202_p1_power_validation_a2_7113": [
+      35,
+      966321
+    ],
+    "20261010_213130_p1_power_validation_a1_7103": [
+      35,
+      966318
+    ],
+    "20261010_213918_p1_power_validation_a2_7111": [
+      35,
+      966315
+    ],
+    "20261010_213004_p1_power_validation_a1_7102": [
+      35,
+      966274
+    ],
+    "20261010_214040_p1_power_validation_a2_7112": [
+      35,
+      966270
+    ],
+    "20261010_215432_p1_power_validation_a3_7122": [
+      35,
+      966254
+    ],
+    "20261010_212832_p1_power_validation_a1_7101": [
+      35,
+      966246
+    ],
+    "20261010_215309_p1_power_validation_a3_7121": [
+      35,
+      966239
+    ],
+    "20261010_215553_p1_power_validation_a3_7123": [
+      35,
+      966226
+    ],
+    "20261010_215002_p1_cal46_7003": [
+      35,
+      965265
+    ],
+    "20261010_214323_p1_cal46_7001": [
+      35,
+      965256
+    ],
+    "20261010_214647_p1_cal46_7002": [
+      35,
+      965229
+    ],
+    "20261010_213713_p1_cal24_7003": [
+      35,
+      965143
+    ],
+    "20261010_213257_p1_cal24_7001": [
+      35,
+      965140
+    ],
+    "20261010_213507_p1_cal24_7002": [
+      35,
+      965105
+    ],
+    "20261010_212705_p1_cal12_7003": [
+      35,
+      964704
+    ],
+    "20261010_212424_p1_cal12_7001": [
+      35,
+      964575
+    ],
+    "20261010_212546_p1_cal12_7002": [
+      35,
+      964495
+    ],
+    "20261009_202550_b4_source_entropy_strict_smoke": [
+      33,
+      957157
+    ],
+    "20261025_231547_learning_documents_reorganization": [
+      64,
+      941202
+    ],
+    "20260917_194212_b4_strict_ofdm_rayleigh_pilot": [
+      20,
+      914199
+    ],
+    "20260917_194419_b4_strict_ofdm_rayleigh_pilot": [
+      20,
+      911690
+    ],
+    "20261010_220508_p1_corrected_noise_nonunit_smoke": [
+      35,
+      908271
+    ],
+    "20260917_205407_b4_strict_ofdm_rayleigh_smoke": [
+      20,
+      907462
+    ],
+    "20260917_194823_b4_strict_ofdm_rayleigh_pilot": [
+      20,
+      902933
+    ],
+    "20261009_174813_source_entropy_smoke": [
+      19,
+      902281
+    ],
+    "20261010_211238_p1_cal80_7001": [
+      35,
+      897674
+    ],
+    "20260917_112216_b4_strict_ofdm_rayleigh_smoke": [
+      20,
+      891025
+    ],
+    "20261010_211400_p1_cal80_7002": [
+      35,
+      888856
+    ],
+    "20261010_211710_p1_power_validation_a1_7101": [
+      35,
+      886662
+    ],
+    "20261010_211523_p1_cal80_7003": [
+      35,
+      886596
+    ],
+    "20261010_211834_p1_power_validation_a1_7102": [
+      35,
+      879200
+    ],
+    "20260917_111849_b4_strict_ofdm_rayleigh_smoke": [
+      19,
+      878595
+    ],
+    "20260917_205527_b4_strict_ofdm_rayleigh_pilot_high_snr_formal_ready": [
+      20,
+      837460
+    ],
+    "20260917_194950_b4_strict_ofdm_rayleigh_pilot_high_snr": [
+      20,
+      836938
+    ],
+    "20261009_180551_b4b_shaping_audit_blocklength_N1024_source_MC_GA": [
+      22,
+      835294
+    ],
+    "20260523_151000_phaseA_sc_mechanism_figures": [
+      18,
+      827067
+    ],
+    "20261009_202433_phaseA_codeonly_gap_analysis": [
+      7,
+      807036
+    ],
+    "20261009_180522_b4b_shaping_audit_blocklength_N256_source_MC_GA": [
+      22,
+      772794
+    ],
+    "20261109_115315_prediction_validation_smoke": [
+      2,
+      763052
+    ],
+    "20260826_105509_singlecarrier_sc_closure": [
+      17,
+      761149
+    ],
+    "20260520_231445_singlecarrier_sc_closure": [
+      17,
+      761065
+    ],
+    "20261109_114849_prediction_group_loss_development": [
+      7,
+      742603
+    ],
+    "20261106_220751_p2_future_diagnostic_smoke_power_calibration_89cf8e9e": [
+      94,
+      727469
+    ],
+    "20261106_220749_p2_future_diagnostic_smoke_pilot_c147dd0b": [
+      94,
+      727420
+    ],
+    "20261106_220344_p2_future_diagnostic_smoke_power_calibration_83dfd4b2": [
+      94,
+      724437
+    ],
+    "20261106_220456_p2_future_diagnostic_smoke_pilot_7f0c5c6f": [
+      94,
+      724390
+    ],
+    "20261106_220033_p2_future_diagnostic_smoke_pilot_97226751": [
+      94,
+      723225
+    ],
+    "20261106_164655_p2_common_env_smoke_test_seen_22bc2909": [
+      62,
+      721394
+    ],
+    "20261106_164432_p2_common_env_smoke_test_seen_58621dfd": [
+      62,
+      717799
+    ],
+    "20261106_214300_p2_future_diagnostic_smoke_pilot_be437549": [
+      90,
+      714014
+    ],
+    "20261106_213654_p2_future_diagnostic_smoke_pilot_cb11ec46": [
+      90,
+      713462
+    ],
+    "20260917_205835_b4_strict_ofdm_rayleigh_formal_controlpath_test": [
+      21,
+      712939
+    ],
+    "20260522_144755_phaseA_sc_theory_combine_sensitivity": [
+      10,
+      681428
+    ],
+    "20260522_144919_phaseA_sc_theory_combine_sensitivity": [
+      10,
+      681414
+    ],
+    "20261106_163217_p2_common_env_smoke_model_calibration_a8288c4b": [
+      59,
+      675240
+    ],
+    "20261106_163018_p2_common_env_smoke_model_calibration_a359941f": [
+      59,
+      674539
+    ],
+    "20261106_163021_p2_common_env_smoke_test_seen_11c6c26f": [
+      58,
+      673234
+    ],
+    "20261106_162839_p2_common_env_smoke_pilot_eccd61de": [
+      57,
+      670802
+    ],
+    "20261106_162557_p2_common_env_smoke_pilot_fbf52935": [
+      57,
+      670795
+    ],
+    "20260917_111751_b4b_strict_unit_smoke": [
+      18,
+      664475
+    ],
+    "20261106_163955_p2_common_env_smoke_pilot_b33e6f54": [
+      60,
+      648022
+    ],
+    "20260912_172318_16qam_energy_tradeoff_smoke": [
+      106,
+      647500
+    ],
+    "20260912_171937_16qam_energy_tradeoff_smoke": [
+      106,
+      647060
+    ],
+    "20260912_171726_16qam_energy_tradeoff_smoke": [
+      105,
+      644680
+    ],
+    "20260912_172114_16qam_energy_tradeoff_smoke": [
+      105,
+      644427
+    ],
+    "20260912_172003_16qam_energy_tradeoff_smoke": [
+      105,
+      644257
+    ],
+    "20260628_143653_b4_fullchain_strategy_validation_smoke": [
+      15,
+      630107
+    ],
+    "20260522_144919_phaseA_sc_theory_fullchain_curves": [
+      14,
+      625229
+    ],
+    "20260522_143507_phaseA_sc_theory_fullchain_curves": [
+      14,
+      623084
+    ],
+    "20261009_175322_b4b_shaping_audit_formal_source_N1024_source_MC_GA": [
+      14,
+      617224
+    ],
+    "20261106_163838_p2_common_env_smoke_pilot_a411e3c9": [
+      60,
+      600048
+    ],
+    "20261106_162507_p2_common_env_smoke_power_calibration_7c389f71": [
+      57,
+      577250
+    ],
+    "20261024_222310_p2_pilot_power_calibration": [
+      43,
+      573365
+    ],
+    "20260628_142037_b4_fullchain_strategy_validation_smoke": [
+      15,
+      561964
+    ],
+    "20261106_162336_p2_common_env_smoke_pilot_65c5faf2": [
+      56,
+      560440
+    ],
+    "20260520_180719_sc_waterfall_refine": [
+      16,
+      556786
+    ],
+    "20260912_171603_16qam_energy_tradeoff_smoke": [
+      67,
+      548756
+    ],
+    "20261106_162154_p2_common_env_smoke_pilot_ede6d284": [
+      53,
+      546726
+    ],
+    "20260522_174039_ofdm_baseline": [
+      13,
+      544961
+    ],
+    "20260917_220955_b4b_fixed_policy_control": [
+      21,
+      541418
+    ],
+    "20261106_162019_p2_common_env_smoke_pilot_1cf97e7c": [
+      53,
+      538504
+    ],
+    "20261106_161952_p2_common_env_smoke_pilot_585e164a": [
+      52,
+      536771
+    ],
+    "20261009_223148_b4b_fixed_policy_holdout_analysis": [
+      14,
+      533844
+    ],
+    "20261024_221414_p2_pilot_power_calibration": [
+      42,
+      521870
+    ],
+    "20261009_223034_b4b_fixed_policy_holdout_analysis": [
+      10,
+      508988
+    ],
+    "20260917_222439_b4b_fixed_policy_holdout_analysis": [
+      10,
+      508777
+    ],
+    "20261106_161559_p2_smoke_pilot_4a9582b5": [
+      50,
+      508653
+    ],
+    "20261107_102708_p2_v2_batch_smoke_pilot_bc62dfc1": [
+      94,
+      499509
+    ],
+    "20261106_165739_p2_common_env_smoke_pilot_0dcb7294": [
+      61,
+      498951
+    ],
+    "20261009_201949_phaseA_codeonly_gap_analysis": [
+      3,
+      488318
+    ],
+    "20261010_211953_p1_power_validation_a1_7103": [
+      26,
+      451083
+    ],
+    "20261009_193403_phaseA_figures_from_energy_tradeoff": [
+      13,
+      387980
+    ],
+    "20261009_193314_phaseA_figures_from_energy_tradeoff": [
+      11,
+      382464
+    ],
+    "20260520_173921_sc_waterfall_refine": [
+      16,
+      379903
+    ],
+    "20261009_193413_phaseA_sc_final_global_curves": [
+      24,
+      374035
+    ],
+    "20260521_141330_phaseA_sc_closure_check": [
+      15,
+      358208
+    ],
+    "20260826_112955_ook_shapedpolar_legacy_plot": [
+      10,
+      311054
+    ],
+    "20261109_114849_prediction_redesign_timing_figures": [
+      6,
+      307781
+    ],
+    "20260917_111826_ofdm_baseline_shared_core_regression": [
+      13,
+      299218
+    ],
+    "20260826_110544_ook_shapedpolar_legacy_plot": [
+      10,
+      298491
+    ],
+    "20261025_000154_p2_uniformity_exact": [
+      16,
+      270272
+    ],
+    "20261025_001710_p2_smoke_pilot_3028e694": [
+      46,
+      259390
+    ],
+    "20261025_000204_p2_smoke_pilot_f3b047af": [
+      46,
+      258979
+    ],
+    "20261024_235008_p2_smoke_pilot_396477e4": [
+      46,
+      257760
+    ],
+    "20261008_235247_b4b_shaping_audit_source_compare_source_MC_GA": [
+      10,
+      253471
+    ],
+    "20261009_230741_b4b_guardband_policy_test_analysis": [
+      10,
+      251457
+    ],
+    "20261008_233858_b4b_shaping_audit_source_compare": [
+      10,
+      250336
+    ],
+    "20261024_234020_p2_smoke_pilot_edd9442e": [
+      45,
+      246111
+    ],
+    "20261024_222326_p2_uniformity_exact": [
+      6,
+      241121
+    ],
+    "20261024_235012_p2_uniformity_exact": [
+      6,
+      240919
+    ],
+    "20261024_221427_p2_uniformity_exact": [
+      6,
+      238934
+    ],
+    "20261009_210928_b4b_guardband_candidate_frozen": [
+      6,
+      238253
+    ],
+    "20261024_232502_p2_smoke_pilot": [
+      43,
+      236232
+    ],
+    "20260917_225122_b4b_guardband_policy_test_analysis": [
+      7,
+      235749
+    ],
+    "20261024_222213_p2_smoke_pilot": [
+      41,
+      214610
+    ],
+    "20260520_112559_sc_theory_vs_sim": [
+      7,
+      199262
+    ],
+    "20261008_230215_b4b_shaping_audit_frozen_compare_N1024": [
+      10,
+      195848
+    ],
+    "20261008_215452_b4b_shaping_audit_blocklength_N1024": [
+      10,
+      187058
+    ],
+    "20261008_215552_b4b_shaping_audit_blocklength_N1024": [
+      10,
+      187058
+    ],
+    "20261008_215403_b4b_shaping_audit_blocklength_N256": [
+      10,
+      181119
+    ],
+    "20261024_220536_p2_preflight": [
+      9,
+      178453
+    ],
+    "20261008_215852_b4b_shaping_audit_blocklength_N256": [
+      10,
+      178231
+    ],
+    "20261009_181858_b4b_blocklength_comparison": [
+      7,
+      177435
+    ],
+    "20261010_201200_policy_channel_violation_audit": [
+      8,
+      175154
+    ],
+    "20261009_181704_b4b_blocklength_comparison": [
+      6,
+      170451
+    ],
+    "20261009_181759_b4b_blocklength_comparison": [
+      6,
+      170451
+    ],
+    "20260920_211759_b4b_energy_by_strategy": [
+      8,
+      166541
+    ],
+    "20261010_212409_b4_equal_power_p1": [
+      5,
+      161904
+    ],
+    "20261009_181301_phaseA_sc_final_global_curves": [
+      10,
+      159800
+    ],
+    "20261009_182029_b4b_blocklength_comparison": [
+      7,
+      147502
+    ],
+    "20261025_011808_p2_approved_batch": [
+      26,
+      139295
+    ],
+    "20261008_212518_b4b_shaping_audit_smoke": [
+      9,
+      135197
+    ],
+    "20261009_175002_b4b_shaping_audit_smoke_source_MC_GA": [
+      10,
+      128551
+    ],
+    "20261008_212300_b4b_shaping_audit_smoke": [
+      9,
+      126426
+    ],
+    "20261008_213557_b4b_shaping_audit_smoke": [
+      10,
+      124823
+    ],
+    "20260922_191535_midterm_constraint_recheck": [
+      5,
+      123177
+    ],
+    "20261008_213028_b4b_shaping_audit_smoke": [
+      10,
+      120087
+    ],
+    "20261008_211750_b4b_shaping_audit_static": [
+      7,
+      119001
+    ],
+    "20261008_212615_b4b_shaping_audit_smoke": [
+      9,
+      118420
+    ],
+    "20261106_170638_rectifier_proxy_sensitivity": [
+      7,
+      113462
+    ],
+    "20261008_233717_b4b_shaping_audit_source_compare": [
+      4,
+      110776
+    ],
+    "20261107_122616_p2_v2_sensitivity_postprocess": [
+      6,
+      100764
+    ],
+    "20261008_213522_b4b_shaping_audit_static": [
+      10,
+      99889
+    ],
+    "20261008_212902_b4b_shaping_audit_static": [
+      10,
+      98381
+    ],
+    "20261008_212942_b4b_shaping_audit_static": [
+      10,
+      98380
+    ],
+    "20261008_212742_b4b_shaping_audit_static": [
+      9,
+      97738
+    ],
+    "20261010_215835_b4_equal_power_p1_formal": [
+      17,
+      84586
+    ],
+    "20261010_210859_p1_cal80_7001": [
+      15,
+      70322
+    ],
+    "20260923_211103_16qam_ber_high_snr_coarse": [
+      6,
+      69912
+    ],
+    "20261008_234728_b4b_source_partition_audit": [
+      6,
+      65030
+    ],
+    "20261024_235300_p2_budget_proposal": [
+      4,
+      36147
+    ],
+    "20261025_001100_p2_budget_proposal": [
+      4,
+      36147
+    ],
+    "20261025_001500_p2_budget_proposal": [
+      4,
+      36147
+    ],
+    "20261009_202104_source_entropy_partition_contract_test": [
+      4,
+      8288
+    ],
+    "20261009_230945_source_entropy_partition_contract_test": [
+      4,
+      8288
+    ],
+    "20260912_172125_energy_timing_diagnostic": [
+      4,
+      7190
+    ],
+    "20261010_211222_b4_equal_power_p1": [
+      1,
+      4977
+    ],
+    "20260520_164121_sc_waterfall_refine": [
+      6,
+      4900
+    ],
+    "20261025_224101_p2_status_handoff": [
+      7,
+      4827
+    ],
+    "20261010_211655_b4_equal_power_p1": [
+      1,
+      3663
+    ],
+    "20260826_110315_ook_shapedpolar_legacy_plot": [
+      1,
+      1395
+    ],
+    "20261009_174727_source_entropy_smoke": [
+      2,
+      903
+    ],
+    "20261010_210845_b4_equal_power_p1": [
+      1,
+      835
+    ],
+    "20261009_175117_b4b_shaping_audit_formal_source_N1024_source_MC_GA": [
+      1,
+      784
+    ],
+    "20261009_174646_source_entropy_smoke": [
+      2,
+      782
+    ],
+    "tp17dc5496_17e0_4bbd_aed7_caf8e025f546": [
+      1,
+      432
+    ],
+    "tp5e79f74e_9683_4c5f_b77c_a5846ecb69d7": [
+      1,
+      432
+    ],
+    "tp7352352c_ded7_496f_84a8_a6df87123811": [
+      1,
+      432
+    ],
+    "tpb55b85d7_529b_4dbd_9bc6_e6b8ce0fb467": [
+      1,
+      432
+    ],
+    "tp6a5496ba_805a_4ffe_abd4_b1d516d9e8d8": [
+      1,
+      298
+    ],
+    "tpb06c57c9_5d62_4566_988e_c34236b42894": [
+      1,
+      298
+    ],
+    "LATEST_P2_GRID_STUDY.txt": [
+      1,
+      91
+    ]
+  },
+  "source_count": 310,
+  "markdown_count": 408,
+  "same_name_in_v2": {},
+  "exact_source_duplicates": [
+    [
+      "16QAM_Polar/llr_16qam_gray_LSE_prior.m",
+      "16QAM_Polar/v2/modulation/llr_16qam_gray_LSE_prior.m"
+    ],
+    [
+      "16QAM_Polar/parallel_to_serial_bits.m",
+      "16QAM_Polar/v2/modulation/parallel_to_serial_bits.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/derivative_phi.m",
+      "16QAM_Polar/v2/polar/derivative_phi.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/GA.m",
+      "16QAM_Polar/v2/polar/GA.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/get_bit_layer.m",
+      "16QAM_Polar/v2/polar/get_bit_layer.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/get_GN.m",
+      "16QAM_Polar/v2/polar/get_GN.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/get_llr_layer.m",
+      "16QAM_Polar/v2/polar/get_llr_layer.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/phi.m",
+      "16QAM_Polar/v2/polar/phi.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/phi_inverse.m",
+      "16QAM_Polar/v2/polar/phi_inverse.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/polar_encoder.m",
+      "16QAM_Polar/v2/polar/polar_encoder.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/SCL_decoder.m",
+      "16QAM_Polar/v2/polar/SCL_decoder.m"
+    ],
+    [
+      "16QAM_Polar/ShapedPolarS/SC_decoder.m",
+      "16QAM_Polar/v2/polar/SC_decoder.m"
+    ]
+  ],
+  "similar_batch_pairs": [
+    {
+      "a": "16QAM_Polar/v2/experiments/multicarrier/run_p2_common_environment.m",
+      "b": "16QAM_Polar/v2/experiments/multicarrier/run_p2_v2_batch.m",
+      "lines": [
+        513,
+        530
+      ],
+      "line_similarity": 0.9492,
+      "meaning": "text similarity only; not semantic equivalence"
+    },
+    {
+      "a": "16QAM_Polar/v2/experiments/multicarrier/run_p2_common_environment.m",
+      "b": "16QAM_Polar/v2/experiments/multicarrier/run_p2_v2_strategy_batch.m",
+      "lines": [
+        513,
+        531
+      ],
+      "line_similarity": 0.9483,
+      "meaning": "text similarity only; not semantic equivalence"
+    },
+    {
+      "a": "16QAM_Polar/v2/experiments/multicarrier/run_p2_v2_batch.m",
+      "b": "16QAM_Polar/v2/experiments/multicarrier/run_p2_v2_strategy_batch.m",
+      "lines": [
+        530,
+        531
+      ],
+      "line_similarity": 0.9821,
+      "meaning": "text similarity only; not semantic equivalence"
+    }
+  ],
+  "nonresult_cache_candidates": [
+    {
+      "path": "16QAM_Polar/ShapedPolarS/getSCL.asv",
+      "bytes": 4066
+    },
+    {
+      "path": "scripts/__pycache__/analyze_p2_grid_study.cpython-311.pyc",
+      "bytes": 16776
+    },
+    {
+      "path": "scripts/__pycache__/test_p2_grid_analysis.cpython-311.pyc",
+      "bytes": 4651
+    },
+    {
+      "path": "周报/4.16.md.20260406_181615.bak",
+      "bytes": 18981
+    }
+  ],
+  "largest_documents": [
+    {
+      "path": "学习文档/硬件前信息与非线性收能定量分析及瑞利策略优化-loop/进度表.md",
+      "lines": 3778
+    },
+    {
+      "path": "周报/阶段B/B4：full-chain策略验证.md",
+      "lines": 1382
+    },
+    {
+      "path": "学习文档/高阶调制理论/通用GrayQAM-loop/多载波任意GrayQAM能量分布可调理论说明.md",
+      "lines": 690
+    },
+    {
+      "path": "治理记录/20261028/before/学习文档/高阶调制理论/通用GrayQAM-loop/多载波任意GrayQAM能量分布可调理论说明.md",
+      "lines": 690
+    },
+    {
+      "path": "治理记录/20261028/before/周报/阶段B/B4：full-chain策略验证.md",
+      "lines": 658
+    },
+    {
+      "path": "学习文档/shaped_polar验证loop/理论更新与图重建/整形理论更新与仿真图重建清单.md",
+      "lines": 615
+    },
+    {
+      "path": "周报/理论依据与仿真口径_SC编码验证.md",
+      "lines": 601
+    },
+    {
+      "path": "周报/4.16.md",
+      "lines": 595
+    },
+    {
+      "path": "学习文档/研究回顾与讨论/追加式阅读与讨论记录-v2.md",
+      "lines": 582
+    },
+    {
+      "path": "周报/阶段B/Rayleigh相关知识.md",
+      "lines": 559
+    },
+    {
+      "path": "workbook/troubleshooting-history.md",
+      "lines": 543
+    },
+    {
+      "path": "周报/阶段A：单载波关键结论.md",
+      "lines": 538
+    }
+  ],
+  "excluded": [
+    ".git",
+    ".agents/skills/academic-research-suite",
+    ".agents/skills/research-meta-extractor",
+    ".agents/skills/research-presentation",
+    ".agents/skills/research-scan-orchestrator",
+    ".agents/skills/research-spec-checker",
+    "16QAM_Polar/v2/results/20261109_115203_p2_grid_study/python_deps"
+  ]
+}

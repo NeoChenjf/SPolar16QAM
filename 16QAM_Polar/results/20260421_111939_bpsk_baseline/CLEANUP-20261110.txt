@@ -1,0 +1,6 @@
+2026-11-10 中期前重复文件清理
+
+按用户授权，仅删除与较新保留副本SHA-256完全相同的重复表/图；独有MAT、参数和其他文件保留。原目录不再是一份完整独立副本。恢复时先核对replacement的SHA-256，再复制到原path；不能覆盖后续同名文件。具体映射：
+16QAM_Polar/results/20260421_111939_bpsk_baseline/bpsk_baseline.csv
+  replacement=16QAM_Polar/results/20260421_113316_bpsk_baseline/bpsk_baseline.csv
+  sha256=843a1a6bc37409c505bab19a69578f1e58adc0799824a76c88e9a6eb26ef84d0

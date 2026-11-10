@@ -1,0 +1,49 @@
+[
+  {
+    "file": "Ochiai_2023_RCA_accepted.pdf",
+    "url": "https://ynu.repo.nii.ac.jp/record/12224/files/A_New_Polar_Code_Design_Based_on_Reciprocal_Channel_Approximation.pdf",
+    "status": "failed",
+    "reason": "HTTP Error 503: Service Temporarily Unavailable"
+  },
+  {
+    "file": "Ochiai_2021_Improved_GA_arxiv.pdf",
+    "url": "https://arxiv.org/pdf/1912.00098",
+    "status": "downloaded",
+    "bytes": 552314,
+    "sha256": "b571f90b398167c12236058271f062d59ebf0915b6807ea1932f1c56fa9c1434"
+  },
+  {
+    "file": "Dai_2017_GA_arxiv.pdf",
+    "url": "https://arxiv.org/pdf/1511.07236",
+    "status": "downloaded",
+    "bytes": 1209916,
+    "sha256": "45532231b348941e47c6e5e6ef81598abcab8447dd931a4a5a61e40e97495fda"
+  },
+  {
+    "file": "Mori_Tanaka_2009_DE_arxiv.pdf",
+    "url": "https://arxiv.org/pdf/0901.2207",
+    "status": "downloaded",
+    "bytes": 147769,
+    "sha256": "39bb4603b1bb46f868bba41258492dc51ab3a469abdb71ed96af0821530a47a0"
+  },
+  {
+    "file": "Niu_Li_2021_Block_Fading_Spectrum_arxiv.pdf",
+    "url": "https://arxiv.org/pdf/2003.13320",
+    "status": "downloaded",
+    "bytes": 1397634,
+    "sha256": "199df101739fa3779cdaa5cbae5123809b4e2bd3ab1bce9394af308da4b39240"
+  },
+  {
+    "file": "Liu_Hong_Viterbo_2017_Block_Fading_author.pdf",
+    "url": "https://ecse.monash.edu/staff/eviterbo/papers/wcnc17Shuiyin.pdf",
+    "status": "failed",
+    "reason": "HTTP Error 403: Forbidden"
+  },
+  {
+    "file": "Li_2015_Systematic_Error_Performance_arxiv.pdf",
+    "url": "https://arxiv.org/pdf/1504.04133",
+    "status": "downloaded",
+    "bytes": 272207,
+    "sha256": "fedbf6447e37b5b04265a67a4d5bbbda57da3ae86f0c442388ab980fd3dc1e28"
+  }
+]

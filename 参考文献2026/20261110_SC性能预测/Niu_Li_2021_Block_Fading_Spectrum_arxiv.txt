@@ -1,0 +1,1272 @@
+                                                                                                                                                                                    1
+
+
+
+
+                                            Polar Coded Diversity on Block Fading Channels
+                                                         via Polar Spectrum
+                                                                               Kai Niu, Member, IEEE, Yan Li, Student Member, IEEE
+
+
+
+                                            Abstract—Due to the advantage of capacity-achieving, polar                (SCL) or successive cancellation stack (SCS) decoding (CA-
+                                         codes have been extended to the block fading channel whereas                 SCL/SCS) are used [3], they demonstrate advantages in error
+                                         most constructions involve complex iterative-calculation. In this            performance over the turbo or LDPC codes, especially for the
+                                         paper, we establish a systematic framework to analyze the error
+                                         performance of polar codes in the case of block mapping and                  short/medium code length. Due to the merit of outstanding
+                                         random mapping. For both the mappings, by introducing the new                error performance, the CRC-polar code was selected as the
+arXiv:2003.13320v1 [cs.IT] 30 Mar 2020
+
+
+
+
+                                         concept, named split polar spectrum, we derive the upper bound               coding standard of the control channel in the fifth generation
+                                         on the error probability of polarized channel which explicitly               (5G) wireless communication system [28].
+                                         reveals the relationship between the diversity order L and the                  Some efficient construction algorithms of polar codes have
+                                         block-wise weight distribution of the codeword. For the special
+                                         case L = 2 in the block mapping, we design the enumeration                   been proposed for typical B-DMCs, such as binary erasure
+                                         algorithm to calculate the exact split polar spectrum based on the           channel (BEC), binary symmetric channel (BSC) or binary-
+                                         general MacWilliams identities. For arbitrary diversity order in             input additive white Gaussian noise (BI-AWGN). Originally,
+                                         the random mapping, with the help of uniform interleaving, we                Bhattacharyya parameter [1] is recursively calculated to evalu-
+                                         derive the approximate split polar spectrum by combining the                 ate the reliability of the polarized channel under BEC. Tal and
+                                         polar spectrum and the probability of fading pattern for a specific
+                                         weight. Furthermore, we propose the design criteria to construct             Vardy proposed an upgrading and degrading algorithm [10] to
+                                         polar codes over the block fading channel. The full diversity                bound the error probability of the polarized channel under the
+                                         criterion is the primary target so as to achieve the diversity               general B-DMCs. Gaussian approximation (GA) [11] was used
+                                         gain and the product distance criterion requires to maximize the             to estimate the error probability in AWGN channel with a low
+                                         product of the block-wise Hamming distance whereby obtain the                complexity. Generally, the common characteristics of these
+                                         coding gain. Guided by these design criteria, the construction
+                                         metric, named polarized diversity weight (PDW) is proposed to                algorithms are the iterative calculation dependent on some
+                                         design the polar codes in both mappings. Such a simple metric                parameters of the original channel (e.g. crossover probability
+                                         can construct polar codes with similar or better performance                 or signal-to-noise ratio (SNR)).
+                                         over those based on traditional methods in block fading channel.                Recently the construction of polar codes in the fast or
+                                                                                                                      block fading channels attracted wide attentions. For the fast
+                                            Index Terms—Polar codes, Polar spectrum, Split polar spec-                Rayleigh fading channel, Trifonov [19] first presented an
+                                         trum, Block Rayleigh fading channel, Diversity order.                        iterative algorithm to calculate and track the diversity order
+                                                                                                                      and noise variance of the polarized channels. Based on the
+                                                                  I. I NTRODUCTION                                    same channel model, Liu and Ling [20] designed the polar
+                                                                                                                      codes and polar lattices by using the Tal-Vardy algorithm
+                                         A. Relative Research
+                                                                                                                      [10] to evaluate the upper/lower bound of the Bhattacharyya
+                                               S a great breakthrough in channel coding theory, polar
+                                         A     codes, invented by Arıkan [1], provide a constructive
+                                         method to achieve the capacity of the symmetric channels. The
+                                                                                                                      parameter of the polarized channels. Lately, Zhou et al.
+                                                                                                                      [21] designed a capacity-equivalent BI-AWGN channel of the
+                                                                                                                      Rayleigh channel and constructed the polar codes by using the
+                                         design idea behind the polar codes is the channel polarization.              GA algorithm [11]. All these construction algorithms in fast
+                                         Given a group of N identical binary-input discrete memoryless                fading channel belong to the channel-dependent construction
+                                         channels (B-DMC), after the operations of channel combining                  and cannot be straightforwardly extended to the polar coding
+                                         and splitting, the generated channels demonstrate the polar-                 in block fading channel due to the assumption failure of the
+                                         ization phenomenon whereby the capacity of some channels                     channel ergodicity.
+                                         tends to one (good channels) and that of the others tends to                    On the other hand, for the block fading channel, Boutros
+                                         zero (bad channels). Thus, the polar coding can be described                 and Biglieri [15] first investigated the polarization behaviour
+                                         that the good channels are assigned as the information bits and              whereby full diversity and outage probability are evaluated
+                                         the bad channels are set to the fixed bits, namely frozen bits.              by using the analysis of mutual information. However, the
+                                         When the polar codes are concatenated by cyclic redundancy                   conclusions in [15] are theoretical and only suitable for a
+                                         check (CRC) code and CRC aided successive cancellation list                  block fading channel with two distinct fading values. Almost
+                                                                                                                      simultaneously, for the block Rayleigh fading channel with
+                                            This work is supported by the National Key R&D Program of China (No.
+                                         2018YFE0205501), the National Natural Science Foundation of China (No.       known channel side information (CSI) or channel distribution
+                                         61671080).                                                                   information (CDI), Bravo-Santos [16] proposed a recursive
+                                            K. Niu, Y. Li, are with the Key Laboratory of Universal Wireless Commu-   calculation of Bhattacharyya parameter to evaluate the reli-
+                                         nications, Ministry of Education, Beijing University of Posts and Telecom-
+                                         munications, Beijing, 100876, China (e-mail: {niukai, Lyan}@bupt.edu.cn).    ability of the polarized channel, whereas this method needs
+                                                                                                                      a time-consumption Monte-Carlo computation. Subsequently,
+                                                                                                                                    2
+
+
+
+Si et al. [17] modeled a fading AWGN channel with BPSK              C. Main Contributions
+modulation as a fading BSC channel and designed a two-
+stage polar coding over channel uses and fading blocks.                In this paper, by introducing a new concept, named split
+They proved that polar codes can achieve the capacity of            polar spectrum, we establish a systematic framework to design
+fading BSC channel. However, the construction of polar codes        the polar codes in the block fading channel. For two types
+still depends on the recursive calculation of Bhattacharyya         of typical mappings from the code bits to the fading blocks,
+parameter. Recently, Liu et al. [18] introduced a natural           namely block mapping and random mapping, we derive the
+polarization to indicate distinct reliability of the fading block   explicit construction metrics. The main contributions of this
+and optimize the permutation pattern between the code bits          paper can be summarized as follows.
+and the fading blocks. Although such method may obtain              1) First, the design criteria based on the (split) polar spectrum
+performance gain, it depends on the ideal assumption that the          for the polar coding in block Rayleigh fading channel are
+fading envelope is available at the encoder. We conclude that          established. Two typical mappings are investigated in this
+the parameter and state of the block fading channel implicitly         paper, that is, block mapping (the codeword is equally
+affect the error probability of the polarized channel. However,        partitioned and mapped into the fading blocks) and random
+these construction algorithms in block fading channel depend           mapping (the code bits are firstly interleaved and then
+on the iterative calculation of some parameters and lack the           mapped into the fading blocks). For both mappings, by
+systematic framework to establish the explicit relationship            analyzing the upper bound on the error probability of the
+between the structure of polar codes and the diversity order,          polarized channel, we build two design criteria, that is,
+which is significant for the practical application.                    full diversity criterion and product distance criterion. As
+   On the contrary, the explicit and channel-independent con-          the primary criterion, the former requires the nonzero code
+struction is more desirable for the implementation of polar            bits are distributed over all the fading blocks so as to
+coding in the practical system. He et al. [12] designed a              achieve full diversity order. Furthermore, the latter requires
+channel-independent construction, named polarized weight               the product of block-wise Hamming distance between the
+(PW) algorithm, whereby constructing polar codes with almost           all-zero codeword and a nonzero codeword is maximized
+the same performance as those constructed by GA algorithm.             so as to obtain the coding advantage. Both the criteria are
+In addition, a fixed construction sequence for all the code            dominated by the split weight distribution of polar codes,
+configuration is used in 5G standard [28] which is obtained            which indicates the number of codeword-partition blocks
+by computer searching [13]. Especially, in the previous work           with the same distribution of block-wise Hamming weight.
+[14], we explored the weight distribution of polar codes and           In the block mapping, the split polar spectrum can be
+introduced a new concept, named polar spectrum to establish            exactly evaluated. Whereas, in the random mapping, the
+a systematic framework to analyze the error probability of             split polar spectrum is approximately estimated by using
+polar codes. Furthermore, two explicit metrics were designed           the polar spectrum with the help of uniform interleaving.
+to construct polar codes in terms of polar spectrum. In a word,     2) Second, in block mapping, we derive the upper bound on
+these explicit construction algorithms can generate polar codes        the error probability of the polarized channel composed
+with similar or better error performance than those constructed        of the split polar spectrum and the average pairwise error
+by conventional channel-dependent construction.                        probability (PEP). After averaging and bounding over the
+                                                                       distribution of the fading block envelopes, we find that
+                                                                       the PEP is dominated by the product distance. On the
+B. Motivation                                                          other hand, the split polar spectrum determines the number
+                                                                       of PEP events. The upper bound of the block error rate
+   In this paper, we focus on the polar coding over the block          (BLER) under the SC decoding for block Rayleigh fading
+fading channel whereby the fading envelope is unavailable              channel is also provided. Furthermore, we analyze the
+at the encoder. Many works have investigated the theoretical           (approximate) upper bound on the error probability for the
+association between the block fading behavior and the coding           case of low SNR and derive the logarithmic version of the
+techniques, such as [23]–[26] and references therein. The de-          upper bound as the construction metric, named polarized
+sign criteria of coding over the block fading channel should re-       diversity weight (PDW), which is a simple analytical-
+veal explicitly the relationship between the error performance         metric rather than complex iterative-calculation. The enu-
+and the code block diversity, which are significantly different        meration of the split polar spectrum is a time-consumption
+from the standard design criteria for polar coding over AWGN           process for an arbitrary diversity order L. Therefore, we
+channel or fast fading channel. However, due to the iterative          only design an efficient enumeration algorithm for the
+calculation of Bhattacharyya parameter or mutual information,          diversity order L = 2 based on the general MacWilliams
+most current construction works over block fading channel              identities.
+implicitly indicate such a relationship. Furthermore, due to        3) Finally, in random mapping, we analyze the corresponding
+the channel-dependent property, these works lack the merit             upper bound and build the similar construction metric.
+of explicit construction. Therefore, the aim of this paper is          Thanks to the uniform interleaving, we obtain the ap-
+to establish a theoretic framework to analyze the behavior of          proximation of split polar spectrum by combing the polar
+polar codes in block fading channel and derive some analytical         spectrum and the probability of a fading block pattern for
+and explicit constructions with low complexity.                        a specific codeword weight. Similarly, we derive the upper
+                                                                                                                                                         3
+
+
+
+    bound on the error probability of the polarized channel                   Throughout this paper, log (·) means “logarithm to base 2”
+    depending on the approximation of split polar spectrum.                and ln (·) stands for the natural logarithm. Let (·)T denote
+    Then, we use the logarithmic version of the (approximate)              the transpose operation of the vector. Let E(Z) denote the ex-
+    upper bound as the construction metrics (PDW).                         pectation of the random variable Z respectively. Furthermore,
+    In both mappings, given the pre-calculated (split) polar               “⊗” is the Kronecker product and “⊕” denotes the module-2
+    spectrum, compared with those constructions based on                   operation.
+    the iterative calculation, these metrics can construct polar
+    codes with a linear complexity. Furthermore, considering               B. Encoding and Decoding of Polar Codes
+    the practical application, they can also be transformed to                A B-DMC is modeled as W : X → Y with input alphabet
+    the channel-independent constructions. Simulation results              X = {0, 1} and output alphabet Y and the corresponding
+    show that these metrics can generate polar codes to achieve            channel transition probabilities are defined as W (y|x), x ∈ X
+    the same or better performance as those constructed by the             and y ∈ Y. Arıkan introduced the idea of channel polarization
+    previous methods.                                                      [1] whereby N = 2n independent uses of B-DMC W can be
+   The remainder of the paper is organized as follows. Section                                                                  (i)
+                                                                           transformed into a group of polarized channels WN : X →
+II presents the preliminaries of polar codes, including polar              Y × X i−1 , i ∈ J1, N K.
+coding, decoding and polar spectrum. For the block mapping,                   In order to construct an (N, K) polar code, the set of
+Section III describes the performance analysis framework of                polarized channels with high-reliability, denoted A and named
+polar codes in block fading channel. By using split polar                  information set (|A| = K), is selected to carry information bits
+spectrum, the upper bound on the error probability of the                  and the rest polarized channels belonging to the complement
+polarized channel and the upper bound on BLER of polar                     set Ac are assigned the fixed values, named frozen bits
+codes for the block Rayleigh fading channel are derived and                (|Ac | = N − K). So the codeword xN       1 of polar codes can
+analyzed. In Section IV, we design the construction metric                 be generated by a binary source block uN    1 consisting of K
+and provide the enumeration algorithm of split polar spectrum              information bits and N − K frozen bits as follows,
+for the special diversity order L = 2. On the other hand, for
+the random mapping, we derive the approximation of split                                                 xN    N
+                                                                                                          1 = u1 FN .                                  (1)
+polar spectrum and analyze the corresponding upper bound                                                                       1
+                                                                           Here, the N -dimension generator matrix , FN , can be recur-
+in Section V. Then the construction metric is derived and                  sively defined as FN = F⊗n   2 , where “
+                                                                                                                     ⊗n
+                                                                                                                        ” denotes the n-th
+analyzed in Section VI. Numerical analysis for the upper                   Kronecker product and F2 = [ 11 01 ] is the 2 × 2 kernel matrix.
+bounds in term of (approximate) split polar spectrum and                      The classic decoding algorithm of polar codes is the SC
+simulation results for comparing PDW construction with the                 decoding algorithm [1] with a low complexity O(N log N ).
+traditional construction are presented in Section VII. Finally,            However, the error performance of SC decoding for the
+Section VIII concludes the paper.                                          finite code length is not satisfied. Thereafter, many improved
+                                                                           SC decoding algorithms, such as successive cancellation list
+      II. P RELIMINARY OF P OLAR C ODES AND P OLAR                         (SCL) [2], successive cancellation stack (SCS) [6], successive
+                       S PECTRUM                                           cancellation hybrid (SCH) [7], successive cancellation priority
+                                                                           (SCP) [8], and CRC aided (CA)-SCL/SCS [2]–[5] decoding
+A. Notation Conventions
+                                                                           were proposed to improve the performance of polar codes with
+   In this paper, calligraphy letters, such as X and Y, are                an acceptable complexity.
+mainly used to denote sets, and the cardinality of X is defined
+as |X |. The Cartesian product of X and Y is written as X × Y              C. Polar Spectrum
+and X n denotes the n-th Cartesian power of X . Let R denote
+                                                                              In the seminal paper [1], the reliability of each polarized
+the real-number set. Especially, the hollow symbol, e.g. C,
+                                                                           channel is evaluated by the Bhattacharyya parameter whereas
+denotes the codeword set of code or subcode. Let Ja, bK denote
+                                                                           this metric is only approximate for many B-DMCs. Then,
+the continuous integer set {a, a + 1, · · · , b}.
+                                                                           many improved construction methods were proposed to es-
+   We write v1N to denote an N -dimensional vector
+                                                                           timate the error performance of polar codes, such as, density
+(v1 , v2 , · · · , vN ) and vij to denote a subvector
+                                                                           evolution (DE) [9], Tal-Vardy algorithm [10] and Gaussian
+(vi , vi+1 , · · · , vj−1 , vj ) of v1N , 1 ≤ i, j ≤ N . Simultaneously,
+                                                                           approximation (GA) [11]. Nevertheless, all these construction
+we use the boldface lowercase letter, e.g. u, to denote a
+                                                                           methods based on iterative calculation cannot explicitly reveal
+vector. Further, given an index set A ⊆ J1, N K and its
+                                                                           the characteristic of weight distribution of polar codes.
+complement set Ac , we write vA and vAc to denote two
+                                                                              In [14], we found that the reliability of each polarized
+complementary subvectors of v1N , which consist of vi s with                           (i)
+i ∈ A or i ∈ Ac respectively.                                              channel WN is associated with two sets of specific code-
+                                                                           words, named subcode and polar subcode respectively. They
+   We use dH (u, v) to denote the Hamming distance between
+                                                                           are defined as follows.
+the binary vector u and v. Given ∀a, b ∈ RN , let ka − bk
+denote the Euclidian distance between the vector a and b. We                  1 The generator matrix in the initial form is composed of the matrix F
+                                                                                                                                                    N and
+use the boldface capital letter, such as FN , to denote a matrix           the bit-reversal matrix [1]. In fact, the bit-reversal operation does not affect
+                                                                           the reliability of the polarized channel. Hence, in this paper, we only use the
+with dimension N . So the notation FN (a : N ) indicates the               matrix FN as the equivalent generator matrix which is also the polar coding
+submatrix consisting the rows from a to N of the matrix FN .               form in 5G standard [28].
+                                                                                                                                                4
+
+
+
+  Definition 1: Given the code length N , the i-th subcode                                                          1        n1
+ (i)
+CN is defined as a set of codewords, that is,                                 u1               x1              s1                  y1
+                                                                                                                                        SC/
+
+
+
+
+                                                                                                      Mapper
+
+
+
+
+                                                                                                                         ……
+                                                                              ……
+
+
+
+
+                                                                                               ……
+
+
+
+
+                                                                                                               ……
+
+
+
+
+                                                                                                                                   ……
+   (i)
+       n      
+                (i−1)
+                           
+                                           N −i+1
+                                                  o                                  Polar
+  CN , c : c = 01     , uN
+                         i   F N , ∀uN
+                                     i ∈ X          . (2)                            ENC
+                                                                                                                                        SCL
+                                                                                                                                        DEC
+                                              (i)
+Furthermore, one subset of the subcode CN , namely the polar                  uN              xN               sL                  yN
+           (i)
+subcode DN , can be defined as
+                                                                                                                    L        nL
+        n                                                  o            Fig. 1.   Polar coded diversity communication system.
+  (i)                    (i−1)                          N −i
+DN , c(1) : c(1) = 01          , 1, uN          N
+                                     i+1 FN , ∀ui+1 ∈ X        .
+                                                           (3)
+   We introduced a new concept, named polar spectrum,                        When the signal vector s is transmitted over the block fading
+to indicate the structure feature of the polar subcode. The               channel, each element sl,k (l ∈ J1, LK, k ∈ J1, M K) in block
+polar spectrum
+n        o       is defined as the weight distribution set                sl undergoes an independent block-fading αl and is added a
+    (i)
+  AN (d) , d ∈ J1, N K, where d is the Hamming weight of                  white Gaussian noise sample nl,k . Finally, the received vector
+                                                              (i)         y = (y1 , y2 , ..., yL ) is sent to the polar decoder and decoded
+nonzero codeword and the polar weight enumerator AN (d)                   by the classic algorithms, such as, SC or SCL decoding. So
+                                                           (i)
+enumerates the codewords of weight d in the codebook DN .                 we can write the signal model as follows
+  Therefore, by using the polar spectrum, the error probability
+                           (i)
+of the polarized channel WN is upper bounded by                                                 yl = αl sl + nl , l ∈ J1, LK                  (5)
+
+                        N
+                        X                                                where yl = (yl,1 , yl,2 , ..., yl,M ) is the l-th received block,
+                   (i)      (i)   (i)
+                P WN ≤     AN (d)PN (d),                            (4)   sl = (sl,1 , sl,2 , ..., sl,M ) is the l-th transmitted block, and
+                               d=1                                        the additive noise vector nl has zero-mean complex Gaussian
+         (i)                                                              elements each with variance σn2 = N0 /2. The element in
+where PN (d) is the pairwise error probability (PEP) between              the transmitted     signal vector s is a BPSK signal, that is,
+the all-zero codeword and the codeword with the Hamming                              √
+                                                                          sl,k = ± Es , where Es is the symbol energy. Further, we
+weight d.                                                                 define NEs
+                                                                                      as the symbol signal-to-noise ratio (SNR) and N0
+   The previous evaluation methods of the error probability of                      0
+                                                                          is the single-sided power spectral density of the additive white
+the polarized channel, such as Bhattacharyya parameter, DE,               noise.
+Tal-Vardy or GA algorithm, cannot direct reveal the relation                 Especially, the amplitude gain vector α = (α1 , α2 , ..., αL )
+between the error performance and weight distribution of                  is composed of fading coefficients αl which are constant
+polar subcode. On the contrary, due to the analytical form,               during the transmission of a block of M bits and independent
+the union bound of the error probability (4) bridges the gap              from block to block. In this paper, we mainly consider the
+between the error performance of polar codes and the structure            Rayleigh fading with the probability density function (pdf) of
+feature of polar subcode. So the construction methods based               αl given by [27]
+on polar spectrum can present more constructive merits than
+                                                                                                                      α2
+                                                                                                                         
+the traditional methods.                                                                                    α
+                                                                                              fαl (α) = 2 exp − 2 ,                       (6)
+                                                                                                           σ          2σ
+  III. P ERFORMANCE A NALYSIS BASED ON S PLIT P OLAR                      where the average power of the fading envelope αl obeys
+                     S PECTRUM                                            E(αl2 ) = 2σ 2 = 1.
+   In this section, the error performance of polar codes in                  In Fig. 1, the mapper ψL defines a memoryless mapping
+the block fading channel is analyzed by using split polar                 from the codebook to L-ary Cartesian product of real spaces
+spectrum. First, the signal model of the block fading channel             RM                                  L
+is investigated. Then we derive the upper bound on the error                                  ψL : X N → R M .                    (7)
+probability of the polarized channel under the block Rayleigh
+                                                                          This mapping includes interleaving, modulation and splitting
+fading channels and provide the design criteria of polar codes.
+                                                                          into L blocks. We focus on two mapping operations in this
+Finally, the corresponding BLER upper bounds of the polar
+                                                                          paper: block mapping and random mapping. For the first
+codes is also deduced.
+                                                                          mapping, no interleaving is applied and the coded bits are
+                                                                          directly
+                                                                          √        mapped into BPSK modulated signals, that is, sl,k =
+A. Signal Model of Block Fading Channel                                     Es (1 − 2xl,k ). The analysis and construction of polar codes
+   The communication system of polar coded diversity is de-               under this block mapping are discussed in Section III and
+picted in Fig. 1. The source block u = uN    1 = (u1 , u2 , ..., uN )     Section IV. On the other hand, the second mapping includes
+with K information bits is encoded into a codeword x = xN       1 =       a uniform√ interleaver Π(·) and the signal can be written by
+(x1 , x2 , ..., xN ). After a mapping operation, the bit sequence         sl,k = Es 1 − 2xΠ(s,t) . The corresponding analysis and
+of the codeword is transformed into a transmitted signal vector           construction of polar codes will be addressed in Section V
+                                                                                                                             Es
+s and further divided into L equal-length blocks, that is,                and Section VI. Furthermore, we use γl = E(αl2 ) N  0
+                                                                                                                                to denote
+s = (s1 , s2 , ..., sL ). So the code length satisfies N = LM ,           the SNR of received block l. Without loss of generality, the
+that is, the signal vector is composed of L blocks and each               average power of fading envelope can be normalized to one.
+                                                                                                                         Es     Es
+block has M elements.                                                     So we define the average SNR as γ = E(α2 ) N     0
+                                                                                                                             =N  0
+                                                                                                                                   .
+                                                                                                                                                5
+
+
+
+   In this paper, we assume the perfect channel state informa- can be given by
+tion (CSI) is known by the receiver. Thus, given the fading                                       Z         Z                   
+                                                                                  (0)      (1)
+coefficient αl , the block Rayleigh fading channel is modeled              P    c     →  c     |α  =    · · ·     WN y s(0) , α dy
+                                                                                                                H
+as WM |αl : X M → Y M with input alphabet X M = {0, 1}M                                                       s                       
+                        M       M                                                                     L              2
+and output alphabet Y ∈ R . Then, the conditional channel                                            Y             αl     (0)    (1)
+                                                                                                                                     2
+transition probabilities can be written as                                                         =     Q              s − sl        
+                                                                                                                                          (11)
+                                                                                                                  2N0 l
+                                                                                                     l=1
+                                   M
+                                          (                        )
+                                                                 2                                    L
+                          1                    (yl,m − αl sl,m )                                                           
+                                                                                                                     2 Es
+                                   Y
+WM (yl |xl , αl ) =                         −
+                                                                                                     Y
+                             M/2
+                                      exp                             .                            ≤      exp −αl dl          .
+                      (πN0 )      m=1
+                                                      N0                                                                N0
+                                                                                                     l=1
+                                                                (8)
+After the polarization transform, given the channel envelope In the second equality of (11), Q(x) = √1 x∞ e−t /2 dt is the
+                                                                                                                          R       2
+
+                                                                                                                       2π
+vector α, the conditional transition probabilities of the syn- tail distribution function of the standard normal distribution.
+thetic channel WN satisfy                                                Furthermore, considering the relation between the Euclidian
+                                                                                                                                          2
+                                                                                                                              (0)     (1)
+                                L YM
+                                           (
+                                                                  2
+                                                                     )   distance and the Hamming distance, we have sl − sl                 =
+                        1     Y                 (yl,m − αl sl,m )
+WN (y |x, α ) =           N/2
+                                       exp   −                          .         (0)     (1)
+                                                                                                2
+                   (πN0 )     l=1 m=1
+                                                       N0                4Es cl − cl              = 4Es dl . Then by using the inequality
+                                                                (9)                   x2
+                               (i)         (i)                           Q(x) ≤ e− 2 , we obtain the third inequality of (11).
+Correspondingly, we use WN (α) = WN y1N , ui−1        1   |ui , α
+                                                                            Since αl is the Rayleigh-distributed random variable, we
+to denote the conditional transition probabilities of the polar-
+                                                                         conclude that αl2 in Eq. (11) is a central chi-square-distributed
+ized channel under the block fading channel.
+                                                                         random variable with 2 degrees of freedom [27]. Hence the
+                                                                         pdf of the fading block SNR γl = αl2 Es /N0 is a negative
+B. Block Error Rate Bound Based on Split Polar Spectrum                  exponential distribution as the following
+                                                                                                                1 −γl /γ
+   The error performance of polar codes in the block Rayleigh                                       g (γl ) =     e      .                  (12)
+fading channel is dominated by the split polar spectrum and the                                                 γ
+PEP. First, we derive the upper bound of PEP as the following                  For the block Rayleigh fading channel, taking the expec-
+theorem.                                                                    tation over the fading block SNRs, the average PEP can be
+   Theorem 1: Assuming the transmission vector is c(0) =                    derived as
+ N
+01 and the decision vector is c(1) , if the L-partition block                      h                 i Y L Z ∞
+mapping is used, the block-wise Hamming distance vector                        Eα P c(0) → c(1) |α =              e−γl dl g(γl )dγl
+between these two vectors is written as d = (d1 , d2 , ..., dL )                                                 l=1    0
+                                                                                                                                            (13)
+                   (0) (1)                                                                                         L
+where dl = dH cl , cl        , l ∈ J1, LK. So the PEP between                                                      Y        1
+                                                                                                               =                 .
+c(0) and c(1) on the block Rayleigh fading channel can be                                                                1 + γdl
+                                                                                                                   l=1
+bounded by
+                                             L                                 Considering the derivation       of Theorem 1, it follows that
+                
+                    (0)        (1)
+                                            Y           1
+             P c          →c             ≤                       .   (10)
+                                                                                                   
+                                                   1 + dl Es /N0            PEP P c(0) → c(1) is determined by the weight distribution
+                                             l=1                            vector d of polar codeword. So we introduce the following
+                                                                            concept to indicate the number of codewords with the given
+     Proof: Given the block mapping, the codeword c(0) and
+                                                                            weight distribution vector.
+ (1)
+c are mapped into the transmission vector s(0) and the signal
+                                                                               Definition 2: The split polar spectrum of the polar subcode
+vector s(1) respectively. Corresponding to the block partition                (i)
+                                  (0)        (1)                            DN , also termed as split polar weight       distribution, isodefined
+                           s and s are
+of the codewords, the vectors                      also divided into                                             n
+                                                                                                                    (i)
+                     (j)      (j) (j)         (j)
+L blocks, that is, s = s1 , s2 , ..., sL , j = 0, 1. For the                as the weight distribution set AN (d1 , d2 , ..., dL ) , dl ∈
+                                                                                                          PL
+block fading channel, we assume the channel envelope vector                 J1, M K, l ∈ J1, LK, where l=1 dl = d is the Hamming weight
+α is available for the decoder. If a pairwise error occurs, that            of nonzero codeword. The split polar weight enumerator
+                                                                              (i)
+means the Euclidian distance between the received vector y                  AN (d) enumerates the number of the given weight partition
+and the transmitted vector s(0) is lager than that between the              vector d = (d1 , d2 , ..., dL ) for codebook DN .
+                                                                                                                             (i)
+
+received vector y and the signal vector s(1) . So we can obtain                Using the average PEP and split polar spectrum, we can
+                                        2                           2
+                PL                 (0)        PL                (1)
+the inequality l=1 yl − αl sl             > l=1 yl − αl sl            .     derive the union bound of the average error probability of the
+                                                                                                    (i)
+   Substituting (6) into this               inequality,    we     have      polarized channel WN by the following corollary.
+                                                            2                                                                 (i)
+                                                                               Corollary 1: Given the polar subcode DN , the error prob-
+                                                    
+PL          2            PL             (0)      (1)
+   l=1 knl k      >        l=1 αl sl − sl              + nl . After                                                 (i)
+                                                                            ability of the polarized channel WN can be upper bounded
+some manipulations, the decision region of the
+                                                                            as
+pairwise
+            error event can be written as H =
+       L                    T           L                    2                                   N                  L
+  n:
+      P           (0)
+          nl αl sl − sl
+                         (1)
+                                 < − 21
+                                         P            (0)
+                                              αl sl − sl
+                                                           (1)
+                                                                    .
+                                                                                  
+                                                                                      (i)
+                                                                                                  X            (i)
+                                                                                                                      Y            1
+                                                                               P WN ≤                         AN (d)                      , (14)
+       l=1                                         l=1                                                                     d E
+                                                                                                                            l s   /N 0+1
+So given the channel envelope vector α, the conditional PEP                                  PL          (i)
+                                                                                                l=1 dl =dmin
+                                                                                                                          l=1
+                                                                                                                                               6
+
+
+        (i)
+where dmin denotes the minimum Hamming distance of polar                         Lemma 1: The optimal solution of (17) can be achieved
+           (i)
+subcode DN .                                                                   when the codeword weight is uniformly partitioned, that is,
+Note that this upper bound is the union bound of the error                     ∀l, dl = d/L.
+probability and the summation should be taken over all the                       Lemma 1 can be easily proved by using the method of
+weight partitions of the codeword weight.                                      Lagrangian multiplier. Based on this lemma, we obtain the
+   By using Eq. (4), we have the following corollary to evaluate               minimum upper bound of PEP as follows,
+the BLER upper bound in the block Rayleigh fading channel.                                                  d E −L
+                                                                                                                      s
+   Corollary 2: Given the fixed configuration (N, K, A), the                                 P c(0) → c(1) ≤               .         (18)
+                                                                                                                 L N0
+block error probability of polar code using SC decoding in the
+block Rayleigh fading channel is upper bounded by                                Thus from the above analysis, we arrive at the following
+                                                                               design criteria.
+                           N                           L
+                  X        X                (i)
+                                                       Y            1            Design Criteria for Polar Codes in Rayleigh Block Fading
+ Pe (N, K, A) ≤                        AN (d)                              .   Channel:
+                                                             dl Es /N0 + 1
+                  i∈A PL         (i)                   l=1
+                        l=1 dl =dmin                                             • Full Diversity Criterion: Given the block Rayleigh fading
+                                                            (15)                                                                     (i)
+                                                                                    channel with L blocks, if the polar subcode DN associ-
+   Compared with the previous works of polar coding in block
+                                                                                    ated with the i-th polarized channel has nonzero weight
+fading channel [15]–[18], the upper bounds in (14) and (15)
+                                                                                           QLthat is, the corresponding product distance sat-
+                                                                                    partition,
+provide an analytical form for the error probability of polar
+                                                                                    isfies l=1 dl 6= 0, this polar subcode will achieve a
+codes in the block Rayleigh fading channel. These bounds are
+                                                                                    diversity of L. Consequently, for a fixed configuration
+mainly determined by the spit polar spectrum of the selected
+                                                                                    (N, K, A), if all the selected polarized channels in the
+polar subcodes, that is to say, the weight partition vectors
+                                                                                    set A satisfy this condition, the full diversity gain can
+dominate the average PEP and the split polar weight enumer-
+                                                                                    be obtained. This criterion is the primary target of polar
+ators indicate the number of weight partitions. Therefore, for
+                                                                                    code design.
+the construction of polar codes in block fading channel, these
+                                                                                 • Product Distance Criterion: In order to minimize the
+upper bounds are more attractive than the traditional methods.
+                                                                                    error probability of the polarized channel or BLER upper
+Next, we will further discuss the design criteria of polar codes
+                                                                                    bound of polar codes, the corresponding product distance
+on the block Rayleigh fading channels.
+                                                                                    should be maximized. Conceptually, uniform partition of
+                                                                                    codeword weight is optimal in the case of high SNR.
+C. Design Criteria on the Block Fading Channel                                      However, considering the influence of the split polar
+                                                                                    weight enumerator and the integer constraint of the block-
+   By Theorem 1, we investigate the upper bound of PEP in                           wise distance, we still need to carefully optimize this
+the case of high SNR. In this case, suppose ∀l, dl 6= 0 and                         metric. In this sense, the product distance criterion is the
+Es /N0  1, the PEP can be further bounded by                                       second target of polar code design.
+                      L                  L
+                                               !−1  
+                                                         −L
+                Y          1          Y           Es
+ P c(0) → c(1) ≤                   =        dl              .                       IV. P OLAR C ODING BASED ON B LOCK M APPING
+                         dl Es /N0                  N0
+                     l=1                l=1                                       In this section, we focus on the construction of polar codes
+                                                          (16)
+                                                                               under the block mapping. First, we derive the constructive
+   Obviously, considering the power of SNR in the denom-                       metric based on the logarithmic version of the upper bound,
+inator of Eq. (16), we observe that the full diversity L can                   named polarized diversity weight (PDW). Second, for the
+be achieved if the block Hamming
+                             QL      distance dl is none zero.                 special case of L = 2, we provide the enumeration algorithm
+Furthermore, we find that l=1 dl , named product distance,                     of split polar spectrum based on the general MacWilliams
+is a coding advantage over an uncoded system operating with                    identities.
+the same diversity order. Hence, given the fixed codeword
+weight d, in order to minimize the PEP, we should maximize
+the product distance, which is expressed as the following                      A. Construction Metrics
+optimization problem,                                                             Now we investigate the construction of polar codes in the
+                                                                               block mapping. By using Corollary 1, the upper bound of the
+                                            L
+                                            Y                                  channel error probability can be used as a reliability metric
+                            max                   dl
+                      d=(d1 ,d2 ,...,dL )                                      to sort all the polarized channels. In order to facilitate imple-
+                                            l=1
+                                     L
+                                                                        (17)   mentation in the practical application, the logarithmic form of
+                                     X                                         the upper bound is more desirable. Since the approximation
+                  s.t.∀l, dl > 0,           dl = d.
+                                                                               of high-SNR will introduce a large deviation and cannot
+                                     l=1
+                                                                               accurately indicate the reliability of the polarized channel,
+Theoretically, due to the integer constraint of Hamming dis-                   we mainly consider the upper bound on error probability of
+tance, this integer-programming problem is only solved by a                    the polarized channel in the case of low-SNR and have the
+brute-force searching. However, if the integer constraint is re-               following theorem.
+laxed, we can obtain the following lemma for the approximate                      Theorem 2: Given the block Rayleigh fading channel and
+optimal solution.                                                              the code length N , for the low-SNR, the upper bound on the
+                                                                                                                                                                7
+
+
+
+error probability of the polarized channel can be approximated                      metric, namely, the polarized diversity weight (PDW), that is,
+by                                                                                                                                     
+                                                                                              (i)                      (i)      (i) Es
+                       N                    L                                          P DWN = P max                  LN (d) − dmin       ,  (24)
+ 
+   (i)
+                      X            (i)
+                                            Y          e−(dl Es /N0 +1)                             d, L
+                                                                                                                 (i)
+                                                                                                        l=1 dl =dmin
+                                                                                                                                     N0
+P WN .                             AN (d)                        (i)
+                                                                                ,
+                 PL          (i)            l=1 1 + dl Es /N0 − VN (d)                       (i)              (i)
+                                                                 where LN (d) = ln AN (d) is the logarithmic version of spilt
+                   l=1 dl =dmin
+                                                         (19) polar weight enumerator.
+          (i)          (i)
+where VN (d) = L1 ln AN (d).                                       Example 1: If L = 1, the signal vector s will undergo the
+     Proof: By using Theorem 1 and Corollary 1, the upper same fading. In this case, the split polar spectrum will degrade
+bound on the error probability of polarized channel can be to polar spectrum, that is, L(i) (d) → L(i) (d). Thus, PDW is
+                                                                                             N         N
+rewritten as                                                     written as
+                  N        L h       i1/L Z ∞                                                           (i) Es
+                                                                                                
+       (i)
+                  X        Y    (i)                                               (i)    (i)   (i)
+ P WN ≤                       AN (d)           e−γl dl g(γl )dγl            P DWN = LN dmin − dmin             .        (25)
+                                            0                                                               N0
+              P     L        (i) l=1
+                    l=1 dl =dmin
+                       N           L Z ∞
+                                                                                        If L = 2, the signal vector s will undergo two indepen-
+                                               VN (d)−γl dl 1 −γl /γ                 dent    block fading envelopes. Suppose the weight partition is
+                       X           Y             (i)
+              =                                e                    e       dγl .
+                  PL          (i) l=1     0                       γ                  (d 1 , d2 ), so PDW can be written as
+                    l=1 dl =dmin                                                                                                                           
+                                                                             (20)                 (i)                              (i)              (i) Es
+The inner integration in (20) can be further decomposed into                             P  DW    N   =           max            L N   (d  ,
+                                                                                                                                          1 2d ) − dmin       .
+                                                                                                                          (i)
+                                                                                                         d1 ,d2 ,d1 +d2 =dmin                            N0
+two parts with distinct integration intervals as follows,                                                                                                    (26)
+ Z ∞                                                                                    Remark        1: For    the  traditional   constructions     [15]–[18]  in
+       1 VN (d)−γl (dl + γ1 )
+             (i)
+         e                       dγl = I1 + I2                                       block    fading    channels,    the reliability    metrics,  such  as outage
+   0   γ
+     Z γ
+         1 VN(i) (d)−γl (dl + γ1 )
+                                            Z ∞
+                                                     1 VN(i) (d)−γl (dl + γ1 )       capacity or Bhattacharyya parameter, are iteratively evaluated
+  =         e                       dγl +              e                       dγl . with a medium or high complexity. On the contrary, since
+      0 γ                                     γ     γ
+                                                                             (21) PDW is mainly determined by the split polar spectrum and
+When the SNR is very low, we have γ ≈ 0. So the first the average SNR, this metric has explicitly analytical structure
+integration I1 can be omitted, i.e., I1 ≈ 0. Thus, the upper and indicates the reliability order of the polarized channel in
+bound is mainly dominated by the second integration I2 , which block Rayleigh fading channels. Particularly, if the split polar
+can be further bounded by                                                            spectrum can be pre-calculated by the enumerating algorithm
+                      Z ∞                                                            based on the general MacWilliams identities (described in
+                              1 VN(i) (d) γγl −γl (dl + γ1 )                         the next subsection), the complexity of this construction in
+                I2 ≤            e                            dγl
+                         γ    γ                                                      block mapping is linear in terms of O(N ), which is much
+                                                                             (22) lower than that of the former algorithms. Furthermore, this
+                                                            
+                                                      (i)
+                       exp − γdl + 1 − VN (d)
+                   =                                              .                  metric can also be transformed into a channel-independent
+                                                 (i)
+                               γdl + 1 − VN (d)                                      construction by selecting a fixed Es /N0 . In this sense, due
+                                                                                     to the explicit analyticity and low-complexity construction,
+In the derivation of (22), we use the inequality γγl ≥ 1.                            the proposed construction based on PDW is attractive for the
+   Note that in Theorem 2, the SNR should satisfy the condi- practical application.
+                                (i)
+tion ∀l, dl Es /N0 + 1 − VN (d) > 0. For the case of low SNR,
+by using Theorem 2, the logarithmic form of the upper bound
+can be written as                                                                    B. Enumeration of Split Polar Spectrum for L = 2
+                                                                                        We can follow the idea of [14] and enumerate the split polar
+                                                                            
+                 N                     L
+                                                  e−(dl Es /N0 +1)
+                                                                            
+                                                                                     spectrum. However, for the general L-split polar spectrum,
+                                                                            
+                             (i)
+                X                     Y
+    ln                     AN (d)                                    (i)             the computational complexity is very high. Hence, we only
+                                      l=1 1 + dl Es /N0 − VN (d) 
+       
+       PL           (i)
+                                                                             
+                 d =d
+            l=1 l    min                                                             consider the special case L = 2 whereby 2-split polar spectrum
+                                                                                       (i)
+                           
+                                   (i)           (i) Es                              AN (d1 , d2 ) is enumerated.
+    ∝ P max                  ln AN (d) − dmin
+       d, L
+                     (i)
+           l=1 dl =dmin
+                                                       N0                               Let i ∈ JN/2 + 1, N K denote the row index of the matrix
+                                L                                    )             F N  . By the definition in [14], the generator matrices of
+                              X                   Es          (i)                                   (i)          (N +2−i)
+                           −        ln 1 + dl           − VN (d) .                   subcode CN and CN                      satisfy GC(i) = FN (i : N ) and
+                                                  N0                                                                                       N
+                              l=1                                                    GC(N +2−i) = FN (N + 2 − i : N ) respectively. So we prove
+                                                                             (23)         N
+                                                                                   that these two subcodes are dual [14, Theorem 5], that is,
+                                                                                       (N +2−i)          ⊥(i)
+                                       P ak
+Here the approximation ln                   e         ≈ max{ak } is used CN                         = CN .
+                                         k                   k                                   (i)
+                                                             Es         (i)             Let SN (j, k)(0 ≤ j, k ≤ N/2) denote the split weight
+and some constants are omitted. When dl N                     0
+                                                                  − VN (d) is                                               (i)
+sufficiently small, by using the approximation ln(1 + x) ≈ x, enumerators of the                              subcode CN , where the d-weight codeword
+                                                                                                          (i)
+we obtain the PDW as below.                                                          of codebook CN is partitioned into two blocks with the
+                                                                                                                                ⊥(i)
+   Metric 1: Given the code length N , the reliability of the weights j and k. Similarly, SN (j, k) denote the weight
+                                                                                                                                ⊥(i)
+polarized channel can be sorted by the logarithmic version enumerators of the dual code CN .
+                                                                                                                                              8
+
+
+
+    The linear relations between the split weight distributions           Algorithm 1: Iterative enumeration algorithm of split polar
+of a linear code and its dual can also be determined by the               spectrum
+general MacWilliams identities [22]. These identities provide              Input: The weight distribution of all the subcodes with
+a simple method to calculate the split weight distribution.                       the code length N ,
+                                      (i)                ⊥(i)                     n
+                                                                                     (i)      (i)
+                                                                                                                                         o
+    Theorem 3: Given the subcode CN and its dual CN =                               SN (j), AN (j) : i = 1, 2, ..., N, j = 0, 1, ..., N ;
+   (N +2−i)                                      (i)
+CN          , the split weight enumerators SN (j, k) and                   Output: The split polar spectrum of all the polar
+  ⊥(i)
+SN (j, k) satisfy the following general MacWilliams iden-                           subcodes
+                                                                                    n         with the code length 2N ,                  o
+tities [22]                                                                             (l)
+                                                                                      A2N (j, k) : l = 1, 2, ..., 2N, j, k = 0, 1, ..., N ;
+                                                                                                  (l)                (l)
+   N/2 N/2                                                              1 Initialization ∀j, k, A2N , (j, k) = 0, S2N , (j, k) = 0;
+                 N/2 − j        N/2 − k
+                                        
+                                               ⊥(i)
+   XX
+                                              SN (j, k) =                2 for l = N + 1 → 2N do
+                   s               t
+   j=0 k=0                                                               3      if (j = k) Calculate the split polar spectrum of the
+                 N/2 N/2                                                      polar subcodes with the code length 2N ,
+       i−1−s−t
+                 XX          N/2 − j          N/2 − k        (i)                    (l)
+                                                                                  A2N (j, j) = AN
+                                                                                                 (l−N )
+                                                                                                        (j);
+   2                         N/2 − s          N/2 − t       SN (j, k),
+                 j=0 k=0                                                 4      Calculate the split weight distribution of the subcodes
+                                                             (27)                                              (l)
+                                                                                  with the code length 2N , S2N (j, j) = SN
+                                                                                                                              (l−N )
+                                                                                                                                     (j);
+where s, t ∈ J0, N/2K.
+By solving these (N/2+1)2 linear equations, we can calculate             5 for l = 2 → N do
+the split weight distribution of one subcode and its dual.               6     Solve the general MacWilliams Identities by (27) and
+                                                                                                                         (l)
+                                        (i)
+   Lemma 2: Given the subcode CN , we have CN =
+                                                         (i)                    calculate the split weight distribution S2N (j, k);
+  (i) S    (i+1)
+DN CN . Thus, the split weight enumerator and the split                  7     Calculate the split polar spectrum
+                                                                                  (l)          (l)           (l+1)
+                                      (i)            (i)
+polar weight enumerators satisfy SN (j, k) = AN (j, k) +                        A2N (j, k) = S2N (j, k) − S2N (j, k);
+  (i+1)
+SN (j, k).                                                               8  for j, k = 0 → N do
+This lemma is similar to Proposition 6 in [14] and can be                9
+                                                                                                 weight
+                                                                                Initialize the split    distribution
+                                                                                                   N      N
+                                                                                                             
+                                                                                   (1)
+easily proved.                                                                   S2N (j, k) =       j     k ;
+   Lemma 3: For ∀i ∈ JN/2 + 1, N K, the weight distribution              10     Calculate the split polar spectrum
+vector d = (d1 , d2 ) (related to the codeword weight d) of                         (1)           (1)         (2)
+                                                                                 A2N (j, k) = S2N (j, k) − S2N (j, k)
+subcode C(i) or polar subcode D(i) is equally partitioned, that
+is, d1 = d2 = d/2.
+                              (i)
+      Proof: For a subcode CN , i ∈ JN/2 + 1, N K, the source
+                                                             N/2
+block u = (u1 , u2 ) can be decomposed into u1 = 01                       Algorithm 1 mainly includes two steps to enumerate the
+                 i−1      N           N           N −i+1
+and u2 = 0N/2+1 , bi , where bi ∈ {0, 1}                   is an         split polar spectrum. In the first step, when the code length is
+arbitrary binary vector. Due to Plotkin’s structure [u + v|v],           grown from N to 2N , we enumerate the split weight distribu-
+the corresponding codeword c = (c1 , c2 ) can be generated as            tion and split polar spectrum in the case of N + 1 ≤ l ≤ 2N .
+                                                                                                                               (l)
+c1 = u1 FN/2 + u2 FN/2 = u2 FN/2 and c2 = u2 FN/2 . So                   In this case, by using Lemma 3, the subcode C2N is consist
+                                                                                                                     (l−N )
+we have c1 = c2 and complete the proof.                                  of two identical component codes CN                . Therefore, the
+                                                                                                                  (l)
+   Lemma 3 means that half of the polarized channels (N/2 +              split weight distribution of subcode C2N is equipartition. And
+1 ≤ i ≤ N ) can achieve 2-diversity order. However, since                similar results are also concluded for the split polar spectrum
+some zero-bit blocks may exist, the other half of the polarized                               (l)
+                                                                         of polar subcode D2N .
+channels (1 ≤ i ≤ N/2) may not obtain the same diversity                    For the second step, we enumerate the split weight distri-
+order.                                                                   bution and split polar spectrum in the case of 1 ≤ l ≤ N .
+   Lemma 4: The split weight distribution of the subcode                                                                (l)
+  (i)                          (i)           (i)
+                                                                         According to Theorem 3, the subcode C2N is the dual of
+CN is symmetric, that is, SN (j, k) = SN (j, N/2 − k) =                  subcode C2N
+                                                                                     (2N +2−l)
+                                                                                               , we can solve the general MacWilliams
+  (i)                  (i)                       (i)
+SN (N/2 − j, k) = SN (N/2 − j, N/2 − k) = SN (k, j). Sim-                identities to calculate the split weight distribution of C2N .
+                                                                                                                                          (l)
+                                  (i)                (i)
+ilarly, for the polar subcode DN , we also have AN (j, k) =              Furthermore, by Lemma 2, the split polar spectrum of D2N is
+                                                                                                                                       (l)
+  (i)                   (i)                 (i)
+AN (j, N/2 − k) = AN (N/2 − j, k) = AN (N/2 − j, N/2 −                   obtained.
+         (i)
+k) = AN (k, j).                                                             The computational complexity of Algorithm 1 is mainly
+      Proof: Due to Plotkin’s structure [u + v|v], similar to            determined by the solution of general MacWilliams identities.
+Proposition 8 in [14], we can easily obtain these conclusions.           Due to the regular structure in the general MacWilliams
+                                                                         identities, the split weight enumerators can be recursively
+    Based on Lemma 2∼4 and the general MacWilliams iden-                 calculated. Hence, given the code length N , the worst-case
+tities, we design an enumeration algorithm to calculate the              complexity of solving the general MacWilliams identities is
+split polar spectrum. Suppose the (polar) weight distribution            χM (N ) = (N/2+1)4 . Since N/2−1 groups of those identities
+                      (i)            (i)
+of (polar subcodes DN ) subcodes CN has been calculated                  need to be calculated, the total computational complexity is
+by using Algorithm 1 in [14], the following algorithm can                χE (N ) = (N/2 − 1)(N/2 + 1)4 . Furthermore, using Lemma
+enumerate the corresponding split polar spectrum.                        4 (weight distribution symmetry), the worst-case complexity
+                                                                                                                                                        9
+
+
+                             TABLE I
+           S PLIT POLAR SPECTRUM EXAMPLE FOR N = 16               provide the approximate estimation of split polar spectrum
+                                                                  for the general block diversity. Furthermore, we derive and
+                                                       (i)
+           index i             weight d               A16 (d)     analyze the approximation expression of upper bound.
+             1       (1, 0), (1, 8), (7, 0), (7, 8)     8
+                     (0, 1), (8, 1), (0, 7), (8, 7)
+             1       (3, 0), (3, 8), (5, 0), (5, 8)     56
+                     (0, 3), (8, 3), (0, 5), (8, 5)
+                     (2, 1), (2, 7), (6, 1), (6, 7)               A. Upper Bound of Error Probability under Random Mapping
+             1       (1, 2), (7, 2), (1, 6), (7, 6)     224
+             1       (4, 1), (4, 7), (1, 4), (7, 4)     560          Recall that the uniform interleaving Π(·) is used in the ran-
+                     (3, 2), (3, 6), (5, 2), (5, 6)
+             1       (2, 3), (6, 3), (2, 5), (6, 5)    1568       dom mapping as shown in Fig. III-A. Given a codeword with
+             1       (4, 3), (4, 5), (3, 4), (5, 4)    3920       weight d, the uniform interleaver deploys d nonzero coded
+             2       (2, 0), (2, 8), (6, 0), (6, 8)     16
+                     (0, 2), (8, 2), (0, 6), (8, 6)               bits over the L fading blocks. Let fv designate the number
+             2       (4, 0), (4, 8), (0, 4), (8, 4)     32        of fading blocks with weight v and w = min(d, M ) denote
+             2       (1, 1), (1, 7), (7, 1), (7, 7)     32
+             2       (3, 1), (3, 7), (5, 1), (5, 7)     224
+                                                                  the maximum weight of one block. The codeword weight d
+                     (1, 3), (7, 3), (1, 5), (7, 5)
+             2       (2, 2), (2, 6), (6, 2), (6, 6)     384                                   Pw f = (f0 , f1 , ...,
+                                                                  is related to the weight pattern                    Pfww ), namely
+             2       (4, 2), (4, 6), (2, 4), (6, 4)     992       d → f . So we have L = v=0 fv and d = v=1 vfv . Let
+             2       (3, 3), (3, 5), (5, 3), (5, 5)    1568
+             2                   (4, 4)                2432
+                                                                  F = L − f0 denote the number of fading blocks with nonzero
+             3       (2, 0), (2, 8), (6, 0), (6, 8)      8        weights. Especially, let αv = (αv,1 , ..., αv,t , ..., αv,fv ) denote
+                     (0, 2), (8, 2), (0, 6), (8, 6)
+             3       (4, 0), (4, 8), (0, 4), (8, 4)     16        the envelope subvector corresponding to fv fading blocks with
+             3       (1, 1), (1, 7), (7, 1), (7, 7)     16        the weight v. So the envelope vector is α = (α0 , ..., αw ).
+                     (3, 1), (3, 7), (5, 1), (5, 7)
+             3       (1, 3), (7, 3), (1, 5), (7, 5)     112       Similar to the derivation in [25], we obtain the upper bound
+             3       (2, 2), (2, 6), (6, 2), (6, 6)     192       of error probability of the polarized channel as the following.
+             3       (4, 2), (4, 6), (2, 4), (6, 4)     496                                                     (i)
+             3       (3, 3), (3, 5), (5, 3), (5, 5)     784          Theorem 4: Given the polar subcode DN , for the random
+             3                   (4, 4)                1216                                                                          (i)
+             ...                   ...                   ...      mapping, the error probability of the polarized channel WN
+             9               (1, 1), (7, 7)              8        can be upper bounded as
+             9               (3, 3), (5, 5)             56
+             10              (2, 2), (6, 6)             16
+             10                  (4, 4)                 32                N                     d            F2
+                                                                                                            F1 X                Fw
+                                                                      (i)                                                                  (i)
+                                                                            X                     X         X                   X
+             11              (2, 2), (6, 6)              8         P WN ≤                                                ...           AN (d)
+             11                  (4, 4)                 16
+             12                  (4, 4)                 16                         d=dmin F =dd/M e f1 =0 f2 =0
+                                                                                        (i)                                    fw =0
+             13              (2, 2), (6, 6)              4                                                                                           (28)
+             14                  (4, 4)                  4                                  w                        fv
+                                                                                            Y           1
+             15                  (4, 4)                  2                      · Pd (f )                                   ,
+             16                  (8, 8)                  1
+                                                                                            v=1
+                                                                                                   vEs /N0 + 1
+
+                                                                                                       d− v−1
+                                                                                      n                   P         o
+                                                                                                            r=1 rfr
+                                                                                            Pv−1
+                                                                  where Fv = min F − r=1 fr ,                         ,1 ≤ v ≤ w
+of enumeration algorithm can be further reduced to χE (N ) =                                                v
+1                          4      1    5                          and Pd (f ) is the probability of a weight pattern f related to a
+4 ×(N/2−1)(N/2+1) ≈ 128 N . Thus the total complexity
+of Algorithm 1 is O(N ).   5                                      specific weight d.
+   Example 2: The split polar spectrum for the code length              Proof: Due to the uniform interleaving, the error prob-
+                                                                                                        (i)
+N = 16 is partially shown in Table I. In this example, due to     ability of the polarized channel WN is upper bounded by
+the symmetric distribution of polar spectrum (Lemma 4), some      averaging over all possible fading block patterns and the
+different weight partition vectors have the same split weight     envelopes, that is,
+                       (2)               (2)      (2)
+enumerators, e.g. A16 (2, 2) = A16 (2, 6) = A16 (6, 2) =                      N
+  (2)                                                                              h                        i
+A16 (6, 6) = 384. As shown in this table, due to the duality            (i)            (i)
+                                                                              X
+                 (2)         (16)   (3)      (15)
+                                                                     P WN ≤     Ef ,α AN (d)Pd (f )P (d|α, f ) .                                     (29)
+relationship, A16 and A16 , A16 and A16 , etc. satisfy the                                  (i)
+                                                            (9)                     d=dmin
+general MacWilliams identities. Meanwhile, the subcode C16
+is a self-dual code.                                                 Here, given the weight pattern f and the envelope vector α,
+   Remark 2: Algorithm 1 is an efficient method to calculate      the conditional PEP can be upper bounded by
+the split polar spectrum for the special case L = 2. Theo-
+retically, this algorithm can be extended to the general case                                       fv
+                                                                                                  w Y                                 
+                                                                                                  Y
+                                                                                                                        2     Es
+L > 2. However, in this case, the computational complexity                   P (d |α, f ) ≤                 exp       −αv,t v              ,         (30)
+                                                                                                  v=1 t=1
+                                                                                                                              N0
+of the split polar spectrum will become too high to apply for
+the performance evaluation. Hence, for a large block diversity,   where αv,t denotes the envelope related to the t-th fading block
+we use a random mapping as a tool to approximate the split        with the same weight v. The conditional PEP is further taken
+polar spectrum which will be described in the next section.       the expectation over the envelope α and bounded by
+
+                                                                                                             w
+                                                                                                                                       !fv
+    V. P ERFORMANCE A NALYSIS BASED ON R ANDOM                                                               Y             1
+                     M APPING                                        P̄ (d |f ) = Eα [P (d |α, f )] ≤                        Es
+                                                                                                                                                 .   (31)
+                                                                                                             v=1
+                                                                                                                        1 + vN 0
+  In this section, under the random mapping, we derive the
+upper bound of error probability of polarized channel and         According to [25], the probability of a fading block pattern
+                                                                                                                                                             10
+
+
+
+for a specific codeword weight d is written as                                   the L diversity order. Hence, if the uniform interleaver is
+                          w                                                     carefully designed and satisfies the equipartition condition, the
+                              M fv
+                          Q       
+                               v          L!                                     full diversity can be achieved and we have f0 = 0. Further-
+               Pd (f ) = v=1        · Q w                                       more, since the low-weight terms dominate the upper bound
+                              N
+                                 
+                              d            fv !                         (32)     of the error probability in (28), guided by the product distance
+                                                  v=0
+                             w 
+                                                                                 criterion, for the random mapping, we can also optimize the
+                                 M fv B(L, f , d),
+                                   
+                         =
+                             Y                                                   product distance corresponding to the minimum Hamming
+                                 v                                                           (i)
+                                                                                 distance dmin and obtain a coding advantage. Certainly, the
+                             v=1
+                                                                                                                 (i)
+                           
+                                   L
+                                                 .
+                                                       N
+                                                                                influence of polar spectrum AN and the probability of fading
+where B(L, f , d) =         f0 , f1 , ..., fw          d . Note that             block pattern Pd (f ) should be elaborately considered.
+the right term of the first equality in (32) means the num-
+ber of combinations of f among the L blocks, which is a                       VI. P OLAR C ODING BASED ON R ANDOM M APPING
+                                         L
+multinominal coefficient f , f , ..., f              . Correspondingly,       In this section, we consider the construction method of polar
+                                  0 1            w
+the left factor of this equality indicates the probability of codes under the random mapping. Based on the logarithmic
+deploying d nonzero bits over L blocks whereby the number version of the upper bound, the constructive metric is also
+of blocks with weight v is fv for all possible values of named polarized diversity weight (PDW).
+v. In addition, since the summation order in (28) is from                     For the random mapping, we can also consider the upper
+f1 to fw , we can n derive    the superscript       ofoeach summation      bound    of error probability in the case of low-SNR and obtain
+                                        d− v−1
+                                            P
+                                              r=1 rfr
+                          Pv−1                                             the following       theorem.
+as Fv = min F − r=1 fr ,                       v        . In fact, other
+summation order is also possible.                                             Theorem        5:   In the case of low-SNR and random mapping,
+   Compared with the upper bound (14) in Corollary 1, we find              the  upper      bound     on the error probability of the polarized
+that the upper bound in (28) has a similar form. Recall that               channel     can   be   approximated        by
+                                                                                                                           h                           i
+                                                                                                                                        Es         (i)
+the calculation of split polar spectrum is very difficult when                                       N             w        −fv 1+v N       −ln CN (fv )
+                                  (i)
+                                                                                
+                                                                                       (i)
+                                                                                                   X       X     Y      e                0
+L > 2. So we can regard AN Pd (f ) as an approximation of                     P WN .                                    h                              ifv ,
+                          (i)                                         (i)                                                         Es            (i)
+split polar spectrum AN (d). Since the polar spectrum AN                                              (i)
+                                                                                                  d=dmin      f   v=1     1 + v N0 − ln CN (fv )
+can be easily calculated by using the enumeration algorithm                                                                                                (35)
+                                                                                                                                i wf1 
+in [14]. With the help of uniform interleaving, this bound is
+                                                                                                     h                                           
+                                                                                       (i)                (i)
+                                                                           where CN (fv ) = AN (d)B(L, f , d)
+                                                                                                                                      v      M
+suitable for arbitrary diversity order.                                                                                                       v .
+                                                                                                                    Es
+   For the random mapping, we can also obtain the BLER                           Proof: Let γv,t = αv,t N0 denote the fading block SNR
+upper bound as the following corollary.                                    corresponding         to the t-th block with the weight v. After
+                                                                                                              (i)
+   Corollary 3: Given the fixed configuration (N, K, A), for               decomposing        the   term AN Pd (f ) into the inner of the product,
+the random mapping, the block error probability of polar code we can rewrite the upper bound of the error probability of
+using SC decoding in the block Rayleigh fading channel is polarized channel as
+bounded by                                                                              XX Y              w Y  fv               Z ∞
+                                                                                    (i)                                 (i)
+                           N                        w                 fv P WN ≤                                    CN (fv )             e−γv,t v g(γv,t )dγv,t
+                  X       X        (i)
+                                                    Y          1                                                                    0
+Pe (N, K, A) ≤                   AN (d)Pd (f )                             .                    d     f v=1 t=1
+                                                   v=1
+                                                          1 + vEs /N0                        w Y  fv Z ∞
+                  i∈Ad→f ,d=d(i)                                               X     X     Y                        (i)                 1
+                                min
+                                                                    (33)     =                                eln CN (fv,t )−γv,t v e−γv,t /γ dγv,t .
+                                                                                                                                        γ
+                                                                                 d     f v=1 t=1 0
+                                                                                                                                                           (36)
+B. Approximation Analysis of Upper Bound
+                                                                           The inner integration in (36) can also be decomposed into two
+   Given the weight pattern f , for the case of high SNR, the parts as follows,
+conditional PEP can be further bounded by                                          Z ∞
+                                                                                           1 ln CN(i) (fv )−γv,t (v+ γ1 )
+               w
+                          ! fv           w
+                                                  !−1       −(L−f0 )                       e                               dγv,t
+              Y       1                 Y
+                                               fv        Es                          0     γ
+ P̄ (d |f ) ≤         Es
+                                =            v                         .               Z  γ
+                                                                                             1 ln CN(i) (fv )−γv,t (v+ γ1 )
+                    vN                                   N0                        =            e                             dγv,t
+              v=1       0              v=1                                                                                                                 (37)
+                                                                    (34)                 0 γ
+                                                                                      Z ∞
+   Like the analysis in Section III-C, we find that a diversity                               1 ln CN(i) (fv )−γv,t (v+ γ1 )
+                                                                                   +            e                              dγv,t = I1 + I2 .
+order in term of L − f0 can be achieved in Eq. (34). If the                             γ     γ
+number of zero-weight blocks is zero, i.e., f0 = 0, we will
+                                                                           For the case of low-SNR, i.e., γ ≈ 0, the first integration I1
+                    Qw Similarly,
+obtain the full diversity.                  by Lemma 1, as a product
+                              fv                                           tends to zero. Thus, the second integration I2 is concerned and
+distance, the term v=1 v can be approximately maximized
+                                                                           further bounded by
+when w = d/L and fw = L. Therefore, the design criteria of                                       Z ∞
+polar coding in Section III-C are also suitable for the polar                                           1 ln CN(i) (fv ) γv,t
+                                                                                                                            γ −γv,t (v+ γ ) dγ
+                                                                                                                                            1
+                                                                                        I2 ≤               e                                       v,t
+code struction under the random mapping.                                                           γ    γ
+   Remark 3: Guided by the full diversity criterion, we re-                                                                                                (38)
+                                                                                                                                           
+                                                                                                                                   (i)
+                                                                                                 exp − 1 + γv − ln CN (fv )
+quire the interleaver in random mapping can uniformly dis-                                   =                                                   .
+                                                                                                                              (i)
+tribute the nonzero bits over L fading blocks so as to achieve                                            1 + γv − ln CN (fv )
+                                                                                                                                                      11
+
+
+                                                                   γ
+In the derivation of (38), we use the inequality v,t   γ ≥ 1.                          to that under the random mapping when L = 1. Otherwise,
+   Similar to Theorem 2, the SNR in Theorem 5 should satisfy                           the constructions under the two mappings are marked by
+                                         (i)
+the condition ∀v, vEs /N0 + 1 − ln CN (fv ) > 0. In the case                           “block” and “random”, respectively. While the GA algorithm
+of low SNR, by using Theorem 5, the logarithmic version of                             is executed on each symbol SNR.
+the upper bound can be written as                                                         Given the code length N = 256, Fig. 2 provides the BLER
+                          h                                    i                   performances comparison among the various constructions
+                                           Es         (i)
+     
+      X N     XY   w  exp  −f  v   1 + v  N0 −  ln C N   (f v )    
+                                                                                      under SC decoding. For the PDW construction, the symbol
+  ln                        h                           i fv                           SNR in (24)/(40) is respectively set to 0 and 3 dB for the code
+                                    Es          (i)
+                              1 + vN    − ln CN (fv )
+      (i)                                                          
+      d=dmin f v=1                                                                     rate R = 0.25 and R = 0.5. It can be observed from Fig. 2(a)
+                                                                   
+                                      0
+         ( w                                                                           that the polar codes constructed by PDW can achieve the same
+                       (i)         (i) Es
+            X
+  ∝ max         fv ln CN (fv ) − dmin                                                  performance of those constructed by Bhattacharyya parameter
+      f
+            v=1
+                                        N0                                             or GA algorithm which involves complex iterative calculation
+              w                                  )                                   when the low code rate R = 0.25 is considered. Moreover,
+             X                Es          (i)
+          −      fv ln 1 + v      − ln CN (fv )       .                                in the case of L = 2, the PDW under the random mapping
+             v=1
+                              N0
+                                                                                       behaves almost identically as that under the block mapping,
+                                                                  (39)
+                                    
+                                      P ak
+                                                                                      which implies the approximate split polar spectrum derived by
+Similarly, the approximation ln           e       ≈ max{ak } is                        the random mapping is an effective alternative for the exact
+                                                 k                     k
+used.                                                                                  one under the block mapping. Meanwhile, the performances
+Pw Given the assumption
+                      Pw        of full diversity, two equalities
+       vf    = d                                                                       under L = 2 exhibit obvious diversity gain comparing to that
+   v=1     v      and         f
+                        v=1 v = L are used to simplify the
+                 Es       (i)
+metric. When v N0 − ln CN (fv ) is sufficiently small, by using                        under L = 1, which is consistent with the theoretical analysis
+the approximation ln(1+x) ≈ x, we obtain the PDW as below.                             of diversity order. Similar observations can be obtained in the
+   Metric 2: Given the code length N , for the random map-                             Fig. 2(b) for the medium code rate R = 0.5. However, the
+ping, the polarized diversity weight (PDW) can be given by,                            diversity advantage of L = 2 against L = 1 shrinks due to
+                            h                                                      the fact that the diversity order depends both on the number
+        (i)                     (i)   (i)                 (i)
+ P DWN = w max                LN dmin + ln B L, f , dmin                               of fading blocks L as well as on the code rate R [23].
+                   P          (i)
+              f,         vfv =dmin
+                   v=1
+
+                                         w
+                                                                               #
+                                                              
+                                                                      (i) Es
+                                                                                       B. Results under L > 2
+                                     +
+                                         X
+                                               fv ln       M       − dmin          .
+                                                           v              N0              In this part, under L = 4, we compare the BLER upper
+                                         v=1
+                                                             (40)                      bounds and simulation results of polar codes generated by the
+   Remark 4: Compared with the construction under the                                  proposed PDW construction and the traditional methods. For
+block mapping, the polar codes constructed under the ran-                              the PDW, only the random mapping is adopted to avoid the
+dom mapping may achieve the same diversity gain since the                              complex calculation of exact split polar spectrum. Meanwhile,
+carefully designed interleaver can uniformly distribute the                            the BLERs under L ≤ 2 are also provided for comparison.
+nonzero bits over all the fading blocks. In addition, only simple                         Fig. 3 provides the upper bound of BLER as well as the
+polar spectrum rather than complex split polar spectrum is                             BLER performances of polar codes constructed by PDW with
+needed for the calculation of the construction metrics under                           N = 256 and R = 0.25 under SC decoding. The upper bounds
+the random mapping. Therefore, such PDW metric is attractive                           of BLER marked by the dash line are obtained by (15). As
+for the practical implementation of polar coding.                                      shown in Fig. 3, all the upper bounds of BLER dramatically
+                                                                                       decrease with the increase of symbol SNR, and the slopes of
+ VII. N UMERICAL A NALYSIS AND S IMULATION R ESULTS                                    curves are identical with those of the corresponding simulation
+                                                                                       results for PDW construction. Although the proposed upper
+   In this section, we will provide the numerical and simulation
+                                                                                       bound is quite loose, it can be calculated with a linear com-
+results of polar codes based on the split polar spectrum under
+                                                                                       plexity and used to deduce construction metrics with explicit
+the block Rayleigh fading channel with L fading blocks.
+                                                                                       expressions.
+First, we present the BLER simulation results in the case of
+L ≤ 2, where both the block mapping and random mapping                                    For the code length N = 1024 and code rate R = 0.25, the
+are considered. Then, the BLER upper bounds and simulation                             BLER performance under SC decoding is shown in Fig. 4(a).
+results in the case of L > 2 are analyzed and compared, where                          The symbol SNR in (40) is set to 0 dB for the PDW construc-
+only the random mapping is adopted.                                                    tion. It can be observed that the polar codes constructed by
+                                                                                       PDW perform superior to those constructed by GA algorithm
+                                                                                       and Bhattacharyya parameter, especially under the condition
+A. Results under L ≤ 2                                                                 of L = 2 and L = 4. Specifically, for L = 2, comparing to
+   In this part, under the condition of L ≤ 2, we compare the                          the GA method or the one based on Bhattacharyya parameter,
+BLER simulation performances of polar codes generated by                               both diversity gain and coding gain can be obtained by PDW
+the proposed PDW construction and the traditional methods,                             construction, while for L = 4, the PDW construction exhibits
+which include GA algorithm and the one based on Bhat-                                  notable coding gain against the two methods. Actually, the
+tacharyya parameter according to [16]. Note that the con-                              PDW construction benefits from its design criteria, i.e, the full
+struction metric PDW under the block mapping is equivalent                             diversity criterion and product distance criterion. Furthermore,
+                                                                                                                                                 12
+
+
+
+
+Fig. 2. The BLER performances comparison between the polar codes constructed based on GA, Bhattacharyya parameter and PDW under block Rayleigh
+fading channel, where N = 256, R = {0.25, 0.5} and SC decoding is used.
+
+
+
+                                                                                                VIII. C ONCLUSIONS
+                                                                           In this paper, we establish a systematic framework to
+                                                                        analyze the theoretical performances of polar codes under the
+                                                                        block Rayleigh fading channels by introducing a new concept
+                                                                        named split polar spectrum. In the case of block mapping
+                                                                        and random mapping, based on the split polar spectrum, we
+                                                                        derive the upper bound on the error probability of the polarized
+                                                                        channel as well as that on the BLER of SC decoding. In
+                                                                        addition, we propose an enumeration algorithm embedded the
+                                                                        solution of general MacWilliams identities to calculate the
+                                                                        exact split polar spectrum for the special case L = 2 under
+                                                                        the block mapping. While for arbitrary diversity order, the
+                                                                        approximate split polar spectrum can be derived under the
+                                                                        random mapping by means of uniform interleaving. Finally,
+                                                                        we propose two design criteria, i.e., the full diversity criterion
+Fig. 3.    The BLER performance and upper bound of the polar codes
+constructed based on PDW under block Rayleigh fading channel, where
+                                                                        and the product distance criterion, to construct polar codes
+N = 256, R = 0.25 and SC decoding is used.                              over the block Rayleigh fading channels, whereby an explicit
+                                                                        and analytical construction metric named PDW is proposed
+                                                                        to construct polar codes with a linear complexity. Simulation
+                                                                        results show that the polar codes constructed by the PDW
+the BLER performance for PDW construction under SCL                     metric can achieve similar or superior performance to those
+decoding with list size 16 is depicted in Fig. 4(b), which              constructed by GA algorithm and Bhattacharyya parameter
+indicates that the BLER performance under the block fading              under SC decoding.
+channels is dominated by the number of fading blocks L
+and only relatively marginal improvement can be achieved by                                          R EFERENCES
+employing the SCL decoding.
+                                                                         [1] E. Arıkan, “Channel polarization: a method for constructing capacity
+   Finally, in Fig. 5, the BLER performances of polar codes                  achieving codes for symmetric binary-input memoryless channels,” IEEE
+constructed by PDW are compared with the capacity outage                     Trans. Inf. Theory, vol. 55, no. 7, pp. 3051-3073, Jul. 2009.
+under different code rate R, where the capacity outages are              [2] I. Tal and A. Vardy, “List decoding of polar codes,” in Proc. IEEE Int.
+                                                                             Symp. Inform. Theory (ISIT), pp. 1-5, 2011.
+similarly computed numerically by using Eq. (30) in [24] and             [3] K. Niu and K. Chen, “CRC-aided decoding of polar codes,” IEEE
+are marked by “Pout ”. For the two code rate R = 0.25 and                    Commun. Lett., vol. 16, no. 10, pp. 1668-1671, Oct. 2012.
+0.6, the symbol SNRs in (40) are respectively set to 0 and 3             [4] B. Li, H. Shen, and D. Tse, “An adaptive successive cancellation list
+                                                                             decoder for polar codes with cyclic redundancy check,” IEEE Commun.
+dB. As shown in Fig. 5, the proposed PDW construction can                    Lett., Vol. 16, No. 12, pp. 2044-2047, 2012.
+achieve the same diversity gain as the capacity outage in both           [5] K. Niu, K. Chen, J. R. Lin, and Q. T. Zhang, “Polar codes: primary
+case of L = 2 and L = 4. Therefore, the proposed PDW is an                   concepts and practical decoding algorithms,” IEEE Commun. Mag., pp.
+                                                                             192-203, Jul. 2014.
+attractive construction metric for practical application which           [6] K. Niu and K. Chen, “Stack decoding of polar codes,” Electronics
+can guarantee maximum diversity with a linear complexity.                    Letters, vol. 48, no. 12, pp. 695-697, 2012.
+                                                                                                                                                           13
+
+
+
+
+Fig. 4. The BLER performances comparison among the polar codes constructed based on GA, Bhattacharyya parameter and PDW under block Rayleigh
+fading channel, where N = 1024, R = 0.25 and SC decoding or SCL decoding with list size 16 is used.
+
+
+
+                                                                                      nels,” IEEE International Symposium on Inforamtion Theory, Istanbul,
+                                                                                      Turkey, pp. 769-773, Jul., 2013.
+                                                                                 [16] A. Bravo-Santos, “Polar Codes for the Rayleigh Fading Channel,” IEEE
+                                                                                      Commun. Lett., vol. 17, no. 12, pp. 2352-2355, Dec. 2013.
+                                                                                 [17] H. Si, O. O. Koyluoglu, and S. Vishwanath, “Polar Coding for Fading
+                                                                                      Channels: Binary and Exponential Channel Cases,” IEEE Trans. Com-
+                                                                                      mun., vol. 63, no. 8, pp. 2638-2648, Aug. 2014.
+                                                                                 [18] S. Liu, Y. Hong and E. Viterbo, “Polar Codes for Block Fading
+                                                                                      Channels,” IEEE Wireless Communications and Networking Conference,
+                                                                                      San Francisco, pp. 1-6, Mar. 2017.
+                                                                                 [19] P. Trifonov, “Design of polar codes for Rayleigh fading channel,”
+                                                                                      International Symposium on Wireless Communication Systems (ISWCS),
+                                                                                      Brussels, pp. 331-335, 2015.
+                                                                                 [20] L. Liu and C. Ling, “Polar Codes and Polar Lattices for Independent
+                                                                                      Fading Channels,” IEEE Trans. Commun., vol. 64, no. 12, pp. 4923-
+                                                                                      4935, Dec. 2016.
+                                                                                 [21] D. Zhou, K. Niu, and C. Dong, “Construction of Polar Codes in Rayleigh
+                                                                                      Fading Channel,” IEEE Commun. Lett., vol. 23, no. 3, pp. 402-405, 2019.
+                                                                                 [22] J. Simonis, “MacWilliams Identities and Coordinate Partitions,” Linear
+                                                                                      Algebra and Its Applications, no. 216, pp. 81-91, 1995.
+                                                                                 [23] E. Malkamaki and H. Leib, “Coded Diversity on Block-Fading Chan-
+                                                                                      nels,” IEEE Trans. Info. Theory, vol. 45, no. 2, pp. 771-781, Mar. 1999.
+Fig. 5. The comparison between the BLER performances and capacity outage         [24] R. Knopp and P. A. Humblet, “On coding for block fading channels,”
+under block Rayleigh fading channel, where N = 256 and SC decoding is                 IEEE Trans. Info. Theory, vol. 46, no. 1, pp. 189-205, Jan. 2000.
+used for PDW construction.                                                       [25] S. Z. Zummo, P. C. Yeh and W. E. Stark, “A Union Bound on the Error
+                                                                                      Probability of Binary Codes Over Block-Fading Channels,” IEEE Trans.
+                                                                                      Vehi. Techn., vol 54, no. 6, pp. 2085-2093, Nov. 2005.
+                                                                                 [26] R. H. Liu, P. Spasojevic and E. Soljanin, “Reliable Chanenl Regions for
+ [7] K. Chen, K. Niu, and J. R. Lin, “Improved successive cancellation                Good Binary Codes Transmitted Over Parallel Channels,” IEEE Trans.
+     decoding of polar codes,” IEEE Trans. Commun., vol. 61, no. 8, pp.               Info. Theory, vol 52, no. 4, pp. 1405-1424, Apr. 2006
+     3100-3107, 2013.                                                            [27] J. G. Proakis and M. Salehi, Digital Communications (5nd ed.),
+ [8] D. Guan, K. Niu, C. Dong, and P. Zhang, “Successive cancellation                 McGraw-Hill, 2008.
+     priority decoding of polar codes,” IEEE Access, vol. 7, pp. 9575-9585,      [28] 3rd Generation Partnership Project (3GPP) TS 38.212, “Multiplexing
+     2019.                                                                            and channel coding,” V.15.1.0, 2018.
+ [9] R. Mori and T. Tanaka, “Performance of polar codes with the construc-
+     tion using density evolution,” IEEE Commun. Lett., vol. 13, no. 7, pp.
+     519-521, Jul. 2009.
+[10] I. Tal and A. Vardy, “How to construct polar codes,” IEEE Trans. Inf.
+     Theory., vol. 59, no. 10, pp. 6562-6582, 2013.
+[11] P. Trifonov, “Efficient design and decoding of polar codes,” IEEE Trans.
+     Commun., vol. 60, no. 11, pp. 3221-3227, Nov. 2012.
+[12] G. N. He, J. C. Belfiore , et al., “β-expansion: A Theoretical Framework
+     for Fast and Recursive Construction of Polar Codes,” IEEE GLOBE-
+     COM, pp. 1-6, Dec. 2017.
+[13] V. Bioglio, C. Condo, and I. Land, “Design of Polar Codes in 5G New
+     Radio,” Arxiv 1804.04389v1, Apr. 2018.
+[14] K. Niu, Y. Li, and W. L. Wu, “Polar Codes: Analysis and Construction
+     Based on Polar Spectrum,” submit to IEEE Trans. Info. Theory, 2019.
+     See also: arXiv:1908.05889, Aug. 2019.
+[15] J. J. Boutros and E. Biglieri, “Polarization of Quasi-static Fading Chan-
+

@@ -1,0 +1,15 @@
+2026-11-10 中期前重复文件清理
+
+按用户授权，仅删除与较新保留副本SHA-256完全相同的重复表/图；独有MAT、参数和其他文件保留。原目录不再是一份完整独立副本。恢复时先核对replacement的SHA-256，再复制到原path；不能覆盖后续同名文件。具体映射：
+16QAM_Polar/v3/results/20260903_171843_ber_refine/ber_refine_aggregate.csv
+  replacement=16QAM_Polar/v3/results/20260903_210444_ber_refine/ber_refine_aggregate.csv
+  sha256=38cd348b7b537bf33421f24e7670090e00c7ef04132c8fe047efbfaa3125cd1e
+16QAM_Polar/v3/results/20260903_171843_ber_refine/ber_refine_repetitions.csv
+  replacement=16QAM_Polar/v3/results/20260903_210444_ber_refine/ber_refine_repetitions.csv
+  sha256=36dd2280afafa353d43fd56f1d762a6a005b016bb011bde45c1434a52f9e28d2
+16QAM_Polar/v3/results/20260903_171843_ber_refine/ber_refine_repetitions_partial.csv
+  replacement=16QAM_Polar/v3/results/20260903_210444_ber_refine/ber_refine_repetitions_partial.csv
+  sha256=36dd2280afafa353d43fd56f1d762a6a005b016bb011bde45c1434a52f9e28d2
+16QAM_Polar/v3/results/20260903_171843_ber_refine/ber_refine_validation.csv
+  replacement=16QAM_Polar/v3/results/20260903_210444_ber_refine/ber_refine_validation.csv
+  sha256=d17037e151d4a4768d9277079a09e0b21c94ee3f83f61138022ec662801f4717

@@ -1,0 +1,39 @@
+function report = p2_preflight_future_workload(jobs,max_case_frames)
+%P2_PREFLIGHT_FUTURE_WORKLOAD Count candidate work without launching any job.
+% This does not validate actual configurations, assets, timing or approval.
+    required={'job_id','purpose','split','num_channels','num_snr','num_cases','num_frames'};
+    assert(isstruct(jobs) && ~isempty(jobs) && all(isfield(jobs,required)), ...
+        'futurebudget:InvalidJobs','Required job fields are missing.');
+    assert(isnumeric(max_case_frames) && isreal(max_case_frames) && isscalar(max_case_frames) && ...
+        isfinite(max_case_frames) && max_case_frames==fix(max_case_frames) && max_case_frames>0, ...
+        'futurebudget:InvalidCap','Positive integer case-frame cap required.');
+    purposes={'pmf','model_calibration','test_seen','test_unseen','strategy_training','strategy_test','seen_retest','unseen_retest'};
+    splits={'pmf_train','model_train','seen_first_v2','unseen_first_v2','strategy_train','strategy_test_v2','seen_retest','unseen_retest'};
+    ids={jobs.job_id}; domains={jobs.split};
+    assert(iscellstr(ids) && all(~cellfun(@isempty,ids)) && numel(unique(ids))==numel(ids) && ...
+        iscellstr(domains) && numel(unique(domains))==numel(domains), ...
+        'futurebudget:Duplicate','Job IDs and random domains must be unique.');
+    out=cell(numel(jobs),7); total=0;
+    for k=1:numel(jobs)
+        x=jobs(k); i=find(strcmp(x.purpose,purposes));
+        assert(isscalar(i) && strcmp(x.split,splits{i}), ...
+            'futurebudget:RoleMismatch','Purpose and random domain mismatch.');
+        vals=[x.num_channels,x.num_snr,x.num_cases,x.num_frames];
+        assert(isnumeric(vals) && isreal(vals) && numel(vals)==4 && all(isfinite(vals)) && ...
+            all(vals==fix(vals)) && all(vals>=1) && vals(1)<=31 && vals(2)<=15 && ...
+            vals(3)<=256 && vals(4)<=8191,'futurebudget:InvalidSize','Invalid job dimensions.');
+        if isfield(x,'case_manifest')
+            assert(isstruct(x.case_manifest) && numel(x.case_manifest)==x.num_cases && ...
+                all(isfield(x.case_manifest,{'id','p','kind'})) && ...
+                numel(unique({x.case_manifest.id}))==x.num_cases, ...
+                'futurebudget:CaseMismatch','Expanded case manifest and count differ.');
+        end
+        p2_candidate_validation_seed(x.split,x.num_channels,x.num_snr,x.num_frames,1,'payload');
+        count=prod(double(vals)); total=total+count;
+        out(k,:)={x.job_id,x.purpose,x.split,vals(1),vals(2),vals(3),count};
+    end
+    assert(total<=max_case_frames,'futurebudget:CapExceeded','Case-frame workload exceeds cap.');
+    report=struct('jobs',cell2table(out,'VariableNames',{'job_id','purpose','split','channels','snr_points','cases','case_frames'}), ...
+        'total_case_frames',total,'cap',max_case_frames,'status','draft_only_not_authorized');
+end
+

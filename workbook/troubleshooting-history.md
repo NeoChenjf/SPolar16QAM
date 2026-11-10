@@ -395,3 +395,149 @@ Revision metadata: revision_id=p2_rks_claim_history_fix_20261025; current_status
 新入口的checkpoint改为先写pending文件再替换，防止中断时覆盖已完成索引；即便所有行都跳过，结束时也从checkpoint重建CSV。test_p2_resume_contract实际破坏自己的合成CSV后恢复，验证不重复行且表一致；参数或冻结文件变化仍拒绝。此测试不涉及旧正式数据。已记录并实际通过，不表示断电/磁盘硬件故障均得到覆盖。
 
 Revision metadata: revision_id=p2_resume_closeout_20261025; current_status=current; supersedes=[p2_rks_claim_history_fix_20261025].
+
+
+### 2026-11-06 共同环境原型PMF门禁滞后产生空结果目录
+
+- **问题**：PMF配置及角色检查发生在结果目录/快照创建后，失败仍留下像运行结果的目录；正式模式也先触发旧验证分支。
+- **触发场景**：共同环境prototype在缺失或不匹配PMF时开启预测。
+- **解决办法**：正式模式先明确拒绝，计算case并校验资产角色/契约后才创建结果；新增test_p2_common_pmf_guards并做预测smoke回归。
+- **相关文件**：`16QAM_Polar/v2/experiments/multicarrier/run_p2_common_environment.m`、`16QAM_Polar/v2/diagnostics/multicarrier/test_p2_common_pmf_guards.m`。
+- **日期**：2026-11-06。
+
+
+### 2026-11-06 配对审计误接受无噪校准角色
+
+- **问题**：共同环境原型的校准/PMF模式保存名义N0，但实际sigma=0；审计只检查名义N0可能误将其当通信加噪配对。
+- **触发场景**：对power_calibration、power_validation或pmf目录调用p2_audit_common_pairing。
+- **解决办法**：仅允许有通信加噪的pilot、model_calibration、test_seen、test_unseen角色，并测试拒绝无噪校准。
+- **相关文件**：`16QAM_Polar/v2/analysis/p2_audit_common_pairing.m`、`16QAM_Polar/v2/diagnostics/multicarrier/test_p2_audit_common_pairing.m`。
+- **日期**：2026-11-06。
+
+
+### 2026-11-06 raw与CSV噪声浮点精确相等误拒
+
+- **问题**：新p2_evaluate_frozen_run用isequal比较MAT内N0与CSV读回双精度，十进制序列化造成约3e-20差异，被误判物理不一致。
+- **触发场景**：N32单帧test_seen真实数据 `20261106_164432_p2_common_env_smoke_test_seen_58621dfd`。
+- **解决办法**：改为相对1e-12容差，并继续对计数使用精确比较；同一raw重测自对照通过。
+- **相关文件**：`16QAM_Polar/v2/analysis/p2_evaluate_frozen_run.m`。
+- **日期**：2026-11-06。
+
+
+### 2026-11-06 信道依赖积分被错误排除在线计时
+
+- **问题**：共同环境原型沿用旧模型计时，将随当前信道H变化的p2_llr_reference积分计入offline，online仅GA，可能虚高速度比；原通信计时又包含新增哈希和波形矩测量。
+- **触发场景**：共同环境prototype开启预测并将online_seconds用于p2_evaluate_predictions。
+- **解决办法**：积分与GA全部计入online_seconds并单列，哈希及非通信矩测量计时后从通信开销扣除并单列；未测PMF训练/摊销标NaN。不能重用旧smoke速度做验收。
+- **相关文件**：`16QAM_Polar/v2/experiments/multicarrier/run_p2_common_environment.m`。
+- **日期**：2026-11-06。
+
+
+### 2026-11-06 离线策略被预测模型门禁误阻
+
+- **问题**：共同环境短原型要求所有test_seen/test_unseen均启用预测并提供模型，违背已确认的离线训练表后备路径。
+- **触发场景**：预测模型不可用或不使用预测时的独立策略测试。
+- **解决办法**：仅预测开启的独立测试强制冻结模型；模型资产仅允许有预测的测试角色。运行预测关闭的独立短链路并经raw/配对评价验证。
+- **相关文件**：`16QAM_Polar/v2/experiments/multicarrier/run_p2_common_environment.m`。
+- **日期**：2026-11-06。
+
+
+### 2026-11-06 BER pilot图hold on后未设置对数轴
+
+- **问题**：预先hold on后调用semilogy未切换YScale，初图显示线性轴；参考线还自动生成data1/data2图例。
+- **触发场景**：共同环境pilot waterfall绘图。
+- **解决办法**：显式set(gca,YScale,log)，指定范围并隐藏参考线图例，另存pilot_waterfall_log.png；旧图保留标作废。
+- **相关文件**：`16QAM_Polar/v2/results/20261106_170923_p2_common_env_pilot_strategy_training_b54a9de1/plot_pilot.m`。
+- **日期**：2026-11-06。
+
+## 2026-11-06 零在线计时误通过修复（新探索路径）
+
+- **问题**：旧预测评价器把零在线时间除成 Inf，可能误报通过。
+- **触发条件**：有效评价行的 `online_seconds` 为0；同类风险还包括负值、NaN、Inf和非法帧数。
+- **处理**：新建 `p2_evaluate_predictions_checked` 在调用旧评价器前检查正且有限的时间、正整数帧数，并拒绝非有限加速比。旧函数和结果不改；新路径仅数值检查，不认证资产、信道独立和防泄漏，正式路径还需接入这些检查。
+- **验证**：`scripts/run_matlab_local.ps1 'test_p2_evaluate_predictions_checked'` 退出0，覆盖正向、零/负/NaN/Inf在线时间、零仿真时间、小数帧和重复信道。
+
+## 2026-11-06 新测试键被诊断提前使用
+
+- **问题**：首次未来键共同环境smoke直接使用了候选 `seen_first` / `unseen_first` 的部分键生成随机样本，破坏了把这些键称为完全未触及的条件。
+- **影响范围**：seen_first信道1的信道、参考点1帧1噪声与组1 payload键；unseen_first信道1的信道键。只是零星数值smoke，没有正式通信性能运行，但不能掩盖使用事实。
+- **处理**：追加互不重叠的诊断split，并改测试使用诊断split；追加 `seen_first_v2` / `unseen_first_v2` 作为未调用RNG的候选split。未改变原split映射，旧日志与状态追加留存。正式使用前继续审计全部历史和注册。
+- **验证**：MATLAB边界键984项互异，诊断split共同h/n及重现检查通过。不同键不证明数学独立。
+
+补充：高位seed兼容smoke还使用 `strategy_test` 的信道31、参考点15、帧8191、组3 donor/payload键生成少量高斯数，未运行链路；正式配置必须避开或重新注册该split，不能笼统称全部策略测试键未触及。
+
+## 2026-11-06 未来键诊断README易误认旧seed
+
+- **问题**：新键诊断入口README只突出兼容字段 `cfg.seed`，未写明实际随机键来自 `future_split`，可能误导后续复现。
+- **处理**：新产物README明确写出 `future_split` 和 `p2_future_seed` 的信道/参考点/帧/组/角色键；标明旧seed仅为角色/配置兼容，并非这些物理随机输入的键。
+- **验证**：新短运行 `20261106_214300_p2_future_diagnostic_smoke_pilot_be437549` 的README包含diagnostic_a及边界说明，MATLAB断言通过。旧结果和README没有覆盖。
+
+## 2026-11-06 未来键短恢复测试临时目录失败
+
+- **现象**：在MATLAB默认临时目录的副本中模拟恢复时，保存checkpoint后 `movefile` 报“系统找不到指定的文件”；尚未定位根因，不能推断是算法或特定环境机制。
+- **处理**：将测试副本临时目录改为项目 `results/` 下由MATLAB `tempname` 创建的独立目录，结束由cleanup删除；实际历史结果保持只读。
+- **结果**：项目路径下的测试成功恢复一个N32诊断case，h、每帧输入hash、误码和信息计数与原始记录一致；更改帧数的恢复配置被拒。该结果不覆盖默认临时目录问题或正式规模恢复。
+
+## 2026-11-06 默认临时目录movefile最小复现
+
+独立于仿真，在当前MATLAB R2020b进程的 `tempname` 默认目录创建并保存单个MAT文件，`isfile` 确认为真；调用 `movefile(...,''f'')` 返回0、`MATLAB:MOVEFILE:OSError`、系统找不到指定的文件，源文件仍存在、目标不存在。使用 `v2/results` 下的唯一临时目录做相同操作则返回1，目标存在。两个临时目录均由cleanup清理。
+
+结论是当前环境/路径下可重复的最小文件操作差异，不足以确定底层根因，更不能推广到所有机器。现有结果入口默认写项目 `results`，单case恢复已在该目录通过；正式执行前仍应在实际目标卷测试覆盖、断电/中止和磁盘异常，不能仅凭此宣布恢复可靠。
+
+## 2026-11-06 诊断入口恢复时checkpoint与raw不一致
+
+- **问题**：原未来键诊断恢复直接信任checkpoint中的completed项；若raw缺失，可能跳过该case并继续，产生不完整结果。
+- **修复范围**：仅新 `run_p2_future_diagnostic` 增加 `p2_validate_future_checkpoint`，在循环前核对checkpoint行、case键及raw文件集合，通信角色重算已完成raw的主要指标；发现已完成缺raw或多出未提交raw即停止，不自动删除或覆盖。
+- **验证**：新N32三S诊断fixture完成；项目results临时副本的缺raw经实际入口拒绝，额外raw经检查拒绝，合法部分checkpoint重算后输入与计数一致，配置改变被拒。正式规模/帧内恢复、PMF的计数内容校验和异常恢复策略仍未完成；旧冻结/共同环境入口未改。
+
+## 2026-11-06 无噪PMF checkpoint计数遗漏
+
+- **问题**：未来诊断checkpoint检查此前对无噪PMF角色仅检查文件集合，不核验raw计数；损坏计数可能被当作已完成。
+- **处理**：无噪角色逐条检查 `BER/error_count` 为NaN、`communication_measured=false`、每组每帧16标签非负整数且总数为N，幅度为1、帧数一致。
+- **验证**：新N32三S无噪诊断fixture，修改复制表的BER为0或将某标签计数加1都被拒绝；原始fixture通过。更新后重新生成通信fixture并通过缺raw、孤立raw、合法恢复和配置变化回归。只验证统计总量，不能发现总数不变的标签重分配或证明样本来源；无正式运行。
+
+## 2026-11-06 checkpoint无法检测总数不变的raw改动
+
+- **问题**：仅验证无噪标签计数总和，无法发现不同标签间保持总数的修改。
+- **处理**：仅新未来键诊断入口在checkpoint中为每个raw保存SHA-256，恢复前逐项比对；无摘要旧checkpoint拒绝，不改历史结果。发生raw写完、checkpoint未提交的中断时作为孤立raw停止并保留人工核查。
+- **验证**：N32 PMF复制fixture将一个计数从非零标签移至另一标签，保持总和，摘要不匹配被拒；NaN与通信部分恢复回归通过。摘要和raw同目录，不防同步篡改，不证明事前可信冻结或正式规模可靠性。
+
+
+### 2026-11-07 E2报告空选择分母与基线遗漏
+- **问题**：初版报告对无选择信道只计算条件达标率，训练图未展示纯能量基线。
+- **触发场景**：训练某档无可行候选或比较训练Pareto时需要展示全部计划基线。
+- **解决办法**：独立测试前修正代码，输出20信道总体选择覆盖和总达标率，并在训练图与表附纯能量基线；本次两档均有选择，最终20/20覆盖。
+- **相关文件**：16QAM_Polar/v2/experiments/multicarrier/run_p2_v2_strategy_report.m、run_p2_v2_strategy_training.m。
+- **日期**：2026-11-07
+
+
+### 2026-11-09 旧一次性诊断不应充当回归测试
+
+- **问题**：`test_llr_inspection.m` 末尾用1000元素的BPSK逻辑掩码索引250元素的QAM LLR向量；`quick_layer1_test`/`quick_layer2_test`等仅打印完成，没有可失败的验收断言。三个B4b验收器写死旧批次结论，不能推广为新批次门禁。
+- **触发场景**：全仓清理及一次性验证脚本质量检查，静态发现；未执行这些旧实验。
+- **解决办法**：作为退役历史工具移出活跃目录，ZIP保留原字节和逐项恢复清单；没有修写原算法或宣称其问题已修复。当前通用回归和P2门禁保留。
+- **相关文件**：[退役清单](../治理记录/20261109/retired-manifest.json)、[清理记录](../治理记录/20261109/README.md)。
+- **日期**：2026-11-09。
+
+### 2026-11-09 预测验证入口源码快照扩展名
+- **问题**：新验证入口copyfile(mfilename('fullpath'),...)没有.m扩展名，MATLAB找不到源文件。
+- **触发场景**：首个smoke在快照阶段退出，尚未模拟通信帧。
+- **解决办法**：显式追加.m，仅重跑受影响smoke；失败目录保留。
+- **相关文件**：16QAM_Polar/v2/experiments/multicarrier/run_p2_predictor_validation.m
+- **日期**：2026-11-09
+
+### 2026-11-09 独立评价分位约定对齐
+- **问题**：初版Python评价p90使用默认线性分位，和原MATLAB prctile约定不同，可能改变边界判定。
+- **触发场景**：独立批次运行期间复核原门槛实现。
+- **解决办法**：独立评价明确使用Hazen方法，并补1至20倍误差p90=18.5的确定性测试；独立结果首次正式报告已使用修正约定。冻结模型/仿真未修改，旧开发表保留。
+- **相关文件**：scripts/report_prediction_validation.py、scripts/test_report_prediction_validation.py
+- **日期**：2026-11-09
+
+
+### 2026-11-10 研究路线简文公式跨解释器转义损坏
+
+- **问题**：经JavaScript/PowerShell/Python多层字符串写入的LaTeX公式出现反斜杠丢失及回车断行，单纯检查定界符成对不足以发现语义损坏。
+- **触发场景**：重整科研loop简要路线时，独立只读文档审阅发现。
+- **解决办法**：依append-only保留首版，追加明确作废/替代声明；用字符码92构造实际反斜杠，核验最终命令、换行及定界符；独立复核关闭P2。未修改算法、数据或实验结论。
+- **相关文件**：学习文档/硬件前信息与非线性收能定量分析及瑞利策略优化-loop/当前研究路线-2026-11-10.md末尾公式更正段。
+- **日期**：2026-11-10。

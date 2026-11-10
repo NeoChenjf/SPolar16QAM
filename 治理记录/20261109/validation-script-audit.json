@@ -1,0 +1,410 @@
+[
+  {
+    "path": "16QAM_Polar/test_compare_llr_LSE_and_qamdemod.m",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/test_compare_LSE_and_MaxLog.m",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/test_maxlog.m",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/check_env.m",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/check_ofdm_per_bit_ber.m",
+    "action": "retired",
+    "assert_count": 0,
+    "reason": "写死20260522结果目录的打印探针，无断言；保留原始MAT数据。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/diagnose_mc_simulation.m",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/quick_layer1_test.m",
+    "action": "retired",
+    "assert_count": 0,
+    "reason": "旧Layer1单次修复探针；无固定种子与失败断言，打印完成不代表通过。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/quick_layer2_test.m",
+    "action": "retired",
+    "assert_count": 0,
+    "reason": "旧Layer2符号约定探索；两种MI约定取最大值且无失败断言，不作为回归测试。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_bpsk_baseline.m",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_bpsk_direct.m",
+    "action": "retired",
+    "assert_count": 0,
+    "reason": "重复手算BPSK探针；A/C表达式相同，未调用项目方法；保留test_bpsk_baseline。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_llr_inspection.m",
+    "action": "retired",
+    "assert_count": 0,
+    "reason": "伪16QAM与BPSK不同口径；末尾用1000元素掩码索引250元素llr_qam，不能作为可信测试。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_polar_loopback.m",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_qamdemod_bug.m",
+    "action": "retired",
+    "assert_count": 0,
+    "reason": "工具箱单符号旧排障探针，仅打印结果无失败断言；check_env及实际链路测试保留。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_sc_standard_baseline.m",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_source_entropy_partition.m",
+    "action": "retained",
+    "assert_count": 10,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_b4_equal_power_scaling.m",
+    "action": "retained",
+    "assert_count": 7,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_ofdm_channel_core.m",
+    "action": "retained",
+    "assert_count": 8,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_ofdm_common_noise_roundtrip.m",
+    "action": "retained",
+    "assert_count": 6,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_ofdm_common_noise_statistics.m",
+    "action": "retained",
+    "assert_count": 3,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_audit_common_pairing.m",
+    "action": "retained",
+    "assert_count": 2,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_audit_model_splits.m",
+    "action": "retained",
+    "assert_count": 2,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_build_future_draft.m",
+    "action": "retained",
+    "assert_count": 5,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_candidate_validation_seed.m",
+    "action": "retained",
+    "assert_count": 2,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_common_pmf_guards.m",
+    "action": "retained",
+    "assert_count": 1,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_compare_csi_policy.m",
+    "action": "retained",
+    "assert_count": 3,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_csi_policy.m",
+    "action": "retained",
+    "assert_count": 6,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_evaluate_frozen_tradeoff.m",
+    "action": "retained",
+    "assert_count": 2,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_evaluate_predictions_checked.m",
+    "action": "retained",
+    "assert_count": 5,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_future_draft_cases.m",
+    "action": "retained",
+    "assert_count": 6,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_future_pmf_checkpoint.m",
+    "action": "retained",
+    "assert_count": 2,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_future_resume.m",
+    "action": "retained",
+    "assert_count": 9,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_future_seed.m",
+    "action": "retained",
+    "assert_count": 6,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_future_seed_common_environment.m",
+    "action": "retained",
+    "assert_count": 3,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_mechanism.m",
+    "action": "retained",
+    "assert_count": 28,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_paired_channel_bootstrap.m",
+    "action": "retained",
+    "assert_count": 4,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_paired_seed.m",
+    "action": "retained",
+    "assert_count": 5,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_preflight_future_workload.m",
+    "action": "retained",
+    "assert_count": 5,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_resume_contract.m",
+    "action": "retained",
+    "assert_count": 3,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_select_training_tradeoff.m",
+    "action": "retained",
+    "assert_count": 4,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_validate_common_model.m",
+    "action": "retained",
+    "assert_count": 1,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_validate_common_pmf.m",
+    "action": "retained",
+    "assert_count": 1,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_validate_common_predictions.m",
+    "action": "retained",
+    "assert_count": 2,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_validate_common_references.m",
+    "action": "retained",
+    "assert_count": 1,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_validate_future_job.m",
+    "action": "retained",
+    "assert_count": 4,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/test_p2_verify_common_snapshot.m",
+    "action": "retained",
+    "assert_count": 3,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/verify_b4b_energy_by_strategy.m",
+    "action": "retired",
+    "assert_count": 10,
+    "reason": "固定180行、30 realization及能量策略极值的旧图验收器，非通用科学门禁。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/verify_b4b_fixed_policy_holdout_analysis.m",
+    "action": "retired",
+    "assert_count": 14,
+    "reason": "写死24 dB失败、PARTIAL状态及旧码本的特定历史批次验收。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/verify_b4b_guardband_policy_test_analysis.m",
+    "action": "retired",
+    "assert_count": 9,
+    "reason": "写死六点SNR、策略映射及全通过结论的第三拆分历史验收。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/verify_b4b_paired_policy_analysis.m",
+    "action": "retained",
+    "assert_count": 18,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/verify_b4b_strict_smoke.m",
+    "action": "retained",
+    "assert_count": 25,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/rectifier/test_energy_tradeoff.m",
+    "action": "retained",
+    "assert_count": 18,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/rectifier/test_energy_tradeoff_recovery.m",
+    "action": "retained",
+    "assert_count": 2,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/rectifier/test_ofdm_oversampled_channel.m",
+    "action": "retained",
+    "assert_count": 3,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/rectifier/test_ofdm_oversampled_symbol.m",
+    "action": "retained",
+    "assert_count": 5,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/rectifier/test_rectifier_moment_proxy.m",
+    "action": "retained",
+    "assert_count": 6,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/rectifier/test_rectifier_proxy_from_moments.m",
+    "action": "retained",
+    "assert_count": 4,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/rectifier/test_rf_envelope_moments.m",
+    "action": "retained",
+    "assert_count": 5,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/rectifier/verify_energy_tradeoff_results.m",
+    "action": "retained",
+    "assert_count": 13,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v2/experiments/sc_checks/run_local_12db_check.m",
+    "action": "retired",
+    "assert_count": 0,
+    "reason": "固定p=.5、11:0.5:13 dB及旧日期种子的局部问题实验；通用理论/瀑布区入口保留。"
+  },
+  {
+    "path": "16QAM_Polar/v3/diagnostics/test_unit0_bsc_ga_partition.m",
+    "action": "retained",
+    "assert_count": 3,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v3/diagnostics/test_unit0_finite_noise_llr.m",
+    "action": "retained",
+    "assert_count": 1,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v3/diagnostics/test_unit0_forced_sc.m",
+    "action": "retained",
+    "assert_count": 5,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v3/diagnostics/test_unit0_gray_qam.m",
+    "action": "retained",
+    "assert_count": 8,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v3/diagnostics/test_unit0_noiseless_roundtrip.m",
+    "action": "retained",
+    "assert_count": 6,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v3/diagnostics/test_unit0_pmf_relation.m",
+    "action": "retained",
+    "assert_count": 6,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "16QAM_Polar/v3/diagnostics/test_unit0_relation_registry.m",
+    "action": "retained",
+    "assert_count": 4,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "scripts/test_prediction_redesign.py",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  },
+  {
+    "path": "workbook/knowledge/meta/test_rks_evaluate_scope_aware.py",
+    "action": "retained",
+    "assert_count": 0,
+    "reason": "保留：通用/当前方法或门禁；名称及无调用不能单独证明无用；未逐个执行。"
+  }
+]

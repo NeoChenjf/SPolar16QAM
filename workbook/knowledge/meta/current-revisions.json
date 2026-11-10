@@ -747,7 +747,7 @@
     {
       "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_energy_by_strategy.md",
       "revision_id": "baseline_85b3ab71c8db",
-      "status": "current",
+      "status": "historical",
       "supersedes": [],
       "evidence_status": "baseline_indexed_pending_review",
       "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
@@ -755,7 +755,7 @@
     {
       "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_fixed_policy_holdout_analysis.md",
       "revision_id": "baseline_a17afd07ac5a",
-      "status": "current",
+      "status": "historical",
       "supersedes": [],
       "evidence_status": "baseline_indexed_pending_review",
       "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
@@ -763,7 +763,7 @@
     {
       "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_guardband_policy_test_analysis.md",
       "revision_id": "baseline_faaac07e878b",
-      "status": "current",
+      "status": "historical",
       "supersedes": [],
       "evidence_status": "baseline_indexed_pending_review",
       "scope": "Initial active knowledge contract; claims and acceptance remain subject to evidence registry"
@@ -3080,6 +3080,36 @@
       "supersedes": [],
       "evidence_status": "documentation_only",
       "scope": "Learning document relocation; scientific state unchanged"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_energy_by_strategy.md",
+      "revision_id": "verify_b4b_energy_by_strategy_retired_20261109",
+      "status": "current",
+      "supersedes": [
+        "baseline_85b3ab71c8db"
+      ],
+      "evidence_status": "retired_archive",
+      "scope": "Retired fixed historical-batch checker; original source in 治理记录/20261109/retired-scripts.zip, not an active validation method"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_fixed_policy_holdout_analysis.md",
+      "revision_id": "verify_b4b_fixed_policy_holdout_analysis_retired_20261109",
+      "status": "current",
+      "supersedes": [
+        "baseline_a17afd07ac5a"
+      ],
+      "evidence_status": "retired_archive",
+      "scope": "Retired fixed historical-batch checker; original source in 治理记录/20261109/retired-scripts.zip, not an active validation method"
+    },
+    {
+      "path": "workbook/knowledge/L3/diagnostics/l3_verify_b4b_guardband_policy_test_analysis.md",
+      "revision_id": "verify_b4b_guardband_policy_test_analysis_retired_20261109",
+      "status": "current",
+      "supersedes": [
+        "baseline_faaac07e878b"
+      ],
+      "evidence_status": "retired_archive",
+      "scope": "Retired fixed historical-batch checker; original source in 治理记录/20261109/retired-scripts.zip, not an active validation method"
     }
   ]
 }

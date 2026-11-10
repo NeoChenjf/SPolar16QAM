@@ -1,0 +1,42 @@
+[
+  {
+    "source": "周报/1.14.md",
+    "old": "研究生毕设\\周报\\1.7.pdf",
+    "new": "1.7.pdf"
+  },
+  {
+    "source": "周报/3.18统一补充.md",
+    "old": "周报/3.18.md",
+    "new": "3.18.md"
+  },
+  {
+    "source": "周报/阶段A：单载波关键结论.md",
+    "old": "../../学习文档/shaped_polar验证loop/最新认知与执行基线.md",
+    "new": "../学习文档/shaped_polar验证loop/最新认知与执行基线.md"
+  },
+  {
+    "source": "学习文档/高阶调制理论/方法.md",
+    "old": "../../整形理论更新与仿真图重建清单.md",
+    "new": "../shaped_polar验证loop/理论更新与图重建/整形理论更新与仿真图重建清单.md"
+  },
+  {
+    "source": "学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "old": "../../../CLAUDE.md",
+    "new": "../../../AGENTS.md"
+  },
+  {
+    "source": "学习文档/高阶调制理论/通用GrayQAM-loop/next_plan.md",
+    "old": "../整形理论更新与仿真图重建清单.md",
+    "new": "../../shaped_polar验证loop/理论更新与图重建/整形理论更新与仿真图重建清单.md"
+  },
+  {
+    "source": "学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "old": "../整形理论更新与仿真图重建清单.md",
+    "new": "../../shaped_polar验证loop/理论更新与图重建/整形理论更新与仿真图重建清单.md"
+  },
+  {
+    "source": "学习文档/高阶调制理论/通用GrayQAM-loop/多载波任意GrayQAM能量分布可调理论说明.md",
+    "old": "../整形理论更新与仿真图重建清单.md",
+    "new": "../../shaped_polar验证loop/理论更新与图重建/整形理论更新与仿真图重建清单.md"
+  }
+]

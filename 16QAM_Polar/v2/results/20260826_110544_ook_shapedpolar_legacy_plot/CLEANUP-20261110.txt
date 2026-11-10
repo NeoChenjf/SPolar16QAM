@@ -1,0 +1,6 @@
+2026-11-10 中期前重复文件清理
+
+按用户授权，仅删除与较新保留副本SHA-256完全相同的重复表/图；独有MAT、参数和其他文件保留。原目录不再是一份完整独立副本。恢复时先核对replacement的SHA-256，再复制到原path；不能覆盖后续同名文件。具体映射：
+16QAM_Polar/v2/results/20260826_110544_ook_shapedpolar_legacy_plot/legacy_curves.csv
+  replacement=16QAM_Polar/v2/results/20260826_112955_ook_shapedpolar_legacy_plot/legacy_curves.csv
+  sha256=b496871b0c8be2ae39847725694bca8a9e3708868d54e07a658fc57d971ab376

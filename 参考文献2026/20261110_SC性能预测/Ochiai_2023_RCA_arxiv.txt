@@ -1,0 +1,1377 @@
+                                                                                                                                                              1
+
+
+
+
+                                                      A New Polar Code Design Based on
+                                                        Reciprocal Channel Approximation
+                                                                Hideki Ochiai, Kosuke Ikeya, and Patrick Mitran
+
+                                                                                                Abstract
+arXiv:2204.10747v1 [cs.IT] 22 Apr 2022
+
+
+
+
+                                                   This paper revisits polar code design for a binary-input additive white Gaussian noise (BI-AWGN)
+                                               channel when successive cancellation (SC) decoding is applied at the receiver. We focus on the reciprocal
+                                               channel approximation (RCA), which is often adopted in the design of low-density parity-check (LDPC)
+                                               codes. In order to apply RCA to polar code design for various codeword lengths, we derive rigorous
+                                               closed-form approximations that are valid over a wide range of SNR over an AWGN channel, for both
+                                               the mutual information of BPSK signaling and the corresponding reciprocal channel mapping. As a
+                                               result, the computational complexity required for evaluating channel polarization is thus equivalent to
+                                               that based on the popular Gaussian approximation (GA) approach. Simulation results show that the
+                                               proposed polar code design based on RCA outperforms those based on GA as well as the so-called
+                                               improved GA (IGA) approach, especially as the codeword length is increased. Furthermore, the RCA-
+                                               based design yields a better block error rate (BLER) estimate compared to GA-based approaches.
+
+
+                                                                                             Index Terms
+
+                                                   Code construction, density evolution, Gaussian approximation, polar codes, reciprocal channel
+                                               approximation.
+
+                                                                                        I. I NTRODUCTION
+
+                                            One of the most striking properties of polar codes [1] is their capacity approaching behavior
+                                         that is achievable with low-complexity successive cancellation (SC) decoding. Specifically, for a
+                                         codeword length of N bits, the decoding complexity is only O(N log N), which is significantly
+                                         lower than other known capacity approaching codes that are available in practice. As a result of
+                                         channel polarization, the design of polar codes is equivalent to the identification of good channels
+                                         and bad channels, where the former channels are used for information transmission and the latter
+
+                                           H. Ochiai and K. Ikeya are with the Department of Electrical and Computer Engineering, Yokohama National University,
+                                         Yokohama, Japan. (email: hideki@ynu.ac.jp, ikeya-kosuke-fc@ynu.jp)
+                                           P. Mitran is with the Department of Electrical and Computer Engineering, University of Waterloo, ON, Canada.
+                                         email:pmitran@uwaterloo.ca
+
+
+
+
+                                                                                                                                                        DRAFT
+                                                                                                    2
+
+
+
+channels are left unused (i.e., frozen). The main focus of this paper is on the design of polar codes
+with various codeword lengths over a binary-input additive white Gaussian noise (BI-AWGN)
+channel.
+  There have been various techniques proposed for polar code design over a BI-AWGN channel.
+The most accurate analytical approach is the use of density evolution [2, 3], originally developed
+for the design of low-density parity-check (LDPC) codes, and its applicability to polar codes
+has been identified in [4]. Density evolution tracks the probability distribution of the channel or
+its log-likelihood ratio (LLR), and in order to improve its accuracy, it should be computed with
+sufficient quantization and dynamic range. Therefore, density evolution is highly demanding in
+terms of space and computational complexity, especially when the codeword length increases.
+A more tractable approach with limited space complexity was proposed in [5]. Nevertheless,
+the approach involves quantization, and thus the overall complexity depends not only on the
+codeword length but also on the required precision. On the other hand, a significantly simpler
+approach is Gaussian approximation (GA) [6]. Also initially developed for the design of LDPC
+codes, its applicability to polar code design has been well investigated [7]. It has been pointed
+out in [8] that GA with the original approximation function developed in [6] may not necessarily
+work accurately when the equivalent SNR values of the channels after polarization become low.
+Consequently, a modified version, which will be referred to as improved GA (IGA) in this
+work, has been proposed [8]. Furthermore, there have been various design approaches proposed
+in the recent literature, targeting specific polar decoding algorithms. For example, in the case
+of successive cancellation list (SCL) decoding [9] or belief propagation (BP) decoding [10],
+learning-based approaches such as genetic algorithms and reinforcement learning have been
+proposed in [11] and [12], respectively. The major limitations of these approaches are their lack
+of flexibility and scalability since computationally demanding training should be performed for
+each given combination of the code parameters such as block length and code rate.
+  In this work, we consider the application of the so-called reciprocal channel approxima-
+tion (RCA), introduced by Chung in [13], that is motivated by the duality property of mutual
+information that holds between a repetition code and parity-check code over a binary erasure
+channel (BEC) [14]. This approach has been originally adopted in the design of LDPC and
+other related codes [13, 15–18], and it was numerically demonstrated in [13, Chapter 7] that it
+offers a better approximation for density evolution in the case of BI-AWGN channels than the
+conventional GA. By numerical study and simulation, it will be shown that polar codes designed
+
+
+                                                                                               DRAFT
+                                                                                                   3
+
+
+
+based on RCA exhibit better performance than those based on (improved) GA, and the gain
+becomes noticeable as the block length increases. The superior performance improvement will
+be demonstrated for polar codes with very long lengths (such as N = 218 bits), as is considered
+in practical optical communications [19]. (See, also [20], where a polar code of length 220 bits
+is considered.)
+  The design of polar codes based on RCA has been initially considered in [21] as well as [22].
+RCA-based designs make use of the mutual information of BPSK signaling over an AWGN
+channel as well as its inverse function, which should be calculated numerically. There are
+several closed-form approximations available in the literature, and in [22] the two approximations
+developed in [16] and [23] are compared, indicating the sensitivity of polar code performance
+to the choice of approximation. For this reason, in this work we introduce rigorous closed-form
+expressions for the mutual information C(γ) of BPSK as a function of SNR γ as well as its
+inverse function C −1 (·) that can be used for design of polar codes with long codeword lengths.
+  The main contributions of this work are as follows:
+  •   We derive a closed-form piece-wise continuous mutual information expression for BPSK
+      signaling over AWGN channels with guaranteed convergence in the case of high and low
+      SNR based on the asymptotic analysis of the mutual information function. This expression
+      is exploited to design polar codes based on RCA supporting a wide range of SNR after
+      polarization.
+  •   We develop an explicit algorithm that identifies SNR after channel polarization using only
+      closed-form equations, which can thus be calculated with low complexity.
+  •   By simulation, we demonstrate that the RCA-based design can achieve better performance
+      as well as offer a better block error rate (BLER) estimate compared to GA-based approaches,
+      especially as the block length increases and the code rate is moderate (e.g., around 1/2).
+  The remainder of the paper is organized as follows. Section II reviews the principle of RCA
+from the viewpoint of polar code design and develops a general algorithm. The key function Λ(ξ)
+that corresponds to the reciprocal channel mapping defined in [13] and that transforms SNR in
+the log domain based on RCA, is introduced. Section III develops closed-form expressions of the
+mutual information for BPSK signaling as well as its inverse, and its accuracy is compared with
+two other formulas available in the literature. Based on the developed mathematical tools, closed-
+form approximations for the associated function Λ(ξ) are derived in Section IV, which completes
+the proposed algorithm. Simulation results as well as the estimated BLER are compared in
+
+
+                                                                                            DRAFT
+                                                                                                  4
+
+
+ PSfrag replacements
+                                                                          γ0
+                         γ̂0 = Ψ (Ψ (γ0 ) + Ψ (γ1 ))
+                   u0                                                x0   W0     y0
+
+
+                   u1                                                x1   W1     y1
+                         γ̂1 = γ0 + γ1                                    γ1
+
+
+Fig. 1. Polar encoder and associated notations for N = 2.
+
+
+
+
+Section V, which reveals the effectiveness of the RCA-based polar code design using the proposed
+algorithm. Finally, concluding remarks are given in Section VI.
+
+
+                  II. P OLAR C ODES AND R ECIPROCAL C HANNEL A PPROXIMATION
+
+A. Polar Codes
+
+   We start with the simplest binary polar code of codeword (or block) length N = 2 (Arıkan’s
+kernel) shown in Fig. 1, where the information bits u0 , u1 ∈ F2 and the coded bits x0 , x1 ∈ F2
+are related by
+                                                 
+                                                  x0
+                                                 
+                                                            = u0 + u1 ,
+                                                                                                (1)
+                                                  x1
+                                                 
+                                                            = u1 .
+The coded bits x0 and x1 are modulated by BPSK and are transmitted over AWGN channels,
+denoted by W0 and W1 , where the SNRs of the channels are γ0 and γ1 , respectively, as illustrated
+in Fig. 1, with the received symbols given by y0 and y1 .
+   Assuming that u0 is decoded first, since
+
+                                                    u0 = x0 + x1 ,                              (2)
+
+u0 can be seen as a check node connected to x0 and x1 in the Tanner graph. Once the estimate
+of u0 , denoted by û0 ∈ F2 , is given, u1 can be uniquely determined by either of x0 or x1 , i.e.,
+u1 is a variable node connected to both x0 and x1 .
+   Polar codes of length N = 2n for an integer n > 1 can be obtained by the recursive application
+of the above kernel [1].
+
+
+
+
+                                                                                             DRAFT
+                                                                                                        5
+
+
+
+B. RCA
+
+  Following [18], we briefly describe the principle of RCA. Let us first consider a BEC where
+the erasure probability is e−s and the non-erasure probability e−r , i.e., e−s + e−r = 1, for
+s, r > 0. Let C(s) denote the capacity of this channel, i.e., C(s) = 1 − e−s . Then, it follows
+that C(s) + C(r) = 1. Let si denote the above parameter s for the bit xi transmitted over the
+corresponding BEC and let us define ri such that e−si +e−ri = 1. For a variable node u1 connected
+to x0 and x1 , its erasure probability is given by e−s0 e−s1 = e−(s0 +s1 ) , i.e., it is characterized by
+the sum of s0 and s1 . For a check node u0 connected to x0 and x1 , its corresponding non-erasure
+probability is given by (1 − e−s0 )(1 − e−s1 ) = e−(r0 +r1 ) , i.e., it is also characterized by the sum
+of r0 and r1 . In other words, for BEC, the parameter s is additive for variable nodes, whereas
+the parameter r is additive for check nodes [18].
+  We now apply the above RCA concept to the binary-input AWGN (BI-AWGN) channel. We
+define C(γ) as the capacity of the BI-AWGN channel with the signal-to-noise power ratio (SNR)
+given by γ. Similar to BEC, the additive property holds for the parameter γ in the case of the
+variable node as long as all the connecting nodes are associated with mutually independent
+AWGN channels. This stems from the fact that the LLR is additive at the variable node, and
+both mean and variance of the LLR corresponding to BI-AWGN channels are proportional to
+the channel SNR [8]. Let us now define the SNR parameter λ corresponding to the check node
+such that C(γ) + C(λ) = 1, and assume that the additive property also holds for the parameter
+λ at the check node. Since this does not strictly hold for general BI-AWGN channels, this is an
+approximation, which is thus referred to as the reciprocal channel approximation (RCA) in [13,
+Section 7.4].
+  For a given channel SNR γ, the parameter λ can be found by solving
+
+                                          C(λ) = 1 − C(γ),                                           (3)
+
+for λ. Since C(γ) is a strictly increasing function for γ > 0, we can define its inverse function
+C −1 (·) and write
+
+                                    λ = C −1 (1 − C(γ)) , Ψ(γ).                                      (4)
+
+The above function corresponds to the reciprocal channel mapping introduced in [13, Defini-
+tion 7.3], also referred to as self-inverting reciprocal energy function in [18], applied to BI-AWGN
+channels. Our goal is to find a suitable expression for the function Ψ(γ) that can support a wide
+
+
+                                                                                                   DRAFT
+                                                                                                     6
+
+
+
+range of SNR value γ with high accuracy. Note that since (3) holds with λ and γ interchanged,
+one can easily verify that
+
+                                            Ψ (Ψ (γ)) = γ,                                         (5)
+
+i.e., Ψ(γ) is a self-inverse function satisfying Ψ(γ) = Ψ−1 (γ) [13].
+  If γ0 and γ1 are the SNRs of the channels where the bits x0 and x1 are transmitted, respectively,
+then the SNR corresponding to the variable node u1 , denoted by γ̂1 , is expressed as
+
+                                             γ̂1 = γ0 + γ1 .                                       (6)
+
+On the other hand, the SNR corresponding to the check node u0 , denoted by γ̂0 , is similarly
+expressed based on the RCA principle [13, Section 7.4] as
+
+                                      Ψ (γ̂0 ) = Ψ (γ0 ) + Ψ (γ1 ) ,                               (7)
+
+from which we obtain
+
+                        γ̂0 = Ψ−1 (Ψ (γ0 ) + Ψ (γ1 )) = Ψ (Ψ (γ0 ) + Ψ (γ1 )) .                    (8)
+
+The above relationship between the pairs (γ0 , γ1 ) and (γ̂0 , γ̂1 ) is illustrated in Fig. 1.
+  In what follows, we consider the case when γ is extremely large or small due to the polarization
+effect. From the viewpoint of numerical evaluation and similar to [8], it would be convenient to
+express γ in the log domain. Therefore, we define ξ , ln γ and also introduce the function
+
+                                          Λ(ξ) , ln Ψ eξ .
+                                                        
+                                                                                                   (9)
+
+For the check node, the output ξˆ0 for a given pair of inputs ξ0 = ln γ0 and ξ1 = ln γ1 can be
+expressed as
+
+                      ξˆ0 = Λ max (Λ (ξ0 ) , Λ (ξ1 )) + ln 1 + e−|Λ(ξ1 )−Λ(ξ0 )|
+                                                                                   
+                                                                                        .         (10)
+
+On the other hand, for the variable node, the output ξˆ1 is expressed as
+
+                                ξˆ1 = max(ξ0 , ξ1 ) + ln 1 + e−|ξ0 −ξ1 | .
+                                                                        
+                                                                                                  (11)
+
+
+
+
+                                                                                                 DRAFT
+                                                                                                          7
+
+
+
+Algorithm 1 Channel Polarization with RCA (for Distinct Channel SNRs).
+Input: n = log2 N, ξ[0], ξ[1], . . . , ξ[N − 1] as ln γ0 , ln γ1 , . . . , ln γN −1 .
+Output: ξ[0], ξ[1], . . . , ξ[N − 1] as ln γ̂0 , ln γ̂1 , . . . , ln γ̂N −1
+ 1: for i = 1 : n do
+
+ 2:     J ← 2i
+ 3:     for k = 0 : N/J − 1 do
+ 4:        for j = 0 : J/2 − 1 do
+ 5:           ξ0 ← ξ[kJ + j]
+ 6:           ξ1 ← ξ[kJ + j + J/2]
+ 7:           Λ0 ← Λ(ξ0 )
+ 8:           Λ1 ← Λ(ξ1 )
+                                                                              
+ 9:           ξ[kJ + j] ← Λ max(Λ0 , Λ1 ) + ln 1 + e−|Λ0 −Λ1 |
+              ξ[kJ + j + J/2] ← max(ξ0 , ξ1 ) + ln 1 + e−|ξ0 −ξ1 |
+                                                                               
+10:
+
+11:        end for
+12:     end for
+13: end for
+
+14: return     ξ[0], ξ[1], . . . , ξ[N − 1]
+
+
+
+C. General Algorithm
+
+   In the case of a binary polar code of length N = 2n , let γ0 , γ1 , . . . , γN −1 denote the channel
+SNRs of the coded bits x0 , x1 , . . . , xN −1 . Then the SNRs for the input bits u0 , u1 , . . . , uN −1 ,
+denoted by γ̂0 , γ̂1, . . . , γ̂N −1 , can be obtained by the well-known recursive procedure in [1]. The
+corresponding RCA algorithm when each channel has a distinct SNR value is summarized in
+Algorithm 1. The algorithm can be significantly simplified when all the channels have the same
+SNR (or design SNR), i.e., γ0 = γ1 = · · · = γN −1 , which is summarized in Algorithm 2.
+   The remaining questions are: how can one calculate the function Λ(ξ) accurately with com-
+putational efficiency, i.e., without resorting to numerical integration, and how well does the
+algorithm operate compared to other known approaches of similar complexity? These will be
+addressed in the subsequent sections.
+
+
+
+
+                                                                                                     DRAFT
+                                                                                                     8
+
+
+
+Algorithm 2 Channel Polarization with RCA (for Uniform Channel SNR).
+Input: n = log2 N, ξ[0] = ln γ0
+Output: ξ[0], ξ[1], . . . , ξ[N − 1] as ln γ̂0 , ln γ̂1 , . . . , ln γ̂N −1
+ 1: for i = 1 : n do
+
+ 2:     J ← 2i
+ 3:     for j = 0 : J/2 − 1 do
+ 4:        ξ0 ← ξ[j]
+ 5:        Λ0 ← Λ(ξ0)
+ 6:        ξ[j] ← Λ (Λ0 + ln 2)
+ 7:        ξ[j + J/2] ← ξ0 + ln 2
+ 8:     end for
+ 9: end for
+
+10: return     ξ[0], ξ[1], . . . , ξ[N − 1]
+
+
+
+                                          III. C APACITY E XPRESSION
+
+A. Approximation for BI-AWGN Capacity
+
+   We start with the BI-AWGN capacity formula. Let Es denote the symbol energy of BPSK
+and N0 denote the variance of complex Gaussian noise. Let us define the SNR parameter γ
+as γ , Es /N0 in what follows. To compute the mutual information C(γ) between a BPSK
+input and its corresponding output over an AWGN channel, the following equivalent J-function
+(see [16]) is often adopted:
+                                                                      2 2
+                                                                      
+                                                     Z ∞         t− x2
+                                              1
+                                                           e−               log2 1 + e−t dt,
+                                                                                        
+                           J(x) = 1 − √                           2x2                           (12)
+                                              2πx2    −∞
+                                                                                               √
+where x corresponds to the standard deviation of the LLR and thus is related to γ by x =           8γ.
+                √ 
+Then C(γ) = J     8γ .
+   According to [16], the function J(x) is well approximated numerically by
+                              
+                              
+                              
+                              
+                                a1 x3 + b1 x2 + c1 x,   0 ≤ x ≤ 1.6363,
+                              
+                      J(x) ≈ 1 − ea2 x3 +b2 x2 +c2 x+d , 1.6363 < x ≤ 10,                       (13)
+                              
+                              
+                              
+                              
+                               1,                       x > 10,
+
+
+
+
+                                                                                               DRAFT
+                                                                                                   9
+
+
+
+with
+
+            a1 = −0.0421061, b1 = 0.209252, c1 = −0.00640081,
+
+            a2 = 0.00181491, b2 = −0.142675, c2 = −0.0822054, d = 0.0549608.
+
+On the other hand, in [23], the approximation
+                                                    2H2 H3
+                                                      
+                                  J(x) ≈ 1 − 2−H1 x        ,                                   (14)
+
+was proposed with H1 = 0.3073, H2 = 0.8935, and H3 = 1.1064.
+
+
+B. New Approximation Formula
+                         √ 
+  From (12) and C(γ) = J   8γ , we define
+
+                        U(γ) , 1 − C(γ)
+                                     Z ∞
+                                 1           1        2
+                                         e− 16γ (t−4γ) log2 1 + e−t dt.
+                                                                   
+                             = √                                                               (15)
+                               4 πγ −∞
+In what follows, we divide the range of γ, R , (0, ∞), into the four sub-regions R1 , R2 , R3 , R4 ,
+where R1 = (0, Γ1), R2 = [Γ1 , Γ2 ), R3 = [Γ2 , Γ3 ), and R4 = [Γ3 , ∞), with Γ1 , Γ2 , Γ3
+representing appropriate boundaries to be determined numerically.
+  1) Low SNR Case: For the sub-region R1 , i.e., when γ ≈ 0, by Maclaurin series expansion
+we obtain
+                                                             
+                                1            2 4 3 10 4 208 5
+                        C(γ) ≈            γ−γ + γ − γ +    γ .                                 (16)
+                               ln 2            3   3    15
+By truncating up to the third order, we may approximate U(γ) as
+                                                       
+                                       1         2  4 3
+                        U1 (γ) , 1 −        γ − γ + γ , γ < Γ1 .                               (17)
+                                      ln 2          3
+By setting the upper boundary as Γ1 = 0.04, the value of U(γ) at γ = Γ1 is calculated by
+numerical integration as
+
+                                       U(Γ1 ) ≈ 0.9444880,                                     (18)
+
+whereas the corresponding approximation according to (17) is given by
+
+                                   U1 , U1 (Γ1 ) ≈ 0.9444774.                                  (19)
+
+Therefore, the approximation error of U(γ) by U1 (γ) in the region R1 is bounded by
+
+                            |U(γ) − U1 (γ)| < 1.1 × 10−5 ,     γ < Γ1 .                        (20)
+
+
+                                                                                              DRAFT
+                                                                                                   10
+
+
+
+  2) High SNR Case: We next consider the sub-region R4 , i.e., when γ becomes larger than
+some boundary Γ3 . By applying the series expansion of the exponential function ex = ∞   xk
+                                                                                    P
+                                                                                     k=0 k!
+
+to U(γ) of (15), we obtain
+                                          ∞
+                               e−γ X (−1)k
+                        U(γ) = √                 ck
+                              4 πγ k=0 k! (16γ)k
+                               e−γ
+                                                            
+                                           c1       c2
+                             = √     c0 −     +          −··· ,                                 (21)
+                              4 πγ        16γ 2 · (16γ)2
+where
+                                        Z ∞
+                                                t
+                                 ck ,         e 2 t2k log2 1 + e−t dt.
+                                                                  
+                                                                                                (22)
+                                        −∞
+The above expression agrees with [3, Problem 4.12]. Note that ck for specific values of k can
+be expressed in closed form, e.g.,
+                     2π         2π (8 + π 2 )        2π (384 + 48π 2 + 5π 4 )
+                 c0 =    , c1 =               , c2 =                          .         (23)
+                    ln 2            ln 2                      ln 2
+Although the approximation becomes tighter as we incorporate more terms in (21), it becomes
+infeasible to find the corresponding inverse expression in closed form. Therefore, we adopt the
+expression
+                                             e−γ
+                                  U4 (γ) , α √ , γ > Γ3 ,                                 (24)
+                                               γ
+where α and Γ3 are appropriate constants to be determined. By setting the boundary as Γ3 = 10,
+the value at the boundary becomes
+
+                                   U3 , U(Γ3 ) ≈ 1.667 × 10−5 ,                                 (25)
+
+from which we fix the constant α as
+
+                                          α ≈ 1.16125142,                                       (26)
+
+such that U(Γ3 ) ≈ U4 (Γ3 ). Note that this is different from the exact coefficient of the first term
+in (21), which is given by
+                                                      √
+                                          √        π
+                              α0 , c0 /(4 π) =         ≈ 1.27856,                               (27)
+                                               2(ln 2)
+and thus the exact asymptotic form for large γ would be
+                                               √
+                                                  π e−γ
+                                    U(γ) →           √ ,                                        (28)
+                                              2(ln 2) γ
+as discussed in [3, 24]. As γ increases, the use of α0 may become more accurate eventually,
+but for our purpose, the use of (26) may be more suitable as the piece-wise continuity of the
+approximate function can be guaranteed.
+
+
+                                                                                               DRAFT
+                                                                                                11
+
+
+
+  3) Moderate SNR Case: We first note that the main advantage of the capacity approximation
+form (14) is that its inverse function can also be expressed in closed form. We thus adopt this
+form for the remaining sub-regions R2 and R3 and define the functions for the two adjacent
+regions as
+                                                H2,2 H2,3
+                                                    
+                      U2 (γ) , 1 − 1 − e−H2,1 γ            ,    Γ1 < γ < Γ2 ,                (29)
+                                                    H3,3
+                                        −H3,1 γ H3,2
+                      U3 (γ) , 1 − 1 − e                   ,    Γ2 < γ < Γ3 ,                (30)
+
+where the constants Hi,j for i ∈ {2, 3} and j ∈ {1, 2, 3} should be determined appropriately
+depending on the boundary Γ2 . In what follows, we fix the boundary as Γ2 = 1 for simplicity of
+numerical evaluation. Then the precise value of U(γ) at the boundary is obtained by numerical
+integration as
+
+                                   U2 , U(Γ2 ) ≈ 0.2785484.                                  (31)
+
+Furthermore, in order to guarantee the piece-wise continuity of the approximate function for
+U(γ), it is required that
+
+                                  U2 (Γ1 ) = U1 ,   U3 (Γ3 ) = U3 .                          (32)
+
+Let us first consider the function U2 (γ). By the relationships at the boundaries, one may express
+                                                    1 
+                       H2,1 = − ln 1 − (1 − U2 )   H2,3
+                                                          ,                                   (33)
+                                                                      1 
+                                                                              
+                                 −1 
+                                     Γ2           ln   1 − (1 − U 2 ) H2,3   
+                                                                              
+                       H2,2 = ln              ln                       1      .             (34)
+                                     Γ1           ln 1 − (1 − U ) H2,3 
+                                                 
+                                                                      1       
+
+As a consequence, U2 (γ) can be expressed as a function of γ and H2,3 , which we explicitly
+write as U2 (γ; H2,3). Based on the minimization of ∞-norm, we may optimize the coefficients
+H2,3 as
+
+                            H2,3 = arg min max |U2 (γ; H) − U(γ)| ,                          (35)
+                                        H   Γ1 <γ<Γ2
+
+based on which we numerically obtain
+
+                      H2,1 = 1.396634, H2,2 = 0.872764, H2,3 = 1.148562.
+
+
+
+
+                                                                                            DRAFT
+                                                                                                   12
+
+
+
+Likewise, by denoting U3 (γ) as a function of H3,3 , i.e., U3 (γ; H3,3 ), since
+                                                 1 
+                     H3,1 = − ln 1 − (1 − U2 )  H3,3
+                                                       ,                                        (36)
+                                                                    1 
+                                                                            
+                               −1 
+                                   Γ3          ln 1 − (1 − U3 )    H3,3    
+                                                                            
+                     H3,2 = ln             ln                        1      ,                 (37)
+                                   Γ2          ln 1 − (1 − U ) H3,3 
+                                              
+                                                                          2 
+
+one may determine H3,3 according to
+
+                             H3,3 = arg min max |U3 (γ; H) − U(γ)| ,                            (38)
+                                           H     Γ2 <γ<Γ3
+
+and thus numerically obtain
+
+                     H3,1 = 1.266967,       H3,2 = 0.938175,      H3,3 = 0.986830.
+
+  4) Summary: We summarize the closed-form piece-wise continuous approximate function
+Û (γ) for U(γ):
+                            
+                                              1         2   4 3
+                                                                
+                              U  (γ) = 1 −        γ − γ   +   γ    ,          γ < Γ1 ,
+                            
+                               1
+                            
+                            
+                            
+                                            ln 2           3
+                                                             H 2,3
+                             U2 (γ) = 1 − 1 − e−H2,1 γ H2,2
+                            
+                                                                      ,       Γ1 ≤ γ < Γ2 ,
+                            
+                   Û (γ) =                                                                     (39)
+                                                          H3,2 H3,3
+                                                             
+                              U3 (γ) = 1 − 1 − e−H3,1 γ               ,       Γ2 ≤ γ < Γ3 ,
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                             U4 (γ) = α e√−γ ,
+                            
+                                                                              γ ≥ Γ3 ,
+                                             γ
+
+where Γ1 = 0.04, Γ2 = 1, Γ3 = 10. As a consequence, the approximate formula of the capacity
+for the BI-AWGN channel, Ĉ(γ) , 1 − Û (γ), can be summarized as
+                               
+                                   1
+                                        γ − γ 2 + 34 γ 3 ,
+                                                         
+                                                               γ ∈ R1 ,
+                               
+                               
+                               
+                               
+                                 ln 2
+                                                  H2,2 H2,3
+                               
+                                                     
+                                    1 − e−H2,1 γ             , γ ∈ R2 ,
+                               
+                               
+                      Ĉ(γ) =                         H3,3                                    (40)
+                                          −H3,1 γ H3,2
+                                    1  − e                   , γ ∈ R3 ,
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                                1 − α e√−γ ,
+                               
+                                                               γ ∈ R4 .
+                                           γ
+
+
+C. Numerical Results
+
+  To investigate the accuracy of the developed approximation, we define the error function as
+
+                                ǫ(γ) , U(γ) − Û (γ) = Ĉ(γ) − C(γ).                            (41)
+
+We calculate C(γ) based on the numerical integration and compare with the developed expression
+as well as (13) of [16] and (14) of [23]. In Fig. 2, we plot the absolute value of the error function
+
+
+
+                                                                                               DRAFT
+                                                                                                                          13
+
+
+
+
+               10-3
+
+
+
+               10-4
+
+
+               10-5
+
+
+
+               10-6
+
+
+
+                10-7
+
+
+                               New Expression
+               10-8
+                               Reference [16]
+                               Reference [23]
+               10-9
+                  -20           -15          -10           -5           0            5            10           15
+
+
+
+
+Fig. 2. Approximation error of the proposed expression. Those based on ten Brink et al. [16] and Brännström et al. [23] are
+also shown for comparison.
+
+
+
+
+ǫ(γ) with respect to γ in dB. We observe that the absolute values of the approximation error for
+all the three expressions are less than 10−3 , and monotonically decrease for higher and lower
+SNR regions. Nevertheless, the most significant difference of the proposed expression is that the
+error becomes much less than 10−5 as SNR decreases since we selected the associated parameters
+such that the condition (20) holds. Also, since the proposed expression Ĉ(γ) in (40) is designed
+to be piece-wise continuous with respect to γ, we also observe that the error function is piece-
+wise continuous as well. By comparison, as observed in Fig. 2, the approximation based on (13)
+(introduced in [16]) exhibits discontinuities at the boundaries corresponding to x = 1.6363 and
+x = 10, i.e., γ = −4.7536 dB and γ = 10.969 dB, respectively.
+
+
+
+
+                                                                                                                      DRAFT
+                                                                                                   14
+
+
+
+                  IV. D ERIVATION OF C LOSED -F ORM E XPRESSION FOR Λ(ξ)
+
+  Our next step is to find a suitable approximate expression for Λ(ξ) introduced in (9). We first
+consider an approximation for its constituent function Ψ(γ). From (4), we have
+
+                                Ψ(γ) = C −1 (1 − C(γ)) = C −1 (U(γ)) .                          (42)
+
+Therefore, it is necessary to find the inverse function for Ĉ(γ) defined in (40).
+  Let us first consider the case γ ∈ R1 . From (40), the inverse function for the equation Ĉ(γ) = c
+can be expressed as
+                                                                
+                                −1         1           3
+                           Ĉ        (c) =         1−      + A(c) ,   c < C1 ,                  (43)
+                                           4          A(c)
+where C1 , 1 − U1 and
+                                       p                                  31
+             A(c) , −5 + 24 (ln 2) c + 2 13 + 12 (ln 2) c(12 (ln 2) c − 5) .                    (44)
+
+  On the other hand, when γ ∈ R2 , we have
+                                                   1
+                                 1            1  H2,2
+                  Ĉ −1 (c) = −      ln 1 − I H2,3      ,             C1 < c < C2 ,             (45)
+                                H2,1
+where C2 = 1 − U2 . The function Ĉ −1 (c) in the case of γ ∈ R3 can be derived in a similar
+manner. Finally, in the case of γ ∈ R4 , we have
+                                                  2 !
+                                      1          α
+                           Ĉ −1 (c) = W0 2             ,             c > C3 ,                  (46)
+                                      2        1−c
+where C3 = 1 − U3 and W0 (x) is the corresponding Lambert W function [25], i.e., the value of
+w that satisfies wew = x for a given x > 0.
+  In summary, we have
+                                              
+                        1          3
+                      
+                      
+                      
+                       4
+                            1 − A(c) + A(c) ,                   c < C1 ≈ 0.055523,
+                                                     1
+                                              1 i H
+                      
+                       h            
+                             1                        2,2
+                          −      ln    1 − c H2,3
+                                                          ,     C1 ≤ c < C2 ≈ 0.721452,
+                      
+                      
+                            H
+           Ĉ −1 (c) = h 2,1                 1   i  1                                         (47)
+                                                     H3,2
+                             1
+                          −      ln    1 − c H3,3
+                                                          ,     C2 ≤ c < C3 ≈ 0.999983,
+                      
+                      
+                            H3,1
+                      
+                      
+                      
+                                        
+                       1 W 2 α 2 ,
+                      
+                                                                c ≥ C3 .
+                      
+                            2        0    1−c
+
+  By substituting Û (γ) of (39) into c of (47), we obtain the approximate value of Ψ(γ) =
+C −1 (U(γ)) for a given γ, which we denote by Ψ̂(γ) , Ĉ −1 (Û (γ)).
+  In what follows, we derive simple asymptotic closed-form expressions of Ψ̂(γ) and thus Λ(ξ)
+when γ becomes extremely small or large in order to simplify the computation with negligible
+loss of accuracy. Also, as we will see, it is not actually necessary to implement the W0 (·) function
+for polar code construction.
+
+
+                                                                                               DRAFT
+                                                                                              15
+
+
+
+A. For Small γ
+
+  We consider the case where γ is small and satisfies γ ≤ Γ0 for some boundary Γ0 such that
+the condition c = Û (γ) ≥ C3 holds in (47). Then, it follows from (39) that
+                                                       !2 
+                        1                   α
+               Ψ̂(γ) = W0 2        1         2 + 4 γ3
+                                                         , γ < min (Γ0 , Γ1 ) ,           (48)
+                        2          ln 2
+                                        γ − γ     3
+
+
+where Γ0 corresponds to the value of γ that satisfies Û(γ) = C3 . By numerically solving the
+equation
+                                                                 
+                                       1                   4
+                                                 Γ0 − Γ20 + Γ30       = U3 ,                (49)
+                                      ln 2                 3
+with respect to Γ0 , we obtain
+
+                                         Γ0 ≈ 1.21974 × 10−5 ,                              (50)
+
+and thus we observe that Γ0 ≪ Γ1 . By defining f (γ) , γ − γ 2 + 34 γ 3 , we may express (48) as
+                                   1
+                            Ψ̂(γ) = W0 2α2 (ln 2)2 f −2 (γ) ,
+                                                           
+                                                                               γ < Γ0 .     (51)
+                                   2
+Since the argument of the function W0 (·) in (51) becomes larger as γ decreases, we may invoke
+the following asymptotic form of W0 (x) for large x [25]:
+                                                               ln ln x
+                                 W0 (x) ≈ ln x − ln ln x +             +··· .               (52)
+                                                                ln x
+On applying (52) to (51), we note that
+                                                                                      
+                                                                                      
+           2     2   −2
+                                                                                 4 2
+    ln 2α (ln 2) f        (γ) = ln 2 + 2 ln(ln 2) + 2 ln α − 2 ln γ − 2 ln 1 − γ + γ ,      (53)
+                                                                                  3
+where the last term in the right hand side turns out to be negligible in the range of γ < Γ0 .
+Thus, by defining the dominant terms as
+
+                                 B(ξ) , ln 2 + 2 (ln α + ln (ln 2)) − 2ξ,                   (54)
+
+where ξ , ln γ, we may equivalently express ln Ψ̂(γ) with respect to ξ, denoted by Λ(ξ), as
+                                                           
+                                             1
+                     Λ(ξ) ≈ ln B(ξ) +            − 1 ln B(ξ) − ln 2.                      (55)
+                                          B(ξ)
+The above approximation is valid in the range of γ < Γ0 , i.e.,
+
+                                      ξ < Ξ0 , ln Γ0 ≈ −11.3143.                            (56)
+
+
+
+
+                                                                                          DRAFT
+                                                                                               16
+
+
+
+B. For Large γ
+
+  When γ ≥ Γ3 , i.e., γ ∈ R4 , we observe from (39) with (32) that Û (γ) ≤ U3 and thus
+                                                                e−γ
+                                                   
+                                 1        3
+                         Ψ̂(γ) =    1−        + A(c) , c = α √ .                            (57)
+                                 4       A(c)                      γ
+For A(c) in (44) with small c, since
+                   p                                       √        30
+                      13 + 12 (ln 2) c (12 (ln 2) c − 5) ≈ 13 − √ (ln 2) c,                 (58)
+                                                                     13
+we have
+                                            √  13
+                                                                      
+                                                           4
+                         A(c) ≈ −5 + 2 13             1 + √ (ln 2) c ,                      (59)
+                                                            13
+and by substituting (59) into (57), we obtain
+                                                     √                     !
+                                                       13 + 1
+                      Ψ̂(γ) ≈ (ln 2) c 1 − 2           √           (ln 2) c .               (60)
+                                                13 + 4 13 (ln 2) c
+Taking the logarithm of both sides, we have
+                                                         √                      !
+                                                           13 + 1
+              ln Ψ̂(γ) ≈ ln c + ln (ln 2) + ln 1 − 2       √            (ln 2) c .          (61)
+                                                     13 + 4 13 (ln 2) c
+By substituting c = α e√γ and noticing that the third term in the right-hand side of (61) becomes
+                      −γ
+
+
+
+negligible as γ increases, we have
+                                                               1
+                            ln Ψ̂(γ) ≈ ln α + ln(ln 2) − γ −     ln γ,                      (62)
+                                                               2
+or in terms of ξ as
+                                                            1
+                               Λ(ξ) ≈ ln α + ln(ln 2) − eξ − ξ.                             (63)
+                                                            2
+Note that (62) indicates that Ψ̂(γ) becomes infinitesimal as γ increases.
+
+
+C. Complete RCA Algorithm
+
+  In the previous section, the RCA algorithm was summarized as Algorithm 1 and Algorithm 2,
+depending on the condition of the channel SNR. Based on the mathematical derivations in this
+section, the calculation process of the function Λ(ξ) is summarized as Algorithm 3. Note that the
+complexity of GA-based approaches generally involves the use of an inverse function that cannot
+be described (or accurately approximated) using a closed form expression, and thus should be
+performed by resorting to some iterative algorithms (such as the bisection method). On the other
+hand, the proposed approach does not require such numerical algorithms and thus computational
+effort is in general lower than those based on GA (or IGA).
+
+
+                                                                                           DRAFT
+                                                                     17
+
+
+
+
+Algorithm 3 Calculating Λ(ξ)
+Input: ξ = ln γ
+Output: Λ(ξ) = ln Ψ(γ)
+ 1: α = 1.16125, Γ1 = 0.04, Γ2 = 1, Γ3 = 10, Ξ0 = −11.3143
+
+ 2: C1 = 0.055523, C2 = 0.721452
+
+ 3: H2,1 = 1.396634, H2,2 = 0.872764, H2,3 = 1.148562
+
+ 4: H3,1 = 1.266967, H3,2 = 0.938175, H3,3 = 0.986830
+
+ 5: if ξ < Ξ0 then
+
+ 6:   B = ln 2 + 2 ln(ln 2) + 2 ln α − 2ξ
+      return ln B + B1 − 1 ln B − ln 2
+                                    
+ 7:
+
+ 8: end if
+
+ 9: γ ← exp(ξ)
+
+10: if γ > Γ3 then
+
+11:   return ln (ln 2) + ln α − γ − ξ/2
+12: else if γ < Γ1 then
+
+13:   U ← 1 − ln12 (γ − γ 2 + 34 γ 3 )
+14: else if γ < Γ2 then
+                           H2,2 H2,3
+                              
+15:   U ← 1 − 1 − e−H2,1 γ
+16: else
+                                       H3,3
+                         −H3,1 γ H3,2
+17:   U ← 1− 1−e
+18: end if
+
+19: if U < C1 then
+                           p                               13
+20:   A = −5 + 24(ln 2)U + 2 13 + 12(ln 2)U(12(ln 2)U − 5)
+      return ln 1 − A3 + A − 2 ln 2
+                          
+21:
+
+22: else if U < C2 then
+                      h             1            i
+                1
+23:   return   H2,2
+                       ln − ln 1 − U H2,3  − ln H2,1
+24: else
+                      h             1            i
+                1
+25:   return   H3,2
+                       ln − ln 1 − U H3,3  − ln H3,1
+26: end if
+
+
+
+
+                                                                  DRAFT
+                                                                                                  18
+
+
+
+                                      V. S IMULATION R ESULTS
+
+  In this section, we focus on the AWGN channels with BPSK, where the SNRs of all the
+channels are identical and given by γ0 = Es /N0 . We estimate the SNRs of the polarized channels
+γ̂0 , γ̂1 , . . . , γ̂N −1 by applying Algorithm 2 in Section II. Let us sort γ̂k such that
+
+                                  γ̂I0(γ0 ) ≥ γ̂I1 (γ0 ) ≥ · · · ≥ γ̂IN−1 (γ0 ) ,               (64)
+
+where the subscript Ik (γ0 ) corresponds to the index of the input bit having the kth highest SNR
+(with k = 0 representing the maximum), with emphasis on the fact that the channel SNR is γ0 .
+Let us define the index set IK (γ0 ) consisting of the K elements with highest SNRs as
+
+                              IK (γ0 ) , {I0 (γ0 ), I1 (γ0 ), . . . , IK−1(γ0 )},               (65)
+
+where R , K/N corresponds to the code rate.
+  Similar to the case of GA, we assume that the distribution of the LLR corresponding to the kth
+input bit is modeled as Gaussian with SNR γ̂k . Then, under the assumption that all the previous
+bits in the SC decoding are correctly decoded, the error rate of the kth bit can be estimated as
+                                                 r !
+                                                    γ̂k
+                                      Pb,k = Q           ,                                  (66)
+                                                     2
+                                                           R ∞ t2
+with the Q-function defined as Q(x) = 12 erfc √x2 = √12π x e− 2 dt. The resulting minimum
+estimated BLER can be defined as [8]
+                                                                            r         !!
+                                                     Y                          γ̂k
+                           PBL (K, γ0) , 1 −                    1−Q                        .    (67)
+                                                                                 2
+                                                  k∈IK (γ0 )
+
+Note that the above expression is a function of IK (γ0 ) only, i.e., the K largest estimated SNRs
+uniquely determines the BLER. Therefore, if the code rate R is low (i.e., the number of K
+is small) and estimation accuracy is good for low SNR region, the estimated BLER of (67)
+should become tight compared to the true BLER, which may be estimated by time-consuming
+simulations with a sufficiently large number of trials.
+
+
+A. Comparison for Short Polar Codes
+
+  We first compare the minimum estimated BLER based on (67) calculated for the conventional
+GA, IGA of [8], and the proposed RCA as well as the corresponding simulation results in the
+cases of N = 64 and 1024 with three different code rates (R = 0.25, 0.5, 0.75). The results
+are listed in Table I. Note that the channel SNR (or design SNR) γ0 is selected such that the
+
+
+                                                                                               DRAFT
+                                                                                                                 19
+
+
+
+                                                       TABLE I
+                                   C OMPARISON OF ESTIMATED BLER AND SIMULATION .
+
+
+                                          BLER (RCA)              BLER (IGA)               BLER (GA)
+              N      R     γ0 [dB]
+                                      Estimate   Simulation   Estimate   Simulation   Estimate   Simulation
+                    0.25   −2.53       0.0100     = IGA       0.0100      0.0095      0.0101      = IGA
+              64    0.5     0.65       0.0100     = IGA       0.0100      0.0096      0.0102      = IGA
+                    0.75    3.26       0.0101     = IGA       0.0100      0.0099      0.0103      = IGA
+                    0.25   −3.97       0.0103     0.0100      0.0111      0.0102      0.0113      = IGA
+             1024   0.5    −0.50       0.0102     0.0103      0.0106      0.0104      0.0109      = IGA
+                    0.75    2.33       0.0104     = IGA       0.0102      0.0111      0.0109      = IGA
+
+
+
+
+resulting BLER reaches around 10−2 , and the same value of γ0 is applied for all three cases.
+Also, if the same polar code as IGA is constructed by any of the other schemes, this is indicated
+in the table. In such a case, the resulting code is the same and thus the simulation result for the
+BLER should be identical to that reported in the IGA column.
+  Analogous to the observation in [13, Chap. 7.4.1], the performances are similar for all the cases
+evaluated here. Note that the polar codes constructed by the three different schemes are identical
+in the case of N = 64. With a length of N = 1024 and for the cases of R = 0.25 and 0.5,
+the codes constructed by RCA and IGA differ by only one bit position, and the corresponding
+simulation results indicate that the code designed by RCA very slightly outperforms that of IGA,
+whereas all the codes designed by the conventional GA are the same as those by IGA even in
+this case.
+  The BLER performances of these three approaches with N = 2048 bits are compared in
+Fig. 3 for code rates of R = 0.25 and R = 0.5. Note that for all the simulation results, the
+polar code is constructed for each given channel SNR. We observe that in the case of low code
+rate (R = 0.25) and low SNR region (Es /N0 < −5.5 dB), the performance degradation of
+GA compared to IGA and RCA is noticeable, as the approximation error of the conventional
+GA becomes significant with decreasing SNR as discussed in [8]. On the whole, however, the
+performance difference is almost negligible similar to those reported in Table I, justifying the
+effectiveness of the conventional GA as well as IGA for the polar codes with modest codeword
+lengths. Nevertheless, it is worth mentioning that the simulation results match best with the
+minimum estimated BLER calculated by the proposed RCA algorithm.
+
+
+
+                                                                                                              DRAFT
+                                                                                                                  20
+
+
+
+
+                          100
+                                                                                Simulated BLER (GA)
+                                                                                Simulated BLER (IGA)
+                                                                                Simulated BLER (RCA)
+                                                                                Min. Est. BLER (GA)
+                                                                                Min. Est. BLER (IGA)
+                                                                                Min. Est. BLER (RCA)
+                          10-1
+                   BLER
+
+
+
+
+                          10-2
+
+
+
+
+                          10-3
+
+
+                            -6.0          -5.5          -5.0             -4.5          -4.0
+
+
+
+                                                          (a)
+                          100
+                                                                                Simulated BLER (GA)
+                                                                                Simulated BLER (IGA)
+                                                                                Simulated BLER (RCA)
+                                                                                Min. Est. BLER (GA)
+                                                                                Min. Est. BLER (IGA)
+                                                                                Min. Est. BLER (RCA)
+                          10-1
+                   BLER
+
+
+
+
+                          10-2
+
+
+
+
+                          10-3
+
+
+                                   -2.0          -1.5             -1.0                  -0.5
+
+
+
+                                                          (b)
+
+Fig. 3. Simulated BLER of the polar codes with N = 211 designed at each channel SNR as well as the minimum estimated
+BLER: (a) R = 0.25, (b) R = 0.5.
+
+
+
+
+                                                                                                             DRAFT
+                                                                                                                           21
+
+
+
+B. Comparison for Long Polar Codes
+
+  We now focus on the polar code performance with long block lengths (N = 216 and 218 ).
+Note that the performance of the conventional GA is not shown in the remaining figures as it
+becomes significantly worse than that of IGA as demonstrated in [8]. The cases with lower code
+rates (R = 1/8 and R = 1/4) are compared in Fig. 4, whereas those with higher code rates
+(R = 1/2 and R = 3/4) are shown in Fig. 5. We observe that for all the cases compared, the
+polar codes designed based on the proposed RCA algorithms outperform those based on IGA,
+and the gap is especially noticeable when the code rate is low. We also notice that, similar to the
+results in Fig. 3, the minimum estimated BLER values computed from (67) and those obtained by
+simulation are in general closer when RCA is employed, indicating that the estimation accuracy
+of the equivalent SNR obtained by RCA is higher than that of IGA. Therefore, considering the
+fact that the computational complexity required for performing GA, IGA, and RCA is almost
+the same, the proposed RCA may be preferable to GA-based approaches, especially when polar
+codes with long block lengths and moderate code rates should be designed under severe limitation
+of computational resources.
+
+
+                                                 VI. C ONCLUSIONS
+
+  In this work, we have proposed an explicit closed-form algorithm for polar code design based
+on RCA. Simulation results have shown that polar code designed based on the proposed RCA
+can outperform popular Gaussian approximation (GA)-based approaches with no increase of
+computational complexity. Moreover, the estimated BLER performances from RCA are closer to
+those obtained by simulation compared to those based on GA, indicating the accuracy of RCA
+compared to GA. The benefit of the proposed approach becomes significant for polar codes with
+large block lengths and moderate code rates.
+
+
+                                                     R EFERENCES
+
+[1] E. Arıkan, “Channel polarization: A method for constructing capacity-achieving codes for symmetric binary-input
+    memoryless channels,” IEEE Trans. Inform. Theory, vol. 55, pp. 3051–3073, 2009.
+[2] T. J. Richardson, M. A. Shokrollahi, and R. L. Urbanke, “Design of capacity-approaching irregular low-density parity-check
+    codes,” IEEE Trans. Inform. Theory, vol. 47, pp. 619–637, Feb. 2001.
+[3] T. J. Richardson and R. L. Urbanke, Modern Coding Theory. Cambridge; New York: Cambridge University Press, 2008.
+[4] R. Mori and T. Tanaka, “Performance of polar codes with the construction using density evolution,” IEEE Commun. Lett.,
+    vol. 13, pp. 519–521, July 2009.
+
+
+
+
+                                                                                                                      DRAFT
+                                                                                                                   22
+
+
+
+
+                          100
+                                                                                Min. Est. BLER (IGA)
+                                                                                Min. Est. BLER (RCA)
+                                                                                Simulated BLER (IGA)
+                                                                                Simulated BLER (RCA)
+
+
+
+                          10-1
+                   BLER
+
+
+
+
+                          10-2
+
+
+
+
+                          10-3
+
+                            -9.5                       -9.0                          -8.5
+
+
+
+                                                          (a)
+                          100
+                                                                                Simulated BLER (IGA)
+                                                                                Simulated BLER (RCA)
+                                                                                Min. Est. BLER (IGA)
+                                                                                Min. Est. BLER (RCA)
+
+
+
+                          10-1
+                   BLER
+
+
+
+
+                          10-2
+
+
+
+
+                          10-3
+
+                                 -6.0                                -5.5
+
+
+
+                                                          (b)
+
+Fig. 4. Simulated BLER of the long polar codes with N = 2n (n = 16 and 18) designed at each channel SNR as well as the
+minimum estimated BLER: (a) R = 0.125, (b) R = 0.25.
+
+
+
+
+                                                                                                               DRAFT
+                                                                                                                   23
+
+
+
+
+                          100
+                                                                                Simulated BLER (IGA)
+                                                                                Simulated BLER (RCA)
+                                                                                Min. Est. BLER (IGA)
+                                                                                Min. Est. BLER (RCA)
+
+
+
+
+                          10-1
+                   BLER
+
+
+
+
+                          10-2
+
+
+
+
+                          10-3
+                                                   -2.0                                                -1.5
+
+
+
+                                                          (a)
+                          100
+                                                                                Simulated BLER (IGA)
+                                                                                Simulated BLER (RCA)
+                                                                                Min. Est. BLER (IGA)
+                                                                                Min. Est. BLER (RCA)
+
+
+                          10-1
+                   BLER
+
+
+
+
+                          10-2
+
+
+
+
+                          10-3
+
+
+
+
+                                      1.0                                                         1.5
+
+
+
+                                                          (b)
+
+Fig. 5. Simulated BLER of the long polar codes with N = 2n (n = 16 and 18) designed at each channel SNR as well as the
+minimum estimated BLER: (a) R = 0.5, (b) R = 0.75.
+
+
+
+
+                                                                                                               DRAFT
+                                                                                                                           24
+
+
+
+ [5] I. Tal and A. Vardy, “How to construct polar codes,” IEEE Trans. Inform. Theory, vol. 59, pp. 6562–6582, Oct. 2013.
+ [6] S.-Y. Chung, T. Richardson, and R. Urbanke, “Analysis of sum-product decoding of low-density parity-check codes using
+     a Gaussian approximation,” IEEE Trans. Inform. Theory, vol. 47, pp. 657–670, Feb. 2001.
+ [7] P. Trifonov, “Efficient design and decoding of polar codes,” IEEE Trans. Commun., vol. 60, pp. 3221–3227, Nov. 2012.
+ [8] H. Ochiai, P. Mitran, and H. V. Poor, “Capacity-approaching polar codes with long codewords and successive cancellation
+     decoding based on improved Gaussian approximation,” IEEE Trans. Commun., vol. 69, pp. 31–43, Jan. 2021.
+ [9] I. Tal and A. Vardy, “List decoding of polar codes,” IEEE Trans. Inform. Theory, vol. 61, pp. 2213–2226, May 2015.
+[10] E. Arıkan, “A performance comparison of polar codes and Reed-Muller codes,” IEEE Commun. Lett., vol. 12, pp. 447–449,
+     June 2008.
+[11] A. Elkelesh, M. Ebada, S. Cammerer, and S. ten Brink, “Decoder-tailored polar code design using the genetic algorithm,”
+     IEEE Trans. Commun., vol. 67, pp. 4521–4534, July 2019.
+[12] Y. Liao, S. A. Hashemi, J. M. Cioffi, and A. Goldsmith, “Construction of polar codes with reinforcement learning,” IEEE
+     Trans. Commun., vol. 70, pp. 185–198, Jan. 2022.
+[13] S.-Y. Chung, On the Construction of Some Capacity-Approaching Coding Schemes. PhD thesis, MIT, 2000.
+[14] A. Ashikhmin, G. Kramer, and S. ten Brink, “Extrinsic information transfer functions: Model and erasure channel
+     properties,” IEEE Trans. Inform. Theory, vol. 50, pp. 2657–2673, Nov. 2004.
+[15] S. ten Brink and G. Kramer, “Design of repeat-accumulate codes for iterative detection and decoding,” IEEE Trans. Signal
+     Process., vol. 51, pp. 2764–2772, Nov. 2003.
+[16] S. ten Brink, G. Kramer, and A. Ashikhmin, “Design of low-density parity-check codes for modulation and detection,”
+     IEEE Trans. Commun., vol. 52, pp. 670–678, Apr. 2004.
+[17] E. Sharon, A. Ashikhmin, and S. Litsyn, “EXIT functions for binary input memoryless symmetric channels,” IEEE Trans.
+     Commun., vol. 54, pp. 1207–1214, July 2006.
+[18] D. Divsalar, S. Dolinar, C. R. Jones, and K. Andrews, “Capacity-approaching protograph codes,” IEEE J. Select. Areas
+     Commun., vol. 27, pp. 876–888, Aug. 2009.
+[19] B. P. Smith, A. Farhood, A. Hunt, F. R. Kschischang, and J. Lodge, “Staircase codes: FEC for 100 Gb/s OTN,” J. Lightw.
+     Technol., vol. 30, pp. 110–117, Jan. 2012.
+[20] H. Mahdavifar and A. Vardy, “Achieving the secrecy capacity of wiretap channels using polar codes,” IEEE Trans. Inform.
+     Theory, vol. 57, pp. 6428–6443, Oct. 2011.
+[21] K. Vakilinia, D. Divsalar, and R. D. Wesel, “RCA analysis of the polar codes and the use of feedback to aid polarization
+     at short blocklengths,” in Proc. 2015 IEEE Int. Symp. Inform. Theory (ISIT), pp. 1292–1296, June 2015.
+[22] D. Dosio, Polar Codes For Error Correction: Analysis and Decoding Algorithms. Laurea magistrale (master thesis),
+     Università di Bologna, 2016.
+[23] F. Brännström, L. Rasmussen, and A. Grant, “Convergence analysis and optimal scheduling for multiple concatenated
+     codes,” IEEE Trans. Inform. Theory, vol. 51, pp. 3354–3364, Sept. 2005.
+[24] A. Lozano, A. Tulino, and S. Verdu, “Optimum power allocation for parallel Gaussian channels with arbitrary input
+     distributions,” IEEE Trans. Inform. Theory, vol. 52, pp. 3033–3051, July 2006.
+[25] R. M. Corless, G. H. Gonnet, D. E. G. Hare, D. J. Jeffrey, and D. E. Knuth, “On the Lambert W function,” Adv. Comput.
+     Math., vol. 5, pp. 329–359, Dec. 1996.
+
+
+
+
+                                                                                                                      DRAFT
+

@@ -35,3 +35,9 @@ __pycache__/
 
 # Outputs produced from an experiments working directory
 16QAM_Polar/v2/experiments/results/
+
+# Repository governance local recovery copies and scratch archives
+治理记录/20261028/before/
+治理记录/20261028/工作材料归档/
+.tmp_render_*/
+.codex-slide*-review/

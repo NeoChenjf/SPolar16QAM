@@ -1,0 +1,1106 @@
+[
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.es-ES.md",
+    "target": "examples/showcase/full_paper_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.es-ES.md",
+    "target": "examples/showcase/full_paper_zh_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.es-ES.md",
+    "target": "examples/showcase/integrity_report_stage2.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.es-ES.md",
+    "target": "examples/showcase/integrity_report_stage4.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.es-ES.md",
+    "target": "examples/showcase/stage3_review_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.es-ES.md",
+    "target": "examples/showcase/stage3prime_rereview_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.es-ES.md",
+    "target": "examples/showcase/stage3_review_report_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.es-ES.md",
+    "target": "examples/showcase/response_to_reviewers_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.es-ES.md",
+    "target": "examples/showcase/post_publication_audit_2026-03-09.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ja-JP.md",
+    "target": "examples/showcase/full_paper_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ja-JP.md",
+    "target": "examples/showcase/full_paper_zh_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ja-JP.md",
+    "target": "examples/showcase/integrity_report_stage2.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ja-JP.md",
+    "target": "examples/showcase/integrity_report_stage4.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ja-JP.md",
+    "target": "examples/showcase/stage3_review_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ja-JP.md",
+    "target": "examples/showcase/stage3prime_rereview_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ja-JP.md",
+    "target": "examples/showcase/stage3_review_report_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ja-JP.md",
+    "target": "examples/showcase/response_to_reviewers_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ja-JP.md",
+    "target": "examples/showcase/post_publication_audit_2026-03-09.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ko-KR.md",
+    "target": "examples/showcase/full_paper_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ko-KR.md",
+    "target": "examples/showcase/full_paper_zh_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ko-KR.md",
+    "target": "examples/showcase/integrity_report_stage2.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ko-KR.md",
+    "target": "examples/showcase/integrity_report_stage4.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ko-KR.md",
+    "target": "examples/showcase/stage3_review_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ko-KR.md",
+    "target": "examples/showcase/stage3prime_rereview_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ko-KR.md",
+    "target": "examples/showcase/stage3_review_report_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ko-KR.md",
+    "target": "examples/showcase/response_to_reviewers_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.ko-KR.md",
+    "target": "examples/showcase/post_publication_audit_2026-03-09.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.md",
+    "target": "examples/showcase/full_paper_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.md",
+    "target": "examples/showcase/full_paper_zh_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.md",
+    "target": "examples/showcase/integrity_report_stage2.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.md",
+    "target": "examples/showcase/integrity_report_stage4.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.md",
+    "target": "examples/showcase/stage3_review_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.md",
+    "target": "examples/showcase/stage3prime_rereview_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.md",
+    "target": "examples/showcase/stage3_review_report_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.md",
+    "target": "examples/showcase/response_to_reviewers_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.md",
+    "target": "examples/showcase/post_publication_audit_2026-03-09.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-CN.md",
+    "target": "examples/showcase/full_paper_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-CN.md",
+    "target": "examples/showcase/full_paper_zh_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-CN.md",
+    "target": "examples/showcase/integrity_report_stage2.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-CN.md",
+    "target": "examples/showcase/integrity_report_stage4.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-CN.md",
+    "target": "examples/showcase/stage3_review_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-CN.md",
+    "target": "examples/showcase/stage3prime_rereview_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-CN.md",
+    "target": "examples/showcase/stage3_review_report_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-CN.md",
+    "target": "examples/showcase/response_to_reviewers_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-CN.md",
+    "target": "examples/showcase/post_publication_audit_2026-03-09.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-TW.md",
+    "target": "examples/showcase/full_paper_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-TW.md",
+    "target": "examples/showcase/full_paper_zh_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-TW.md",
+    "target": "examples/showcase/integrity_report_stage2.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-TW.md",
+    "target": "examples/showcase/integrity_report_stage4.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-TW.md",
+    "target": "examples/showcase/stage3_review_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-TW.md",
+    "target": "examples/showcase/stage3prime_rereview_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-TW.md",
+    "target": "examples/showcase/stage3_review_report_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-TW.md",
+    "target": "examples/showcase/response_to_reviewers_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/README.zh-TW.md",
+    "target": "examples/showcase/post_publication_audit_2026-03-09.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/academic-paper/agents/formatter_agent.md",
+    "target": "url"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/academic-paper/agents/formatter_agent.md",
+    "target": "path"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "full_paper_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "full_paper_zh_apa7.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "integrity_report_stage2.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "integrity_reverification_stage2.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "integrity_report_stage4.5.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "post_publication_audit_2026-03-09.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "stage3_review_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "stage3prime_rereview_report.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "stage3_review_report_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "response_to_reviewers_r2.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "paper_creation_process_en.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "paper_creation_process_zh.pdf"
+  },
+  {
+    "source": ".agents/skills/academic-research-suite/ars/examples/showcase/README.md",
+    "target": "post_publication_audit_2026-03-09.pdf"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段A：单载波关键结论.md",
+    "target": "figures/16qamGray.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段A：单载波关键结论.md",
+    "target": "../16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures/figures/phaseA_geometry_only_ber_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段A：单载波关键结论.md",
+    "target": "../16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures/figures/phaseA_codeonly_ber_theory_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段A：单载波关键结论.md",
+    "target": "../16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures/figures/phaseA_codeonly_ber_sim_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段A：单载波关键结论.md",
+    "target": "../16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures/figures/phaseA_fullchain_ber_sim_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段A：单载波关键结论.md",
+    "target": "../16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures/figures/phaseA_fullchain_goodput_sim_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段A：单载波关键结论.md",
+    "target": "../16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures/figures/phaseA_fullchain_goodput_energy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段A：单载波关键结论.md",
+    "target": "../../学习文档/shaped_polar验证loop/最新认知与执行基线.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20260628_143653_b4_fullchain_strategy_validation_smoke/figures/b4_ber_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20260628_143653_b4_fullchain_strategy_validation_smoke/figures/b4_goodput_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20260628_143653_b4_fullchain_strategy_validation_smoke/figures/b4_goodput_energy_pareto.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_112216_b4_strict_ofdm_rayleigh_smoke/figures/b4b_ber_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_112216_b4_strict_ofdm_rayleigh_smoke/figures/b4b_goodput_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_112216_b4_strict_ofdm_rayleigh_smoke/figures/b4b_rx_energy_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_112216_b4_strict_ofdm_rayleigh_smoke/figures/b4b_goodput_energy_smoke.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_194950_b4_strict_ofdm_rayleigh_pilot_high_snr/figures/b4b_ber_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/experiments/multicarrier/run_b4b_shaping_audit.m"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261008_213557_b4b_shaping_audit_smoke/figures/pmf_by_variant.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261008_234728_b4b_source_partition_audit/source_entropy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1/analysis_rerun_20261010_235754/figures/power_calibration_validation.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1/analysis_rerun_20261010_235754/figures/ber.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1/analysis_rerun_20261010_235754/figures/goodput.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1/analysis_rerun_20261010_235754/figures/paired_differences.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1/analysis_rerun_20261010_235754/figures/pareto_by_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1/analysis_rerun_20261010_235754/figures/channel_constraints.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1/analysis_rerun_20261011_002445/figures/pareto_by_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261024_222326_p2_uniformity_exact/README.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261024_222326_p2_uniformity_exact/uniformity_exact.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B4：full-chain策略验证.md",
+    "target": "../../16QAM_Polar/v2/results/20261024_222219_p2_preflight/README.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B5：论文二初稿.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_215938_b4b_paired_policy_analysis/figures/b4b_formal_metrics_with_ci.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B5：论文二初稿.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_215938_b4b_paired_policy_analysis/figures/b4b_paired_differences.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B5：论文二初稿.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_215938_b4b_paired_policy_analysis/figures/b4b_low_complexity_policy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B5：论文二初稿.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_222439_b4b_fixed_policy_holdout_analysis/figures/b4b_fixed_policy_train_vs_holdout.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B5：论文二初稿.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_222439_b4b_fixed_policy_holdout_analysis/figures/b4b_fixed_policy_gate_margins.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/周报/阶段B/B5：论文二初稿.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_225122_b4b_guardband_policy_test_analysis/figures/b4b_guardband_policy_validation.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/P2正式实验预算与执行顺序.md",
+    "target": "../16QAM_Polar/v2/results/20261024_235300_p2_budget_proposal/budget.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/P2正式实验预算与执行顺序.md",
+    "target": "../16QAM_Polar/v2/results/20261024_235300_p2_budget_proposal/protocol_proposal.json"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/P2正式实验预算与执行顺序.md",
+    "target": "../16QAM_Polar/v2/results/20261025_001500_p2_budget_proposal/budget.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/P2正式实验预算与执行顺序.md",
+    "target": "../16QAM_Polar/v2/results/20261025_001500_p2_budget_proposal/protocol_proposal.json"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/P2阶段进度与写作交接-2026-10-25.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/auxiliary_diagnostics_final/auxiliary_pmf.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/P2阶段进度与写作交接-2026-10-25.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/auxiliary_diagnostics_final/S_marginals.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../16QAM_Polar/v2/results/20261009_175322_b4b_shaping_audit_formal_source_N1024_source_MC_GA/pmf_gate_status.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../16QAM_Polar/v2/results/20261009_183509_16qam_energy_tradeoff_formal/audit.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../16QAM_Polar/v2/results/20261009_223148_b4b_fixed_policy_holdout_analysis/fixed_policy_holdout_summary.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../workbook/knowledge/reports/rks-20261009_232420.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/channel_rates.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/channel_observations.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/audit_channels.py"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/input_sha256.json"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/F17_channel_violation_rates.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形图重建当前验收状态.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/F17_channel_violation_rates.pdf"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形理论更新与仿真图重建清单.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/channel_rates.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形理论更新与仿真图重建清单.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/channel_observations.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形理论更新与仿真图重建清单.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/audit_channels.py"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形理论更新与仿真图重建清单.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/input_sha256.json"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形理论更新与仿真图重建清单.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/F17_channel_violation_rates.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/整形理论更新与仿真图重建清单.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/F17_channel_violation_rates.pdf"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/新构造结果的边界与读图说明.md",
+    "target": "../16QAM_Polar/v2/results/20261009_180433_b4b_source_partition_holdout_audit/figures/source_entropy_holdout.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/新构造结果的边界与读图说明.md",
+    "target": "../16QAM_Polar/v2/results/20261009_175322_b4b_shaping_audit_formal_source_N1024_source_MC_GA/figures/pmf_tv_intervals.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/新构造结果的边界与读图说明.md",
+    "target": "../16QAM_Polar/v2/results/20261009_182029_b4b_blocklength_comparison/figures/b4b_blocklength_pmf_energy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/新构造结果的边界与读图说明.md",
+    "target": "../16QAM_Polar/v2/results/20261009_202540_phaseA_codeonly_gap_analysis/figures/F19_codeonly_theory_vs_simulation.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/新构造结果的边界与读图说明.md",
+    "target": "../16QAM_Polar/v2/results/20261009_223148_b4b_fixed_policy_holdout_analysis/figures/b4b_fixed_policy_gate_margins.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/新构造结果的边界与读图说明.md",
+    "target": "../16QAM_Polar/v2/results/20261009_230741_b4b_guardband_policy_test_analysis/figures/b4b_guardband_policy_validation.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/新构造结果的边界与读图说明.md",
+    "target": "../16QAM_Polar/v2/results/20261009_183509_16qam_energy_tradeoff_formal/figures/energy_p.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/新构造结果的边界与读图说明.md",
+    "target": "../16QAM_Polar/v2/results/20261010_201200_policy_channel_violation_audit/F17_channel_violation_rates.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/知识库与Harness治理缺口说明.md",
+    "target": "../workbook/knowledge/reports/rks-20261009_232420.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制与P2当前结论.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/auxiliary_diagnostics/auxiliary_pmf.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制与P2当前结论.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/auxiliary_diagnostics/S_marginals.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制与P2当前结论.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/analysis_final/figures/communication_rf.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制与P2当前结论.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/analysis_final/figures/rf_mechanism.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制与P2当前结论.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/auxiliary_diagnostics_final/auxiliary_pmf.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制与P2当前结论.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/auxiliary_diagnostics_final/S_marginals.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制与P2当前结论.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/analysis_final/figures/communication_rf.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制与P2当前结论.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/analysis_final/figures/rf_mechanism.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261024_235012_p2_uniformity_exact"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/material_impact/all_learning_files.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261025_001500_p2_budget_proposal/protocol_proposal.json"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261025_001500_p2_budget_proposal/budget.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/closeout/matlab_final_tests.log"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/closeout/document_checks.json"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261025_000154_p2_uniformity_exact/exact_uniformity.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261024_232507_p2_auxiliary_preflight/auxiliary_diagnostics_final/README.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261025_011808_p2_approved_batch/approval.json"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261025_011808_p2_approved_batch/status.json"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/等功率机制对照与P2执行清单.md",
+    "target": "../16QAM_Polar/v2/results/20261025_011808_p2_approved_batch"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/shaped_polar验证loop/loop设计.md",
+    "target": "需求澄清.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/shaped_polar验证loop/协调协议.md",
+    "target": "../../16QAM_Polar/v2/results/20261009_180433_b4b_source_partition_holdout_audit/figures/source_entropy_holdout.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/shaped_polar验证loop/协调协议.md",
+    "target": "../../16QAM_Polar/v2/results/20261009_182029_b4b_blocklength_comparison/figures/b4b_blocklength_pmf_energy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/shaped_polar验证loop/最新认知与执行基线.md",
+    "target": "../../16QAM_Polar/v2/results/20261009_180433_b4b_source_partition_holdout_audit/figures/source_entropy_holdout.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/shaped_polar验证loop/最新认知与执行基线.md",
+    "target": "../../16QAM_Polar/v2/results/20261009_182029_b4b_blocklength_comparison/figures/b4b_blocklength_pmf_energy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_210504_b4_strict_ofdm_rayleigh_formal/figures/b4b_ber_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_210504_b4_strict_ofdm_rayleigh_formal/figures/b4b_goodput_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+    "target": "../../16QAM_Polar/v2/results/20260920_211759_b4b_energy_by_strategy/figures/b4b_energy_by_strategy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_215938_b4b_paired_policy_analysis/figures/b4b_paired_differences.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_215938_b4b_paired_policy_analysis/figures/b4b_tradeoff_pareto_by_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_215938_b4b_paired_policy_analysis/figures/b4b_low_complexity_policy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_222439_b4b_fixed_policy_holdout_analysis/figures/b4b_fixed_policy_train_vs_holdout.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_222439_b4b_fixed_policy_holdout_analysis/figures/b4b_fixed_policy_gate_margins.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/中期PPT材料.md",
+    "target": "../../16QAM_Polar/v2/results/20260917_225122_b4b_guardband_policy_test_analysis/figures/b4b_guardband_policy_validation.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/整形分布偏差定位结论.md",
+    "target": "../../16QAM_Polar/v2/results/20261008_234728_b4b_source_partition_audit/source_entropy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/多载波OFDM瑞利信道-loop/整形分布偏差定位结论.md",
+    "target": "../../16QAM_Polar/v2/results/20261008_235247_b4b_shaping_audit_source_compare_source_MC_GA/figures/pmf_by_variant.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/方法.md",
+    "target": "../../16QAM_Polar/v2/core/sim_shaped_polar_16qam.m"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/方法.md",
+    "target": "../../16QAM_Polar/v2/modulation/parallel_to_serial_bits.m"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/方法.md",
+    "target": "../../16QAM_Polar/v2/modulation/llr_16qam_gray_LSE_prior.m"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/方法.md",
+    "target": "../../整形理论更新与仿真图重建清单.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/next_plan.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../CLAUDE.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../workbook/README.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../开题相关/开题报告表_陈俊峰_202421011127.pdf"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/README.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/core/sim_shaped_polar_16qam.m"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260521_150555_phaseA_sc_final_global_curves/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../中期相关/截至2026年9月中期终态进度表.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/audit.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260912_172318_16qam_energy_tradeoff_smoke/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260912_172318_16qam_energy_tradeoff_smoke/audit.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260912_172125_energy_timing_diagnostic/README.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/figures/energy_p.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/experiments/rectifier/run_16qam_energy_tradeoff.m"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/README.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/audit.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/sha256_manifest.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/figures/ber_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/figures/ber_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/point_summary.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260923_211103_16qam_ber_high_snr_coarse/figures/ber_high_snr_coarse.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260923_211103_16qam_ber_high_snr_coarse/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "figures/energy_p_14db.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/point_summary.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/figures/energy_p.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/figures/ber_energy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/figures/ber_energy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/point_summary.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/frame_results.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/repetition_results.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/figures/goodput_energy_pareto.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/figures/goodput_energy_pareto.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/working_points.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/working_points.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/point_summary.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/进度表.md",
+    "target": "../../../16QAM_Polar/v2/results/20260912_172318_16qam_energy_tradeoff_smoke/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/进度表.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/验证与审查.md",
+    "target": "../../../16QAM_Polar/v2/results/20260912_171937_16qam_energy_tradeoff_smoke/verification_log.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/验证与审查.md",
+    "target": "../../../16QAM_Polar/v2/results/20260912_172114_16qam_energy_tradeoff_smoke/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/验证与审查.md",
+    "target": "../../../16QAM_Polar/v2/results/20260912_172318_16qam_energy_tradeoff_smoke/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/16QAM整流效率-loop/验证与审查.md",
+    "target": "../../../16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/next_plan.md",
+    "target": "../整形理论更新与仿真图重建清单.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/core/sim_shaped_polar_16qam.m"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260521_150555_phaseA_sc_final_global_curves/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v3/README.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v3/run_gray_qam.m"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v3/results/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../周报/高阶调制/README.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures/figures/phaseA_fullchain_goodput_energy.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures/figures/phaseA_fullchain_ber_sim_vs_snr.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v3/results/20260902_224303_energy_lambda_smoke/energy_vs_lambda.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v3/results/20260916_225430_energy_lambda_blocklength_formal/energy_blocklength_compare.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v3/results/20260916_225430_energy_lambda_blocklength_formal/pmf_tv_blocklength_compare.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_210444_ber_refine/ber_refine.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_221630_pmf_formal64/pmf_formal64.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "target": "../整形理论更新与仿真图重建清单.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/run_gray_qam.m"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/README.md"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260902_224303_energy_lambda_smoke/energy_vs_lambda.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260902_224303_energy_lambda_smoke/energy_vs_lambda.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260902_224303_energy_lambda_smoke/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260902_224303_energy_lambda_smoke/point_summary.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260902_224303_energy_lambda_smoke/energy_difference.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260916_225430_energy_lambda_blocklength_formal/energy_blocklength_compare.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260916_225430_energy_lambda_blocklength_formal/pmf_tv_blocklength_compare.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260916_225430_energy_lambda_blocklength_formal/energy_blocklength_compare.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260916_225430_energy_lambda_blocklength_formal/pmf_tv_blocklength_compare.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260916_225430_energy_lambda_blocklength_formal/blocklength_compare.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_210444_ber_refine/ber_refine.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_210444_ber_refine/ber_refine.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_210444_ber_refine/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_210444_ber_refine/ber_refine_validation.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_210444_ber_refine/ber_refine_aggregate.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_210444_ber_refine/README.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_221630_pmf_formal64/pmf_formal64.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_221630_pmf_formal64/pmf_formal64.png"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_221630_pmf_formal64/"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_221630_pmf_formal64/pmf_formal64.csv"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/中期PPT材料.md",
+    "target": "../../../16QAM_Polar/v3/results/20260903_221630_pmf_formal64/README.txt"
+  },
+  {
+    "source": "16QAM_Polar/v2/results/20261025_231547_learning_documents_reorganization/original_documents/学习文档/高阶调制理论/通用GrayQAM-loop/多载波任意GrayQAM能量分布可调理论说明.md",
+    "target": "../整形理论更新与仿真图重建清单.md"
+  },
+  {
+    "source": "周报/3.25.md",
+    "target": "../16QAM_Polar/v2/results/20260303_082329_pareto_sweep/figures/goodput_vs_snr.png"
+  },
+  {
+    "source": "周报/3.25.md",
+    "target": "../16QAM_Polar/v2/results/20260303_082329_pareto_sweep/figures/ber_vs_snr.png"
+  },
+  {
+    "source": "周报/3.25.md",
+    "target": "../16QAM_Polar/v2/results/20260317_100908_ber_hat_dual_validation/figures/ber_true_vs_hat.png"
+  },
+  {
+    "source": "周报/3.25.md",
+    "target": "../16QAM_Polar/v2/results/20260324_160944_ber_goodput_theory_only/figures/ber_theory_vs_snr_multi_p.png"
+  },
+  {
+    "source": "周报/3.25.md",
+    "target": "../16QAM_Polar/v2/results/20260324_160944_ber_goodput_theory_only/figures/goodput_theory_vs_snr_multi_p.png"
+  },
+  {
+    "source": "周报/3.25.md",
+    "target": "../16QAM_Polar/v2/results/20260324_160944_ber_goodput_theory_only/figures/p_opt_theory_by_goodput.png"
+  },
+  {
+    "source": "周报/3.25.md",
+    "target": "../16QAM_Polar/v2/results/20260324_170453_stage2_ablation_mc_validation/figures/p_opt_theory_ablation_vs_mc.png"
+  },
+  {
+    "source": "周报/3.25.md",
+    "target": "../16QAM_Polar/v2/results/20260324_170453_stage2_ablation_mc_validation/figures/ber_compare_p_01.png"
+  },
+  {
+    "source": "周报/3.25.md",
+    "target": "../16QAM_Polar/v2/results/20260324_170453_stage2_ablation_mc_validation/figures/goodput_compare_p_01.png"
+  },
+  {
+    "source": "周报/4.16.md",
+    "target": "../16QAM_Polar/v2/results/20260406_171245_layer1_uncoded_ber_reconcile_v2/figures/layer1_v2_ber_curve_fixed_n0.png"
+  },
+  {
+    "source": "周报/4.16.md",
+    "target": "../16QAM_Polar/v2/results/20260406_175536_layer2_mi_reconcile_v2/figures/layer2_v2_ber_curve_fixed_n0.png"
+  },
+  {
+    "source": "周报/4.16.md",
+    "target": "../16QAM_Polar/v2/results/20260406_175536_layer2_mi_reconcile_v2/figures/layer2_v2_mi_perbit_fixed_n0.png"
+  },
+  {
+    "source": "周报/星座图映射增益.md",
+    "target": "../16QAM_Polar/v2/results/20260412_152828_layer1_uncoded_ber_reconcile_v2/figures/layer1_v2_ber_curve_fixed_n0.png"
+  },
+  {
+    "source": "周报/星座图映射增益.md",
+    "target": "../16QAM_Polar/v2/results/20260412_150625_symbol_prior_alignment/figures/symbol_prior_alignment_p_0.10.png"
+  },
+  {
+    "source": "周报/星座图映射增益.md",
+    "target": "../16QAM_Polar/v2/results/20260412_150625_symbol_prior_alignment/figures/symbol_prior_alignment_p_0.20.png"
+  },
+  {
+    "source": "周报/星座图映射增益.md",
+    "target": "../16QAM_Polar/v2/results/20260412_150625_symbol_prior_alignment/figures/symbol_prior_alignment_p_0.30.png"
+  },
+  {
+    "source": "周报/星座图映射增益.md",
+    "target": "../16QAM_Polar/v2/results/20260412_150625_symbol_prior_alignment/figures/symbol_prior_alignment_p_0.40.png"
+  },
+  {
+    "source": "周报/星座图映射增益.md",
+    "target": "../16QAM_Polar/v2/results/20260412_150625_symbol_prior_alignment/figures/symbol_prior_alignment_p_0.50.png"
+  }
+]

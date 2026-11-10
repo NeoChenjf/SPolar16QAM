@@ -1,0 +1,9 @@
+2026-11-10 中期前重复文件清理
+
+按用户授权，仅删除与较新保留副本SHA-256完全相同的重复表/图；独有MAT、参数和其他文件保留。原目录不再是一份完整独立副本。恢复时先核对replacement的SHA-256，再复制到原path；不能覆盖后续同名文件。具体映射：
+16QAM_Polar/v2/results/20260614_211439_subcarrier_strategy_compare/subcarrier_strategy_assignment.csv
+  replacement=16QAM_Polar/v2/results/20260614_212900_subcarrier_strategy_compare/subcarrier_strategy_assignment.csv
+  sha256=a527860070b4096806020301163f2752c03056c0754d67d5f92a7678b60054c3
+16QAM_Polar/v2/results/20260614_211439_subcarrier_strategy_compare/subcarrier_strategy_summary.csv
+  replacement=16QAM_Polar/v2/results/20260614_212900_subcarrier_strategy_compare/subcarrier_strategy_summary.csv
+  sha256=122948329412422777f85719bdc99defd7ab16ffb84447350c575b8412424f14

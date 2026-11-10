@@ -1,0 +1,17 @@
+{
+  "approved_cache_files_deleted": [
+    true,
+    true
+  ],
+  "cache_logical_bytes_removed": 21427,
+  "experiment_data_files_deleted": 0,
+  "proposed_raw_files": 1881,
+  "proposed_raw_bytes": 1097558809,
+  "duplicate_proposed_paths": 0,
+  "candidate_stat_changes_during_review": [],
+  "missing_local_links": [],
+  "weekly_prefix_preserved": true,
+  "matlab_used": "saved data load/isequaln only; two raw MAT files",
+  "simulation_started": false,
+  "limits": "No full MAT equivalence proof, no external recovery backup verified, metadata references/static scans incomplete for external use."
+}

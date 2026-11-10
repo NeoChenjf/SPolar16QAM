@@ -1,0 +1,44 @@
+[
+  {
+    "file": "Dai_2017_GA_arxiv.pdf",
+    "bytes": 1209916,
+    "sha256": "45532231b348941e47c6e5e6ef81598abcab8447dd931a4a5a61e40e97495fda",
+    "text_extracted": true,
+    "pages_text_approx": 12
+  },
+  {
+    "file": "Li_2015_Systematic_Error_Performance_arxiv.pdf",
+    "bytes": 272207,
+    "sha256": "fedbf6447e37b5b04265a67a4d5bbbda57da3ae86f0c442388ab980fd3dc1e28",
+    "text_extracted": true,
+    "pages_text_approx": 13
+  },
+  {
+    "file": "Mori_Tanaka_2009_DE_arxiv.pdf",
+    "bytes": 147769,
+    "sha256": "39bb4603b1bb46f868bba41258492dc51ab3a469abdb71ed96af0821530a47a0",
+    "text_extracted": true,
+    "pages_text_approx": 5
+  },
+  {
+    "file": "Niu_Li_2021_Block_Fading_Spectrum_arxiv.pdf",
+    "bytes": 1397634,
+    "sha256": "199df101739fa3779cdaa5cbae5123809b4e2bd3ab1bce9394af308da4b39240",
+    "text_extracted": true,
+    "pages_text_approx": 13
+  },
+  {
+    "file": "Ochiai_2021_Improved_GA_arxiv.pdf",
+    "bytes": 552314,
+    "sha256": "b571f90b398167c12236058271f062d59ebf0915b6807ea1932f1c56fa9c1434",
+    "text_extracted": true,
+    "pages_text_approx": 30
+  },
+  {
+    "file": "Ochiai_2023_RCA_arxiv.pdf",
+    "bytes": 344668,
+    "sha256": "e5637c224ab1ffeddb2b746f8f37885c93f12bc637df5568b5eea01f3cff9a31",
+    "text_extracted": true,
+    "pages_text_approx": 24
+  }
+]

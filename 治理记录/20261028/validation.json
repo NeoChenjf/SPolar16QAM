@@ -1,0 +1,32 @@
+{
+  "files_integrity_checked": 11322,
+  "unexpected_changes": [],
+  "authorized_modified_existing_files": [
+    ".gitignore",
+    "README.md",
+    "next_plan.md",
+    "周报/1.14.md",
+    "周报/3.18统一补充.md",
+    "周报/阶段A：单载波关键结论.md",
+    "周报/阶段B/B4：full-chain策略验证.md",
+    "学习文档/README.md",
+    "学习文档/高阶调制理论/16QAM整流效率-loop/README.md",
+    "学习文档/高阶调制理论/方法.md",
+    "学习文档/高阶调制理论/通用GrayQAM-loop/README.md",
+    "学习文档/高阶调制理论/通用GrayQAM-loop/next_plan.md",
+    "学习文档/高阶调制理论/通用GrayQAM-loop/多载波任意GrayQAM能量分布可调理论说明.md"
+  ],
+  "markdown_files_scanned": 1481,
+  "broken_link_occurrences_before": 285,
+  "broken_link_occurrences_after": 276,
+  "introduced_broken_links": [],
+  "resolved_unique_links": 8,
+  "user_changes_preserved": true,
+  "zip_crc_pass": true,
+  "before_file_count": 11322,
+  "after_file_count_excluding_governance": 11118,
+  "after_bytes_excluding_governance": 1660692605,
+  "source_and_experiment_hashes_unchanged": true,
+  "matlab_executed": false,
+  "git_diff_check": "passed"
+}

@@ -1,0 +1,1628 @@
+                                                                                                                                                                    1
+
+
+
+
+                                         Capacity-Approaching Polar Codes with Long
+                                                 Codewords and Successive Cancellation
+                                                  Decoding Based on Improved Gaussian
+                                                                                  Approximation
+arXiv:1912.00098v2 [cs.IT] 7 Oct 2020
+
+
+
+
+                                        Hideki Ochiai, Senior Member, IEEE, Patrick Mitran, Senior Member, IEEE, and
+                                                                             H. Vincent Poor, Fellow, IEEE
+                                                                                                 Abstract
+
+                                                  This paper focuses on an improved Gaussian approximation (GA) based construction of polar codes
+                                              with successive cancellation (SC) decoding over an additive white Gaussian noise (AWGN) channel.
+                                              Arıkan has proven that polar codes with low-complexity SC decoder can approach the channel capacity
+                                              of an arbitrary symmetric binary-input discrete memoryless channel, provided that the code length is
+                                              chosen large enough. Nevertheless, how to construct such codes over an AWGN channel with low
+                                              computational effort has been an open problem. Compared to density evolution, the GA is known as a
+                                              low complexity yet powerful technique that traces the evolution of the mean log likelihood ratio (LLR)
+                                              value by iterating a nonlinear function. Therefore, its high-precision numerical evaluation is critical as the
+                                              code length increases. In this work, by analyzing the asymptotic behavior of this nonlinear function, we
+                                              propose an improved GA approach that makes an accurate trace of mean LLR evolution feasible. With
+                                              this improved GA, through numerical analysis and simulations with code lengths up to N = 218 , we
+                                              explicitly demonstrate that various code-rate polar codes with long codeword and capacity approaching
+                                              behavior can be easily designed.
+                                                                                              Index Terms
+
+                                                  Block error rate, code construction, density evolution, Gaussian approximation, polar codes.
+
+
+                                          H. Ochiai is with the Department of Electrical and Computer Engineering, Yokohama National University, Yokohama, Japan.
+                                        email: hideki@ynu.ac.jp
+                                          P. Mitran is with the Department of Electrical and Computer Engineering, University of Waterloo, ON, Canada.
+                                        email:mitran@uwaterloo.ca
+                                          H. V. Poor is with the Department of Electrical Engineering, Princeton University, Princeton, NJ. email: poor@princeton.edu
+                                          This work was supported in part by the Japan Society for the Promotion of Science (JSPS) through the Grants-in-Aid for
+                                        Scientific Research (KAKENHI) under Grant JP16KK0145, in part by the Natural Sciences and Engineering Research Council
+                                        of Canada (NSERC), and in part by the U.S. National Science Foundation under Grant CCF-1908308.
+
+
+
+                                                                                                                                                              DRAFT
+                                                                                                    2
+
+
+
+                                        I. I NTRODUCTION
+
+  Polar codes, introduced by Arıkan [1], have the salient property that they can achieve channel
+capacity by low-complexity successive cancellation (SC) decoding. In order to approach capacity
+over a practical additive white Gaussian noise (AWGN) channel by SC decoding, not only must
+the polar code length be large, but the code structure must also be properly designed. A key
+difficulty of polar code design over binary-input AWGN channels lies in the fact that the optimal
+polar code that yields the lowest block error rate (BLER) by SC decoding may have different
+code structure depending on the specific channel signal-to-noise power ratio (SNR). Therefore,
+practical code design should be able to predict its BLER performance for given operating SNR
+and code rate.
+  In the framework of polar codes, code construction is equivalent to the selection of information
+bit locations, collectively referred to as the information set [1]. These are chosen from among
+all the input bits to the rate-1 polar encoder. Several approaches for polar code construction, i.e.,
+algorithms for information set selection, have been developed in the literature for an AWGN
+channel. Mori and Tanaka [2] proposed the use of density evolution (DE), originally developed for
+the design of irregular low-density parity-check (LDPC) codes by Richardson et al. in [3]. Since
+memory and computation requirements for direct tracing of density grow exponentially with code
+length, Tal and Vardy developed a tractable approach that manages the memory requirements
+by efficiently merging the density [4] through quantization at the cost of a loss in channel
+capacity. The resulting algorithms (with channel upgrading and degrading due to quantization)
+were shown to provide rigorous upper and lower bounds to the achievable performance, and their
+tightness depends on the number of quantization levels µ. Upon merging the density, the sorting
+of likelihood ratios with memory size of order O(µ2) is required, and the overall complexity of
+this is of order O(Nµ2 log µ) for polar codes with codeword length N [4]. In order to tighten the
+bounds, one should increase µ without sacrificing numerical accuracy when calculating the loss
+in channel capacity. This makes the algorithm computationally challenging, especially for the
+design of polar codes with large block lengths under various operating SNR. Other constructions
+include reduced complexity DE based on the sub-optimal min-sum algorithm [5], which still
+imposes a memory requirement that grows exponentially as the codeword length increases.
+  Meanwhile, for design and analysis of LDPC codes, Chung et al. proposed the use of a
+Gaussian approximation (GA) [6]. Instead of tracing the exact density of the log likelihood
+
+
+
+                                                                                               DRAFT
+                                                                                                  3
+
+
+
+ratios (LLR), GA only traces the mean value. This becomes a sufficient statistic to characterize
+the LLR provided that the LLR is assumed to be modeled, for some γ > 0, as a Gaussian
+distribution with mean γ and variance 2γ. Since the GA method can be implemented with only
+a few computations (that involve nonlinear functions), the overall complexity is proportional to
+the codeword length N. Trifonov [7] demonstrated that the GA can be also used for constructing
+polar codes with SC decoding. Subsequently, the effectiveness of the GA for polar code con-
+struction has been confirmed in [8], [9]. Furthermore, in [9], [10], the use of the Bhattacharrya
+parameter [1] for information set selection, which is strictly valid only for the case of binary
+erasure channels, has been shown by simulation to be effective provided that the operating SNR
+parameter is appropriately chosen by an empirical approach.
+  In order for polar codes with SC decoding to outperform LDPC codes, it is known that the code
+length should be much larger than that of LDPC codes [11]. In other words, polar codes over an
+AWGN channel with moderate code length are not competitive with other capacity approaching
+codes. Since then, the use of other decoding approaches such as belief propagation (BP) decoding
+has also been studied [12]–[14]. On the other hand, Tal and Vardy showed that successive
+cancellation list (SCL) decoding improves the performance, and furthermore, the application of
+error detection codes such as cyclic redundancy-check (CRC) codes in combination with SCL
+decoding is shown to outperform other competitive codes [15]. Subsequently, most studies on
+polar codes target moderate block-length codes assuming more sophisticated decoding. As a
+consequence, studies for polar code construction have also pursued decoding specific designs
+such as those proposed in [16] and [17].
+  Here, we recall that a major advantage of polar codes as proposed by Arıkan [1] is its simplicity
+of encoding and SC decoding with its capacity achieving performance. The only issue is that the
+code length should be much larger compared to LDPC codes [11] for the same or better target
+performance. Therefore, this paper focuses on constructing polar codes for SC decoding with very
+large code lengths (i.e., larger than 105 bits) and evaluating their performance over a practical
+AWGN channel based on GA as a low-complexity design approach compared to the original
+DE. Furthermore, the assumption of GA enables us to derive an estimate of the BLER without
+resorting to time-consuming simulations. In this work, we first elucidate the limitation of the
+conventional GA in its mean LLR estimation process, especially as the code length increases. It
+turns out that the straightforward implementation of conventional GA fails to construct good polar
+codes with capacity approaching behavior at large block length (as will be illustrated in Fig. 5
+
+
+                                                                                             DRAFT
+                                                                                                     4
+
+
+
+in Section V-B). This stems from the fact that the dynamic range of the LLR values increases
+exponentially with code length, and thus the conventional approach cannot accurately trace the
+evolution of mean LLR values. We then propose a solution to this numerical issue by carefully
+studying the behavior of specific functions involved in GA. With this proposed approach, which
+we refer to as an improved GA, we can easily estimate the performance of polar codes with
+SC decoding for long codes with low complexity. We then demonstrate simulation results with
+block lengths up to N = 218 and show that the results match well with the estimated BLER
+results obtained by the analysis using the improved GA. A similar but empirical modification
+that improves the performance of GA has been proposed by Ha et al. [18], and our analytical
+studies also serve as a justification of their approach.
+  Furthermore, we investigate a second construction based on the flipping probability of an LLR.
+Similar to the case of the GA method, this approach can estimate the BLER without simulation.
+By tracing the flipping probability instead of its mean value, it is still possible to construct codes
+with large length, even though numerical results show its sub-optimality over the improved GA
+as the code length increases. Note that both the GA and LLR flipping approaches are based on
+the assumption that the LLR can be modeled as Gaussian. Since this is an approximation, its
+accuracy is evaluated by comparing the estimated performance based on this approximation with
+that obtained by simulation.
+  The major contributions of this paper are summarized as follows:
+  •   The GA method should trace the evolution of the mean LLR value through nonlinear
+      transformation. Based on the log-domain analysis of this transformation process, a new
+      algorithm with closed-form expressions that can trace the evolution with improved accuracy
+      over an AWGN channel is developed.
+  •   How to design the key SNR parameter in the code construction algorithm is discussed
+      based on the estimated BLER. Using this measure, the capacity-approaching behavior of
+      polar codes with various code rates is demonstrated with low-complexity SC decoding.
+  •   The effectiveness of the proposed GA is investigated through comparison with the other
+      construction alternatives of the same complexity order by Monte-Carlo simulation with
+      block-lengths as large as N = 218 = 262 144.
+We note that the use of codeword lengths of 105 or more has been considered in several
+applications such as high-speed optical communications [19], optical recording systems [20],
+and flash memories [21], where product codes are often adopted due to practical constraints on
+
+
+                                                                                                DRAFT
+                                                                                                   5
+
+
+
+encoding/decoding complexity associated with long codeword lengths. Therefore, we expect that
+polar codes could be an alternative solution in the future as polar codes with SC decoding can
+be implemented with low encoding/decoding complexity, provided that good polar codes with
+such long codeword lengths can be designed with reasonable complexity.
+  This paper is organized as follows. Section II introduces notations associated with polar codes
+and decoding used throughout this work. The construction based on the conventional GA method
+is reviewed and the proposed calculation approach is presented in Section III. As an alternative
+and tractable approach to the GA method, a construction based on LLR flipping probability
+is described in Section IV. Numerical examples are given in Section V, where the capacity-
+approaching behavior based on the construction using the improved GA is demonstrated, together
+with comprehensive comparison with the other approaches. Finally, Section VI concludes this
+work.
+
+
+               II. P OLAR C ODES AND S UCCESSIVE C ANCELLATION D ECODING
+
+A. Polar Code
+                                                                                              N ×N
+  Let u = (u0 , u1 , . . . , uN −1 ) ∈ FN
+                                        2 denote a binary input vector of length N. Let GN ∈ F2
+
+denote a generator matrix formulated as
+                                                                   
+                                                              1 0
+                                   GN = G⊗ n
+                                         2 ,       G2 =            ,                           (1)
+                                                              1 1
+
+where n = log2 N and A⊗ n = A ⊗ A⊗ (n−1) is the nth Kronecker power of matrix A with
+A⊗ 0 = (1) [1]. The corresponding output x = (x0 , x1 , . . . , xN −1 ) ∈ FN
+                                                                           2 is expressed as
+
+
+                                          x = u BN GN ,                                          (2)
+
+where BN ∈ F2N ×N is the N × N bit reversal permutation matrix [1] which guarantees that SC
+decoding is performed in the bit reversal order of the binary channel index.
+  We assume BPSK modulation over an AWGN channel, i.e., the transmitted symbol si ∈ R,
+i = 0, 1, . . . , N − 1, is given by
+                                              p
+                                       si =       Es (1 − 2xi ),                                 (3)
+
+with Es representing the symbol energy, and the received symbol yi ∈ R is
+
+                                           yi = si + zi ,                                        (4)
+
+
+
+                                                                                               DRAFT
+                                                                                                         6
+
+
+
+where zi ∼ N (0, N0/2), i.e., zi is a real-valued Gaussian random variable with zero mean and
+variance N0 /2. We denote the received signal vector of length N = 2n as yn = (y0 , y1 , . . . , y2n −1 ),
+                                                                          (i)
+and its sub-vector of length 2m starting from the index i as ym = (yi , yi+1 , . . . , yi+2m −1 ).
+
+
+B. Successive Cancellation Decoding
+
+  Based on SC decoding, given the length-2n received symbol observation vector yn , each input
+bit ui , i = 0, 1, . . . , N − 1, is decoded successively based on its corresponding LLR. We use the
+following short-hand notation for LLR of the ith input bit ui as
+                               
+                                log p(yn | ui =0) ,
+                               
+                                                             i = 0,
+                     (i)             p(yn | ui =1)
+                    Ln (yn ) =                                                                         (5)
+                                log p(yn , ûi−1 | ui =0) , i = 1, 2, . . . , 2n − 1,
+                               
+                                     p(yn , ûi−1 | ui =1)
+
+where p(·|·) denotes a conditional probability density function and ûi−1 = (û0 , û1 , . . . , ûi−1) is
+the vector containing the estimated bits that have been already determined upon decoding of
+                                       (i)
+the ith bit. (The subscript n of Ln reflects the fact that the LLR is calculated based on the
+observation of 2n received symbols in addition to the previously estimated input bits.) Note that
+for simplicity of notation, we will omit the dependence of LLR on the previously estimated bits
+ûi−1 in what follows.
+  Because of the unique structure of polar codes, the above LLRs can be recursively calculated
+for k = 1, 2, . . . , n with n = log2 N and i = 0, 1, . . . , 2k−1 − 1 as [1], [2]
+                                                                 k−1 
+                              (2i)           (i)   (0)      (i)     (2    )
+                            Lk (yk ) = Lk−1 yk−1 ⊞ Lk−1 yk−1                                      (6)
+                                                  k−1                           
+                           (2i+1)            (i)   (2   )               (i)    (0)
+                         Lk        (yk ) = Lk−1 yk−1       + (−1)û2i Lk−1 yk−1 .                 (7)
+                                                                                             k−1 
+                                    (2i)    (2i)       (i)      (i)    (0)           (i)′ (i)  (2  )
+Alternatively, by rewriting Lk , Lk (yk ), Lk−1 , Lk−1 yk−1 , and Lk−1 , Lk−1 yk−1
+for simplicity, we have
+                                         (2i)       (i)     (i)′
+                                       Lk       = Lk−1 ⊞ Lk−1                                          (8)
+                                      (2i+1)        (i)′            (i)
+                                    Lk          = Lk−1 + (−1)û2i Lk−1 .                               (9)
+
+As noted in [2], (8) corresponds to the LLR calculation associated with a check node, whereas (9)
+corresponds to that with a variable node (or bit node) in the Tanner graph. The operation ⊞ of
+LLR is defined as [22]
+                                                                 
+                             1 + eLa eLb         −1        La       Lb
+                La ⊞ Lb = log La     L
+                                         = 2 tanh    tanh     tanh      .                             (10)
+                              e +e     b                   2        2
+
+
+                                                                                                     DRAFT
+                                                                                                     7
+
+
+
+The recursive decoding procedure continues, starting from k = n and until it reaches 1, where
+                                                              (0)
+the last LLR on the right hand side of (6) and (7), i.e., L0 (yi ), corresponds to the LLR of the
+channel bit xi . For an AWGN channel, we have
+                                                   √
+                  (0)           p (yi | xi = 0)     Es
+                 L0 (yi ) = log                 =4     yi ,         i = 0, 1, . . . , N − 1.     (11)
+                                p (yi | xi = 1)    N0
+
+C. Polar Code Construction
+
+  For polar codes with rate R = K/N, K channel indices out of N total indices are selected
+for information transmission. Let I ⊂ {0, 1, . . . , N − 1} denote the set of the channel indices
+selected to be information bits, i.e., the information set [1], with its cardinality given by |I| = K.
+The bits that are not in this set are called frozen bits and fixed to known values (usually set as
+0). Therefore, polar code construction is equivalent to the selection of a set I that leads to a
+good block error rate (BLER) performance.
+  In this work, we mostly focus on a Gaussian approximation (GA) based design of polar codes.
+This approach allows us to construct good polar codes with much less complexity than those
+based on precise calculation using density evolution. We demonstrate that the carefully designed
+GA will also be able to predict the resulting BLER performance achieved by simulations for a
+given code with almost negligible computational effort.
+
+
+                          III. I MPROVED G AUSSIAN A PPROXIMATION
+
+  In this section, we first study the conventional GA approach, originally proposed for design
+and analysis of LDPC codes, and its limitations when applied to the design of polar codes.
+Then, through careful design of associated metric calculations, we show how to overcome these
+limitations by an improved GA.
+
+
+A. Gaussian Approximation
+
+   Assume that the all-zero input sequence and thus the all-zero codeword is transmitted. Then,
+                             √                                                            (0)
+from (3) and (4), yi ∼ N ( Es , N0 /2) for all i and thus from (11) we observe that L0 ,
+ (0)
+L0 (yi ) ∼ N (γ0 , 2γ0) with γ0 = 4Es /N0 . When the value Es /N0 is used for construction of
+polar codes, we refer to this value as the design SNR [7], [10], denoted by SNRdes . Otherwise,
+Es /N0 corresponds to the channel SNR. (Note that the design SNR in this work is not given
+with respect to the conventional Eb /N0 where Eb is defined as the energy per information bit.
+
+
+
+                                                                                                DRAFT
+                                                                                                                           8
+
+
+
+This is because Eb /N0 is a function of both Es /N0 and the code rate, and thus is not convenient
+when comparing transmissions of codewords with the same symbol energy but different code
+rate.) From (8), (9), and (10) with the assumption that the previous bits are correctly estimated
+(i.e., ûi−1 = 0i for a given i, where 0m denotes the zero vector of length m), we have
+                                        !           (i)
+                                                        !         (i)′
+                                                                       !
+                                   (2i)
+                                  Lk              Lk−1          Lk−1
+                           tanh           = tanh          tanh           ,                                          (12)
+                                   2                2             2
+                                            (2i+1)          (i)        (i)′
+                                      Lk             = Lk−1 + Lk−1 ,                                                (13)
+                                                                                                             (i)    (i)′
+for k = 1, 2, . . . , n, and i = 0, 1, . . . , 2k−1 − 1 with n = log2 N, where both Lk−1 and Lk−1
+can be considered as independent and identically distributed (i.i.d.) random variables due to
+                                                                                                                    (i)
+the structure of the polar codes with SC decoding. Under the assumption that the LLRs Lk−1
+      (i)′                 (i)        (i)
+and Lk−1 follow a N (γk−1, 2γk−1) distribution, the only parameter required to characterize its
+statistical distribution is its mean. In fact, if this Gaussian assumption holds, since the two LLRs
+on the right hand side of (13) are statistically independent, it follows from (13) that the output
+ (2i+1)                                          (i)          (i)
+Lk        should precisely follow N (2γk−1, 4γk−1), i.e.,
+                                                          (2i+1)         (i)
+                                                       γk           = 2γk−1.                                        (14)
+                                                                                                                     (2i)
+On the other hand, the transformation (12) changes the statistical distribution of the output Lk
+from Gaussian. Nevertheless, Chung et al. applied statistical expectation to both sides of (12)
+to get [6]
+                     "                   !#               "              (i)
+                                                                                 !#    "         (i)′
+                                                                                                        !#
+                                  (2i)
+                                 Lk                                    Lk−1                     Lk−1
+                   E tanh                       = E tanh                              E tanh
+                                  2                                     2                        2
+                                                              "                (i)
+                                                                                     !#!2
+                                                                         Lk−1
+                                                =         E tanh                            .                       (15)
+                                                                          2
+  Upon calculating (15), let us define the monotonically increasing function ψ(γ) : (0, ∞) →
+(0, 1) with respect to the mean γ of the random variable L ∼ N (γ, 2γ) as
+                                   Z ∞            x 1
+                                     L                              (x−γ)2
+                  ψ(γ) , E tanh            =     tanh      √     e− 4γ dx.                                          (16)
+                                     2        −∞        2    4πγ
+Now, following [23], let us introduce the short-hand notation for the compound function:
+                                                        
+                                    Ξ(γ) , ψ −1 ψ 2 (γ) .                                (17)
+
+Then, we may rewrite (15) as
+                                                                      
+                                                       (2i)        (i)
+                                                     γk       = Ξ γk−1 .                                            (18)
+
+
+                                                                                                                   DRAFT
+                                                                                                                   ψ(γ)
+                                                                                                                   ψ 2 (γ)
+                                                                                                                           9
+                              PSfrag replacements                                                                  φ(γ)
+
+                                                     0
+                                                         0       1   2   3   4   5   6   7       8   9   10
+                                                                                             γ
+
+
+
+
+Fig. 1. The mean LLR converting functions ψ(γ), φ(γ), and its associated function ψ 2 (γ). The trajectories demonstrate how
+the mean value is converted by the equation (17).
+
+
+
+Note that the compound function Ξ(γ) : (0, ∞) → (0, ∞) is monotonically increasing. However,
+since ψ(γ) is strictly increasing in γ with 0 < ψ(γ) < 1, we have ψ 2 (γ) < ψ(γ) and hence
+Ξ(γ) = ψ −1 (ψ 2 (γ)) < γ. Therefore, for γ > 0, Ξ(γ) is always a value that is strictly smaller
+than its input γ.
+   Instead of directly dealing with ψ(γ), Chung et al. introduce its complement function
+
+                                                    φ(γ) = 1 − ψ(γ).                                                  (19)
+
+In this case, φ(γ) is a monotonically decreasing function and approaches zero as γ → ∞, and
+(18) is equivalent to
+                                                                  2 
+                                      (2i)                       (i)
+                                     γk = φ−1         1 − 1 − φ γk−1       .                                          (20)
+
+Fig. 1 plots the associated functions ψ(γ), ψ 2 (γ), and φ(γ), which are calculated by numerical
+integration. The trajectories in the figure show how the mean value γ is converted by the
+transformation of (17), and it is apparent that this transformation always reduces the mean
+LLR value.
+   In [6], the following approximation for φ(γ) in (19) was suggested:
+                                                             c
+                                            φ(γ) ≈ eaγ +b ,              γ ≤ Γth ,                                    (21)
+
+
+
+
+                                                                                                                    DRAFT
+                                                                                                                             10
+
+
+
+where the constants were numerically determined as (a, b, c) = (−0.4527, 0.0218, 0.86), and the
+threshold was chosen as Γth ≈ 10. For the case of γ > Γth , based on the relationship
+                      r                          r                
+                        π −γ        3                π −γ          1
+                          e 4 1−        < φ(γ) <       e 4 1+          ,                                                  (22)
+                        γ           γ                γ            7γ
+and since the upper and lower bounds converge as γ → ∞, it was suggested to approximate
+φ(γ) by the average of the upper and lower bounds in (22), i.e.,
+                                        r               
+                                          π −γ        10
+                                φ(γ) ≈      e 4 1−         .                                                              (23)
+                                          γ           7γ
+For small γ, (21) may not be accurate as γ → 0. Therefore, even if (21) may be sufficient for
+the moderate size of N as confirmed in [8], [9], the performance degradation may occur for
+large code length N due to numerical inaccuracy.
+      There are two numerical computation issues with the above GA approach. The first issue is due
+to the approximation associated with (21) for a small value of γ, which results in limγ→0 φ(γ) =
+eb > 1. As a consequence, when γ approaches zero (i.e., once the mean LLR falls below a certain
+level), the input to the inverse function φ−1 (·) of (20) fails to approach one and thus γ cannot
+become zero, rendering further polarization effects untraceable. The second issue is due to the
+fact that the function φ(γ) takes a value in the interval (0, 1) and can thus approach arbitrarily
+close to zero as γ becomes large. For example, when γ = 1000, which is a typical value in the
+case of polar codes with relatively large code length, we observe that φ(γ) ≈ 1.49×10−110 . Since
+its inverse function φ−1 (·) cannot be expressed in a closed form, one should resort to numerical
+approaches such as the bisection method for improving the numerical accuracy. As γ becomes
+large (i.e., once the mean LLR exceeds a certain level), however, numerically computing the
+inverse function fails to return an accurate value even with the bisection method, and thus again
+makes further polarization untraceable1 . These issues can be solved by the proposed log-domain
+calculation technique of the function φ(γ) described in what follows.
+      Remark 1: The fact that the approximation suggested by Chung et al. should result in limγ→0 φ(γ) >
+1 was identified by Ha et al. [18], in conjunction with designing punctured LDPC codes. (This
+
+  1
+      As we shall discuss in Remark 3 of Section III-C, once the mean LLR of given channels exceeds some large value at a
+given stage, it may diminish slowly even if it experiences ⊞ operations in later stages. Therefore, one may stop further tracing
+for these channels as they are most likely to be selected as information bits.
+
+
+
+
+                                                                                                                        DRAFT
+                                                                                                  11
+
+
+
+fact has been also pointed out in [24] in the framework of polar code design with long codewords.)
+Therefore, in addition to (21), the following correction has been proposed:
+                                           2
+                             φ(γ) ≈ eαγ+βγ ,      for    0 < γ < Γ′th ,                         (24)
+
+where α = −0.4856, β = 0.0564, and Γ′th = 0.867861. This approach resolves the issue
+associated with the numerical inaccuracy of the original GA as γ → 0. Similar expressions have
+been developed in [24].
+
+
+B. Log-Domain Expression for φ(γ)
+
+     Recall that the mean LLR of polar codes at the code construction design stage should range
+from very small values to very large values, and the metric calculation associated with GA should
+support this exponential range. For example, if the design SNR is 1 (i.e., 0 dB), then the initial
+mean LLR value should be γ0 = 4. For a polar code with N = 2n , since each operation of (13)
+doubles the LLR value as shown in (14), the largest value (after n stages) is Lmax = 4 × 2n .
+                                                   (i)       (2i)
+On the other hand, the amount of change from γk−1 to γk             according to (12) depends on its
+                                                        (2i) (i)                            (i)
+input value, and as is observed from Fig. 1, its ratio γk /γk−1 rapidly becomes smaller as γk−1
+                                                                         (i)
+decreases and the ratio becomes much less than 1/2 with small enough γk−1. Therefore, in order
+                                              (2i)
+to track the mean values by GA accurately, γk must be precisely calculated even if it becomes
+extremely small as discussed in the previous subsection.
+     To cope with this issue, we define the logarithmic domain of φ(γ) as
+
+                                 ξ(γ) , log φ(γ) = log(1 − ψ(γ))                                (25)
+
+and based on this function we attempt to trace the mean LLR value. Note that ξ(γ) : (0, ∞) →
+(−∞, 0), and ξ(γ) is monotonically decreasing with γ. Two major advantages of using (25) are
+that i) as γ → 0, ξ(γ) ≈ −ψ(γ) since ψ(γ) → 0 as well, and thus ξ(γ) can accurately trace γ
+in this regime as well, and ii) for γ → ∞, then ψ(γ) → 1, and it will be shown that ξ(γ) is, to
+first order, linear in γ, and thus γ can again be accurately traced in this regime. By comparison,
+when γ is large, ψ(γ) ≈ 1 (see Fig. 1), and ψ(γ) would need to be computed with very high
+precision to obtain γ from its inverse as even a slight error in ψ(γ) can result in an incorrect
+inverse γ. Therefore, we first develop the asymptotic forms of ξ(γ) for low and high values of
+γ.
+
+
+
+
+                                                                                              DRAFT
+                                                                                         12
+
+
+
+  1) Asymptotic Form of ξ(γ) for Small Values of γ: We first note that the following lemma
+holds for the function ψ(γ):
+  Lemma 1: For ψ(γ) defined in (16), we have
+                            1     1  5            
+                     ψ(γ) = γ − γ 2 + γ 3 + O γ 4              as γ → 0.               (26)
+                            2     4  24
+The proof is given in Appendix A.
+  From Lemma 1, the following theorem is immediate by a Maclaurin series expansion of ξ(γ):
+  Theorem 1: For ξ(γ) defined in (25), we have
+                            1     1      1
+                   ξ(γ) = − γ + γ 2 − γ 3 + O(γ 4)        as γ → 0.                 (27)
+                            2     8      8
+  2) Asymptotic Form of ξ(γ) for Large Values of γ: In this case, we may make use of the
+following expression:
+  Theorem 2: For ξ(γ) defined in (25), we may express
+                                                         
+                γ 1            1                  π2       1
+       ξ(γ) = − + log π − log γ + log 1 −            +O                as γ → ∞.       (28)
+                4 2            2                  4γ       γ2
+    Proof: By applying the identity tanh(x/2) = 1 − 2/(ex + 1) to (16), we may rewrite (19)
+directly through series expansion as
+                             Z ∞
+                         1          1    − (x−γ)
+                                                 2
+
+               φ(γ) = √                 e     4γ   dx
+                         πγ −∞ ex + 1
+                           γ Z       x
+                               ∞
+                        e− 4       e 2 − x4γ2
+                    =√                  e dx
+                         πγ −∞ ex + 1
+                           γ Z
+                               ∞     x    ∞        2 k
+                        e− 4       e2 X 1             x
+                    =√            x
+                                                    −        dx
+                         πγ −∞ e + 1 k=0 k!           4γ
+                           γ  ∞         Z ∞            x
+                        e− 4 X (−1)k             2k e
+                                                       2
+                    =√                         x           dx
+                         πγ k=0 k!(4γ)k −∞          ex + 1
+                           γ  ∞                                             
+                        e− 4 X (−1)k (2k)!                    1               3
+                    =√                           ζ 2k + 1,        − ζ 2k + 1,
+                         πγ k=0 (16γ)k k!                     4               4
+                          γ                                       
+                       e− 4 √        π2     5π 4       61π 6
+                    = √       π 1−      +          −          +··· ,                   (29)
+                          γ          4γ 32γ 2 384γ 3
+where ζ(m, q) is the generalized Riemann zeta function defined as
+                                              ∞
+                                             X       1
+                                   ζ(m, q) =             m
+                                                           .                           (30)
+                                             l=0
+                                                 (l + q)
+Taking logarithm of both sides of (29) leads to (28).
+  Note that the asymptotic case of Theorem 2 agrees with the bounds developed in [6], i.e.,
+(22).
+
+
+                                                                                     DRAFT
+                                                                                                   13
+
+
+
+  3) Closed-Form Approximation: Given the above observations of ξ(γ) in term of limiting
+                                                                               ˆ
+behavior, the remaining issue is how to describe its closed form approximation ξ(γ) for each
+value of γ. We propose the following expression:
+                  1         1     1
+                 
+                  − γ + γ2 − γ3,                                         γ ≤ Γ0 ,             (31a)
+                 
+                 
+                    2       8     8
+                 
+                 
+                  a0 + a1 γ + a2 γ 2 ,
+                                                                         Γ0 < γ ≤ Γ1 ,        (31b)
+          ˆ =
+          ξ(γ)
+                 
+                 
+                  aγ c + b,                                              Γ1 < γ < Γ2 ,        (31c)
+                 
+                                                        
+                 
+                 
+                    γ 1                1          π 2 κ0
+                  − + log π − log γ + log 1 −        +     ,             Γ2 ≤ γ,              (31d)
+                     4 2                2          4γ γ 2
+where the parameters in (31b) are chosen as (a0 , a1 , a2 ) = (−0.002706, −0.476711, 0.0512),
+those in (31c) are adopted as (a, b, c) = (−0.4527, 0.0218, 0.86) following Chung et al., and
+κ0 = 8.554, with the thresholds chosen as Γ0 = 0.2, Γ1 = 0.7, and Γ2 = 10.
+  Each expression in (31) is chosen as follows: When γ is close to zero, (31a) results from
+Theorem 1, whereas the expression (31c) is inherited from the work of Chung et al. [6], i.e.,
+(21). For a given pair of thresholds Γ0 and Γ1 , the intermediate expression (31b) is obtained
+by curve fitting, where a2 is optimized through an exhaustive search such that it minimizes the
+squared error from the function calculated by numerical integration, provided that the piece-wise
+continuity should be guaranteed at the boundaries Γ0 and Γ1 by selection of the parameters a0
+and a1 . Finally, for large values of γ, (31d) is adopted with reference to (28), where we have
+introduced a positive constant κ0 as a fitting parameter that minimizes the squared error in the
+range (Γ2 , Γ2 + 2). It is clear that the impact of κ0 becomes negligible as γ increases.
+  Remark 2: Note that the modified approximation formula proposed by Ha et al. [18], i.e.,
+(24), has strong similarity with the theoretical limit of (31a) if it is converted to the log domain.
+Therefore, it may be capable of capturing the polarization effect in the case of γ → 0, similar
+to the proposed approach based on the log-domain analysis. The corresponding approximate
+function (31) together with those calculated using the conventional GA of (21) as well as its
+modification of (24) by Ha et al. are compared in Fig. 2. Even though all the approximate
+curves exhibit good agreement with that based on the numerical calculation, they reveal some
+difference in the proximity of γ = 0. The conventional expression (21) exceeds 0, whereas a
+slight difference is observed with the modification in (24). As expected, the proposed expression
+yields no discernible difference from the curve calculated by numerical integration for γ near 0.
+
+
+
+
+                                                                                               DRAFT
+                                                                                                                        14
+
+
+                              PSfrag replacements
+                                                       0        5        10       15         20   25
+                                                                                             γ
+
+
+
+
+Fig. 2.                                                                                                                ˆ
+          Comparison of the function ξ(γ) calculated through numerical integration and its piece-wise approximate form ξ(γ)
+through (31a)–(31d). Also plotted are the corresponding curves based on the conventional GA by Chung et al. [6] and its
+modified version by Ha et al. [18]. The area around the origin is enlarged as a reference.
+
+
+C. Proposed Log-Domain GA Algorithm
+
+   Given the expression of ξ(γ), the mean LLR value associated with (20) can be rewritten with
+respect to ξ(γ) as
+                                                                     
+                                                                     (i)
+                                 (2i)              (i)            ξ γk−1
+                                γk = ξ −1       ξ γk−1 + log 2 − e            ,                                      (32)
+
+              (2i+1)
+whereas γk       is revised according to (14).
+                                ˆ
+   The inverse function of z = ξ(γ), i.e., ξˆ−1 (z) : (−∞, 0) → (0, ∞) can be obtained by solving
+the corresponding equations as
+                              
+                              
+                               −2z + z 2 + z 3 ,                                 z ≥ Z0 ,                          (33a)
+                              
+                                     p
+                                           2
+                               −a1 − a1 − 4a2 (a0 − z) ,
+                              
+                              
+                                                                                  Z1 ≤ z < Z0 ,                     (33b)
+                   ξˆ−1 (z) =                2a2
+                              
+                                     1c
+                              
+                              
+                                 z−b
+                              
+                                          ,                                      Z2 < z < Z1 ,                     (33c)
+                                   a
+where the Zi ’s are the thresholds of the two functions, i.e., Zi = ξˆ (Γi ). Note that (33a) is
+obtained as an approximation, through series expansion, of the inverse function corresponding
+to (31a). In the case of z ≤ Z2 , the inverse function corresponding to (31d) may not be expressed
+in closed form. However, it can be easily calculated with high accuracy by using the bisection
+method.
+
+
+
+                                                                                                                    DRAFT
+                                                                                                 15
+
+
+
+Algorithm 1 Channel Polarization with Improved GA
+Input: n = log2 N, α = SNRdes
+                                             (0)   (1)    (N −1)
+Output: γ[0], γ[1], . . . , γ[N − 1] as γn , γn , . . . γn
+ 1: γ[0] = 4α
+
+ 2: for i = 1 : n do
+
+ 3:     J = 2i
+ 4:     for j = 0 : J/2 − 1 do
+ 5:       u = γ[j]
+ 6:       if u ≤ Γ0 then
+ 7:          Update γ[j] with u as input using (34)
+ 8:       else
+ 9:          z = ξ (u) using (31)
+10:          γ[j] = ξ −1 (z + log (2 − ez )) using (33)
+11:       end if
+12:       γ[j + J/2] = 2u
+13:     end for
+14: end for
+
+15: return    γ[0], γ[1], . . . , γ[N − 1]
+
+
+                                                                                    
+                                                          ˆ
+   Furthermore, in the case of γ ≤ Γ0 , by substituting ξ(γ)
+                                                                                 (i)
+                                                               of (31a) into ξ γk−1 of (32), and
+                                        
+                  ˆ
+then substituting ξ (γ) + log 2 − eξ̂(γ)
+                                           into z of (33a) with series expansion and collecting the
+dominant terms up to the fourth degree, one may obtain the following expression for Ξ(γ) in
+(17):
+                                      1     1     2
+                                Ξ(γ) ≈ γ 2 − γ 3 + γ 4 ,             γ ≤ Γ0 .                 (34)
+                                      2     2     3
+  The improved GA algorithm outlined above is summarized in Algorithm 1.
+  Remark 3: It would be of interest to investigate how Ξ(γ) may behave as γ → ∞. Noticing
+that the logarithmic term grows substantially slower than the linear term, one may ignore the
+contribution of the third and fourth terms in (31d) and define the corresponding inverse as
+ξˆ−1 (z) = −4z + 2 log π. Then, by the same process that has lead to (34), we obtain
+
+                                    Ξ(γ) ≈ γ − 4 log 2,            γ → ∞.                     (35)
+
+
+
+                                                                                             DRAFT
+                                                     Ξ(γ
+                                                                                                                               16
+
+
+                               PSfrag replacements         0
+                                                               0     10           20           30
+                                                                                       Input Mean LLR γ
+
+
+
+
+Fig. 3. Comparison of the function Ξ(γ) based on Algorithm 1 as well as the other approaches, i.e., the original formula by
+Chung et al. [6], its modification by Ha et al. [18], and a piece-wise quadratic function approximation by Trifonov [23], together
+with the asymptotic form (35). Also shown as “Exact Mean” is the curve representing the theoretical output mean LLR value
+corresponding to ⊞ operation with Gaussian input N (γ, 2γ) based on (41). The two edge areas are enlarged as a reference.
+
+
+The above approximation indicates that, when the input mean LLR value γ is large, the ⊞
+calculation of two independent and equivalent channels, i.e., (8), will reduce the output mean
+LLR value approximately by 4 log 2 ≈ 2.7726, whereas it always doubles γ when (9) is applied.
+In other words, once γ reaches a large enough value where the approximation (35) holds, then
+the rate at which γ diminishes due to Ξ(γ) is much less significant and thus these channels
+could be selected as information bits even without further high-accuracy tracing.
+   Remark 4: Fig. 3 shows the relationship between the input and output mean LLR values, i.e.,
+the function Ξ(γ), obtained through the improved GA as well as those calculated by the other
+schemes discussed above. Also plotted are the linear asymptote given by (35) and the mean LLR
+value directly calculated without assuming the GA model for later reference (to be discussed
+in Remark 5 at the end of this section). We observe some noticeable discrepancy between the
+improved GA and the original GA as γ approaches zero. However, the improved approximation
+by Ha et al. resembles that of the improved GA developed here. Also observed is the fact that the
+simple approximation (35) becomes tighter as γ increases. We note that instead of dealing with
+the function φ(γ) and its inverse, Trifonov [23] introduces a direct approximation of Ξ(γ) by a
+piece-wise quadratic function, which is also plotted in Fig. 3 for comparison. This approach may
+significantly simplify the design of polar codes and it turns out to be effective for constructing
+
+
+                                                                                                                          DRAFT
+                                                                                                        17
+
+
+
+a wide range of polar codes with moderate lengths. However, we observe that there is some
+discrepancy especially in the low value of γ as our analysis suggests that their asymptotic form
+should follow (34), i.e., the quadratic approximation may have some non-negligible numerical
+gap. This will affect the achievable performance of the code designed for long code lengths and
+low code rate as will be demonstrated in Section V.
+
+
+D. Block Error Rate Estimation
+
+  As discussed in [2], [4], [8], once the distribution of LLRs is determined by density evolution
+or the GA method, its block error rate (BLER) based on SC decoding can also be estimated.
+Assuming that the all zero codeword is transmitted, the bit error probability of the ith bit,
+provided that all the previous bits are correctly decoded, is given by
+                                                                                
+                   Pb,i = Pr (ûi 6= 0 |û0 = · · · = ûi−1 = 0 ) = Pr L(i)
+                                                                        n   < 0   ,                   (36)
+                                   (i)         (i)      (i)
+and under the assumption that Ln ∼ N (γn , 2γn ), it follows that
+                                            s        
+                                                  (i)
+                                                γn 
+                                  Pb,i = Q             ,                                             (37)
+                                                 2
+                                                                               R ∞ t2
+where the Q-function Q(x) : [0, ∞) → 0, 21 is defined as Q(x) = 12 erfc √x2 = √12π x e− 2 dt.
+The BLER is often approximated as
+                                                     N
+                                                     Y −1
+                                     PBL ≈ 1 −                (1 − Pb,i ) .                           (38)
+                                                     i=0
+                                             (i)
+  In the process of polar code design, let γ̂n (α), i ∈ {0, 1, · · · , N − 1}, denote the estimated
+output mean LLR obtained by some GA algorithm with α as its initial input SNR. If we select
+the set of K channel indices with largest outputs as the information set I, the minimum BLER
+with a given rate R = K/N can be achieved. We define the resulting minimum estimated BLER
+for a given design SNR as
+                                                                       s                   
+                                                                               (i)             
+                                                        Y                     γ̂n (SNRdes )
+          P̂BL,min(R, SNRdes ) ,         min       1−          1 − Q                         .    (39)
+                                   I: |I|=RN 
+                                                        i∈I
+                                                                                   2            
+
+For a given pair of design SNR and code rate, the above BLER can be calculated by sorting
+ (i)
+γ̂n (SNRdes ) in decreasing order (after applying a specific GA algorithm) and selecting only the
+largest |I| elements from the entire index set {0, 1, · · · , N − 1}. Note that the above estimated
+performance corresponds to the scenario where a code is designed for a specific SNR value and
+
+
+                                                                                                     DRAFT
+                                                                                                                      18
+
+
+
+therefore this performance is achieved by a family of polar codes with SC decoding, possibly
+employing a different information set at each SNR.
+  The above relationship can also be utilized for evaluating the estimated performance of a given
+designed polar code. Let I ∗ denote the information set designed through the above process, i.e.,
+the set I that yields the minimum estimated BLER evaluated at a given design SNR well below a
+target BLER according to (39). The resulting estimated BLER of the specific polar code defined
+by I ∗ , evaluated at a given channel SNR, may be defined as
+                                                           s             
+                                                                (i)
+                                                     1 − Q  γ̂n (Es /N0)  .
+                                               Y
+                    P̂BL (I ∗ , Es /N0 ) , 1 −                                                                      (40)
+                                               i∈I ∗
+                                                                    2
+
+It is easy to see that (39) serves as a lower bound on (40). Moreover, if I ∗ of (40) is designed
+with SNRdes through (39), then both BLER values should agree at the channel SNR where the
+equality Es /N0 = SNRdes holds.
+  Remark 5: We end this section by pointing out an intriguing fact of GA. Even though the initial
+                         (0)                                                                         (2i)
+LLR of bit channels L0             is Gaussian distributed, there is no guarantee that Lk                   is Gaussian
+since the output after ⊞ operation, i.e., (8), is not strictly Gaussian. However, the notable aspect
+                                                           (2i)                                         (2i)
+associated with the use of (15) is that even if Lk                is not Gaussian, the mean γk                 is chosen
+           (2i)                                            (2i)              (2i)
+such that Lk is approximated by a Gaussian with mean γk and variance 2γk . Therefore,
+                (2i)
+the computed γk will be different from a direct calculation of the LLR mean:
+                                         "        (               (i)
+                                                                        !           (i)′
+                                                                                           !)#
+                    h
+                        (2i)
+                               i                              Lk−1                 Lk−1
+                  E Lk             = 2E tanh−1      tanh                    tanh                 .                  (41)
+                                                               2                    2
+In A PPENDIX B, the above mean value is theoretically derived, and the results are compared in
+Fig. 3 with the mean LLR obtained by the (improved) GA for a given input mean LLR. From the
+figure, we observe that the behavior of the two functions are significantly different, especially as
+the mean input LLR increases. Due to this difference, the polar code design using the mean LLR
+directly calculated through (41) may not lead to the same result as the GA approach through
+(15), and their performance is in general inferior to those designed by GA.
+
+
+      IV. A N A LTERNATIVE C ONSTRUCTION BASED ON LLR F LIPPING P ROBABILITY
+
+  In the previous section, we discussed numerical issues associated with mean LLR calculation
+in the GA method, and how to cope with them. However, the non-linearity of tanh does not
+strictly preserve the Gaussianity of the distribution of the LLR. In this section, we consider
+
+
+
+                                                                                                                  DRAFT
+                                                                                                    19
+
+
+
+an alternative approach that avoids the use of the ⊞ operation upon calculation of the metric
+associated with check nodes by only tracking the probability where the LLR value is reversed. We
+refer to this construction approach as the LLR flipping probability construction. The resulting
+equations can be implemented with much less elaboration than GA, but it still requires the
+assumption that the LLR is Gaussian distributed. Numerical results will also reveal that such an
+approach is still effective for constructing polar codes with moderate length. We recognize that
+the same approach described here was independently proposed by Tahir and Rupp in [25]. For
+the purpose of comparison, we briefly describe this simple and tractable approach based on our
+own understanding.
+  From the relationship of the check node given in (8), it is easy to observe that
+          h         i           h                                               i
+             (2i)                  (i)         (i)′             (i)        (i)′
+    Event Lk < 0 = Event Lk−1 < 0 ∩ Lk−1 > 0 ∪ Lk−1 > 0 ∩ Lk−1 < 0 .                             (42)
+
+Since the two events under the union operation in the right hand side of (42) are mutually
+exclusive, we may express
+                                                                     
+            (2i)              (i)       (i)′ )             (i)      (i)′
+      Pr Lk < 0 = Pr Lk−1 < 0 ∩ Lk−1 > 0 + Pr Lk−1 > 0 ∩ Lk−1 < 0
+                                      ′                         ′     
+                              (i)              (i)             (i)       (i)
+                     = Pr Lk−1 < 0 Pr Lk−1 > 0 + Pr Lk−1 > 0 Pr Lk−1 < 0
+                                     h                  i
+                                 (i)                 (i)
+                     = 2 Pr Lk−1 < 0 1 − Pr Lk−1 < 0                                             (43)
+                                                        (i)            (i)′
+where the last two equalities stem from the fact that Lk−1 and Lk−1 are i.i.d. The above equation
+shows that the flipping probability of the LLR output from the check node is given by that of the
+input LLR. Therefore, the evolution of LLR through the check node can be traced through (43) if
+its flipping probability is of interest. However, the LLR evaluation through the variable node, i.e.,
+calculation of (9) cannot be performed through this approach unless we know the distribution of
+the input LLR. Therefore, analogous to GA we assume that input LLR is Gaussian distributed
+                                       (i)                                     (2i+1)
+with mean µ and variance σ 2 , i.e., Lk−1 ∼ N (µ, σ 2). Then, it follows that Lk        ∼ N (2µ, 2σ 2)
+and therefore
+                                                          r        !
+                                    
+                                      (i)
+                                                             µ2
+                                  Pr Lk−1 < 0 = Q                      ,                         (44)
+                                                              σ2
+                                                          r         !
+                                   
+                                       (2i+1)
+                                                             2µ2
+                                Pr Lk           <0 =Q                      .                     (45)
+                                                               σ2
+Consequently, we may write
+                                     h√               i
+                         (2i+1)                   (i)
+                   Pr Lk        < 0 = Q 2 Q−1 Pr Lk−1 < 0     ,                                  (46)
+
+
+                                                                                                DRAFT
+                                                                                                      20
+
+
+
+Algorithm 2 Channel Polarization with LLR Flipping Probability
+Input: n = log2 N, α = SNRdes
+                                                                                 
+                                            (0)         (1)                 (N −1)
+Output: p[0], p[1], . . . , p[N − 1] as Pr Ln < 0 , Pr Ln < 0 , · · · , Pr Ln      <0
+              √ 
+ 1: p[0] = Q    2α
+ 2: for i = 1 : log2 N do
+
+ 3:   J = 2i
+ 4:   for j = 0 : J/2 − 1 do
+ 5:     z = p[j]
+ 6:     p[j] = 2z(1 − z)
+                       √       
+ 7:     p[j + J/2] = Q 2Q−1 (z)
+ 8:   end for
+ 9: end for
+
+10: return    p[0], p[1], · · · , p[N − 1]
+
+
+                     
+where Q−1 (·) : 0, 21 → [0, ∞) is the inverse Q-function with Q−1 [Q(x)] = x, which can be
+calculated numerically through the bisection method.
+                       (0)
+  Note that since L0 ∼ N (γ0, 2γ0 ), we have
+                                           r     r     !
+                                           γ0      2Es
+                            (0)
+                      Pr L0 < 0 = Q             =Q         ,                                        (47)
+                                             2       N0
+which is simply the bit error rate (BER) of uncoded BPSK as expected.
+  The channel polarization probability computation based on LLR flipping is summarized in
+                                                                                 
+                                                                             (i)
+Algorithm 2. Let p̂i denote the resulting estimated flipping probability Pr Ln < 0 obtained
+by the algorithm with SNRdes as its design SNR. Then, similar to (39) in the case of GA, the
+minimum estimated BLER can be defined as
+                                                                   (                           )
+                                                                            Y
+                             P̂BL,min (R, SNRdes ) ,     min           1−         (1 − p̂i )        (48)
+                                                       I: |I|=RN
+                                                                            i∈I
+                                                                                        
+                                                                                    (i)
+and thus selecting the channel indices with the smallest flipping probabilities Pr Ln < 0 may
+lead to the minimization of the resulting BLER. Likewise, the estimated performance of a given
+designed polar code can be expressed in a similar form to (40).
+  Since the function Q(·) returns a probability, it can rapidly approach 1/2 or 0 through the
+transformation of (43). To improve numerical stability, one may use a log-domain approach
+
+
+
+                                                                                                   DRAFT
+                                                                                                                                 21
+
+
+
+similar to the improved GA described in this paper. For simplicity, this issue will not be discussed
+further. The design based on the LLR flipping probability depends on how accurate the Gaussian
+modeling associated with (46) is. It should be mentioned that the output LLR after ⊞ operation
+is not Gaussian in general. Therefore, calculating the equivalent mean LLR value through the
+inverse Q-function shown in (46) may not be necessarily accurate and error may accumulate
+as this process is repeated. If this part can be implemented with a more accurate model, the
+performance (both BLER estimation and actual simulation based on this construction) would be
+further improved.
+
+
+                               V. C ODE D ESIGN AND P ERFORMANCE E XAMPLES
+
+      In this section, we investigate the performance of polar codes designed by the code con-
+structions described in the previous sections through Monte-Carlo simulations as well as the
+corresponding BLER estimates. Throughout all simulations, we employ the exact LLR calcula-
+tions2.
+
+
+A. Effect of Design SNR
+
+      As an initial process of polar code design based on GA, we investigate the effect of a
+design SNR value on the resulting BLER performance. To this end, we first evaluate the
+minimum estimated BLER, achieved by a family of polar codes, as a function of the design
+SNR based on (39). We then evaluate the estimated BLER of specific polar codes constructed
+at a given design SNR, as a function of channel SNR based on (40), and compare with the
+corresponding simulation results. In these steps, we employ Algorithm 1, where the inverse
+function corresponding to (31d) is calculated by the bisection method. The results are shown in
+Fig. 4 for the polar codes with code length n = 16 (N = 65 536) and code rate R = 1/2. For
+the purpose of demonstration, we have selected three different design SNR values as follows:
+We first fix the target design SNR as SNRdes = −1.48 dB, by observing where the minimum
+estimated BLER curve (39) achieves the target BLER (set between 10−4 and 10−3 ). The two
+other design SNR values are chosen to be either higher (+0.65 dB) or lower (−0.65 dB) than
+this target value. The comparison of the three curves clearly reveals that if the design SNR is set
+
+  2
+      Specifically, all the terms of (54) in A PPENDIX B are used for LLR calculation. This is in contrast to the suboptimal min-sum
+decoder that calculates only the first term of (54).
+
+
+
+
+                                                                                                                            DRAFT
+                                                                                                                          22
+
+
+
+
+                                          100
+
+
+                                          10-1
+
+
+                                          10-2                                 Minimum Estimated BLER
+                                                                               Estimated BLER
+
+                                          10-3
+
+
+                       Block Error Rate   10-4
+
+
+                                          10-5
+
+
+                                          10-6
+
+
+                                          10-7
+
+
+                                          10-8
+
+
+                                          10-9
+                                                   -2           -1                      0
+
+
+
+
+Fig. 4. Comparison of minimum estimated BLER for a family of polar codes, estimated BLER for the polar codes designed at
+specific design SNR, and the corresponding simulation results, all designed using Algorithm 1. The code length is n = 16 (N =
+65 536) and code rate is R = 1/2.
+
+
+too low, the generated polar code performs better only in the low SNR region (of less practical
+interest), and vice versa. We also notice that the polar code designed with an SNR targeting a
+BLER of 10−3 could perform worse than that designed at higher SNR targeting a lower BLER
+when they are compared by the required Es /N0 in order to achieve a BLER below 10−5 . This
+clearly demonstrates the importance of the design SNR parameter selection based on the target
+BLER, and the minimum estimated BLER curves serve as a good initial starting point. For the
+rest of the numerical results, we will select the design SNR such that the resulting minimum
+estimated BLER should fall between 10−4 and 10−3 .
+   Remark 6: It may be worthwhile to point out the complexity required for calculating these
+estimated curves. Upon evaluating the minimum estimated BLER of (39), Algorithm 1 should
+be performed for each value of the design SNR, which has complexity of O(N). After obtaining
+                                             (i)
+the estimated SNR γ̂n for all N channels, the highest K values should be selected for the
+information set I (or the lowest N − K values for the frozen set I c ). The complexity of this
+process is O(N log N), which becomes non-negligible as N increases. However, the estimated
+SNR values of most channels are either close to 0 (bad channels) or approaching ∞ (good
+channels) due to polarization. Therefore, one can eliminate these good and bad channels prior to
+sorting, since they are always selected as information and frozen bits, respectively. With this pre-
+
+
+
+                                                                                                                      DRAFT
+                                                                                                                  23
+
+
+
+
+                                          100
+
+
+
+                                          10-1
+
+
+
+                                          10-2
+
+
+                       Block Error Rate
+                                          10-3
+
+
+                                                 Est. BLER (1/2)
+                                          10-4
+                                                 Est. BLER (1/4)
+                                                 Conv. (R=1/2)
+                                                 Conv. (R=1/4)
+                                          10-5
+                                                 Prop. (R=1/2)
+                                                 Prop. (R=1/4)
+                                          10-6
+                                                   -6            -5   -4   -3   -2         -1   0
+
+
+
+
+Fig. 5.   Comparison of simulated BLER for the conventional and improved GA with code rate R = 1/2 and 1/4. The code
+length is given by N = 2n , with n = 13, 14, and 15 (N = 8192, 16 384, and 32 768). The corresponding estimated BLER
+curves as a function of Es /N0 based on the improved GA are also plotted as a reference.
+
+
+processing, the required time to calculate (39) becomes negligible even for very long codeword
+cases. Once the optimal information set I ∗ is obtained for a given design SNR, the evaluation
+of the estimated BLER (40) can be performed by running Algorithm 1 again with each given
+channel SNR as its input, and the resulting complexity is also negligible.
+
+
+B. Comparison with Conventional GA and Improved GA
+
+   We now compare the BLER performance of the conventional and improved GA through
+Monte-Carlo simulations and demonstrate how the BLER of conventional GA diverges from
+the estimated BLER as the code length increases. Fig. 5 shows the simulation results of polar
+codes constructed at the design SNR as described in the previous subsection. The corresponding
+estimated BLER curves with respect to Es /N0 based on the improved GA are also plotted as
+a reference. For the conventional GA, we apply (21) and (23), where the bisection method is
+used for calculating the inverse function of (23). The two code rate cases of R = 1/2 and 1/4
+are evaluated with the code length ranging from N = 213 = 8192 to N = 215 = 32 768. We
+observe that the polar codes constructed by the two GA perform almost identical up to some code
+length as expected, but start to diverge beyond n = 14 for R = 1/4, whereas the performance
+of the improved GA follows similar to the estimated BLER regardless of code length. It is
+
+
+                                                                                                             DRAFT
+                                                                                                                          24
+
+
+
+
+                                             100
+
+
+
+                                             10-1
+
+
+
+                                             10-2
+
+
+                          Block Error Rate
+                                             10-3
+
+
+                                                                   Estimated BLER (GA)
+                                             10-4
+                                                                   Estimated BLER (LLR)
+                                                                   Proposed GA
+                                                                   Modiﬁed GA [18]
+                                             10-5
+                                                                   LLR Flipping
+                                                                   Quadratic [23]
+                                             10-6
+                                                    -6   -5   -4          -3         -2   -1   0   1   2
+
+
+
+
+Fig. 6. Comparison of BLER for the polar codes constructed by Algorithm 1 (improved GA), Algorithm 2 (LLR flipping), the
+modified GA by Ha et al. [18], and a quadratic function approximation by Trifonov [23]. The corresponding estimated BLER
+curves derived from Algorithms 1 and 2 are also plotted.
+
+
+also interesting to note that for the conventional GA with n = 15, the two BLER curves with
+different code rate eventually merge, which suggests that they share the same weak channels
+in the information set due to numerical inaccuracy of the conventional GA, and this inaccuracy
+dominates the performance of SC decoding.
+
+
+C. Comparison among GA-Based Approaches and LLR Flipping Probability with n = 16
+
+      Next, we compare the performances of polar codes constructed by the GA-based approaches
+and the LLR flipping probability. As an example of relatively large code length, we select
+n = 16 (N = 65 536). For construction based on the GA, we have simulated three specific
+cases, i.e., the modified GA by Ha et al. [18], the quadratic approach by Trifonov [23], and the
+proposed GA based on Algorithm 1. Note that since the quadratic approach [23] does not require
+any calculation associated with the inverse function of φ(γ) or ξ(γ), it requires the shortest time
+to generate an information set among all the others compared here. All the polar codes compared
+are generated with the same design SNR for a given code rate3 .
+
+  3
+      The best design SNR that yields the minimum required Es /N0 in order to achieve a given target BLER should be different
+for each scheme. However, in all the simulation results, we construct each code with the identical design SNR value for the
+purpose of demonstration.
+
+
+
+                                                                                                                      DRAFT
+                                                                                                                   25
+
+
+
+
+                                           100
+
+
+
+                                           10-1
+
+
+
+                                           10-2
+
+
+
+
+                        Block Error Rate
+                                           10-3
+
+
+
+                                           10-4
+                                                              BPSK Capacity
+                                                              Min. Est. BLER
+                                           10-5
+                                                              Est. BLER
+                                                              Proposed GA
+                                           10-6               Modiﬁed GA [18]
+                                                              Quadratic [23]
+                                           10-7
+                                               -3   -2   -1         0           1   2   3     4
+
+
+
+
+Fig. 7. BLER comparison of long polar codes (with n = 18) based on the three GA-based construction schemes with code
+rate above 1/2. The minimum estimated BLER curves as a function of design SNR, as well as the estimated BLER for each
+polar code simulated here, are also plotted using Algorithm 1.
+
+
+   The results are shown in Fig. 6 with code rates R = 1/4, 1/2, and 3/4, where the estimated
+BLER calculated by the improved GA method and that by the LLR flipping probability method
+are also plotted as a reference. We observe that there is some difference in terms of the estimated
+BLER between the improved GA and LLR flipping probability methods, and the gap becomes
+larger as the code rate decreases. The corresponding simulation results also indicate that the
+code designed by the LLR flipping probability method is worse than those constructed by the
+modification of GA method. Therefore, even though both approaches are based on the assumption
+of Gaussian distribution for LLR, the GA-based approach may be more effective in terms of polar
+code design. Furthermore, the polar codes designed by the three GA approaches exhibit similar
+performance. Therefore, the difference among them is not clear from this codeword length even
+with various code rates.
+
+
+D. Comparison of GA Schemes with n = 18
+
+   Finally, we focus on even longer polar codes and evaluate the performance difference among
+the three GA-based approaches. The code length is set as N = 262 144 (n = 18) and the code
+rates R are selected from 1/8 (0.125) up to 7/8 (0.875). In Fig. 7, the BLERs for the cases
+with higher code rates are compared, whereas Fig. 8 compares the BLER for the lower code
+
+
+                                                                                                              DRAFT
+                                                                                                                         26
+
+
+
+
+                                            100
+
+
+
+                                            10-1
+
+
+
+                                            10-2
+
+
+
+                         Block Error Rate
+                                            10-3
+
+
+
+                                            10-4
+                                                                                      BPSK Capacity
+                                                                                      Min. Est. BLER
+                                            10-5
+                                                                                      Est. BLER
+                                                                                      Proposed GA
+                                            10-6                                      Modiﬁed GA [18]
+                                                                                      Quadratic [23]
+                                            10-7
+                                                   -10   -9   -8   -7   -6       -5         -4          -3
+
+
+
+
+Fig. 8. BLER comparison of long polar codes (with n = 18) based on the three GA-based construction schemes with very low
+code rate. The minimum estimated BLER curves as a function of design SNR, as well as the estimated BLER for each polar
+code simulated here, are also plotted using Algorithm 1.
+
+
+rate cases. In all the results, the minimum estimated BLER curves as a function of design SNR
+with a fixed code rate, as well as the estimated BLER curves as a function of channel SNR,
+both employing Algorithm 1, are plotted. Also shown are the corresponding theoretical limits
+(the minimum Es /N0 values required to achieve the corresponding information rates in terms
+of the BPSK channel capacity).
+      From the results, we observe that the simulation results of the polar codes constructed based
+on the proposed GA with a given design SNR agree well with the estimated BLER evaluated
+at the same design SNR, especially in the BLER range of practical interest (10−2 − 10−3 ).
+Comparing the three GA approaches, the polar codes based on the quadratic formula show
+some degradation from the other two constructions as the channel Es /N0 becomes lower (i.e.,
+lower code rate cases). This may stem from the fact that the quadratic approximation of the
+function Ξ(γ) shows some discrepancy from the more precise approaches as observed in Fig. 3.
+On the other hand, the proposed GA and the modified GA by Ha. et al. show similar BLER
+performances4 , which can also be confirmed from Fig. 3 as they have close resemblance even
+
+  4
+      Numerical comparison has indicated that for the polar codes of n = 18 constructed by the two GA schemes compared here,
+approximately 99.7% of the frozen bits agrees when R = 3/4 and 7/8, 99.9% when R = 1/2, and 99.96% when R = 1/4
+and 1/8.
+
+
+
+
+                                                                                                                     DRAFT
+                                                                                                 27
+
+
+
+in the very low range of γ.
+
+                                       VI. C ONCLUSIONS
+
+  We have discussed a construction of polar codes with large code lengths based on an improved
+GA as well as LLR flipping probability assuming simple SC decoding. For the former, we have
+developed closed-form expressions that allow us to precisely calculate the nonlinear function
+associated with GA for asymptotic cases of low and high SNR based on its series expansion.
+How to select the design SNR is a key issue for polar code design, and the polar codes designed
+using the estimated BLER successfully yield capacity approaching behavior as the code length
+increases. Numerical results have elucidated that the GA-based design approach outperforms that
+based on the LLR flipping probability.
+  As a final remark, even if the nonlinear transformation processes such as ξ(γ) and ξ −1 (γ)
+could be perfectly reproduced by further extending our approach, the optimality of the designed
+code itself is not at all guaranteed as it is based on an approximation. Therefore, the performance
+gap from an optimal polar code (that would be identified by more complex design algorithms
+such as the approach developed by Tal-Vardy) would be of significant interest. Furthermore, the
+applicability of the expressions based on the log-domain analysis to the design of punctured and
+shortened polar codes would be worth investigating. We leave these questions for future work.
+
+                                           A PPENDIX A
+                                       P ROOF OF L EMMA 1
+
+    Proof: Equation (16) can be expressed as
+                                                √ 
+                                                     γ
+                                 ψ(γ) = E tanh         t   ,                              (49)
+                                                    2
+                                              √     
+where the expectation is performed over t ∼ N   γ, 2 . By the series expansion of the function
+tanh(·), we obtain [26]
+                                       ∞
+                                                 ( √    )
+                                       X           γ 2k−1
+                              ψ(γ) =     ak E       t
+                                     k=1
+                                                  2
+                                      ∞      √ 2k−1
+                                     X          γ      
+                                   =     ak           E t2k−1 ,                               (50)
+                                     k=1
+                                               2
+with the coefficient ak expressed as
+                                              22k (2k − 1)
+                                       ak =                B2k ,                              (51)
+                                                  (2k)!
+
+
+                                                                                             DRAFT
+                                                                                                        28
+
+
+
+where Bn represents the Bernolli number with its first few even number cases given by B2 =
+1           1             1
+6
+  , B4 = − 30 , and B6 = 42 .
+  The odd-order moment in (50) can be expressed as (see [27] for example)
+                                    √                          
+                          2k−1       γ (2k)!            3 γ
+                      E t        =            1 F1 1 − k; ; −     ,                                  (52)
+                                     2 k!                2 4
+where 1 F1 (a; b; x) is Kummer’s confluent hypergeometric function. Substituting (51) and (52)
+into (50) and after some manipulation, we obtain
+                               ∞                               
+                              X    22k − 1 B2k k            3 γ
+                       ψ(γ) =                  γ 1 F1 1 − k; ; −   .                                 (53)
+                              k=1
+                                        k!                  2 4
+Note that the function 1 F1 (a; b; x) is differentiable with respect to x and converges for any finite
+                                                                                      2
+x. Since 1 F1 (0; b; x) = 1, 1 F1 (−1; b; x) = 1− xb , and 1 F1 (−2; b; x) = 1− 2x
+                                                                                 b
+                                                                                       x
+                                                                                   + b(1+b) , by expanding
+the terms of (53) up to k = 3, we obtain (26).
+
+                                             A PPENDIX B
+                                       M EAN OF LLR O UTPUT
+
+  In this appendix, we derive the mean value of the LLR output associated with the operation
+Lo = La ⊞ Lb , assuming that the two input LLRs La and Lb are independent Gaussian with
+N (γ, 2γ).
+  We first note that the output Lo associated with the ⊞ operation of two LLRs La and Lb can
+be expressed by the so-called min-sum form:
+
+    Lo , La ⊞ Lb
+                                                                                             
+       = sign (La ) sign (Lb ) min (|La | , |Lb |) + log 1 + e−|La +Lb | − log 1 + e−|La −Lb | ,     (54)
+         |                 {z                    }
+                           ,X
+
+where X corresponds to the output of the min-sum decoder, and is often used as a low-complexity
+alternative to exact decoding. As discussed in [5], based on the fundamental results on order
+statistics, the probability density function (pdf) of the random variable X defined above can be
+expressed as
+
+                       fX (x) = 2fL (x) {1 − FL (|x|)} + 2fL (−x)FL (− |x|) ,                        (55)
+
+where fL (x) and FL (x) are the pdf and cumulative distribution function (cdf) of La (or equiv-
+alently Lb ), respectively. Assuming La , Lb ∼ N (γ, 2γ), the above pdf can be expressed as
+                                                                              
+                             1     − (x−γ)
+                                           2
+                                                 |x| − γ     − (x+γ)
+                                                                     2
+                                                                          |x| + γ
+                 fX (x) = √       e    4γ    Q    √        +e    4γ    Q √           .      (56)
+                             πγ                      2γ                       2γ
+
+
+                                                                                                    DRAFT
+                                                                                                                          29
+
+
+
+  Next, let us define the random variables Y = |La + Lb | and Z = |La − Lb | which appear
+in (54). Since La + Lb ∼ N (2γ, 4γ) and La − Lb ∼ N (0, 4γ), Y follows a generalized Rice
+distribution and Z follows a generalized Rayleigh distribution [28], whose pdfs are expressed as
+                                          1      y 2 +4γ 2
+                                                             y 
+                               fY (y) = √     e− 8γ cosh                                    (57)
+                                          2πγ                 2
+                                          1      z2
+                               fZ (z) = √     e− 8γ .                                       (58)
+                                          2πγ
+Consequently, the mean of Lo can be expressed as
+                                                           
+        E [Lo ] = E [X] + E log 1 + e−Y − E log 1 + e−Z
+                       Z ∞                                            
+                    1          (z−γ)2
+                              − 4γ            −z
+                                                        z−γ         z+γ
+                =√          ze          1−e          Q √       −Q √
+                    πγ 0                                  2γ            2γ
+                                         2                            
+                       1                   z       1 1      2        
+                    − √ log 1 + e−z e− 8γ − e− 8γ (z−2γ) 1 + e−z           dz                                       (59)
+                        2                           2
+                      Z ∞                                     √             √ 
+                   1       √    −
+                                      √
+                                  (x− γ)2
+                                                   −
+                                                     √ 
+                                                      γx     x− γ            x+ γ
+                =√           γxe      4    1−e            Q    √      −Q       √
+                    π 0                                          2               2
+                                                                             
+                       1            √         x2     1 1     √ 2        √ 
+                    − √ log 1 + e− γx e− 8 − e− 8 (x−2 γ ) 1 + e− γx             dx,                                (60)
+                        2                             2
+where (60) may be convenient for small values of γ and (59) is suitable as γ increases for
+numerical evaluation.
+
+
+                                              ACKNOWLEDGMENT
+
+  The authors would like to thank the editor and reviewers for their constructive comments as
+well as bringing [18], [23] to the authors’ attention.
+
+
+                                                   R EFERENCES
+
+[1] E. Arıkan, “Channel polarization: A method for constructing capacity-achieving codes for symmetric binary-input
+    memoryless channels,” IEEE Trans. Inform. Theory, vol. 55, pp. 3051–3073, 2009.
+[2] R. Mori and T. Tanaka, “Performance of polar codes with the construction using density evolution,” IEEE Commun. Lett.,
+    vol. 13, pp. 519–521, July 2009.
+[3] T. Richardson, M. A. Shokrollahi, and R. Urbanke, “Design of capacity-approaching irregular low-density parity-check
+    codes,” IEEE Trans. Inform. Theory, vol. 47, pp. 619–637, Feb. 2001.
+[4] I. Tal and A. Vardy, “How to construct polar codes,” IEEE Trans. Inform. Theory, vol. 59, pp. 6562–6582, Oct. 2013.
+[5] D. Kern, S. Vorkoper, and V. Kühn, “A new code construction for polar codes using min-sum density,” in Proc. 8th Int.
+    Symp. Turbo Codes & Iter. Inform. Process. (ISTC), pp. 228–232, June 2014.
+[6] S.-Y. Chung, T. Richardson, and R. Urbanke, “Analysis of sum-product decoding of low-density parity-check codes using
+    a Gaussian approximation,” IEEE Trans. Inform. Theory, vol. 47, pp. 657–670, Feb. 2001.
+
+
+
+                                                                                                                   DRAFT
+                                                                                                                          30
+
+
+
+ [7] P. Trifonov, “Efficient design and decoding of polar codes,” IEEE Trans. Commun., vol. 60, pp. 3221–3227, Nov. 2012.
+ [8] D. Wu, Y. Li, and Y. Sun, “Construction and block error rate analysis of polar codes over AWGN channel based on
+     Gaussian approximation,” IEEE Commun. Lett., vol. 18, pp. 1099–1102, July 2014.
+ [9] H. Li and J. Yuan, “A practical construction method for polar codes in AWGN channels,” in Proc. IEEE 2013 Tencon -
+     Spring, pp. 223–226, Apr. 2013.
+[10] H. Vangala, E. Viterbo, and Y. Hong, “A comparative study of polar code constructions for the AWGN channel.” available
+     on arXiv:1501.02473v1 [sc.IT], Jan. 2015.
+[11] S. B. Korada, A. Montanari, E. Telatar, and R. Urbanke, “An empirical scaling law for polar codes,” in Proc. 2010 IEEE
+     Int. Symp. Inform. Theory (ISIT), pp. 884–888, June 2010.
+[12] E. Arıkan, “A performance comparison of polar codes and Reed-Muller codes,” IEEE Commun. Lett., vol. 12, pp. 447–449,
+     June 2008.
+[13] N. Hussami, S. B. Korada, and R. Urbanke, “Performance of polar codes for channel and source coding,” in Proc. 2009
+     IEEE Int. Symp. Inform. Theory (ISIT), 2009.
+[14] A. Eslami and H. Pishro-Nik, “On finite-length performance of polar codes: Stopping sets, error floor, and concatenated
+     design,” IEEE Trans. Commun., vol. 61, pp. 919–929, Mar. 2013.
+[15] I. Tal and A. Vardy, “List decoding of polar codes,” IEEE Trans. Inform. Theory, vol. 61, pp. 2213–2226, May 2015.
+[16] M. Qin, J. Guo, A. Bhatia, A. G. i. Fabregas, and P. H. Siegel, “Polar code constructions based on LLR evolution,” IEEE
+     Commun. Lett., vol. 21, pp. 1221–1224, June 2017.
+[17] A. Elkelesh, M. Ebada, S. Cammerer, and S. ten Brink, “Decoder-tailored polar code design using the genetic algorithm,”
+     IEEE Trans. Commun., vol. 67, pp. 4521–4534, July 2019.
+[18] J. Ha, J. Kim, and S. W. McLaughlin, “Rate-compatible puncturing of low-density parity-check codes,” IEEE Trans. Inform.
+     Theory, vol. 50, pp. 2824–2836, Nov. 2004.
+[19] B. P. Smith, A. Farhood, A. Hunt, F. R. Kschischang, and J. Lodge, “Staircase codes: FEC for 100 Gb/s OTN,” J. Lightw.
+     Technol., vol. 30, pp. 110–117, Jan. 2012.
+[20] W. Coene, H. Pozidis, M. Van Dijk, J. Kahlman, R. Van Woudenberg, and B. Stek, “Channel coding and signal processing
+     for optical recording systems beyond DVD,” IEEE Trans. Magnet., vol. 37, pp. 682–688, Mar. 2001.
+[21] M. Qiu, L. Yang, Y. Xie, and J. Yuan, “Terminated staircase codes for NAND flash memories,” IEEE Trans. Commun.,
+     vol. 66, pp. 5861–5875, Dec. 2018.
+[22] J. Hagenauer, E. Offer, and L. Papke, “Iterative decoding of binary block and convolutional codes,” IEEE Trans. Inform.
+     Theory, vol. 42, pp. 429–445, Mar. 1996.
+[23] P. Trifonov, “Randomized chained polar subcodes,” in Proc. 2018 IEEE Wireless Commun. Netw. Conf. Workshops (WC-
+     NCW), pp. 25–30, Apr. 2018.
+[24] J. Dai, K. Niu, Z. Si, C. Dong, and J. Lin, “Does Gaussian approximation work well for the long-length polar code
+     construction?,” IEEE Access, vol. 5, pp. 7950–7963, Jan. 2017.
+[25] B. Tahir and M. Rupp, “New construction and performance analysis of polar codes over AWGN channels,” in Proc. 24th
+     Int. Conf. Telecommun. (ICT), pp. 1–4, May 2017.
+[26] M. Abramowitz and I. A. Stegun, eds., Handbook of Mathematical Functions. Dover, 1965.
+[27] A. Winkelbauer, “Moments and absolute moments of the normal distribution.” available on arXiv:1209.4340v2 [math.ST],
+     July 2014.
+[28] J. G. Proakis and M. Salehi, Digital Communications. McGraw-Hill, fifth ed., 2008.
+
+
+
+
+                                                                                                                      DRAFT
+

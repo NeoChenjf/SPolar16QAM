@@ -1,0 +1,12 @@
+2026-11-10 中期前重复文件清理
+
+按用户授权，仅删除与较新保留副本SHA-256完全相同的重复表/图；独有MAT、参数和其他文件保留。原目录不再是一份完整独立副本。恢复时先核对replacement的SHA-256，再复制到原path；不能覆盖后续同名文件。具体映射：
+16QAM_Polar/v3/results/20260902_225358_ber_coarse/ber_coarse.csv
+  replacement=16QAM_Polar/v3/results/20260903_160356_ber_coarse/ber_coarse.csv
+  sha256=4abf0e916d89fbf900bd8841e66a182b66309174bbd7220c5ad047aad314f69b
+16QAM_Polar/v3/results/20260902_225358_ber_coarse/ber_coarse_partial.csv
+  replacement=16QAM_Polar/v3/results/20260903_160356_ber_coarse/ber_coarse_partial.csv
+  sha256=4abf0e916d89fbf900bd8841e66a182b66309174bbd7220c5ad047aad314f69b
+16QAM_Polar/v3/results/20260902_225358_ber_coarse/window_candidates.csv
+  replacement=16QAM_Polar/v3/results/20260903_160356_ber_coarse/window_candidates.csv
+  sha256=fa4f1b90b7415c7e06cc486167299f01a26a5a89694ea86dc820cb15f82daed6

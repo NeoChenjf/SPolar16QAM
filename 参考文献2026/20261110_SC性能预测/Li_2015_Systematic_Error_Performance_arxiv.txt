@@ -1,0 +1,1025 @@
+                                                                                                                                                                                     1
+
+
+
+
+                                                                          On the Error Performance of
+                                                                            Systematic Polar Codes
+                                                    Liping Li, Member, IEEE, Wenyi Zhang, Member, IEEE, Yanjun Hu, Senior Member, IEEE
+
+
+
+
+                                            Abstract—Systematic polar codes are shown to outperform                  original 2 × 2 kernel matrix. Polar codes based on the kernel
+                                         non-systematic polar codes in terms of the bit-error-rate (BER)             matrices of size l × l are studied in [9]. Polar codes have also
+                                         performance. However theoretically the mechanism behind the
+arXiv:1504.04133v1 [cs.IT] 16 Apr 2015
+
+
+
+
+                                                                                                                     been extended to different scenarios since then [10]–[12].
+                                         better performance of systematic polar codes is not yet clear.
+                                         In this paper, we set the theoretical framework to analyze the                 The rate of polarization of polar codes is studied in [1], [13]
+                                         performance of systematic polar codes. The exact evaluation of              without including the effect of the code rate. In works [14]–
+                                         the BER of systematic polar codes conditioned on the BER of                 [16], the authors analyzed the polarization rate considering
+                                         non-systematic polar codes involves in 2NR terms where N is the             the effect of both the block length and the code rate. The
+                                         code block length and R is the code rate, resulting in a prohibitive        asymptotic behavior of polar codes reported in these works
+                                         number of computations for large block lengths. By analyzing
+                                         the polar code construction and the successive-cancellation (SC)            does not guarantee a good performance in practice when a
+                                         decoding process, we use a statistical model to quantify the                finite block length is applied. In fact, the performance of
+                                         advantage of systematic polar codes over non-systematic polar               polar codes with the SC decoding and finite block lengths
+                                         codes, so called the systematic gain in this paper. A composite             are not satisfactory [17] [18]. Different decoding techniques
+                                         model is proposed to approximate the dominant error cases in                are deployed to improve the performance of polar codes [17]–
+                                         the SC decoding process. This composite model divides the errors
+                                         into independent regions and coupled regions, controlled by a               [24]. The authors of [17]–[21] use belief propagation (BP) in
+                                         coupling coefficient. Based on this model, the systematic gain can          the decoding process in place of the SC decoding. The list
+                                         be conveniently calculated. Numerical simulations are provided              decoding procedure of [22] and [23] involves multiple paths
+                                         in the paper showing very close approximations of the proposed              instead of a single path as in the SC decoding process. The
+                                         model in quantifying the systematic gain.                                   concatenation of polar codes with LDPC codes are proposed
+                                           Index Terms—Polar Codes, Systematic Polar Codes, Polar                    in [20] and [24] to further improve the performance of polar
+                                         Codes Encoding, Successive Cancellation Decoding, Systematic                codes. These techniques focus on the improvement in the
+                                         Polar Gain                                                                  decoding algorithms while keeping the original coding process
+                                                                                                                     as in [1]. The price paid in these improvements is the extra
+                                                                  I. I NTRODUCTION                                   decoding complexity.
+                                                                                                                        Another direction to improve the performance of polar codes
+                                            Polar codes are systematically introduced by Arikan in [1].              is also introduced by Arikan in [25] by using systematic polar
+                                         It’s shown there that polar codes can achieve the capacity                  codes. If we denote u as a vector containing source bits and x
+                                         for symmetric binary-input discrete memoryless channels (B-                 as the corresponding codeword obtained by using the normal
+                                         DMC) with a low complexity. The encoding and decoding                       polar codes construction. Note that in this paper we use non-
+                                         process (with successive cancellation, SC) can be implemented               systematic polar codes and normal polar codes interchangeably
+                                         with a complexity of O(N log N ). The polarization of N                     without further notice. The basic idea of systematic polar
+                                         channels is realized through two stages: channel combining                  codes is to use some part of the codeword x to transmit
+                                         and splitting. Channels are polarized after these two stages                information bits instead of directly using u to transmit them.
+                                         in the sense that bits transmitting in these channels either                The advantage of systematic polar codes is the low decoding
+                                         experience almost noiseless channels or almost completely                   complexity: Systematic polar codes require only part of the
+                                         noisy channels for a large N . The idea of polar codes is to                encoding process (involving only 0s and 1s) after the normal
+                                         transmit information bits on those noiseless channels while                 SC decoding is done. This low complexity can be seen from
+                                         fix the information bits on those completely noisy channels.                the way x is estimated: x̂ = ûG where û is the estimation
+                                         The fixed bits are made known to both the transmitter and                   of u from the normal SC decoding, and G is the generator
+                                         receiver. The binary input alphabet in Arikan seminal work                  matrix. In the rest of the paper, we call this indirect, two-step
+                                         [1] is later on extended to non-binary input alphabet [2]–[4].              (SC decoding then encoding) decoding process of systematic
+                                         The construction of polar codes have then been investigated                 polar codes the SC-EN decoding.
+                                         and different procedures are proposed [5]–[8] assuming the                     In [25], it’s shown that systematic polar codes achieve better
+                                                                                                                     bit-error-rate (BER) performance than normal polar codes.
+                                           Liping Li and Yanjun Hu is with the Key Laboratory of Intelligent
+                                         Computing and Signal Processing of the Ministry of Education of China,      However, Arikan also noted in [25] that it’s not clear why
+                                         and School of Electronics and Information Engineering, Anhui University,    systematic polar codes achieve better BER performance than
+                                         China (email: Liping Li’s email: liping li@ahu.edu.cn, Yanjun Hu’s email:   non-systematic polar codes even with an indirect decoding
+                                         yanjunhu@ahu.edu.cn).
+                                           Wenyi Zhang is with School of Information Science and Technology, Uni-    procedure (the SC-EN decoding): first decoding û then re-
+                                         versity of Science and Technology of China (email: wenyizha@ustc.edu.cn).   encoding x̂ as ûG. One would expect that any error in û
+                                                                                                                                           2
+
+
+
+would be amplified from this re-encoding process x̂ = ûG.           A. Preliminaries of Non-Systematic Polar Codes
+However simulation results in [25] as well as simulation results        Let W be any binary discrete memoryless channel (B-DMC)
+in this paper show that with this two-step decoding procedure,       with a transition probability W (y|x). The input alphabet X
+systematic polar codes still achieve better BER performance          takes values in {0, 1} and the output alphabet is Y. Channel
+than non-systematic polar codes.                                     polarization is carried in two phases: channel combining and
+   This paper studies the error performance of systematic            splitting. Eventually, N = 2n (n ≥ 1) independent copies
+polar codes with special focus on characterizing the advantage       of W are first combined and then split into N bit channels
+of systematic polar codes over non-systematic polar codes.                (i)
+                                                                     {WN }N   i=1 . This polarization process has a recursive tree
+We start by simplifying the general encoding process of the          structure in [1], which we plot here for the ease of reference.
+systematic polar codes. This is done through proving a theorem       The 0s and 1s in Fig. 1 refer to the bit channels W ′ and
+on the structure of the generator matrix. Then we discuss            W ′′ respectively in the basic one-step channel transformation
+                                                                                                 ′   ′′
+the theoretical BER performance of systematic polar codes            defined as (W, W ) 7→ (W , W ), where
+conditioned on the BER performance of non-systematic polar                                         X1
+                                                                                ′
+codes. The general form of this error prediction involves in                  W (y1 , y2 |u1 ) =          W (y1 |u1 ⊕ u2 )W (y2 |u2 )
+2N R terms which is prohibitive to compute for large block                                         u
+                                                                                                        2
+                                                                                                       2
+lengths N . It’s then proven that for two special cases we                                                                               (1)
+can theoretically predict the error rate of systematic polar              ′′                          1
+                                                                       W (y1 , y2 , u1 |u2 ) =          W (y1 |u1 ⊕ u2 )W (y2 |u2 )      (2)
+codes. To understand the general better behavior of systematic                                        2
+polar codes, we further study the basic error patterns of non-                                                            ′        ′′
+                                                                     The Bhattacharyya parameters of channel W and W satisfy
+systematic polar codes with the SC decoding. A systematic
+                                                                     the following conditions:
+gain is defined to describe the advantage of systematic polar
+                                                                                                       ′′
+codes over non-systematic polar codes. A composite model                                          Z(W ) = Z(W )2                         (3)
+                                                                                         ′
+is proposed to approximate the mean effect (or the dominant                        Z(W ) ≤ 2Z(W ) − Z(W )2                               (4)
+effect) of the error events. This composite model uses the fact                              ′                       ′′
+
+that the errors in the SC decoding process are coupled. A                           Z(W ) ≥ Z(W ) ≥ Z(W )                                (5)
+coupling coefficient is used to control the level of coupling        The label 0 (the upper branch in the transformation) in
+                                                                                                                                    ′
+between the errors. This model facilitates the calculation of        Fig. 1 means that the output channel takes the branch W
+the systematic gain and can be used to predict the performance       in that specific transformation. Correspondingly, a label 1 (the
+of systems utilizing systematic polar codes.                         lower branch in the transformation) means the output channel
+                                                                               ′′
+   Following the notations in [1], in the paper, we use v1N to       takes W in that transformation. Note that for binary erasure
+                                                                                                                            ′
+represent a row vector with elements (v1 , v2 , ..., vN ). We also   channels (BEC), the Bhattacharyya parameter Z(W ) has an
+                                                                                              ′
+use v to represent the same vector for notational convenience.       exact expression Z(W ) = 2Z(W ) − Z(W )2 , resulting in a
+Given a vector v1N , the vector vij is a subvector (vi , ..., vj )   recursive calculation of the Bhattacharyya parameters of the
+with 1 ≤ i, j ≤ N . If there is a set A ∈ {1, 2, ..., N }, then      final bit channels. Finally, after the channel transformations,
+vA denotes a subvector with elements in {vi , i ∈ A}.                the transition probability for bit channel i is defined as
+   The rest of the paper is organized as follows. In Section
+II, the background of systematic polar codes is introduced              (i)
+                                                                                                    X              1
+and a theorem on the structure of systematic polar codes is           WN (y1N , ui−1
+                                                                                 1 |ui ) =                        N −1
+                                                                                                                       W N (y1N |uN
+                                                                                                                                  1 G)   (6)
+                                                                                                                2
+proven. The first part of Sec. III provides a general theoretical                                uN
+                                                                                                  i+1 ∈X
+                                                                                                           N −i
+
+
+formation of the BER performance of systematic polar codes           where W N (·) is the underlying vector channel (N copies of
+given the BER performance of non-systematic polar codes.             the channel W ) and G is the generator matrix whose form is
+Two special cases are analyzed in this part whose BER                to be discussed in the next section.
+performance can be characterized. Section IV studies the basic
+error patterns and the first error distribution of non-systematic
+polar codes, followed by the introduction of the systematic          B. Construction of Systematic Polar Codes
+gain. In Section V, we propose a coupling model which is                Polar codes in the original format [1] are not systematic.
+used to predict the BER performance of systematic polar              The generator matrix for polar codes is Gp = BF ⊗n in [1]
+codes. Simulation results are given in Section VI. Concluding        where B is a permutation matrix and F = [ 11 01 ]. The operation
+remarks are presented in Section VII.                                F ⊗n is the nth Kronecker power of F over the binary field
+                                                                     F2 . For systematic polar codes, we focus on a generator matrix
+                                                                     without the permutation matrix B, namely G = F ⊗n . With
+               II. S YSTEMATIC P OLAR C ODES
+                                                                     such a matrix, the encoding for normal polar codes is done as
+  For completeness, in the first part of this section, we restate    x = uG.
+the relevant materials on the construction of normal polar              The indices of the source bits u corresponding to the
+codes and systematic polar codes from [1] [25]. In the second        information bits can be set by selecting indices of the bit
+part of this section a theorem on the structure of the normal        channels with the smallest Bhattacharyya parameters. Denote
+polar codes is provided which is used to simplify the encoding       A as the set consisting of indices for the information bits.
+of the systematic polar codes.                                       Correspondingly, Ā consists of indices for the frozen bits. Both
+                                                                                                                                                     3
+
+
+
+                                                                                             :  = :
+
+                                                                               :  = :                  Ċ
+                                                                                             :  = :
+                                             0                 :   
+                                                                        = :
+                                                                                             :  = :
+
+                                                                               :  = :                  Ċ
+                                                                                             :  = :
+                                                        :
+                                                                                             :  = :
+
+                                                                               :  = :
+                                                                                                           Ċ
+                                                                                             :   
+                                                                                                       = :
+                                                               :   
+                                                                        = :
+                                                                                             :  = :
+
+                                                                               :  = :                  Ċ
+                                                                                             :   
+                                                                                                       = :
+
+Fig. 1. The recursive channel transformation of polar codes.
+
+
+
+sets A and Ā are in {1, 2, ..., N }. For any element i ∈ A and                 C. Theorem on Polar Coding Construction
+                         (i)           (j)
+j ∈ Ā, we have Z(WN ) < Z(WN ). In this paper, the set
+                                                                                   In this section, we prove a general theorem on polar codes.
+A is always sorted in ascending order according to the index
+                                                                                In the following, we say that row i intersects with column j
+values, instead of ordered by their values of Bhattacharyya
+                                                                                of the matrix G if Gi,j = 1. Otherwise, we say row i does
+parameters.
+                                                                                not intersect with column j.
+   The source bits u can be split as u = (uA , uĀ ). The
+                                                                                   Theorem 1: For ∀j ∈ A and ∀i ∈ Ā, row i does not intersect
+codeword can then be expressed as x = uA GA + uĀ GĀ ,
+                                                                                with column j. Or in other words Gi,j = 0 if j ∈ A and i ∈ Ā.
+where GA is the submatrix of G with rows specified by the
+set A. The systematic polar code is constructed by specifying                         Proof: For any given index j ∈ A, we divide the elements
+a set of indices of the codeword x as the indices to convey the                 of Ā into two sets: Āl = {i : i ∈ Ā, i < j} and Āg = {i :
+information bits. Denote this set as B and the complementary                    i ∈ Ā, i > j}. For i ∈ Āl , it’s obvious that Gi,j = 0 since
+set as B̄. The codeword x is thus split as (xB , xB̄ ). With some               the matrix G is lower triangular. So we only need to prove
+manipulations, we have                                                          Gi,j = 0 for i ∈ Āg .
+                                                                                   Let (bin , bin−1 , ..., bi1 ) be the n-bit binary expansion of the
+   (xB , xB̄ ) = (uA GAB + uĀ GĀB , uA GAB̄ + uĀ GĀB̄ )              (7)    integer i − 1 with i ∈ Āg , and bin is the MSB. The bit
+                                                                                bin corresponds to the root channel selection in Fig. 1 and
+The matrix GAB is a submatrix of the generator matrix                           bi1 corresponds to the last channel selection. Each bit in the
+with elements {Gi,j }i∈A,j∈B . Given a non-systematic encoder                   binary vector (bin , bin−1 , ..., bi1 ) defines a channel selection of
+(A, uĀ ), there is a systematic encoder (B, uĀ ) which performs               the corresponding level in the tree of Fig. 1. For example, bit
+the mapping xB 7→ x = (xB , xB̄ ). To realize this systematic                   bim (m ∈ {1, 2, ..., n}) determines bit channel i at level m
+mapping, xB̄ needs to be computed for any given information                     takes the upper branch or the lower branch.
+bits xB . To this end, we see from (7) that xB̄ can be computed
+                                                                                   Suppose row i intersects with column j ∈ A, equivalent to
+if uA is known. The vector uA can be obtained as the
+                                                                                Gi,j = 1. We know the entry of the generator matrix G can
+following
+                                                                                be calculated as [1]
+                 uA = (xB − uĀ GĀB )(GAB )−1                 (8)
+                                                                                                               n
+From (8), it’s seen that xB 7→ uA is one-to-one if xB has
+                                                                                                               Y
+                                                                                                      Gi,j =       (1 ⊕ bjm ⊕ bjm bim )           (10)
+the same elements as uA and if GAB is invertible. In [25],                                                     m=1
+it’s shown that B = A satisfies all these conditions in order
+to establish the one-to-one mapping xB 7→ uA . In the rest of                   To have Gi,j = 1, we must have bim = 1 when bjm = 1.
+the paper, the systematic encoding of polar codes adopts this                   Suppose Mj is the last non-zero position of (bjn , bjn−1 , ..., bj1 )
+selection of B to be B = A. Therefore we can rewrite (7) as                     and Mi is the last non-zero position of (bin , bin−1 , ..., bi1 ). With
+                                                                                i ∈ Āg , Mi ≥ Mj . We proceed by discussing two cases:
+  (xA , xĀ ) = (uA GAA + uĀ GĀA , uA GAĀ + uĀ GĀĀ ) (9)                  Mi = Mj and Mi > Mj .
+                                                                                                                                              4
+
+
+
+   1) Case 1 Mi = Mj : For Mi = Mj , we have                                 channel i at that level. After level m′ , as we already point out,
+                                                                 n−M
+(bjn , bjn−1 , ..., bjMj +1 ) = (bin , bin−1 , ..., biMj +1 ) = 01 j . Re-   the two channels involving in the same fashion defined by M0
+ferring to Fig. 1, it’s seen that the recursive channel trans-               and M1 . Therefore the final Bhattacharyya parameters for bit
+formation from level n to level Mj + 1 (or Mi + 1) is the                    channel i is still smaller than bit channel j. If M01 6= ∅, the
+same for both bit channel i and bit channel j: they all take                 advantage of the bit channel i is even more pronounced than
+the upper branch in each transformation. Then at level Mj ,                  the case when M01 = ∅ since bit channel i takes additional
+both channels involve in the same fashion by taking the lower                lower branches besides taking the same lower branches as bit
+branch (corresponding to biMj = bjMj = 1). Divide the levels                 channel j, producing a final channel with an even smaller
+{m : m ≤ Mj } of bit channel j into two sets:                                Bhattacharyya parameter. Therefore as in the case when Mi =
+                                                                                                       (i)          (j)
+                                                                             Mj , we also have Z(WN ) ≤ Z(WN ) for j ∈ A and i ∈ Ā
+            M0      = {m : m ≤ Mj and bjm = 0}                       (11)    when Mi > Mj .
+            M1      = {m : m ≤ Mj and bjm = 1}                       (12)      Combing Case 1 and Case 2, we see that if Di,j = 1,
+                                                                                   (i)          (j)
+                                                                             Z(WN ) ≤ Z(WN ) for j ∈ A and i ∈ Ā. But this contradicts
+With bim = 1 whenever bjm = 1, we can equivalently express                                                                 (i)         (j)
+M1 as                                                                        with the polar encoding principle that Z(WN ) > Z(WN ) for
+                                                                             j ∈ A and i ∈ Ā. Therefore Di,j = 0 for j ∈ A and i ∈ Ā.
+           M1 = {m : m ≤ Mj and bjm = bim = 1}                       (13)
+                                                                                Corollary 1: The matrix GĀA = 0.
+Define a set M01 = {m : m ∈ M0 and bim = 1}. This set                             Proof: The statement of GĀA = 0 is equivalent to say
+M01 is not empty since there must be at least one m′ ∈ M0 at                 that any column j ∈ A of the generator matrix G does not
+which bim′ = 1 since i > j, Mi = Mj , and bim = 1 whenever                   intersect with row i ∈ Ā of G, which we already prove in
+bjm = 1 for m ∈ M1 . When |M01 | > 1, we select m′ to be                     Theorem 1.
+the largest in M01 . At level m′ , bit channel i takes the lower                Using Corollary 1, the systematic encoding of polar codes
+branch (corresponding to bim′ = 1) and bit channel j takes the               can be simplified as
+upper branch (corresponding to bjm′ = 0). Therefore starting
+from level m′ , the Bhattacharyya parameter for bit channel i                         (xA , xĀ ) = (uA GAA , uA GAĀ + uĀ GĀĀ )       (20)
+and bit channel j diverge according to (3) and (5):                          The calculation of uA in (8) can thus be simplified as uA =
+            (k )
+         Z(WNmi ′ ∗2 )    =
+                                     (k )
+                                (Z(WNmm′′ ))2                        (14)    xA G−1
+                                                                                  AA .
+            (k )                    (k )
+                                                                               From the proof of Theorem 1, another corollary is readily
+                                                 (k )
+         Z(WNmj ′ ∗2 )    ≥     Z(WNmm′′ )) ≥ Z(WNmi ′ ∗2 )          (15)    available.
+                                                                               Corollary 2: For any i, j ∈ A, if row i intersects with
+where
+                                                                             column j of the generator matrix G (Gi,j = 1), then
+                                      ′                                            (i)         (j)
+                N m′     = 2n−m                                      (16)    Z(WN ) ≤ Z(WN ). Or in other words, bit channel i has
+                km′      = (bn , bn−1 , ..., bm′ +1 )                (17)    a better channel quality than bit channel j when Gi,j = 1.
+                   ki    = (bin , bin−1 , ..., bim′ +1 , 1)          (18)
+                                                                             D. Generator Matrix with Permutation
+                   kj    =    (bjn , bjn−1 , ..., bjm′ +1 , 0)       (19)
+                                                                               The original generator matrix in [1] is Gp = BF ⊗n where
+The number ki and kj is the channel index for bit channel i                  B is the bit-reversal permutation matrix. We use the vector
+and bit channel j at level m′ , respectively. Starting from the              a to represent the sorted elements in A and the vector b
+                            (k )
+same previous channel WNmm′′ , it’s obvious that bit channel                 the corresponding vector consisting of the indices for the
+i has a smaller Bhattacharyya parameter than bit channel j at                systematic encoding B. In [25], it’s pointed out that B is the
+level m′ . For levels m < m′ , this advantage of bit channel i               image of A under the matrix B, namely b = aB. If the
+continues until the last level because of the recursive channel              encoding of the normal polar codes is based on Gp , then
+transformation process defined by the set M0 and M1 in (11)                  the submatrix GAB in (7) is GAB = (Gp )AB . With some
+and (13). Therefore if Di,j = 1, when Mi = Mj , we have                      manipulations, it can be shown that (Gp )AB = GAA . Thus,
+      (i)          (j)
+Z(WN ) ≤ Z(WN ) for j ∈ A and i ∈ Ā.                                        for systematic encoding, the generator matrix Gp = BF ⊗n
+   2) Case 2 Mi > Mj : In this case, we define a set Mi1 =                   and b = aB is equivalent to G = F ⊗n and B = A. In
+{m : m > Mj and bim = 1}. This set Mi1 obviously is not                      the sequel, when it comes to the SC decoding, we assume
+empty since Mi > Mj . But the set M01 could be empty in this                 the encoding is based on the generator matrix Gp so that
+case. If M01 = ∅, the recursive channel transformation for bit               the natural order schedule of the decoding can be applied.
+channel i and j is the same for levels {m ≤ Mj }: they take                  This is only for the ease of description and doesn’t affect the
+the upper branches at levels in M0 and take lower branches                   performance of systematic polar codes.
+for levels in M1 . However, their involving processes differ in
+at least one level m′ ∈ Mi1 because of the existence of the                    III. T HE T HEORETICAL P ERFORMANCE OF S YSTEMATIC
+non-empty set Mi1 . When |Mi1 | > 1, we select m′ to be the                                          P OLAR C ODES
+smallest in Mi1 . Bit channel i takes the lower branch at level                 In this section, we provide a general relationship between
+m′ while bit channel j takes the upper branch at the same                    the error performance of systematic polar codes and the error
+level, resulting in a smaller Bhattacharyya parameter for bit                performance of the non-systematic polar codes.
+                                                                                                                                                5
+
+
+
+   Denote the BER of non-systematic polar codes as Pb and          (all previously decoded bits). As for case 2), it’s related to the
+the corresponding BER of systematic polar codes as Psys,b .        common assumption of coded systems that errors of the code
+Define a set At ⊆ A to contain the indices of the information      bits in one codeword are independent and that at high SNR,
+bits in error for non-systematic polar codes. Correspondingly,     there is only one bit in error in each codeword, resulting in
+the set Asys,t ⊆ A is the indices of the information bits in       the relationship Pb = Ps /N , where Pb is the BER and Ps is
+error for systematic polar codes under the SC-EN decoding.         the block error rate.
+The BER for systematic polar codes can be predicted from the          Before we analyze case 1, we need the following proposi-
+BER of the non-systematic polar codes in the following way:        tion.
+                        P
+                             |Asys,t | Pr{Asys,t }                    Proposition 1: For a block length N = 2n , n ≥ 0, any
+                      Asys,t ⊆A                                    column j (1 ≤ j ≤ N ) of the generator matrix G = F ⊗n has
+          Psys,b =                                   Pb    (21)                                  j j        j
+                                                                   a Hamming weight of 2wH (b̄1 ,b̄2 ,...,b̄n ) , where (bj1 , bj2 , ..., bjn ) is
+                                    |At | Pr{At }
+                            P
+                           At ⊆A                                   the binary expansion of j − 1 , and b̄ji = bji ⊕ 1 over F2 .
+where |At | is to take the cardinality of the set At and Pr(·)           Proof: For a fixed column j, the weight of this column
+is the probability of the inside event.                            is to
+                                                                   P sum over  P all⊗npossible  values of i − 1 = (bi1 , bi2 , ..., bin ):
+                                                                                                  n                j     j i
+                                                                                                  m=1 (1 ⊕ bm ⊕ bm bm ). The rest
+                                                                                           P Q
+    For any given set At , the set Asys,t can be calculated from      i Gi,j =    i Fi,j =    i
+it. From (20), we already have xA = uA GAA . This says that        of the proof is readily available.
+the values or the errors in xA only depend on uA and GAA .
+The values of the frozen bits don’t affect the values or the       A. All Bits in Error
+errors of xA . Therefore, we can convert the cardinality of the
+                                                                      From Proposition 1, it can be inferred that except column N ,
+set At and Asys,t into weight of the following vectors. Let v
+                                                                   the weight of all other columns of G is even. From Theorem
+be a N -element vector with 1s in the positions specified by At
+                                      |A |                         1, we know column j ∈ A of the generator matrix G only
+and 0s elsewhere, namely vAt = 11 t . Then the cardinality
+                                                                   has 1s at positions specified by A since column j doesn’t
+of the set At is the same as the Hamming weight of the vector
+                                                                   intersect with rows in Ā. Therefore, during the re-encoding
+v, written as wH (v). In the same way, we define a vector q                                                         −1
+                  |A    |                                          process q = vG, the vector q{A\N } = 0N        1     and qN = 1.
+with qAsys,t = 11 sys,t and 0s elsewhere. We can then have         Here A\N means the set A excluding the last element N . The
+                            P
+                                  wH (q) Pr{Asys,t }               weight of q is then wH (q) = 1. We see almost all the errors
+                        Asys,t ⊆A                                  in the vector v are cancelled after the re-encoding process
+         Psys,b   =                                   Pb   (22)
+                                    wH (v) Pr{At }                 (with only one error remaining). If this is the only error case,
+                             P
+
+                         Pt
+                           A ⊆A                                    then Psys,b = N1R Pb = N1R . We give an example below to
+                             wH (vG) Pr{Asys,t }                   explicitly present this error cancelling process.
+                        At ⊆A
+                  =                              Pb        (23)       Suppose we are dealing with a BEC channel with an
+                               wH (v) Pr{At }
+                            P
+                                                                   erasure probability 0.4 and N = 16. Let the code rate
+                           At ⊆A
+                                                                   R = 1/2. The code index set can be calculated as A =
+The equality q = vG in equation (23) is because of the re-         {8, 10, 11, 12, 13, 14, 15, 16}. With all bits in error during the
+encoding of x̂ = ûG after the decoding of û. Note that the       SC decoding process, the vector vA = 181 . The elements of
+operation q = vG only represents the error conversion from v       qA can be calculated from qA = (vG)A . For example,
+to q, not the real calculation of x̂ = ûG.
+   The cardinality of A is |A| = N R = K where R is the                             q8    = v8 + v16 = 0                                    (24)
+code rate and K is the number of information bits in each                          q10    = v10 + v12 + v14 + v16 = 0                       (25)
+code block. It’s easy to verify that the number of terms in                        q11    = v11 + v12 + v15 + v16 = 0                       (26)
+the denominator of (23) is 2N R = 2K . With a large block
+length N and a fixed code rate R, it’s practically impossible      With the weight of the columns of G be even (excluding
+to evaluate the error performance for systematic polar codes       column N ) and the columns with indices in A only intersect
+conditioned on the error performance of the non-systematic         with rows in A, the elements of q (excluding qN ) are essen-
+polar codes.                                                       tially summing over even numbers of elements of vA , which
+   In this section, without considering the probabilities of       eventually resulting in 0s when vA = 181 . The last element is
+the error events {At }, we evaluate the error performance of       q16 = v16 = 1, which is the only error remaining after the
+systematic polar codes in two special cases to gain some initial   vector v going through the matrix G. The error rate is then
+insights of the behavior of the systematic polar codes. These      Pb = 1 and Psys,b = 18 .
+two special cases are: 1) vA = 1K    1 ; and 2) The eth element       From this example, it’s seen that the re-encoding process
+of v is one: ve = 1 with e ∈ A. Case 1) is the situation           of x̂ = ûG after decoding û does not amplify the number of
+where all bits are in error and case 2) says only one bit is in    errors in û when all bits of ûA are in error. Actually in this
+error. The rationale for evaluating case 1) is due to the fact     case, the number of errors is already at its maximum and can’t
+that if one bit j ∈ A is in error, then theoretically this error   be amplified. But the number of errors doesn’t stay the same,
+bit could affect all bits after it. This can be seen from the      as one would expect in this case, after the re-encoding process.
+transition probability of bit channel i > j in (6): bit channel    Instead, almost all errors are cancelled after the re-encoding
+i has its output y1N (all received channel samples) and ui−11      process.
+                                                                                                                                      6
+
+
+
+B. One Bit in Error                                                 practice. In other words, the first error happens because the
+   Now we return to the case with only one error ve = 1,            decoder takes an incorrect guess, corresponding to the upper
+e ∈ A. Denote the eth row of G as Ge,: . The indices of the cor-    left node in Fig. 2-(a)(b)(c) and the lower left node in Fig. 2-
+responding error bits for systematic polar codes are the indices    (c).
+of the non-zero positions of the subvector (Ge,: )A . Therefore        After the first error, as we already point out, all bits after
+the number of non-zero positions of qA is determined by the         this error bit could potentially be affected by this error. For
+weight of this subvector (Ge,: )A : wH (q) = wH {(Ge,: )A }.        example, the lower left nodes in Fig. 2-(d)(f)(g) are in error
+Due to the fact that G is a lower triangular matrix, only           because of the previous errors. These errors are surely the
+elements in {i : i ∈ A and i ≤ e} of qA are affected by this        errors propagated (or coupled) from previous errors. But not
+error in v. In this one-error case, the number of errors could      all bits after the first error bit are in error, simply through
+be amplified after the re-encoding process x̂ = ûG, depending      observing the basic error patterns in Fig. 2. The first example
+on the location of the error. The error rate is Pb = N1R and        is Fig. 2-(a). If the bit (or the combined bit) corresponding to
+           w {(G ) }
+Psys,b = H N Re,: A Pb . In the preceding example, instead          the upper left node is in error, then the LR value corresponding
+of vA = 181 , if we only have v16 = 1, then qA = 181 since          to the lower left bit is still correct. Actually, the LR of the
+wH (G16,: )A = 8, resulting in Pb = 18 and Psys,b = 1. But          lower left node is not affected by the upper left node since
+if we only have v8 = 1 or v10 = 1, then we also only                the upper right node in Fig. 2-(a) has a LR value of one.
+have the corresponding bit in error q8 = 1 or q10 = 1 with          In this case, as long as the lower right node has a correct
+Pb = Psys,b = 18 . The number of errors in the case v16 = 1         LR value, the lower left node can always make a correct
+is indeed amplified by 8 times after the re-encoding process        decision. Another example is Fig. 2-(e) in which the upper
+while the number of errors with v8 = 1 or v10 = 1 stays the         left node has an incorrect LR value thus with an incorrect bit
+same after the re-encoding process.                                 decision. But the incorrect bit decision cancels the effect of
+                                                                    the incorrect LR value of the upper right node when it comes
+           IV. S YSTEMATIC P OLAR C ODES G AIN                      to the decision of the lower left node. Therefore the lower left
+                                                                    node can make a correct decision in this case even though the
+   In the discussions from Section III-A and III-B, we already      upper left node has an incorrect decision. For a rigorous proof
+see that the number of errors of polar codes with the SC            of this pattern, please refer to the Appendix. There are other
+decoding is not necessarily amplified in the SC-EN decoding         cases, for example Fig. 2-(g)(h), where incorrect LRs due to
+process of systematic polar codes. It all depends on how the        incorrect previously decoded bits don’t necessarily cause all
+errors are distributed in the SC decoding process. This section     bits in error after those error bits. Because of these effects, it’s
+is devoted to the analysis of the behavior of the errors in         extremely unlikely that after the first error bit, all bits after it
+the SC decoding process and to characterize the advantage of        are in error, especially with large block lengths. For the same
+systematic polar codes over non-systematic polar codes. The         reason, it’s also unlikely that all bits after the first error bits
+analysis is based on BEC channels. In Section VI, it’s seen that    are correct. In other words, one bit error, like all bits in error,
+the results in this Section can be extended to AWGN channels        is also unlikely.
+as well.
+                                                                       From the basic error patterns in Fig. 2, one proposition can
+                                                                    be easily obtained for BEC channels.
+A. Basic Error Patterns                                                Proposition 2: For polar codes with the SC decoding on
+   In order to understand how the errors are distributed with       BEC channels, the number of nodes with LR = 1 stays the
+the SC decoding, we first look at the basic error patterns. The     same in each column of the decoding graph.
+decoding graph of polar codes with a block length N = 2n
+consists of n columns of Z-shape sections, with each column
+                                                                    B. First Error Distribution
+having N/2 Z-shape sections. For the connections of the Z-
+shape sections in each level, please refer to [1] [17]. In this        As stated in the previous section, the first error happens
+subsection, we use the natural order schedule for the SC            because the decoder takes an incorrect guess. All calculations
+decoding as discussed in Section II-D.                              before the first error involve patterns in Fig. 2-(a)(b)(c). Note
+   The basic error patterns in the decoding graph are illustrated   that the question marker in the lower left node should be
+in Fig. 2, where a node without any label has a correct             removed before the first error as there are no errors yet. Of
+likelihood ratio (LR) value, a node with a label 1 has a LR         course, there is always a pattern involving two correct nodes
+value of one, a node with a label X has an incorrect LR value,      which is not shown in Fig. 2.
+and a node with a label ? can have a correct or incorrect LR           The probability of bit i being the first error is determined
+value depending on the context. In the SC decoding, before the      by the quality of bit channel i, which in turn is determined by
+first error happens, the LR values of the variable nodes in the     its Bhattacharyya parameter. For a rigorous proof, please refer
+Z-shape sections are either correct or 1, represented by (a),(b)    to Section V-B of [1]. In this section, we present simulation
+and (c) of Fig. 2. We provide the proof of the error pattern        results on the first error distribution without further theoretical
+Fig. 2-e in the Appendix and all other patterns in Fig. 2 can       discussions.
+be proved in the same fashion.                                         For BEC channels, we can precisely calculate the Bhat-
+   The LR value of the first error bit must be one. Again,          tacharyya parameter for each bit channel using the recursive
+the proof of this fact is omitted as this is relatively a simple    expressions given in [1]. Fig. 3 shows the histogram of the
+                                                                                                                                                          7
+
+
+
+
+                                               1                     1              X                     X
+
+
+
+                                                        (a)                                   (e)
+                                               1                                    X
+
+
+                                               ?                     1              X                     X
+                                                        (b)                                   (f)
+                                               1                     1                                    X
+
+
+                                               1                     1              X                     X
+                                                         (c)                                  (g)
+                                                1                     1             1                     X
+
+
+                                                X                     X             ?                     1
+                                                          (d)                                 (h)
+Fig. 2. Basic Error Patterns. A variable node without a label means its LR value is correct. The meanings of the labels are: X referring to an incorrect LR;
+1 meaning a LR value one; and label ? referring to a LR value which could be correct or incorrect.
+
+
+
+indices of the first error bit and the corresponding average                   From the previous discussion in Section III-A and III-B, we
+Bhattacharyya parameter for N = 210 and R = 1/2 in a BEC                       can safely constrain the systematic gain to be strict for large
+channel with an erasure probability 0.4. Fig. 3 has two y-axes:                N : N1R < γ < N R.
+the right axis shows the number of occurrences of the first                        The analysis in Section III does not include the effect of the
+error and the left axis shows the value of the corresponding                   coupling between errors as discussed in Section IV. From the
+Bhattacharyya parameters. Seen from Fig. 3, the probability                    discussions in Section IV-A, we know the errors in previous
+of the first error is indeed determined by the quality of each                 decoded bits could affect the bits after them, although not all
+bit channel. Also shown in Fig. 3 is the brick-wall nature                     bits after the error bits are necessarily in error. With a large
+of the first error distribution, which is the reflection of the                N , there are 2N − 1 error combinations in the received vector
+polarization effect of the N channels.                                         y1N . Therefore, the errors of the decoded bits after the first
+   At this point, we want to point out the effect of the first                 decoded error can be considered as independent and identically
+error in non-systematic and systematic polar codes scenarios.                  distributed (i.i.d) with probability p when N is large. Based
+The first error in the SC decoding process could potentially                   on this assumption, we can convert the calculation of the
+affect all bits after it (or bits with indices larger than it with             systematic gain in (27) into the analysis of a function involving
+the natural order decoding). This effect can be considered as a                the first error distribution and the probability p.
+forward error effect. But in the re-encoding process of the SC-                    Denote pi as the probability of the first error occurring to
+EN decoding of systematic polar codes, the errors (including                   the information bit i and denote this error event as ξi . As in
+the first error) in the decoded vector û only affect bits in                  Section III, we use a vector v1N to represent the error positions:
+x̂ before them (or bits with indices smaller than the error                    vi = 1 if bit i is in error and vi = 0 otherwise. Then the
+bits), due to the lower triangularity of the generator matrix.                 probability of all information bits in error conditioned on ξi
+Correspondingly, this effect in the re-encoding process is a                   is:
+backward error effect.
+                                                                                            Pr{vA = 1K
+                                                                                                     1 |ξi } = (0, 0, ..., 1, p, p, ..., p)           (28)
+
+                                                                               In (28), the first (i − 1) probabilities are zeros because the first
+C. Systematic Polar Codes Gain                                                 error at bit i doesn’t affect bits before it (the forward error
+  In this section, we extract the first part of the right hand side            effect). After bit i, the errors are i.i.d with probability p as
+of (21) and define the reverse of it as the gain of systematic                 discussed previously. Since the events {ξi }K    i=1 are exclusive,
+polar codes over non-systematic polar codes:                                   the probability of the information bits in error is simply the
+                                                                               following summation
+                                |At | Pr{At }
+                           P
+                         At ⊆A                                                                                      K
+               γ=                                              (27)                                                 X
+                              |Asys,t | Pr{Asys,t }                                           Pr{vA = 1K
+                                                                                                       1 }=               Pr{vA = 1K
+                                                                                                                                   1 |ξi }            (29)
+                       P
+                       Asys,t ⊆A                                                                                    i=1
+                                                                                                                                                                 8
+
+
+
+
+                                                             0.01                                                       400
+
+
+
+
+                                                                                                                              Histogram of First Error
+                                                Average Z
+                                                            0.005                                                       200
+
+
+
+
+                                                               0                                                        0
+                                                                    0   100   200          300         400   500      600
+                                                                               Indices of Information Bits
+
+
+
+Fig. 3. First error histogram and the corresponding average Bhattacharyya Parameter. The code block length is N = 210 and the code rate is R = 1/2. The
+underlying channel is the BEC channel with an erasure probability 0.4. The right y-axis is for the bar plot and the left y-axis is for the stem plot. The labels
+of the x-axis are the indices of elements in sorted A, not the real values of elements in A.
+
+
+                                                       Pi−1
+with the individual bit error as Pr{vi = 1} = pi + p j=1 pj .                               where GA,j is the jth column of G with entries specified by A.
+   Utilizing the brick-wall property of the first error distribu-                           The error correction capability of the systematic polar codes
+tion as shown in Fig. 3, we can divide the bits in A into                                   comes from this re-encoding process in (32). To understand
+two groups: group one consisting of the error bits due to the                               this capability of systematic polar codes, we first note that the
+bad bit channel conditions and group two consisting of the                                  weight of all the columns of the matrix G is even except
+error bits purely coupled from group one. Denote these two                                  the last column. This property of G is already stated in
+groups as AI and AC respectively. Referring to Fig. 3, the                                  the beginning of Section III-A. This is where the theoretical
+set AI includes the bits within the brick wall and the set AC                               maximum γ = N R comes from.
+includes the bits outside the brick wall. Denote KI = |AI |.                                   From (32), it’s seen that the errors in ûA can only affect x̂j
+The probabilities can now be expressed as:                                                  at positions where GA,j have non-zero entries. From Corollary
+                               i−1                                                         2, it’s known that a non-zero entry of column j, Gi,j = 1,
+                                                                                            means a better bit channel i than j. Let’s call the set of bits
+                               X
+                         pi + p     pj , 1 ≤ i ≤ K I
+                      
+                      
+                      
+                                                                                            {i : i 6= j, i ∈ A and Gi,j = 1} the compatible bits of the
+                      
+                      
+                                j=1
+       Pr{vi = 1} =        KI
+                                                             (30)                           information bit j. For bit x̂j , only bit j and its compatible bits
+                      
+                                                                                            affect the decision. Since the compatible bits of bit j transmit
+                          X
+                      p
+                      
+                      
+                              pj ,      KI < i ≤ K
+                               j=1                                                          at better bit channels than j, it’s more likely that bit j is in
+                                                                                            error and the compatible bits are in error due to the error
+And the systematic gain can be calculated using (30) as
+                                                                                            propagation of bit j. In other words, the errors of bit j and
+                                 E{ωH (v1N )}                                               its compatible bits are coupled. The re-encoding process x̂j =
+                          γ=                                                    (31)
+                                E{ωH (v1N G)}                                               ûA GA,j is equivalent to sum over bit j and its compatible bits,
+   The evaluation of (31) involves the distribution of the first                            a process to average out the coupled errors. This mechanism
+error probabilities {pi }K                                                                  of the re-encoding process leads to the fact that systematic
+                          i=1 of the information bits and the
+probability p. The distribution of the probabilities {pi }K                                 polar codes perform at least as well as non-systematic polar
+                                                          i=1 can
+be approximated by the distribution of the corresponding Bhat-                              codes, or γ ≥ 1.
+                              (i)
+tacharyya parameters {Z(WN )}. But the combined effect of
+                                                     (i)                                                           V. C OMPOSITE E RROR M ODEL
+the probability p and the distribution of {Z(WN )} is not
+intended to be fully discussed in this paper due to the space                                  So far we are still short of an efficient way to calculate
+limit. Instead, in Section V, we establish a simplified statistic                           the systematic gain γ. In this section, we establish a statistic
+model to characterize the probabilities in (30) and this model                              model to simplify the probabilities of the errors in (30). This
+is used to calculate the systematic gain γ in (31).                                         simplified model is then used to calculate the systematic gain
+                                                                                            γ.
+                                                                                               We define a new set S as the ensemble of the error events
+D. A Qualitative View of the Systematic Gain
+                                                                                            At :
+  Using Corollary 2, we can qualify why the systematic gain γ
+                                                                                                                           [
+                                                                                                                    S=          At                     (33)
+should be generally larger than one. Or at least, the systematic                                                                                         At ⊆A
+polar codes should perform as well as the non-systematic polar
+                                                                                            Considering the basic error patterns in Fig. 2, the errors
+codes. In the re-encoding process, the estimation x̂ = ûG is
+                                                                                            could happen to any bit after the first error bit, no matter
+performed. The entry of x̂A , say x̂j (j ∈ A), is
+                                                                                            which bit channel the bit experiences. Therefore, the set S
+                              x̂j = ûA GA,j                                    (32)        can almost surely consist of all the information bits after
+                                                                                                                                    9
+
+
+
+the first information bit with a non-negligible Bhattacharyya        with a probability p0 . The rest of the information bits are
+parameter. For this, we set a threshold α, below which the           in error with probability one from a composite point of
+Bhattacharyya parameter is considered as negligible. Other-          view. Although in this paper a precise probability p0 is not
+wise, the Bhattacharyya parameter is considered as large.            pursued, empirically we find that p0 = 1/2 is a very good
+Define a set consisting of all the indices of the bit channels       approximation.
+with non-negligible Bhattacharyya parameters as                         An important parameter of the model in (36)(37) is the
+                                         (i)                         boundary Im . It’s clear that this boundary element Im is
+             I = {i, i ∈ A and Z(WN ) > α}                   (34)    related to the channel W . For example, with a BEC channel,
+As stated in Section II-B, the set A is sorted in ascending order    when the block length N and the code rate R is fixed, the
+according to the index values. So is the set I. This set I is        boundary Im is related to the erasure probability. With a large
+used to define the boundaries of the brick wall in Fig. 3. The       erasure probability, there are more bits which are in error due
+first element (with the smallest index value) in I is denoted        to the channel itself and less bits in error due to the forward
+as I1 . Then S can be written as                                     error effect, and vice versa. Without going into the details of
+                                                                     calculating the Bhattacharyya parameters of the bit channels
+                  S = {a : a ∈ A and a ≥ I1 }                (35)    (which is only possible for BEC channels), we can use a
+                                                                     coupling coefficient to calculate another boundary element
+When I1 happens to be also the first element of A, then S =
+                                                                     I˜m ∈ S. The coupling coefficient here means the fraction
+A. The elements of S are also sorted according to the index
+                                                                     of incorrect information bits due to the previously incorrectly
+values as the elements in the set A.
+                                                                     decoded information bits. Denote the coupling coefficient as
+   The next part to define S is to assign each element in S          β and the element I˜m is the m′ th element of S where
+a probability of being in error. Following the discussions in
+Section IV-C, we perform the following steps to S:                                     m′ = ⌊|S| ∗ (1 − β)⌋                     (38)
+   • Divide the set S into two sections: the first section,
+                                                                     Then we can use I˜m to replace the boundary element Im in the
+      denoted as S1 , being the region where the first error could   model (36)(37). This boundary based on the coupling coeffi-
+      happen, and the second section, S2 , being the region          cient is especially useful for bit channels whose Bhattacharyya
+      where errors are coupled or induced from region one.           parameters are not readily available.
+   • The composite effect of ∪At in the first region S1 is
+                                                                        Note that this simple model in (36)(37) can approximate the
+      denoted by the error probability of the first equation of      composite effect ∪At only in the statistical sense and it only
+      (30).                                                          models the dominant effect (or the mean effect) of ∪At . It is
+   • The composite effect of ∪At in the second region S2 is
+                                                                     not, by any means, an exact error event At ⊆ A.
+      denoted by the error probability of the second equation
+      of (30).
+                                                                     A. Calculation of the Systematic Gain
+   From the second equation of 30, it’s known that all bits in
+S2 have the same probability of error from an composite point           With the composite error model in (36)(37), we can calcu-
+of view and this probability of error should be larger than the      late the systematic gain. Use the same N -element vector v as
+probability of error in S1 due to the following observation.         an error indicator vector of S: the ith entry of v is zero if
+In region one, any bit with index a1 could be in error at            i∈/ S; otherwise vi is one if i ∈ S and the ith bit is in error.
+                                                                                                                                 |S |
+one error event A1 ⊆ A with the first error bit e1 < a1 ,            The subvector corresponding to region two of S is vS2 = 11 2
+but will be for sure correctly decoded in another error event        seen from (37). Each element of the subvector vS1 takes value
+A2 ⊆ A when a1 < e2 with e2 being the index of the first             in {0, 1} with probability p0 as shown in (36). The systematic
+error bit in event A2 . In region two, any bit can be potentially    gain from the composite model is thus
+decoded incorrectly in any error event. So statistically, the                                    E{wH (v)}
+bits in region S2 have a higher probability of being in error                              γ=                                   (39)
+                                                                                                E{wH (vG)}
+when considering the composite effects of ∪At . This condition
+translates to the way we select the probability p in (30).           The mean weight of v can be easily calculated as E{ωH (v)} =
+However, as we point out in Section IV-C, it’s theoretically         p0 |S1 | + |S2 |. Now we need to calculate the mean weight
+difficult to precisely calculate the probability of error for each   of xS = vGSS , which can be decomposed as (xS1 , xS2 ) =
+element in S. With the above observation, we propose the             v(GSS1 , GSS2 ). Due to the lower triangularity of the matrix
+following simplified model in place of the precise model:            GSS , the weight of xS2 can be directly calculated as
+
+             S1    =   {a : a ∈ S, a ≤ Im ,                              ωH {xS2 } = ωH {vGSS2 } = ωH {vS2 GS2 S2 } = 1         (40)
+                           Pr{a is in error} = p0 }          (36)    which uses the even weight property of the columns of G
+             S2    =   {a : a ∈ S, a > Im ,                          except the last column. The first part xS1 = vGSS1 can be
+                                                                     further divided into the summation of two parts:
+                           Pr{a is in error} = 1}            (37)
+                                                                                     xS1 = vS1 GS1 S1 + vS2 GS2 S1              (41)
+where Im is the last element in I. What this model says is the
+following: The mean effect of ∪At is that for information bits       The second part in (41) is a deterministic vector since vS2 is
+with indices in S1 , their errors are statistically independent      the all-one vector. With GS1 S1 an invertible lower triangular
+                                                                                                                                   10
+
+
+
+matrix, the vector xS1 belongs to the row space of the matrix      in all of the following theoretical calculations. The threshold
+GS1 S1 . Thus it can be formed by another vector ṽS1 in the       α in determining the set I in (34) is set to be α = 10−3 .
+identity basis of the row space of GS1 S1 as:                      Under this setting, the first element of I is I1 = 192 when the
+                                                                   erasure probability is 0.4, which is also the first element of A.
+                         xS1 = ṽS1 I                      (42)    Thus the composite set is S = A in this case. The systematic
+with ṽS1 defined in the same way as vS1 . Therefore the mean      gain calculated from the composite set S is quite stable. A
+weight of xS1 is the same as the mean weight of ṽS1 which         small number can be used in averaging this systematic gain.
+is                                                                 In Fig. 4, only ten realizations are used in calculating the
+                    E{ωH {xS1 }} = p0 |S1 |               (43)     theoretical systematic gain γ. The simulated BER and the BER
+                                                                   from the model in (36)(37) match quite well, showing that the
+The systematic gain is then                                        simple model in (36)(37) can approximate the dominant error
+                           p0 |S1 | + |S2 |                        events of ∪At and thus can be used to calculate the systematic
+                      γ=                                   (44)    gain.
+                            1 + p0 |S1 |
+When the cardinality of S1 is quite large, the systematic gain        Also showing in Fig. 4 is the BER for non-systematic
+can be approximated as:                                            polar codes with the BP decoding. BP decoding is generally
+                                                                   better than the SC decoding as shown in [17]. With a bad
+                                 1 |S2 |
+                       γ ≈ 1+                              (45)    channel condition, for example, with an erasure probability
+                                 p0 |S1 |                          larger than 0.45, BP decoding performs almost the same as
+An immediate conclusion from (45) is that the systematic gain      the SC decoding. Systematic polar codes, however, perform
+is greater than one, meaning that systematic polar codes should    two to three times better than both SC and BP decoding
+perform better than the corresponding non-systematic polar         under the same channel conditions, at a cost almost negligible
+codes. Another interpretation of (45) is that the systematic       compared to the complexity of the BP decoding. At better
+gain is only determined by the ratio of cardinalities of the two   channel conditions, BP decoding starts to show its advantage.
+sets S1 and S2 . It does not increase with the increase of the
+                                                                      We observe the same phenomenon in Fig. 5 as in Fig. 4
+block length as one would intuitively expect. This property
+                                                                   for N = 1012 and R = 1/2. The curves in Fig. 5 have the
+of the systematic polar codes is verified in the simulations in
+                                                                   same style and labels as Fig. 4. The coupling coefficient is
+Section VI.
+                                                                   set the same as the case N = 10 and R = 1/2. Again, the
+                                                                   simulated systematic gain embedded in the BER of systematic
+                 VI. N UMERICAL R ESULTS                           polar codes matches that calculated using the composite set S.
+   In this sections, numerical examples for both BEC channels
+                                                                     Showing in Fig. 6 is the BER for N = 10 and R = 1/4
+and AWGN channels are provided to validate the results in
+                                                                   in the AWGN channel. The composite set is S = A. The
+Sections IV and V. The encoding for BEC channels are done
+                                                                   coupling coefficient is set in the following way: for SNR
+through the selection of the bit channels with the smallest
+                                                                   smaller than -1.5 dB, β = 0.3; for SNR larger than -1.5
+Bhattacharyya parameters. For AWGN channels, we still use
+                                                                   dB, β = 0.5. The systematic gain calculated from the model
+the same recursive formula in calculating the Bhattacharyya
+                                                                   in (36)(37) matches that with the simulations, showing that
+parameters for BEC channels in encoding. We emphasize that
+                                                                   the composite model in (36)(37) can also be used for AWGN
+this encoding serves our purpose just as well, as long as it’s
+                                                                   channels.
+consistent for both non-systematic polar codes and systematic
+polar codes.                                                          From Fig. 4 to Fig. 6, we see that systematic polar codes
+   Fig. 4 is the result in the BEC channel for N = 210 and         perform consistently better than non-systematic polar codes,
+R = 1/2. Several curves are shown in Fig. 4. The curve of          echoing the results in [25]. The systematic gain for different
+the stared dotted line is the BER of the non-systematic polar      block lengths is shown in Fig. 7. The underlying channel
+codes under the SC decoding. The legend for this curve is          W is a BEC channel with an erasure probability 0.4. The
+‘SC’. The curve of the dash dotted line with triangles is the      gain represented by the circled line (with a legend ’Sys Gain
+BER of the systematic polar codes with the SC-EN decoding          Sim’) is simulated. The gain shown by the stared line (with a
+for which the legend is ‘SYSTEMATIC’. The circled solid            legend ’Sys Gain Theoretical’) is calculated using (44). The
+line is the theoretical BER for systematic polar codes from        systematic gain calculated using (44) is accurate when N is
+the model in (36)(37). Also shown in Fig. 4 is the BER of the      large. It’s seen from Fig. 7 that the systematic gain increases
+non-systematic polar codes with the belief-propagation (BP)        with the increase of the block lengths but saturates at around
+decoding (the curve of the dashed line with diamonds).             γ = 3 when N ≥ 29 . This coincides with the simulation
+   The theoretical BER for systematic polar codes in Fig. 4 is     results in Fig. 4 ∼ 6. The saturating nature of the systematic
+generated using two different coupling coefficients: β = 0.3       gain can be seen from the composite set S: With a fixed code
+when the erasure probability is larger than 0.45 and β = 0.5       rate R, as the block length N increases, the cardinality of S
+when the erasure probability is smaller than 0.45. This choice     also increases. So the increase in the error-correction capability
+of the coupling coefficient corresponds to the bad channel         of the systematic polar codes is counteracted by the increase
+condition and the good channel condition, respectively. The        in the number of error bits, rendering the systematic gain to
+probability of independent error in S1 is p0 = 1/2 and it’s used   reach a limit.
+                                                                                                                                            11
+
+
+
+
+                                                  0
+                                                10
+
+                                                                   SC
+                                                                   SYSTEMATIC
+                                                  −1
+                                                10                 SYSTEMATIC:THEORETICAL
+                                                                   BP
+
+
+                                                  −2
+                                                10
+
+
+
+
+                                          BER
+                                                  −3
+                                                10
+
+
+
+                                                  −4
+                                                10
+
+
+
+                                                  −5
+                                                10
+                                                     0.2          0.25            0.3          0.35         0.4         0.45          0.5
+                                                                                        Erasure Probability
+
+
+
+Fig. 4. BER for n = 10, R = 1/2 in BEC channel.
+
+
+
+
+                                                  0
+                                                10
+                                                                  SC
+                                                                  SYSTEMATIC
+                                                  −1              SYSTEMATIC:THEORETICAL
+                                                10
+                                                                  BP
+
+
+                                                  −2
+                                                10
+                                          BER
+
+
+
+
+                                                  −3
+                                                10
+
+
+
+                                                  −4
+                                                10
+
+
+
+                                                  −5
+                                                10
+                                                           0.32     0.34    0.36        0.38   0.4   0.42     0.44    0.46     0.48   0.5
+                                                                                        Erasure Probability
+
+
+
+Fig. 5. BER for n = 12, R = 1/2 in BEC channel.
+
+
+
+
+                                                  −1
+                                                10
+                                                                                                     SC
+                                                                                                     SYSTEMATIC
+                                                  −2                                                 SYSTEMATIC:THEORETICAL
+                                                10
+
+
+                                                  −3
+                                                10
+                                          BER
+
+
+
+
+                                                  −4
+                                                10
+
+
+                                                  −5
+                                                10
+
+
+                                                  −6
+                                                10
+
+
+                                                  −7
+                                                10
+                                                  −2.5        −2           −1.5           −1      −0.5            0          0.5      1
+                                                                                            SNR (dB)
+
+
+
+Fig. 6. BER for n = 10, R = 1/4 in AWGN channel.
+                                                                                                                                                             12
+
+
+
+
+                                                     5
+                                                                                            Sys Gain Sim
+                                                                                            Sys Gain Theoretical
+                                                    4.5
+
+
+                                                     4
+
+
+                                                    3.5
+
+
+                                                     3
+
+
+
+
+                                                γ
+                                                    2.5
+
+
+                                                     2
+
+
+                                                    1.5
+
+
+                                                     1
+                                                          4   5   6    7      8        9      10       11          12
+                                                                              n
+
+
+
+Fig. 7. Systematic gain γ for R = 1/2 in BEC channels with different block lengths. The erasure probability is set the same for all block lengths as 0.4.
+
+
+
+                         VII. C ONCLUSION                                         Substituting û1 = u1 ⊕ 1 into (48) and using the fact that
+   In this paper, we analyze the error performance of sys-                        LR(u1 ⊕ 1) = LR(u1 )−1 , we obtain the following
+tematic polar codes with the SC-EN decoding. Through the                                   LR(û2 ) = LR(u2 ) ∗ LR(u1 ⊕ u2 )−1+2(u1 ⊕1)                   (49)
+analysis of the generating matrix of polar codes, the encoding
+process of systematic polar codes is simplified. We use a                         Again, comparing with the true estimation of u2
+parameter, the systematic gain, to characterize the performance
+of systematic polar codes as compared with the non-systematic                                      LR(u2 ) = LR(u2 ) ∗ LR(u1 ⊕ u2 )1−2u1                  (50)
+polar codes. From the study of the basic error patterns and the                   we can verify that (49) and (50) are equivalent, meaning the
+first error distribution of the SC decoding, the information bits                 estimation of û2 is the true estimation, which is the lower left
+are divided into two regions and the probability of errors in                     node in Fig. 2-e.
+each region is provided. To further use the properties of these
+two regions, we propose a composite model to approximate
+the mean effect of the error events in the SC decoding. Using                                                           R EFERENCES
+this composite model, the systematic gain can be calculated.                       [1] E. Arikan, “Channel Polarization: A Method for Constructing Capacity-
+Numerical results are provided and our models are verified in                          Achieving Codes for Symmetric Binary-Input Memoryless Channels,”
+                                                                                       IEEE Transactions on Information Theory, vol. 55, no. 7, pp. 3051–
+the paper. Systematic polar codes are shown to be around 3                             3073, 2009.
+times better than non-systematic polar codes in terms of the                       [2] E. Sasoglu,         E. Telatar,     and    E. Arikan,       “Polarization
+BER performance with large block lengths.                                              for     Arbitrary     Discrete    Memoryless       Channels,”    Online:
+                                                                                       http://arxiv.org/pdf/0908.0302v1.pdf.
+                                                                                   [3] R. Mori and T. Tanaka, “Non-Binary Polar Codes using Reed-Solomon
+                           A PPENDIX                                                   Codes and Algebraic Geometry Codes,” in IEEE Information Theory
+                                                                                       Workshop (ITW), 2010, pp. 1–5.
+                P ROOF OF THE E RROR PATTERNS                                      [4] A. G. Sahebi and S. S. Pradhan, “Multilevel Polarization of Polar Codes
+  We provide the proof of the error pattern in Fig. 2-e. Let’s                         Over Arbitrary Discrete Memoryless Channels,” in 2011 49th Annual
+                                                                                       Allerton Conference on Communication, Control, and Computing (Aller-
+assume the two bits at the input to the Z-section is u1 and                            ton), September 2011, pp. 1718–1725.
+u2 . The output is then x1 = u1 ⊕ u2 and x2 = u2 . In this                         [5] R. Mori and T. Tanaka, “Performance and Construction of Polar codes on
+pattern, the LR value of x1 is incorrect, namely LR(x1 ) =                             Symmetric Binary-Input Memoryless Channels,” in IEEE International
+                                                                                       Symposium on Information Theory, June 2009, pp. 1496–1500.
+LR(u1 ⊕ u2 ⊕ 1). In estimating u1 , we have                                        [6] R. Pedarsani, S. Hassani, I. Tal, and I. Telatar, “On the Construction of
+                                                                                       Polar Codes,” in IEEE International Symposium on Information Theory
+                        1 + LR(u1 ⊕ u2 ⊕ 1) ∗ LR(u2 )                                  Proceedings (ISIT), 2011, pp. 11–15.
+          LR(û1 ) =                                                  (46)
+                          LR(u1 ⊕ u2 ⊕ 1) + LR(u2 )                                [7] P. Trifonov, “Efficient Design and Decoding of Polar Codes,” IEEE
+                                                                                       Transactions on Communications, vol. 60, no. 11, pp. 3221–3227,
+Compared with the true estimation                                                      November 2012.
+                                                                                   [8] I. Tal and A. Vardy, “How to Construct Polar Codes,” Online:
+                           1 + LR(u1 ⊕ u2 ) ∗ LR(u2 )                                  http://arxiv.org/abs/1304.3850.
+             LR(u1 ) =                                                (47)         [9] S. B. Korada, E. Sasoglu, and R. Urbanke, “Polar Codes: Characteri-
+                             LR(u1 ⊕ u2 ) + LR(u2 )                                    zation of Exponent, Bounds, and Constructions,” IEEE Transactions on
+                                                                                       Information Theory, vol. 56, no. 12, pp. 6253–6264, December 2010.
+it’s readily seen that û1 = u1 ⊕ 1. Therefore the LR value of                    [10] E. Abbe and I. Telatar, “MAC Polar Codes and Matroids,” in Information
+the variable node u1 is incorrect, as indicated by a X in the                          Theory and Applications Workshop (ITA), Jan 2010, pp. 1–8.
+upper left node in Fig. 2-e.                                                      [11] H. Mahdavifar and A. Vardy, “Achieving the Secrecy Capacity of Wire-
+                                                                                       tap Channels Using Polar Codes,” IEEE Transactions on Information
+   After obtaining the estimation of û1 , the LR value of bit u2                      Theory, vol. 57, no. 10, pp. 6428–6443, October 2011.
+is given by                                                                       [12] E. Abbe and E. Telatar, “Polar Codes for the m-User Multiple Access
+                                                                                       Channel,” IEEE Transactions on Information Theory, vol. 58, no. 8, p.
+          LR(û2 ) = LR(u2 ) ∗ LR(u1 ⊕ u2 ⊕ 1)1−2û1                  (48)             54375448, 2012.
+                                                                               13
+
+
+
+[13] E. Arikan and I. Telatar, “On the Rate of Channel Polarization,” in
+     IEEE International Symposium on Information Theory (ISIT), 2009, pp.
+     1493–1495.
+[14] S. H. Hassani and R. Urbanke, “On the Scaling of Polar Codes: I. The
+     Behavior of Polarized Channels,” in IEEE International Symposium on
+     Information Theory Proceedings (ISIT), June 2010, pp. 874–878.
+[15] T. Tanaka and R. Mori, “Refined Rate of Channel Polarization,” in IEEE
+     International Symposium on Information Theory, June 2010, pp. 889–
+     893.
+[16] S. Hassani, R. Mori, T. Tanaka, and R. Urbanke, “Rate-Dependent Anal-
+     ysis of the Asymptotic Behavior of Channel Polarization,” Information
+     Theory, IEEE Transactions on, vol. 59, no. 4, pp. 2267–2276, 2013.
+[17] N. Hussami, S. Korada, and R. Urbanke, “Performance of Polar Codes
+     for Channel and Source Coding,” in IEEE International Symposium on
+     Information Theory (ISIT), June 2009, pp. 1488–1492.
+[18] A. Eslami and H. Pishro-Nik, “On Bit Error Rate Performance of
+     Polar Codes in Finite Regime,” in 48th Annual Allerton Conference on
+     Communication, Control, and Computing (Allerton), 2010, pp. 188–194.
+[19] E. Arikan, “A Performance Comparison of Polar Codes and Reed-Muller
+     codes,” IEEE Communications Letters, vol. 12, no. 6, pp. 447–449, 2008.
+[20] J. Guo, M. Qin, A. G. i Fabregas, and P. H. Siegel, “Enhanced Belief
+     Propagation Decoding of Polar Codes through Concatenation,” in 2014
+     IEEE International Symposium on Information Theory Proceedings
+     (ISIT), 2014, pp. 2987 – 2991.
+[21] U. U. Fayyaz and J. R. Barry, “Polar Codes for Partial Response
+     Channels,” in 2013 IEEE International Conference on Communications
+     (ICC), 2013, pp. 4337 – 4341.
+[22] I. Tal and A. Vardy, “List Decoding of Polar Codes,” in 2011 IEEE
+     International Symposium on Information Theory Proceedings (ISIT),
+     July 2011, pp. 1–5.
+[23] K. Chen, K. Niu, and J. Lin, “Improved Successive Cancellation Decod-
+     ing of Polar Codes,” IEEE Transactions on Communications, vol. 61,
+     no. 8, pp. 3100–3107, August 2013.
+[24] A. Eslami and H. Pishro-Nik, “A Practical Approach to Polar Codes,” in
+     IEEE International Symposium on Information Theory, 2011, pp. 16–20.
+[25] E. Arikan, “Systematic Polar Coding,” IEEE Communications Letters,
+     vol. 15, no. 8, pp. 860–862, August 2011.
+

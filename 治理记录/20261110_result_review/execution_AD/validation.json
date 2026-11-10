@@ -1,0 +1,11 @@
+{
+  "deleted_raw_files": 1169,
+  "deleted_logical_bytes": 756302184,
+  "MiB": 721.2659683227539,
+  "remaining_targets": [],
+  "retained_files_checked": 387,
+  "retained_hash_failures": [],
+  "external_backup_verified": false,
+  "scope": "A+D only; B+C remain untouched",
+  "interrupted_preflight": "First PowerShell ancestor check used FileInfo.Parent and was interrupted before mutation; corrected to FileInfo.Directory, then validated all targets before deletion."
+}

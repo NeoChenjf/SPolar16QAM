@@ -1,0 +1,17 @@
+{
+  "status": "historical_checks_not_current_research_status",
+  "records": [
+    {
+      "original_name": "迁移校验.json",
+      "sha256": "cd5a861991421e55f913a827a713ac5e9a9fce4c412d78fdaa78e7b055257233",
+      "raw_text": "{\r\n  \"date\": \"2026-11-06\",\r\n  \"target\": \"学习文档/硬件前信息与非线性收能定量分析及瑞利策略优化-loop\",\r\n  \"old_directory_absent\": true,\r\n  \"pre_append_file_hashes\": {\r\n    \"loop设计.md\": \"ff893e4062dbf7f02d96a9f22a6da6e9f37e3688c969c2eb75e6afbe328d74ef\",\r\n    \"next_plan.md\": \"9a25abcc569ab3e156e97ea10584203d4c27c2b1cecaafa33d74d8f7c227b035\",\r\n    \"协调协议.md\": \"42182d20e9b439a1006820fc46b920d3a9e9630562b8eec7baae8acc9dc9d3a7\",\r\n    \"文档校验.json\": \"da55adbd9c01916820e931326f7abce08ffc6567edb22376dcd72f5be52dd00e\",\r\n    \"评审记录.md\": \"cf0b638c3ce9364bbb245eec64319bd4ae343a0b1d76896333c972fec150f23d\",\r\n    \"进度表.md\": \"0eb950156aba2f094a05606e00f7585549f521c3329c98b7132ef6e6f74fe1a8\",\r\n    \"问题记录.md\": \"95c5da7ecf0d807bd3d024d661638f60f0776cac812fa586d25d99a30c8fcbea\",\r\n    \"需求澄清-访谈归档.md\": \"77ad261a551f2b32d7483b366f779982b72e8a58939f9cd28efc77a6049d16d3\",\r\n    \"需求澄清.md\": \"c13df565b8d0ddb63dcca36453056035a63a8b0db16a9f493a2497b3432e5be9\"\r\n  },\r\n  \"external_append_checks\": [\r\n    {\r\n      \"file\": \"学习文档/README.md\",\r\n      \"prefix_preserved\": true\r\n    },\r\n    {\r\n      \"file\": \"next_plan.md\",\r\n      \"prefix_preserved\": true\r\n    },\r\n    {\r\n      \"file\": \"项目整体计划书.md\",\r\n      \"prefix_preserved\": true\r\n    },\r\n    {\r\n      \"file\": \"学习文档/研究回顾与讨论/追加式阅读与讨论记录-v2.md\",\r\n      \"prefix_preserved\": true\r\n    },\r\n    {\r\n      \"file\": \"周报/阶段B/B4：full-chain策略验证.md\",\r\n      \"prefix_preserved\": true\r\n    }\r\n  ],\r\n  \"historical_links\": \"Old Markdown links retained as history; dated appendices supply current valid entries\",\r\n  \"experiment_executed\": false\r\n}",
+      "bom": false
+    },
+    {
+      "original_name": "文档校验.json",
+      "sha256": "da55adbd9c01916820e931326f7abce08ffc6567edb22376dcd72f5be52dd00e",
+      "raw_text": "{\r\n  \"date\": \"2026-11-06\",\r\n  \"links\": \"pass\",\r\n  \"unit_ids\": \"pass\",\r\n  \"markdown_controls\": \"pass\",\r\n  \"append_only_checks\": [\r\n    {\r\n      \"file\": \"next_plan.md\",\r\n      \"original_bytes\": 25213,\r\n      \"original_sha256\": \"93e8f38bf75620c48cad4f03940cf476c49bf6a2ac4cacdb5f6162061732cecc\",\r\n      \"prefix_preserved\": true\r\n    },\r\n    {\r\n      \"file\": \"学习文档/README.md\",\r\n      \"original_bytes\": 6468,\r\n      \"original_sha256\": \"fe3d26e100b48f1f169daa825485df59a96c5807b11162b610f95e0b5db9e478\",\r\n      \"prefix_preserved\": true\r\n    },\r\n    {\r\n      \"file\": \"项目整体计划书.md\",\r\n      \"original_bytes\": 22936,\r\n      \"original_sha256\": \"4401280aba9339ffd8af54b490302af5171aa901dae1315fcf533c82c9a015a8\",\r\n      \"prefix_preserved\": true\r\n    },\r\n    {\r\n      \"file\": \"周报/阶段B/B4：full-chain策略验证.md\",\r\n      \"original_bytes\": 73952,\r\n      \"original_sha256\": \"34da367b0d222853b172af927bd6ece891807136ae64ce2a7ccae73816ccbb27\",\r\n      \"prefix_preserved\": true\r\n    },\r\n    {\r\n      \"file\": \"学习文档\\\\研究回顾与讨论\\\\追加式阅读与讨论记录-v2.md\",\r\n      \"original_bytes\": 83601,\r\n      \"original_sha256\": \"84146caee1f9e0cd7dc12d7a515df1bf38c4ff4de0b91d9266cdfc40b8bf362b\",\r\n      \"prefix_preserved\": true\r\n    }\r\n  ],\r\n  \"matlab_executed\": false\r\n}",
+      "bom": false
+    }
+  ]
+}

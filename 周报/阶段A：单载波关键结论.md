@@ -471,7 +471,7 @@ $$
 
 ## 2026-10-09 新构造及数据版本边界
 
-阶段A code-only 与 full-chain 新构造采用固定源熵 $S$，逐SNR依据GA在剩余位置重选 $I/F$；整形器每帧根据真实payload生成 $S$。构造seed、独立源熵holdout和PMF门禁证据见[最新构造记录](../../学习文档/shaped_polar验证loop/最新认知与执行基线.md)。旧曲线仍为旧集合规则，不能直接与后续等功率方案混比。
+阶段A code-only 与 full-chain 新构造采用固定源熵 $S$，逐SNR依据GA在剩余位置重选 $I/F$；整形器每帧根据真实payload生成 $S$。构造seed、独立源熵holdout和PMF门禁证据见[最新构造记录](../学习文档/shaped_polar验证loop/最新认知与执行基线.md)。旧曲线仍为旧集合规则，不能直接与后续等功率方案混比。
 
 阶段A full-chain正式重建共用16QAM能量权衡正式数据；当前一批因发现“逐SNR重选I/F”要求而中止并保留检查点，尚无有效新正式性能图。code-only正式曲线随后单独运行，不重复full-chain长跑。
 

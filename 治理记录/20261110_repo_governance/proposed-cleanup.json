@@ -1,0 +1,22 @@
+[
+  {
+    "path": "scripts/__pycache__/analyze_p2_grid_study.cpython-311.pyc",
+    "bytes": 16776,
+    "sha256": "12ece35b599ec92d045f17c87a9fbb3634676cb31119309d5d7bed1381d11d02",
+    "source": "scripts/analyze_p2_grid_study.py",
+    "classification": "rebuildable Python bytecode",
+    "proposed_action": "delete only after approval of this exact list; recheck hash and path first",
+    "recovery": "Python recompiles from the preserved source",
+    "approved": false
+  },
+  {
+    "path": "scripts/__pycache__/test_p2_grid_analysis.cpython-311.pyc",
+    "bytes": 4651,
+    "sha256": "526efe786a41f4b59e9f9b28d8ce42fed8e756419e7d07f6d2c25c321db058c3",
+    "source": "scripts/test_p2_grid_analysis.py",
+    "classification": "rebuildable Python bytecode",
+    "proposed_action": "delete only after approval of this exact list; recheck hash and path first",
+    "recovery": "Python recompiles from the preserved source",
+    "approved": false
+  }
+]

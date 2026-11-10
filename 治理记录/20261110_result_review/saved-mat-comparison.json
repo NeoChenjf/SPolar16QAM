@@ -1,0 +1,39 @@
+{
+  "read_only": true,
+  "tool": "MATLAB -batch load/isequaln only; no simulator called",
+  "old": "16QAM_Polar/v2/results/20261107_114837_p2_v2_strategy_batch_pilot_strategy_test_aa2b0752/raw_c1_s1_combo_01_shaped.mat",
+  "new": "16QAM_Polar/v2/results/20261109_115203_p2_grid_study/20261109_225158_p2_v2_strategy_batch_pilot_strategy_test_a9c377f9/raw_c1_s1_combo_01_shaped.mat",
+  "equal_fields": [
+    "states",
+    "info_counts",
+    "oracle_errors",
+    "oracle_signed_sum",
+    "oracle_signed_square",
+    "s_probe",
+    "refs",
+    "scale",
+    "energy_only_group3",
+    "reference_time_power",
+    "noise_complex_time_power",
+    "construction_snr_db"
+  ],
+  "unequal_fields": [
+    "h",
+    "H",
+    "layout",
+    "records",
+    "counts",
+    "profile",
+    "stream_errors",
+    "bit_errors",
+    "input_signed_sum",
+    "input_signed_square",
+    "u_ones",
+    "s_cross",
+    "frame_hashes",
+    "channel_hash",
+    "channel_seed",
+    "noise_seeds"
+  ],
+  "conclusion": "At least this cell is physically different; newer grid cannot be claimed an identical superset of old E2 raw. Preserve old E2 evidence. Not a full semantic audit."
+}

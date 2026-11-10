@@ -1,0 +1,1090 @@
+                                                                                                                                                                                         1
+
+
+
+
+                                           Does Gaussian Approximation Work Well for The
+                                                Long-Length Polar Code Construction?
+                                                      Jincheng Dai, Student Member, IEEE, Kai Niu, Member, IEEE, Zhongwei Si, Member, IEEE,
+                                                                      Chao Dong, Member, IEEE and Jiaru Lin, Member, IEEE
+
+
+                                            Abstract—Gaussian approximation (GA) is widely used to                      accuracy. Considering its high computational complexity, Tal
+                                         construct polar codes. However when the code length is long, the               and Vardy devised two approximation methods to simplify the
+                                         subchannel selection inaccuracy due to the calculation error of                calculation of DE, by which one can get the upper and lower
+                                         conventional approximate GA (AGA), which uses a two-segment
+                                                                                                                        bounds on the error probability of each subchannel. Tal and
+arXiv:1511.07236v3 [cs.IT] 16 Mar 2017
+
+
+
+
+                                         approximation function, results in a catastrophic performance
+                                         loss. In this paper, new principles to design the GA approximation             Vardy’s method has almost no performance loss compared
+                                         functions for polar codes are proposed. First, we introduce the                with DE [5]–[8]. Afterwards, Gaussian approximation (GA)
+                                         concepts of polarization violation set (PVS) and polarization                  was proposed to further reduce the computational complexity
+                                         reversal set (PRS) to explain the essential reasons that the                   of DE [9] without much sacrifice in accuracy, which became
+                                         conventional AGA scheme cannot work well for the long-length
+                                         polar code construction. In fact, these two sets will lead to the              popular in the construction of polar codes thanks to its good
+                                         rank error of subsequent subchannels, which means the orders                   tradeoff between the complexity and performance.
+                                         of subchannels are misaligned, which is a severe problem for                      In the GA construction of polar codes, the bit log-likelihood
+                                         polar code construction. Second, we propose a new metric, named                ratio (LLR) of each subchannel is assumed to obey a constraint
+                                         cumulative-logarithmic error (CLE), to quantitatively evaluate                 Gaussian distribution in which the mean is half of the variance.
+                                         the remainder approximation error of AGA in logarithm. We
+                                         derive the upper bound of CLE to simplify its calculation. Finally,            Hence, the iterative evaluation of each subchannel reliability
+                                         guided by PVS, PRS and CLE bound analysis, we propose                          is only involved with the mean update of LLRs. However, the
+                                         new construction rules based on a multi-segment approximation                  LLR mean updates in check nodes still depend on complex
+                                         function, which obviously improve the calculation accuracy of                  integration. Consequently, for construction of polar codes, the
+                                         AGA so as to ensure the excellent performance of polar codes                   computational complexity of exact GA (denoted by EGA)
+                                         especially for the long code lengths. Numerical and simulation
+                                         results indicate that the proposed AGA schemes are critical to                 grows exponentially with the polarization levels. This makes
+                                         construct the high-performance polar codes.                                    EGA too complicated to be practically employed. Therefore,
+                                                                                                                        in practical implementation, like GA utilized in LDPC codes,
+                                           Index Terms—Polar codes, Gaussian approximation (GA),
+                                         polarization violation set (PVS), polarization reversal set (PRS),             the well-known approximate version of GA (denoted by AGA)
+                                         cumulative-logarithmic error (CLE).                                            given by Chung et al. based on a two-segment approximation
+                                                                                                                        function is used to speed up the calculations [10]–[12].
+                                                                                                                           Initially, the approximation function in conventional AGA
+                                                                   I. I NTRODUCTION                                     chosen by Chung is suitable for LDPC codes. However, in
+                                                                                                                        principle, we don’t know whether this approximation method
+                                         P    OLAR codes proposed by Arıkan [1] have been proved
+                                              to achieve the capacity of any symmetric binary input
+                                         symmetric discrete memoryless channels (B-DMCs) under a
+                                                                                                                        can be also good for the polar codes. In fact, the calculation
+                                                                                                                        error of AGA versus EGA will be accumulated and amplified
+                                         successive cancellation (SC) decoder as the code length goes                   in the recursion process of polar codes construction. Conse-
+                                         to infinity. Recently, polar codes have been identified as one of              quently, this phenomenon causes the inaccurate subchannel
+                                         the channel coding schemes in the 5G wireless communication                    selection and results in a catastrophic block error ratio (BLER)
+                                         system due to its excellent performance [2]. To construct polar                performance loss for the long code lengths. Taking the polar
+                                         codes, the channel reliabilities are calculated efficiently using              code structure characteristics into consideration, it is lack of
+                                         the symmetric capacities of subchannels or the Bhattacharyya                   the comprehensive framework to design the AGA schemes for
+                                         parameters for the binary-input erasure channels (BECs). As                    the construction of polar codes. In addition, the performance
+                                         a heuristic method, Arıkan has suggested to use the recursion                  evaluation method for different AGA is also absent.
+                                         which is optimal only for BECs also for other B-DMCs [3].                         On the polar code construction, we find that the rank error of
+                                         Mori et al. regarded the construction problem as an instance of                the subchannels and the calculation error of each subchannel’s
+                                         density evolution (DE) [4], which theoretically has the highest                reliability are two critical factors to affect the accuracy of AGA
+                                                                                                                        approximation function. Here, ranking error means the orders
+                                           This work is supported by the National Natural Science Foundation of         of subchannels are misaligned. For various AGA schemes, the
+                                         China (No. 61671080 & No. 61171099), BUPT-SICE Excellent Graduate              two factors will result in different evaluation error of each
+                                         Students Innovation Fund and Huawei HIRP project. The material in this paper
+                                         was presented in part at the Recent Results Session of IEEE International      subchannel. Followed by above two distortions, we reveal the
+                                         Symposium on Information Theory (ISIT), Hong Kong, June 2015.                  essential reason that the conventional AGA scheme leads to a
+                                           The authors are with the Key Laboratory of Universal Wireless Commu-         catastrophic performance loss. Our ultimate goal is to propose
+                                         nications, Ministry of Education, Beijing University of Posts and Telecom-
+                                         munications, Beijing 100876, China (email: {daijincheng, niukai, sizhongwei,   systematic design rules of the AGA approximation function
+                                         dongchao, jrlin}@bupt.edu.cn).                                                 for polar codes, which achieves the excellent performance as
+                                                                                                                                                2
+
+
+
+well as reduces the GA computational complexity.                         matrices are involved in this paper, and they are denoted by
+   Our aim in this paper is to provide the new principles to             bold letters. The subscript of a matrix indicates its size, e.g.
+design the multi-segment GA approximation functions so as                FN represents an N × N matrix F. The Kronecker product of
+to improve the calculation accuracy of AGA and guarantee the             two matrices F and G is expressed as F ⊗ G, and the n-fold
+excellent performance of polar codes. The main contributions             Kronecker power of F is denoted by F⊗n .
+can be summarized in the following three aspects:                          Throughout this paper, log (·) means “logarithm to base 2”,
+   • First, we take a closer investigation at the reason behind          and ln (·) stands for the natural logarithm.
+      the poor performance of the long-length polar codes when
+      the conventional versions of AGA (e.g. Chung’s scheme)
+                                                                         B. Polar Codes and SC Decoding
+      are used. To this end, we introduce the concepts of
+      polarization violation set (PVS) and polarization reversal            Let W : X → Y denote a B-DMC with input alphabet X
+      set (PRS). In the AGA process, when the subchannel’s               and output alphabet Y. The channel transition probabilities are
+      LLR mean belongs to the two sets, it will bring in the             given by W (y |x ), x ∈ X and y ∈ Y. Given the code length
+      rank error and the polarization is ‘violated’ or ‘reverted’        N = 2n , n = 1, 2, · · · , the information length K, and the code
+      among the subsequent subchannels. This phenomenon                  rate R = K/N , the polar coding is described as [1]. After the
+      is not consistent with Arıkan’s fundamental polarization           channel combining and splitting operations on N independent
+      relationship. The two sets reveal the essential reason that        duplicates of W , we obtain N successive uses of synthesized
+                                                                                                      (j)
+      polar codes constructed by the conventional AGA present            binary input channels WN , j = 1, 2, · · · , N , with transition
+                                                                                          (j)
+      poor performance at long code lengths.                             probabilities WN (y1N , u1j−1 |uj ). The information bits can be
+   • Second, after eliminating PVS and PRS, we further pro-              assigned to the channels with indices in the information set A,
+      pose a new metric, named cumulative-logarithmic error              which are the more reliable subchannels. The complementary
+      (CLE) of channel polarization, to quantitatively evaluate          set Ac denotes the frozen bit set and the frozen bits uAc
+      the remainder calculation error between AGA and EGA                can be set as the fixed bit values, such as all zeros, for the
+      in the construction of polar codes. We also derived the            symmetric channels. To put it in another way [1], polar coding
+      upper bound of CLE to simplify its calculation. With this          is performed on the constraint xN               N
+                                                                                                                  1 = u1 GN , where GN is
+                                                                                                          N     N            N
+      bound, the performance of different versions of AGA can            the generator matrix and u1 , x1 ∈ {0, 1} are the source
+      be easily evaluated by analytic calculation rather than            and code block respectively. The source block uN           1 consists
+      redundant the Monte-Carlo simulation.                              of information bits uA and frozen bits uAc . The generator
+   • Finally, guided by PVS, PRS and the CLE bound, we pro-              matrix can be defined as GN = BN F⊗n           2 , where BN is the
+      pose new design rules for the improved AGA techniques              bit-reversal permutation matrix and F2 = [ 11 01 ].
+      which is tailored for the polar code construction. In this            As mentioned in [1], polar codes can be decoded by suc-
+      way, a systematic framework is established to design               cessive cancellation (SC) decoding algorithm. Let ûN       1 denote
+      the high accuracy and low complexity AGA scheme for                an estimate of source block uN      1  . After receiving y N
+                                                                                                                                   1 , the bits
+      polar codes at any code length. Followed by the proposed           ûj are successively determined with index from 1 to N in the
+      rules, three new AGA schemes are given to guarantee the            following way:
+      excellent performance of polar codes.
+                                                                                                   hj (y1N , ûj−1
+                                                                                              
+   The remainder of the paper is organized as follows. The                              ûj =                  1 ) j ∈ A,                   (1)
+                                                                                                   uj                  j ∈ Ac ,
+preliminaries of polar coding are described in Section II. Then
+the conventional GA is introduced in Section III. Section IV             where
+makes detailed error analysis of GA, in which the concepts of                                                     (j)
+                                                                                                                 WN (y1N ,ûj−1 |0 )
+PVS, PRS and CLE are proposed. Then the new design rules                                            
+                                                                                                        0   if              1
+                                                                                                                                       ≥ 1,
+of AGA approximation functions are given in Section V, and                       hj (y1N , ûj−1
+                                                                                             1 )=
+                                                                                                                   (j)
+                                                                                                                 WN (y1N ,ûj−1
+                                                                                                                            1   |1 )          (2)
+                                                                                                     1     otherwise.
+new AGA schemes with complexity comparison are also given
+in this part. Different versions of AGA are compared with the            Given a polar code with code length N , information length K
+help of CLE bound in Section VI, where the simulation results            and selected channels indices A, the BLER under SC decoding
+are also analyzed. Finally, Section VII concludes this paper.            algorithm is upper bounded by
+                                                                                                        X  (j) 
+                       II. P RELIMINARIES                                               Pe (N, K, A) ≤       Pe W N ,              (3)
+                                                                                                             j∈A
+A. Notation Conventions
+                                                                                       (j)
+   In this paper, we use calligraphic characters, such as X ,            where Pe (WN ) is the error probability of the j-th subchannel.
+to denote sets. Let |X | denote cardinality of X . We write              This BLER upper bound is named as the SC bound.
+lowercase letters (e.g., x) to denote scalars. We use notation
+v1N to denote a vector (v1 , v2 , · · · , vN ) and vij to denote a
+                                                                            III. G AUSSIAN A PPROXIMATION FOR P OLAR C ODES
+subvector (vi , vi+1 , · · · , vj ). The sets of binary and real field
+are denoted by B and R, respectively. Specially, let N (a, b)               In this section, we use the code tree to describe the process
+denote Gaussian distribution, where a and b represent the mean           of channel polarization. Based on the tree structure, we present
+and the variance respectively. For polar coding, only square             and analyze the basic procedure of GA.
+                                                                                                                                                     3
+
+
+
+A. Code Tree
+    The channel polarization process can be expressed on a code
+tree. For a polar code with length N = 2n , the corresponding
+code tree T is a perfect binary tree1 . Specifically, T can be
+represented as a 2-tuple (V, B), where V and B denote the set
+of nodes and the set of edges, respectively.
+    Depth of a node is the length of the path from the root to
+this node. The set of all the nodes at a given depth i is denoted
+by Vi , i = 0, 1, 2, · · · , n. The root node has a depth of zero.
+       (j)
+Let vi , j = 1, 2, · · · , 2i , denote the j-th node from left to
+right in Vi . As an illustration, Fig. 1 shows a toy example
+of code tree with N = 16, which includes 4 levels. In the
+nodes set V2 , the 2nd node from left to right is denoted by                      Fig. 1. An example of code tree for N = 16, n = 4. The red bold edge
+                                                                                                                              (8)
+  (2)                                                         (j)                 shows the recursive calculation process of m4 .
+v2 . Except for the nodes at the n-th depth, each vi ∈ Vi
+has two descendants in Vi+1 , and the two corresponding edges
+                                                          (j)
+are labeled as 0 and 1, respectively. The nodes vn ∈ Vn are                       to the nodes at depth i is denoted by Li , i = 0, 1, 2, · · · , n.
+                                                                                        (j)
+                                    (j)
+called leaf nodes. Let T (vi ) denote a subtree with a root                       Let Li , j = 1, 2, · · · , 2i , denote the j-th element in Li . We
+                                                                                           (j)                     (j)
+         (j)
+node vi . The depth of this subtree can be defined as n − i                       write mi as the mean of Li . So the mean of LLR from the
+                                                                                                                                 (1)
+which indicates the difference between the depth of the leaf                      channel information can be written as m0 = σ22 , and under
+node and that of the root node. In addition, the node vi has
+                                                                (j)               the GA assumption we have
+                                                           (2j−1)
+two subtrees, that is, the left subtree Tleft = T (vi+1 ) and                                         (j)
+                                                                                                                   
+                                                                                                                       (j)   (j)
+                                                                                                                                 
+                                        (2j)                                                       Li ∼ N mi , 2mi                 .              (6)
+the right subtree Tright = T (vi+1 ).
+    All the edges in the set B are partitioned into n levels Bl ,                          (j)
+l = 1, 2, · · · , n. Each edge in the l-th level Bl is incident to                Here, mi   can be computed recursively as
+two nodes: one at depth l − 1 and the other at depth l. An                                  (2j−1)
+                                                                                                       
+                                                                                                          (j)
+                                                                                                              
+                                                                                                                   (2j)
+                                                                                                                            
+                                                                                                                              (j)
+                                                                                                                                  
+i-depth node is corresponding to a path (b1 , b2 , · · · , bi ) which                      mi+1 = fc mi         , mi+1 = fv mi      ,             (7)
+consists of i edges, with bl ∈ Bl , l = 1, 2, · · · , i. A vector
+bi1 = (b1 , b2 , · · · , bi ) is used to depict the above path.                   where the functions fc (t) and fv (t) are used for check nodes
+                                                                                  (left branch) and variable nodes (right branch), respectively.
+                                                                                  The physical meaning of the function variable t stands for
+B. Gaussian Approximation for Polar Codes
+                                                                                  subchannel’s LLR mean in GA construction. We have
+   Trifonov [9] suggests a polar code construction method                                     (                                  
+                                                                                                                                2
+for the binary input AWGN (BI-AWGN) channels based                                               fc (t) = φ−1 1 − (1 − φ (t)) ,
+                                                                                                                                             (8)
+on a Gaussian assumption in every recursion step. For the                                        fv (t) = 2t.
+BI-AWGN channels with noise variance σ 2 , the coded bits
+are modulated using binary phase shift keying (BPSK). The                         In EGA, φ (t) is written as
+transition probability W (y|x) is written as                                                (
+                                                                                                     1
+                                                                                                         R            z
+                                                                                                                           − (z−t)2
+                                     1            (y−(1−2x))2                                 1 − √4πt       tanh          e 4t dz      t > 0,
+                 W (y |x ) = √              e   −     2σ 2      ,          (4)      φ (t) =                R          2                           (9)
+                                    2πσ 2                                                     1                                         t = 0,
+where x ∈ B and y ∈ R. The LLR of each received symbol y                          where tanh (·) denotes hyperbolic tangent function. It is easy
+is denoted by                                                                     to check that φ (t) is continuous and monotonically decreasing
+                                    W (y |0 )  2y                                 on [0, +∞), with φ (0) = 1 and φ (+∞) = 0 [10]. As an
+                     L (y) = ln               = 2.                         (5)    illustration, the red bold edge in Fig. 1 depicts the recursive
+                                    W (y |1 )  σ                                                                  (8)
+                                                                                  calculation process of m4 , whose corresponding path is
+Without loss of generality, we assume that all-zero   codeword                   denoted by (b1 , b2 , b3 , b4 ) = (0, 1, 1, 1).
+is transmitted. One can check L (y) ∼ N σ22 , σ42 .
+                                                                                     Obviously, the exact calculation of LLR mean in check
+   GA assumption: The LLR of each subchannel obeys a
+                                                                                  nodes requires complex integration, which results in a high
+constraint Gaussian distribution in which the mean is half of
+                                                                                  computational complexity. Therefore, Chung et al. give the
+the variance [9]–[12].
+                                                                                  well known two-segment approximation function of φ (t),
+   According to the GA assumption, the only issue needed to
+                                                                                  denoted by ϕ (t), for the analysis of LDPC codes in [10],
+be dealt with is the LLR mean. Therefore, in the construction
+of polar codes, to obtain the reliability of each subchannel, we
+                                                                                                  (              0.86
+                                                                                                     e−0.4527t +0.0218          0 < t < 10,
+trace their LLR mean. This recursive calculation process can                             ϕ (t) =     p  π − 4t         10
+                                                                                                                                            (10)
+                                                                                                           e       1 −          t ≥ 10.
+be performed on the code tree. The set of LLRs corresponding                                             t             7t
+
+  1 A perfect binary tree is a binary tree in which all interior nodes have two   (10) is also widely used in the construction of polar codes [11].
+children and all leaves have the same depth or same level.                        Its corresponding AGA algorithm is denoted by “Chung”.
+                                                                                                                                          4
+
+
+
+                                                                          (1)         (2)
+  By the GA assumption of (6), the error probabilities of           m, m2 and m2 , respectively. Then, the LLR means should
+                            (j)
+polarized subchannel Pe (WN ) can be written as                     satisfy
+                                                                                       (1)           (2)
+                                     s                                           m2 ≤ m ≤ m2                       (15)
+                           (j)                (j)
+        
+            (j)
+                        m n               m  n
+     Pe W N = Q  q                = Q          ,  (11)          with equality if and only if m = 0 or m = +∞.
+                              (j)            2
+                          2mn
+                                                                       This result follows the [1, Proposition 4]. Combining with
+                     R +∞ − z2                                      Proposition 1, the proof of (15) is immediate. It can be seen
+where Q (ς) = √12π ς     e 2 dz. Thus, the SC bound can be
+written as                                                          from (15) that the reliability of the original channel W is
+                                    s                             redistributed. Based on this interpretation, we may say that
+                                         (j)                                                                       (1)
+                              X        m n                          after one step polarization, a “bad” channel W2 and a “good”
+              Pe (N, K, A) ≤       Q        .       (12)                      (2)
+                                         2                          channel W2 have been created.
+                               j∈A
+                                                                    Proposition 3. In the AGA construction of polar codes, the
+Since Q (ς) is a monotone decreasing function, the subchannel
+   (j)                        (j)                                   approximation function Ω (t) of φ (t) should satisfy
+WN with a larger mean mn has higher reliability. The
+construction of polar codes corresponds to the selection of                                     0 < Ω (t) < 1,                         (16)
+best K subchannels among N as information set A in terms
+                     (j)                                            which is the necessary and sufficient condition for Ω (t) to
+of the LLR means mn , where j = 1, 2, · · · , N .
+                                                                    satisfy Proposition 2.
+  IV. E RROR A NALYSIS OF G AUSSIAN A PPROXIMATION                  Proof. Different from that in LDPC codes, the approximation
+   In this section, we introduce the concepts of polarization       function Ω (t) for polar codes should guarantee that the
+violation set (PVS) and polarization reversal set (PRS). By         relationship of (15) holds2 . Therefore, in the size-two channel
+calculating the two sets, we demonstrate the intrinsic reason       polarization, for t ∈ (0, +∞), Ω (t) should satisfy
+that polar codes constructed by conventional AGA suffer                                 
+                                                                                                         2
+                                                                                                           
+from catastrophic performance loss at long code lengths. In                        Ω−1 1 − (1 − Ω (t)) < t < 2t,                (17)
+order to quantitatively evaluate the remainder calculation error
+                                                                    which follows Proposition 2. Recall that φ (t) is continuous
+between AGA and EGA, we further propose the concept of
+                                                                    and monotonically decreasing on [0, +∞) [10], we therefore
+cumulative-logarithmic error (CLE) of channel polarization
+                                                                    assume its approximated form Ω (t) monotonically decreases
+and give a bound to simplify its calculation. Based on the
+                                                                    on (0, +∞). Consequently, the left inequality in (17) can be
+CLE bound, we can efficiently evaluate the performance of
+                                                                    simplified as
+different approximation functions in AGA.
+                                                                                                 2
+                                                                                1 − (1 − Ω (t)) > Ω (t) ⇒ 0 < Ω (t) < 1,               (18)
+A. PVS and PRS
+                                                                    In turn, if Ω (t) satisfies 0 < Ω (t) < 1, we have
+Proposition 1. Under the GA assumption, each subchannel’s
+                                                                                            2
+symmetric capacity monotonically increases with its LLR                 1 − (1 − Ω (t)) > 1 − (1 − Ω (t))
+mean.
+                                                                                             
+                                                                                            2
+                                                                       ⇒Ω−1 1 − (1 − Ω (t)) < Ω−1 (1 − (1 − Ω (t)))
+                                                                                                                                       (19)
+   It is worth noticing that a BI-AWGN channel’s capacity
+                                                                                                 |        {z      }
+                                                                                                          =t
+I (W ) is written as                                                         
+                                                                                            2
+                                                                                              
+                                                                       ⇒Ω−1 1 − (1 − Ω (t)) < t < 2t
+ I (W ) = h σ 2
+                 
+               XZ                  
+                                         2W (y |x )
+                                                                   The above analysis indicates that (16) is the necessary and
+         ∆ 1
+         =           W (y |x ) log                           dy,    sufficient condition for Ω (t) to satisfy Proposition 2.
+            2                        W (y |0 ) + W (y |1 )
+              x∈B R
+                                                             (13)      If Ω (t) cannot meet (16), its approximation error with
+where the transition probability W (y |x ) is given as (4). In      respect to the exact φ (t) will result in the following two types
+terms of the GA principle, each subchannel is approximated          of reliability rank error:
+by a BI-AWGN channel W with LLR mean m. In addition,                Type 1) In the size-two channel polarization, if Ω (t) leads to
+the variance of corresponding additive white Gaussian noise                           (1)     (2)
+          2                                                                   m ≤ m2 < m2 , this error indicates that the relia-
+is σ 2 = m    under GA assumption. Since the function h σ 2
+                                                                              bilities of subchannels are partially violated, which is
+monotonically decreases with σ 2 , the symmetric capacity
+                                                                              named as the “polarization violation” phenomenon.
+I (W ) monotonically increases with its LLR mean m. In                                                                     (2)    (1)
+                                                                    Type 2) Furthermore, when Ω (t) leads to m < m2 ≤ m2 .
+addition, we have
+                                                                              This error indicates the reliabilities of subchannels
+              lim I (W ) = 0, lim I (W ) = 1.               (14)              have been wrongly reversed, which is named as the
+             m→0               m→+∞
+                                                                              “polarization reversal” phenomenon.
+Proposition 2. For the size-two channel polarization, suppose
+               (1)   (2)
+(W, W ) 7→ (W2 , W2 ). Under the GA assumption, the LLR               2 In this paper, we analyze the error between AGA and EGA, rather than
+                              (1)       (2)
+means corresponding to W , W2 and W2 are represented as             the error of GA itself.
+                                                                                                                                           5
+
+
+
+Definition 1. Given the approximation function Ω (t), the
+polarization violation set (PVS) SPVS is defined as
+             n                                  o
+                                          2
+    SPVS = t t ≤ Ω−1 1 − (1 − Ω (t)) < 2t ,          (20)
+
+where t ∈ (0, +∞).
+   Obviously, in the size-two channel polarization, for any LLR
+mean m belonging to SPVS , Ω (t) will certainly lead to m ≤
+  (1)      (2)
+m2 < m2 , which violates the basic order in Proposition
+2. Therefore, for the AGA algorithm with Ω (t), if SPVS 6=
+∅, any subchannel whose LLR mean belongs to SPVS will
+inaccurately create two “good” channel in the size-two channel
+polarization, which will lead to obvious approximation error
+in the subsequent AGA process.
+Definition 2. Given the approximation function Ω (t), the
+polarization reversal set (PRS) SPRS is defined as
+                 n                               o                    Fig. 2. Schematic plot of ϕ (t), where SPVS = (0.01476, 0.02939] and
+                                          2                             SPRS = (0, 0.01476].
+         SPRS = t Ω−1 1 − (1 − Ω (t)) ≥ 2t ,         (21)
+
+where t ∈ (0, +∞).                                                      which follows (23) and (24). Hence for ϕ (t) we have
+   Interestingly, in the size-two channel polarization, for any            SPVS = (0.01476, 0.02939] , SPRS = (0, 0.01476] ,           (26)
+LLR mean m belonging to SPRS , Ω (t) will result in m <
+  (2)         (1)
+m2 ≤ m2 . In other words, the split “good” channel                      which are denoted in Fig. 2.
+and “bad” channel swap their roles due to the calculation               Theorem 1. For the N -channel transform, where N = 2n ,
+error of Ω (t), which yields severe error in the size-two               n ≥ 1, suppose that the original channel’s LLR mean has
+polarization. This phenomenon then leads to the substantial                                                      _ (1)  ^ (1)
+
+error in subchannels’ position rank3 .                                  two configurations, which are denoted by m0 and m0 . If
+                                                                                        _ (1)    ^ (1)
+                                                                        they satisfy m0 ≥ m0 , then under the GA assumption, for
+Proposition 4. The relationship between PVS and PRS can                 j = 1, 2, · · · , 2n , we have
+be expressed as
+                                                                                                  _ (j)    ^ (j)
+
+                      SPRS 6= ∅ ⇒ SPVS 6= ∅.                    (22)                              mn ≥ mn .                            (27)
+
+Proof. Note that when t ∈ (0, +∞), for any t ∈ SPRS , it                Proof. This result will be proved by mathematical induction.
+                              2
+makes Ω−1 (1 − (1 − Ω (t)) ) ≥ 2t by Definition 2, which                Under the GA assumption, recall that φ (t) is continuous and
+                           −1               2
+will inevitably result in Ω (1 − (1 − Ω (t)) ) ≥ t. Therefore,          monotonically decreasing on [0, +∞) [10], one can easily
+according to Definition 1, the proof of Proposition 4 is imme-          check that fc (t) and fv (t) in (8) monotonously increase on
+diate. In other words, SPRS 6= ∅ is the sufficient condition            [0, +∞).
+of SPVS 6= ∅. On the contrary, if SPVS = ∅, we can derive                  Suppose N = 2k , k = 1, if the two LLR mean configura-
+                                                                                                              _ (1)     ^ (1)
+SPRS = ∅.                                                               tions of the original channel satisfy m0 ≥ m0 , then
+                                                                                  (1)        (1) 
+   Suppose Ω (t) monotonically decreases on (0, +∞), the left
+                                                                                                              ( (1)
+                                                                                                                            ^ (1)
+                                                                                   _             ^
+                                                                             fc m   0    ≥ fc m0 ,               _
+                                                                                                                  m1 ≥ m1 ,
+inequality in (20) can therefore be simplified as                                  (1)         (1)  ⇒                         (28)
+                                                                                   _             ^                _ (2)     ^ (2)
+                                       2
+                                                                             fv m
+                                                                                        0 ≥ fv m       0,         m ≥m .
+                                                                                                                      1        1
+            Ω (t) ≥ 1 − (1 − Ω (t)) ⇒ Ω (t) ≥ 1.                (23)
+                                                                        With the increased LLR mean of the original channel W , it
+Analogously, the inequality in (21) will also be simplified as
+                                                                        can be seen that the LLR means of two polarized subchannels
+                  2                              2
+ 1 − (1 − Ω (t)) ≤ Ω (2t) ⇒ 2Ω (t) − Ω(t) ≤ Ω (2t) . (24)               will strictly increase.
+                                                                                                               _ (1)   ^ (1)
+   Example: recall that in Chung’s conventional AGA scheme,               Next, suppose N = 2k , if we have m0 ≥ m0 , then for
+                                                                                               _ (j)   ^ (j)
+the two-segment approximation function ϕ (t) is a specific              j = 1, 2, · · · , 2k , mk ≥ mk holds. Thus, when N = 2k+1 ,
+form of Ω (t). Since ϕ (0) = e0.0218 > 1, ϕ (t) cannot satisfy          one can check
+(16). For ϕ (t), its corresponding PVS and PRS are denoted
+                                                                                 (j)            (j)     ( (2j−1)
+                                                                                                                          ^ (2j−1)
+                                                                                   _                 ^
+                                                                           fc m      k     ≥  fc    mk ,      _
+                                                                                                              mk+1 ≥ mk+1 ,
+by SPVS = (a1 , a2 ] and SPRS = (0, a1 ], respectively. The                       (j)             (j)  ⇒
+                                                                                   _                 ^         _ (2j)  ^ (2j)
+boundary points a1 and a2 are given in the following equations             fv m
+                                                                                    k       ≥ fv m k       ,  m       ≥m
+                                                                                                                    k+1       .k+1
+                      2
+      2ϕ (a1 ) − ϕ(a1 ) = ϕ (2a1 ) ,
+                                         
+                                            a1 = 0.01476,                                                                           (29)
+                                     ⇒                                                                               _ (j)  ^ (j)
+      ϕ (a2 ) = 1,                          a2 = 0.02939,               In other words, for j = 1, 2, · · · , 2k+1 , mk+1 ≥ mk+1 . From
+                                                          (25)          above analysis, the proof of (27) is finished.
+  3 One should notice that we cannot have m(2)            (2)
+                                                   < m since m2 = 2m.     Theorem 1 indicates that under the GA assumption, if the
+                                               2
+There just exist three orders, which correspond to (15), PVS and PRS.   LLR mean of the original channel W increases, the polarized
+                                                                                                                                                        6
+
+
+
+                                                                                polarization reversal. Considering its definition, SPRS lies in
+                                                                                the vicinity of 0. As stated in [1], when N tends to infinity,
+                                                                                                                     (j)
+                                                                                the symmetric capacity terms {I(WN )} cluster around 0 and
+                                                                                1, and the corresponding LLR means cluster around 0 and
+                                                                                +∞. So when the code length becomes longer, there are
+                                                                                more LLR means falling in SPRS during the AGA recursive
+                                                                                computation process. This is the essential reason that polar
+                                                                                codes constructed by some AGA suffer from catastrophic
+                                                                                performance loss with the long code lengths.
+                                                                                   During the recursive process of AGA, assuming the number
+                                                                                of code tree nodes belonging to the two sets4 are denoted by
+                                                                                µPVS and µPRS , the corresponding ratios with respect to all
+Fig. 3. A code tree representation of polarization violation and polarization
+                                       (1)                  (5)
+                                                                                nodes are written as
+reversal, where N = 16 and n = 4. m1 ∈ SPRS and m3 ∈ SPVS .
+                                                                                                        µPVS             µPRS
+                                                                                               θPVS = n−1 , θPRS = n−1 .                   (32)
+                                                                                                        P k              P k
+subchannel’s LLR mean will increase together. Combining                                                    2                  2
+PVS and PRS, Theorem 1 serves to analyze the subchannel’s                                                  k=0                  k=0
+
+rank error and the poor performance of the long-length polar                    For Chung’s conventional AGA, Table I gives the distribution
+codes when Chung’s conventional AGA is used.                                    of µPVS and µPRS with different polarization levels n. The
+   For the AGA construction of polar codes with Ω (t), suppose                  corresponding θPVS and θPRS are also listed in Table I, where
+                                          (j)
+SPRS 6= ∅, then for any LLR mean mi ∈ SPRS , we have                            Eb /N0 = 1dB (σ 2 = 1.1915). From Table I, we observe
+  (2j−1)       (2j)
+mi+1       ≥ mi+1 by the definition of SPRS in the recursive                    that with the increase of code length, there are more and
+calculation of GA. However, φ (t) in EGA can guarantee                          more nodes falling in PRS, and its corresponding ratio also
+                                              (2j−1)    (2j)
+SPRS = ∅ and SPVS = ∅, which claims mi+1 < mi+1 for                             becomes larger. Therefore, the polar codes constructed by
+       (j)
+any mi > 0. The above analysis indicates that in the AGA                        Chung’s conventional AGA suffer from catastrophic jitter in
+process, as presented in the code tree, due to SPRS 6= ∅, the                   performance when their code lengths are long.
+             (j)
+condition mi ∈ SPRS will lead to the rank error among the
+                                                        (2j−1)                                               TABLE I
+leaf nodes which belong to the left subtree Tleft = T (vi+1 )                      T HE NUMBER OF NODES AND ITS PERCENTAGE WHOSE LLR MEAN
+                                     (2j)
+and the right subtree Tright = T (vi+1 ). In other words, we                      BELONGS TO SPVS AND SPRS DURING THE RECURSIVE PROCESS OF
+have                                                                                    C HUNG ’ S CONVENTIONAL AGA, WHERE Eb /N0 = 1dB.
+                                                                                       n          µPVS           θPVS          µPRS           θPRS
+            ((j−1)2n−i +s)    ((j−1)2n−i +s+2n−i−1 )
+           mn              ≥ mn                      ,                 (30)           10           40            3.910%          33         3.226%
+where s = 1, 2, · · · , 2n−i−1 . This result follows from Theorem                     11           89            4.348%          88         4.299%
+                                   (2j−1)       _ (1)      (2j)                       12           191           4.664%         225         5.495%
+1 by mechanically applying mi+1            ⇒ m0 and mi+1 ⇒
+^ (1)               _ (s)       ^ (s)
+                                                                                      13           394           4.810%         549         6.702%
+m0 . Then we have mn−i−1 ≥ mn−i−1 . Note that in these                                14           803           4.901%        1297         7.917%
+              _ (s)       ^ (s)
+two subtrees, mn−i−1 and mn−i−1 correspond to the left and                            15          1617           4.935%        3003         9.165%
+right side in (30), respectively. However, in EGA, the “≥”                            16          3280           5.005%        6820         10.41%
+in (30) should be “<”. This polarization reversal phenomenon                          17          6340           4.837%        15240        11.63%
+leads to the rank error of subchannel’s position, which directly                      18          12528          4.779%        33646        12.83%
+affects the selection of information set A.                                           19          24550          4.683%        73503        14.02%
+   As an example, Fig. 3 shows the polarization violation and                         20          48036          4.581%       159132        15.18%
+polarization reversal in the code tree, where N = 16 and
+                                              (1)
+n = 4. In the AGA computation process, m1 ∈ SPRS . Then                            Fig. 4 demonstrates the BLER performance of polar codes
+            (1)      (2)                                    (1)
+we have m2 ≥ m2 , for the leaf nodes with Tleft = T (v2 )                       constructed by Chung’s conventional AGA and Tal&Vardy’s
+                   (2)                                                          method under the BI-AWGN channels. In Fig. 4, polar codes
+and Tright = T (v2 ), following Theorem 2, one can check
+                                                                                are constructed depending on the signal-to-noise ratio (SNR)
+                        (1)       (5)    (2)       (6)
+                     m4 ≥ m4 , m4 ≥ m4 ,                                        one by one, and all the schemes have code rate R = 1/3
+                                                                       (31)
+                      (3)  (7)  (4)  (8)
+                     m4 ≥ m4 , m4 ≥ m4 .                                        with SC decoding. The code length N is set to be 212 , 214
+                                                                                and 218 . We observe that for long code lengths, Chung’s
+                      (5)                          (9)        (5)
+Similarly, since m3 ∈ SPVS , we have m4 ≥ m3 , whereas                          scheme obviously presents catastrophic performance loss. It
+                         (9)      (5)
+in EGA, it should be m4 < m3 , and all the “≥” in (31)                          is consistent with the analysis of Table I.
+should be “<”. Thus, compared to EGA, the approximation
+                                                                                Remark 1. For the AWGN channels, compared with the
+error of AGA results in obvious rank error within the 16 leaf
+                                                                                accurate DE or Tal&Vardy’s algorithm, EGA is also found
+nodes.
+   The above analysis indicates that in the AGA construction                       4 The leaf nodes whose LLR mean falls into the two sets are not counted
+of polar codes, if SPRS 6= ∅, its approximation error leads to                  in, because it will not lead to rank error among the descendants.
+                                                                                                                                             7
+
+
+
+                                                                             Assume ∆ occurs after r recursions, denoted by ∆r . Thus
+                                                                          ∆r is accumulated as final error after n−r polarization levels,
+                                                                          and this process can be represented on a subtree with a depth
+                                                                          n − r. To evaluate the calculation error of AGA, we focus
+                                                                          on the difference of subchannel’s capacity calculated by AGA
+                                                                          and EGA in logarithmic domain. The capacities calculated by
+                                                                          EGA can form a set I defined on this code subtree with the
+                                                                          following properties:
+                                                                             On this subtree, the set of capacities corresponding to the
+                                                                          nodes at a given depth d is denoted by Id , d = r, r +1, · · · , n.
+                                                                                (k)
+                                                                          Let Id , k = 1, 2, · · · , 2d−r , denote the k-th element in Id .
+                                                                                      (k)           (k)
+                                                                          For each Id ∈ Id , Id takes value on [0, 1]. For d > r,
+                                                                           (k)
+                                                                          Id is a function of path bdr+1 , which is actually the binary
+                                                                                                             Pd−r
+                                                                          expansion of k−1 (i.e., k−1 = i=1 br+i 2d−r−i ). Therefore,
+                                                                                             (j)
+                                                                          at the root node vr , ∆r can be written as
+                                                                                                                            
+                                                                                                              2            2
+                                                                                ∆r = I˜r(1) − Ir(1) = h       (j)
+                                                                                                                    − h    (j)
+                                                                                                                                 ,      (33)
+Fig. 4. BLER performance comparison of polar codes with the code length                                     m̃r           mr
+N = 2n (n = 12, 14, 18) and code rate R = 1/3 in the AWGN channel.                (1)    (1)      (j)   (j)
+                                                                          where I˜r , Ir and m̃r , mr stand for the initial symmetric
+                                                                          capacities and LLR means calculated by AGA and EGA
+to well approximate the actual polarized subchannels. Note                respectively, and the formula of h (·) is written in (13).
+that EGA has strict order preserving property, which follows                 As stated in Remark 2, without much sacrifice in accuracy,
+Proposition 2. This order preserving property of EGA indeed               BEC approximation will act as faithful surrogate for GA in
+gives reasonable interpretation about its “good results” versus           error analysis. According to the iteration structure in channel
+DE. Therefore, in general, the error between EGA and DE is                polarization transform in [1], we can derive as follows
+so small that it can be ignored.                                                                 2
+                                                                                I (2k−1) = I (k)
+                                                                               
+                                                                                                              when bd+1 = 0,
+Remark 2. Recall that Arıkan in [3] suggested a heuristic                           d+1          d
+                                                                                                          2                         (34)
+BEC approximation method to construct the polar codes for
+                                                                                                   
+                                                                                    (2k)      (k)     (k)
+                                                                                Id+1 = 2Id − Id
+                                                                                                             when bd+1 = 1.
+arbitrary binary-input channels, which has also yielded good
+results in experiments. The above PVS and PRS analyses                                                                  (2k)      (k)
+                                                                          Furthermore, when bd+1 = 1, we have Id+1 ≤ 2Id . Thus,
+also give interpretation about this “good results”. One can
+                                                                          in logarithmic domain, we can get
+check BEC approximation has strict order preserving property                    (
+                                                           (1)                          (2k−1)        (k)
+in size-two polarization transform, which shows I(W2 ) <                            logId+1 = 2logId       when bd+1 = 0,
+               (2)                                                                      (2k)      (k)                       (35)
+I (W ) < I(W2 ). Heuristic BEC approximation will not lead                          logId+1 ≤ logId + 1 when bd+1 = 1.
+to polarization violation and polarization reversal in this sense.                      (k)    (k)       (k)            (k)
+Therefore, this heuristic method will just bring some moderate               Define I˜d = Id + ∆d , where I˜d denotes the ca-
+                                                                                                               (k)
+performance loss rather than catastrophic jitter.                         pacity corresponding to AGA, ∆d represents the absolute
+                                                                          error of capacity calculation between AGA and EGA. For
+                                                                                           (k)        (k)
+                                                                          r < d ≤ n, I˜d and Id represent the capacities, which
+B. CLE of Channel Polarization                                            are calculated by BEC approximation, of AGA and EGA
+   Polarization violation and polarization reversal reveal the            respectively. In this paper, We only analyze the error between
+essential reason that AGA cannot work well for long code                  AGA and EGA, rather than the error of GA itself or the
+lengths. Besides these two sets, in this subsection, we further           error brought in by heuristic BEC approximation. Therefore,
+                                                                            (1)                (k)      (k)  (k)
+propose a new metric, named cumulative-logarithmic error                  ∆r = ∆r . Let ρd = ∆d /Id denote            the relative
+                                                                                                                                   error,
+(CLE) of channel polarization, to quantitatively evaluate the                   (k)         ˜(k)         (k)             (k)
+                                                                          and ed = logId − logId = log 1 + ρd                  denote the
+remainder approximation error between AGA and EGA. Then                   capacity calculation error in logarithmic domain. Hence, the
+CLE is utilized to guide the design of GA approximation                   partial cumulative-logarithmic error (PCLE) can be written as
+function Ω (t).                                                                                            n−r
+                                                                                                          2X
+   For Ω (t) in AGA, suppose its SPVS = ∅ and SPRS = ∅,
+CLE will play a crucial role in evaluating the performance of                                    Cr:n =          e(k)
+                                                                                                                  n .                    (36)
+                                                                                                          k=1
+AGA. We concern about the subchannel’s capacity, which is                                                                           P
+a function of LLR mean under GA assumption. Hence, the                    The cumulative-logarithmic error (CLE) will be C =            Cr:n .
+                                                                                                                                    r
+difference between Ω (t) and φ (t) brings in calculation error
+in subchannel capacity evaluation. The original absolute error            C. CLE Bound
+of capacity calculation between AGA and EGA is denoted by                   The precise calculation of CLE is too complicated to be
+∆ (t), which is a function of LLR mean t. Without ambiguity,              analyzed using recursive relation (34). In this subsection, we
+∆ (t) will be abbreviated to ∆ in this paper.                             propose an upper bound on CLE to simplify its calculation.
+                                                                                                                                                           8
+
+
+
+Definition 3. For the k-th leaf node corresponding to a                                  Combing (43) and (44), we prove the theorem.
+path bnr+1 , we define |{r + 1 ≤ i ≤ n : bi = 0}| = α and
+                                                                                       Theorem 3. PCLE Cr:n can be upper bounded by
+|{r + 1 ≤ i ≤ n : bi = 1}| = n − r − α.                                                                                                   !
+                                                                                                                                      (1)
+                                                 (k)                                            n−r
+                                                                                                       
+                                                                                                             (1)
+                                                                                                                 
+                                                                                                                     n−r           ∆r
+Theorem 2. The logarithm error en
+                                can be bounded by                                       Cr:n ≤ 3    log 1 + ρr     =3     log 1 + (1) .
+                                              !                                                                                     Ir
+                                          (1)
+                                        ∆r                                             Proof. For any k ∈ {1, 2, · · · , 2n−r
+                                                                                                                             }, the number
+                        
+      (k)  α         (1)
+     en ≤ 2 log 1 + ρr        α
+                           = 2 log 1 + (1) .                                                                                                   of vectors
+                                        Ir                                             bnr+1 satisfying Definition 3 is n−r
+                                                                                                                          α  , where  b n
+                                                                                                                                        r+1 is the binary
+             (k)                                             (k)              (k)
+                                                                                       expansion of k−1. Combined with definition (36) and Theorem
+Proof. Let ẽd denote the bound of ed . Then, ẽn is                                 2, Cr:n satisfies the following constraint
+                           (1)   (1)           (1)
+determined by specifying ẽr = er = log 1 + ρr     and                                            n−r
+                                                                                                 2X               n−r
+                                                                                                                  X
+                                                                                                                        n−r α
+                                                                                                        ẽ(k)                   e(1) = 3n−r e(1)
+                                                                                                                          
+                                                                                     Cr:n ≤            n   =          α 2     r           r   . (45)
+          ẽ(2k−1) = D ẽ(k)     when bd+1 = 0,
+              d+1           d                                                                    k=1              α=0
+              (2k)
+                      
+                        (k)
+                                                    (37)
+          ẽ
+              d+1 = E ẽd         when bd+1 = 1,                                       The last equation in (45) uses binomial theorem. Therefore,
+                                                                                                                                                 
+                                                                                                                         P n−r               (1)
+                                                                                       CLE C can be upper bounded by       3      log2 1 + ρr      ,
+where E : R → R, E (z) = z denotes equality, D : R → R,                                                                         r
+D (z) = 2z denotes doubling.                                                           and the exponent n − r stands for polarization levels.
+      (1)                        (k)
+  If ∆r ≥ 0, it claims that ∆d ≥ 0 holds in terms of
+Theorem 1. Note that during the iteration, when bd+1 = 0,                                        V. I MPROVED G AUSSIAN A PPROXIMATION
+                           (2k−1)          (k)          (2k−1)                            In this section, guided by the previous PVS, PRS and
+                  0 ≤ ed+1          = 2ed = ẽd+1                  .            (38)   CLE analyses, we propose new rules to design AGA for the
+                                                      (2k)             (2k)            construction of polar codes. Then we give three specific forms
+When bd+1 = 1, it can be proved that ed+1 ≤ ẽd+1 . According
+                                                                                       of the approximation function in AGA, which have advantages
+to the first equation of (34), it is easy to get that
+                          2                                                          in both complexity and performance.
+    (2k)      (k)      (k)
+  I˜d+1 = 2I˜d − I˜d
+                                                                                       A. Design Rules of AGA
+                                            2
+                (k)     (k)        (k)     (k)                                            For channels other than BEC (e.g. AWGN channel), AGA
+         = 2 Id + ∆ d         − Id + ∆d
+                          2                              2                         is widely used to construct polar codes. However, in practical
+              (k)      (k)         (k)      (k) (k)     (k)
+         = 2Id − Id           + 2∆d − 2Id ∆d − ∆d              .                       implementation, the accuracy of approximation function Ω (t)
+           |        {z      } |                {z            }                         will greatly affect the construction of polar codes especially
+                    (2k)                                       (2k)
+                  =Id+1                                  =∆d+1                         when the code length is long. According to Theorem 3, the
+                                                                                (39)   initial error will be exponentially amplified with the increase of
+            (2k)
+Therefore, ed+1 can be written as                                                      polarization levels. Note that PCLE bound is mainly affected
+      (2k)
+                  
+                        (2k)
+                                                                                      by two factors: the first term 3n−r is relevant to polarization
+     ed+1 = log 1 + ρd+1                                                               levels, and the second term is dependent on the original relative
+                                                       !
+                                                   (k) 2
+                                                                                                (1)      (1)  (1)                                    (1)
+                                                                                (40)   error ρr = ∆r /Ir . In general, the absolute error ∆r is
+                                                
+                                (k)    (k) (k)
+                              2∆d −2Id ∆d − ∆d
+             = log         1+         (k)
+                                          
+                                             (k) 2
+                                                         .                            tiny. Therefore, for the good channels whose capacities Ir
+                                                                                                                                                         (1)
+                                    2Id − Id
+                                                                                                                                    (1)
+                                                                                       approach 1, their original relative errors ρr are so small that
+In addition, we have                                                                   they can be ignored. However, for the bad channels whose
+                                             !                                                       (1)
+     (2k)
+              
+                     (2k)
+                          
+                            (k)        ∆d
+                                         (k)                                           capacities Ir approach 0, their original relative errors are not
+   ẽd+1 = log 1 + ρ̃d+1 = ed = log 1 + (k) .                                   (41)                                                               (1)
+                                                                                       negligible. Subsequently, given a fixed absolute error ∆r , the
+                                       Id                                                        (1)
+                                                                                       more Ir is close to 0, the larger the original relative error
+Then we can check                                                                        (1)
+                                                                                       ρr becomes.
+                                                                  
+                                ∆d
+                                    (k)
+                                         Id + ∆d
+                                                (k)          (k)                          Above analysis indicates that CLE bound is mainly affected
+           (2k)       (2k)                                                                                                                     (1)
+          ρ̃d+1 − ρd+1 =                                             ≥ 0.     (42)   by the terms Cr:n with the small initial capacity Ir , which
+                                     (k)        (k)
+                                    Id     2 − Id                                      corresponds to the bad channels. Due to the error, some frozen
+                                                                                       subchannels will be wrongly identified as information-carrying
+                              (k)         (k)
+It can be inferred that ẽd ≥ ed ≥ 0 holds.                                            ones (role flipping), which results in the performance degrada-
+                                                              (k)                                                      (1)
+   Recall Definition 3, during the iterative calculation of ẽn ,                      tion. Note that the capacity Ir monotonically increases with
+we count doubling α times and equality n − r − α times.                                LLR mean t under the GA assumption. In addition, according
+Hence, we have                                                                         to (14), we have
+                                             
+     0 ≤ e(k)
+           n  ≤  ẽ (k)
+                    n   = E n−r−α α
+                                 D      e (1)
+                                          r     = 2α e(1)
+                                                      r .    (43)                                        lim Ir(1) = 0, lim Ir(1) = 1.                 (46)
+                                                                                                         t→0             t→+∞
+
+                      (1)
+  Analgously, if ∆r < 0, we have ∆d < 0. From (38) and
+                                                       (k)                               Guided by above analyses, the AGA approximation function
+(42), we can get                                                                       design is composed of three rules:
+                                                                                     Rule 1) PVS and PRS eliminating: Ω (t) should guarantee
+     0 > e(k)    (k)
+          n > ẽn = E
+                      n−r−α α
+                             D e(1)
+                                  r   = 2α e(1)
+                                            r .   (44)                                          SPVS = ∅ and SPRS = ∅. According to Proposition
+                                                                                                                                  9
+
+
+
+         4 and its converse-negative proposition, if SPVS = ∅,      Therefore, for Ω2 (t), in terms of (47), when t  0 we have
+         we have SPRS = ∅. Hence, in order to empty PVS
+         and PRS, we should ensure 0 < Ω (t) < 1 for any                     e−0.2944(t−ε)−0.3169 = e−0.2944t−0.3169+ln 2
+                                                                                                                              (51)
+         t ∈ (0, +∞).                                                                        ⇒ ε = 2.3544,
+Rule 2) Low SNR design: When t comes close to 0, we must            where t − ε should locate in the sencond segment, namely
+         guarantee lim Ω (t) = 1 to reduce approximation            t − ε > a, which claims t > 9.4177. Following Rule 3, for
+                     t→0
+         error. Since CLE bound is amplified exponentially          the entire AGA-2 scheme, its fc (t) is further simplified as
+         with the growth of polarization levels, the only way                   (                           
+                                                                                                           2
+         to reduce CLE bound is to lower the initial relative                     Ω−1
+                                                                                    2    1 − (1 − Ω 2 (t))     0 ≤ t ≤ τ,
+                 (1)                                                   fc (t) =                                               (52)
+         error ρr . Therefore, Ω (t) needs to be divided into                     t − 2.3544                   t > τ,
+         more segments when t approaches 0. This rule can
+                                               (1)
+         reduce the original absolute error ∆r in the vicinity      where the boundary point is τ = 9.4177.
+                               (1)
+         of 0 so as to lower ρr .                                      From the subsequent CLE analysis, we find that although
+Rule 3) High SNR design: When t stays away from 0, thanks           AGA-2 can satisfy Rule 1 so as to remove the rank error, it
+                                   (1)                              will still bring obvious approximation error in the vicinity of
+         to the relatively large Ir , CLE bound can tolerate
+                                           (1)                      0. Therefore, when the code length is relatively long, AGA-2
+         a more obvious absolute error ∆r . Therefore, Ω (t)
+                                                                    will also bring some moderate performance loss. In order to
+         can be selected with some simpler forms to reduce
+                                                                    further improve the GA construction performance, we propose
+         the computational complexity.
+                                                                    a new piecewise function Ω3 (t) with three segments by using
+   Besides, Ω (t) should keep continuity between the adjacent       curve-fitting algorithm, that is
+two segments, which can mitigate the jitter of CLE bound by                           0.06725t2 −0.4908t
+keeping smooth of initial error. Among these three rules, Rule                        e                    0 < t ≤ a,
+                                                                                                 0.86
+1 is the most crucial, which can prevent the corresponding                Ω3 (t) =      e−0.4527t +0.0218 a < t ≤ b,           (53)
+                                                                                      −0.2832t−0.4254
+AGA polar code construction scheme from severe performance                              e                   b < t,
+loss. Then the importance of Rule 2 is second, which reduces
+the remainder approximation error between AGA and EGA.              where the boundary points a = 0.6357 and b = 9.2254. Its
+Rule 3 plays a less important role, which helps to further          corresponding AGA algorithm is denoted by AGA-3. It is
+reduce the computational complexity of AGA.                         specially designed for polar codes, which follows the proposed
+                                                                    rules. AGA-3 can better satisfy Rule 1 and Rule 2. Especially
+B. Improved AGA Approximation Function                              in the third segment, namely the high SNR region, AGA-3 has
+   Recall the analysis in Section IV, Chung’s two-segment           lower computational complexity compared to Chung’s scheme
+AGA scheme leads to SPVS 6= ∅ and SPRS 6= ∅, which                  which obeys Rule 3. In addition, the inverse function of Ω3 (t)
+violates Rule 1. Therefore, guided by above rules, we design        can be easily obtained. Similar with AGA-2, for the whole
+the following new two-segment approximation function by             AGA-3 scheme, its fc (t) can be further simplified as
+employing curve-fitting algorithm with minimum mean square
+                                                                                 (                            
+                                                                                                             2
+                                                                                    Ω−1
+                                                                                      3    1 − (1 − Ω 3 (t))     0 ≤ t ≤ τ,
+error criterion, denoted by Ω2 (t),                                     fc (t) =                                              (54)
+                              2
+                                                                                    t − 2.4476                   t > τ,
+                       e0.0116t −0.4212t 0 < t ≤ a,
+          Ω2 (t) =       −0.2944t−0.3169                (47)        where the boundary point is τ = 11.673.
+                       e                 a < t,
+                                                                       There is no doubt that, if the code length becomes extremely
+where the boundary point a = 7.0633. The corresponding              long, the three-segment approximation function in AGA-3 will
+new AGA algorithm is denoted by AGA-2. In the construction          also bring calculation error, which obeys Theorem 3 and is
+of polar codes, compared with Chung’s scheme, AGA-2 can             stated in Rule 2. Hence, we design the following four-segment
+eliminate rank error and therefore will not lead to catastrophic    improved AGA scheme for extremely long polar code, that is
+performance loss at the long code lengths. In addition, since                     0.1047t2 −0.4992t
+the inverse function of Ω2 (t) can be analytically obtained, it                    e                             0 < t ≤ a,
+                                                                                                       2
+                                                                                    0.9981 · e0.05315t −0.4795t a < t ≤ b,
+                                                                                 
+has lower calculating complexity. Furthermore, guided by Rule          Ω4 (t) =                                                (55)
+3, for fc (t) in (8), when t leaves away from 0, 1 − Ω2 (t) tends                     −0.4527t0.86 +0.0218
+                                                                                  e−0.2832t−0.4254
+                                                                                 
+                                                                                                                 b < t ≤ c,
+to 1, which indicates                                                               e                             c < t,
+                       2
+          (1 − Ω2 (t)) ≈ 1 − Ω2 (t) ⇒ fc (t) ≈ t.           (48)    where the boundary points a = 0.1910, b = 0.7420 and
+                                                                    c = 9.2254. The approximation accuracy in the vicinity of
+Followed by Proposition 2, fc (t) should satisfy fc (t) < t.
+                                                                    0 is further improved. Its corresponding AGA algorithm is
+Thus, when t stays away from 0, the complex fc (t) can be
+                                                                    denoted by AGA-4. The inverse function of Ω4 (t) can also
+further approximated as
+                                                                    be analytically obtained. Since the last two segments in Ω4 (t)
+                           fc (t) = t − ε,                  (49)    are the same as that in Ω3 (t), the fc (t) function in AGA-4
+                                                                    also has the same form as the equation (54).
+where ε denotes the offset. Then according to (8), when Ω2 (t)
+                                                                       The computational complexity of fc (t) has been remarkably
+tends to 0, one can check
+                                                                    reduced thanks to Rule 3 in the above three proposed AGA
+                                             2
+          Ω2 (t − ε) = 2Ω2 (t) − Ω2 (t) ≈ 2Ω2 (t) .         (50)    schemes. Moreover, Rule 1 and Rule 2 help AGA to achieve
+                                                                                                                                        10
+
+
+
+excellent performance. Thus, for the general construction of           be ignored. Hence, it has the lowest complexity among
+polar codes, the proposed AGA-2 scheme is a good alternate             the four schemes.
+to improve the Chung’s conventional AGA scheme. When the             • DE needs a fast Fourier transform (FFT) and an inverse
+code length becomes longer, the proposed AGA-3 scheme                  fast Fourier transform (IFFT) operation when calculating
+will achieve better performance than AGA-2 scheme. If the              the probability density function (PDF) of LLR of each
+code length becomes extremely long, AGA-4 will present                 bit. The corresponding complexity is O (ξ log ξ), where ξ
+better performance. When the code length continues to grow,            denotes the number of samples. However, a typical value
+AGA-4 will inevitably bring calculation error, which follows           of ξ is about 105 [13], implying a huge computational
+Theorem 3 and Rule 2. Nevertheless, followed by Rule 1 to              burden in practical application. The difficulty is further
+3, we can still design AGA with more complex multi-segment             aggravated by the quantization errors, which will be
+approximation function to keep the calculation accuracy. In            accumulated over multiple polarization levels.
+this way, we provide a systematic framework to design high           • Tal and Vardy’s method can be viewed as an approximate
+accuracy AGA scheme for polar codes at any code length.                version of DE [5] and has a complexity of O(µ2 log µ),
+   As for the specific forms of the new AGA approximation              where µ is a fixed, even and positive integer independent
+functions, it is heuristically obtained from Chung’s original          of code length N . In general, a typical value of µ is 256
+ϕ (t) while taking the Rule 1 to 3 into consideration. The first       which is much less than ξ. Hence, this method has much
+segment should ensure lim Ω (t) = 1 and use some complex               lower complexity than DE. But when the code length
+                         t→0
+functions to reduce the relative error. When t stays away from         becomes long, Tal and Vardy’s method still involves
+0, Ω (t) can be selected with some simpler forms to reduce the         relatively high computational complexity.
+computational complexity. After choosing the approximation           • Regarding the proposed AGA method, the complexity of
+
+form, its parameters are acquired by curve-fitting. Certainly,         calculating fv (t) can be ignored since the result can be
+one can choose different approximation functions according to          obtained easily. For fc (t), when t > τ , its calculating
+the proposed rules. Finally, the performance will be evaluated         complexity can also be ignored. When 0 ≤ t ≤ τ ,
+by calculating its CLE bound.                                          since the inverse function in fc (t) can be analytically
+   For other channels W rather than the AWGN (e.g. the                 obtained, the computational complexity is O (1). From
+Rayleigh fading channel), one may expect better performance            these comparison, it can be concluded that our proposed
+at the expense of more complexity in the code construction             AGA schemes have similar calculating complexity order
+by using DE. However, we can approximate the channel W                 with the heuristic BEC approximation, which are much
+using an AWGN channel W with σ, where                                  lower than DE or Tal and Vardy’s algorithms.
+
+                  I W = I (W ) = h σ 2 .
+                                          
+                                                           (56)                   VI. P ERFORMANCE E VALUATION
+The code construction is then then performed over each of             The precise results and corresponding upper bounds of CLE
+the equivalent AWGN channels in the same GA way as that            for various AGAs are depicted in Fig. 5, where the polarization
+in the conventional AWGN case. As that will be shown in            level n = 8 and r = 0 (CLE C = C0:8 ). It can be found that
+Section VI, the proposed AGA based construction of polar           the CLE bound and the exact result coincide well. Therefore,
+codes works well for other channels as well. This is significant   the CLE bound may be used as an effective tool to evaluate the
+in that it shows the robustness of the AGA construction against    performance of various AGA schemes. From Fig. 5, we can
+uncertainty and variation in channel parameters.                   see that the CLE bound of Chung’s conventional AGA scheme
+
+C. Complexity Comparison
+    In this part, we compare the order of complexities with four
+typical polar code construction methods, which are Arıkan’s
+heuristic BEC approximation method, DE algorithm, Tal and
+Vardy’s method and our proposed AGA schemes. Note that the
+complexity order provided only includes the dominant terms,
+and the detailed number of calculation depends heavily on the
+specific hardware implementation, which is beyond the scope
+of this paper.
+    One can check the principle of these four methods is
+to recursively calculate each subchannel’s reliability on the
+code tree. Therefore, their the total number of node visiting
+complexity can be written as O (N ) + O (N/2) + O (N/4) +
+· · · + O (2) + O (1) = O (N ). It seems that these four methods
+have the same number of node visiting. Furthermore, we
+analyze the computational complexity of each visiting.
+    • For the heuristic BEC approximation, the computational       Fig. 5. The precise results and corresponding upper bounds of CLE for
+       complexity of each visiting operation is O (1), which can   various AGAs, where t stands for LLR mean and polarization level n = 8.
+                                                                                                                                          11
+
+
+
+is obviously higher than that of AGA-2 and AGA-3, which
+indicates the poor performance of polar codes when Chung’s
+AGA scheme is used. Compared with AGA-2, the CLE bound
+of AGA-3 also shows some performance gain. Furthermore,
+AGA-4 can achieve the best performance among these AGA
+schemes. We notice that there exists a non-monotonic behavior
+for the CLE bound. This phenomenon is caused by function
+                                                   (1)
+fitting because there is different relative error ρr for different
+t, which results in the jitter of CLE bound.
+    Next we compare the BLER performance among different
+construction schemes under the BI-AWGN channel, which is
+shown in Fig. 6. All the schemes have code rate R = 1/3
+with the SC decoding. The code lengths N are set to 212 , 214
+and 218 , respectively. From these results, it can be found that
+the BEC approximation scheme demonstrates some moderate
+performance loss compared with other advanced construction
+methods. For the extremely long code lengths, since DE falls         Fig. 6. The SC decoding BLER performance comparison of polar codes with
+into a huge computational burden in the practical application,       the code length N = 2n (n = 12, 14, 18) and the code rate R = 1/3 over
+we use Tal and Vardy’s method as an alternate with almost            the BI-AWGN channel.
+no performance loss. Therefore, Tal and Vardy’s construction
+possesses the highest accuracy in Fig. 6. However, it still
+requires high computational complexity at long code lengths.
+Among the AGA schemes, we can see that Chung’s scheme
+suffers from a dramatic performance loss with the increase
+of code length since it violates Rule 1. On the contrast, our
+proposed AGA-2 achieves good performance. Hence, AGA-2
+can be employed as a good alternate for Chung’s two-segment
+method at some moderate code lengths. It can also be observed
+that the proposed AGA-3 scheme achieve better performance
+which follows Rule 1 and Rule 2. Furthermore, we can see
+that AGA-4 scheme approaches the performance of Tal and
+Vardy’s method, which can be used for some extremely long
+code length. In addition, with the increase of code length, the
+performance gap between AGA-3 and AGA-4 becomes larger.
+Therefore, in terms of the previous CLE bound analyses and
+simulation results, it can be predicted that the performance
+gap will become more and more obvious with the increase of           Fig. 7. The SC decoding BLER performance comparison of polar codes with
+                                                                     code length N = 214 = 16384 and code rates R = 1/3 and R = 2/5 over
+code length.                                                         the Rayleigh fading channel.
+    The comprehensive BLER performance comparisons with
+the SC decoding in terms of different construction schemes
+under the Rayleigh fading channels are given in Fig. 7. The
+code length is N = 214 , and the code rates R are set to 1/3
+and 2/5, respectively. Similar with Fig. 6, we can see that DE
+algorithm achieves the best performance. Chung’s scheme also
+presents poor performance since it cannot satisfy Rule 1. On
+the contrary, AGA-4 scheme suffers from an ignorable loss
+of performance compared with DE algorithm. Furthermore, it
+becomes more computationally efficient and implementable in
+practical use than the former. In addition, AGA-4 can stably
+achieve 0.15 ∼ 0.2dB gain for different code rates compared
+with AGA-3 scheme. These results shows the robustness of the
+AGA construction against uncertainty and variation in channel
+parameters, which is valuable for polar coding.
+    In Fig. 8, we provide the BLER performance of polar codes
+by using the adaptive cyclic redundancy check (CRC) aided
+SC list decoding (Ad-CASCL) [14], [15]. The maximum list
+                                                                     Fig. 8. The Ad-CASCL decoding BLER performance comparison of polar
+size in the Ad-CASCL decoder is denoted by Lmax . The 16-bit         code and LTE turbo code with the code length N = 214 = 16384 and the
+CRC in LTE standard [16] is used. The performance of LTE             code rates R = 1/3. The channel is configured as the BI-AWGN.
+                                                                                                                                             12
+
+
+
+turbo code is also given as a comparison, where the Log-MAP                                     R EFERENCES
+decoding is applied in the turbo decoder with 8 iterations [17].    [1] E. Arıkan, “Channel polarization: A method for constructing capacity
+We can see that Chung’s conventional AGA scheme shows                   achieving codes for symmetric binary-input memoryless channels,” in
+poor performance. It indicates that this traditional two-segment        IEEE Trans. Inf. Theory, vol. 55, no. 7, pp. 3051-3073, Jul. 2009.
+                                                                    [2] Chairmans notes RAN1#87, Reno, USA.
+AGA scheme is not suitable for the polar code construction.         [3] E. Arıkan, “A performance comparison of polar codes and Reed-Muller
+On the contrary, the polar codes constructed by the proposed            codes,” in IEEE Commun. Lett., vol. 12, no. 6, pp. 477-479, Jun. 2008.
+AGA-4 scheme perform well. When Lmax = 32, polar code               [4] R. Mori and T. Tanaka, “Performance of polar codes with the construc-
+                                                                        tion using density evolution,” in IEEE Commun. Lett., vol. 13, no. 7,
+can outperform LTE turbo code in the low SNR region. For                pp. 519-521, Jul. 2009.
+the high SNR region, although turbo code sometimes performs         [5] I. Tal and A. Vardy, “How to Construct Polar Codes,” in IEEE Trans.
+better than polar code, it suffers from the error floor. When           Inf. Theory, vol. 59, no. 10, pp. 6562-6582, Oct. 2013.
+                                                                    [6] R. Pedarsani, S. H. Hassani, I. Tal and E. Telatar, “On the construction
+Lmax is set to 128, polar code can outperform LTE turbo                 of polar codes,” in Proc. IEEE Int. Symp. Inform. Theory (ISIT), pp.
+code for any SNR. Additionally, this polar code constructed             11-15, St. Petersburg, 2011.
+by AGA-4 scheme with Lmax = 128 Ad-CASCL decoding                   [7] I. Tal, “On the Construction of Polar Codes for Channels with Moderate
+                                                                        Input Alphabet Sizes,” in Proc. IEEE Int. Symp. Inform. Theory (ISIT),
+can achieve BLER ≤ 10−3 at Eb /N0 = 0.51dB. We compare                  pp. 1297-1301, Hong Kong, 2015.
+this performance to the Shannon limit at the same finite block      [8] C. Schnelling and A. Schmeink, “Construction of Polar Codes Exploiting
+length, which is provided in [18]. The maximum rate that                Channel Transformation Structure,” in IEEE Commun. Lett., vol. 19, no.
+                                                                        12, pp. 2058-2061, Dec. 2015.
+can be achieved at block length N and BLER  can be well            [9] P. Trifonov, “Efficient Design and Decoding of Polar Codes,” in IEEE
+approximated by                                                         Trans. Commun., vol. 60, no. 11, pp. 3221-3227, Nov. 2012.
+                                r                                  [10] S.-Y. Chung, T. J. Richardson and R. L. Urbanke, “Analysis of sum-
+                                   V −1                                 product decoding of low-density parity-check codes using a Gaussian
+                   Rmax = C −         Q () ,               (57)        approximation,” in IEEE Trans. Inf. Theory, vol. 47, no. 2, pp. 657-670,
+                                  N                                     Feb. 2001.
+where C is the channel capacity and V is a quantity called         [11] D. Wu, Y. Li and Y. Sun, “Construction and block error rate analysis of
+                                                                        polar codes over AWGN channel based on Gaussian approximation,” in
+the channel dispersion that can be computed from the channel            IEEE Commun. Lett., vol. 18, no. 7, pp. 1099-1102, Jul. 2014.
+statistics, using the formula:                                     [12] H. Li and J. Yuan, “A practical construction method for polar codes in
+                                                                      AWGN channels,” in Proc. IEEE TENCON Spring Conf., pp. 223-226,
+                                 W (Y |X )                              2013.
+                   V = Var log                  .           (58)
+                                  W (Y )                           [13] K. Niu, K. Chen, J. Lin and Q.T. Zhang, ”Polar codes: Primary concepts
+                                                                        and practical decoding algorithms,” in IEEE Commun. Mag., vol. 52, no.
+For the BI-AWGN channel, the transition probability W (y |x )           7, pp. 192-203, Jul. 2014.
+is written in (4). The channel dispersion V is written as          [14] K. Niu and K. Chen, “CRC-aided decoding of polar codes,” in IEEE
+                                                                        Commun. Lett., vol. 16, no. 10, pp. 1668-1671, Oct. 2012.
+                                                     2         [15] B. Li, H. Shen, and D. Tse, “An adaptive successive cancellation
+                                       2W (y |x )
+              Z
+        1X
+  V =             W (y |x ) log                            dy           list decoder for polar codes with cyclic redundancy check,” in IEEE
+        2       R                W (y |0 ) + W (y |1 )                  Commun. Lett., vol. 16, no. 12, pp. 2044-2047, 2012.
+         x∈B
+                                                                   [16] 3GPP TS 36.212: “Multiplexing and channel coding,” Release 12, 2014.
+    − I 2 (W ) .                                                   [17] S. Lin and D. J. Costello, “Error Control Coding (2nd ed.),” Prentice-
+                                                      (59)              Hall, Inc., 2004.
+By using (57), we can calculate the Shannon limit for the          [18] Y. Polyanskiy, H. Vincent Poor, and S. Verdu, “Channel coding rate in
+                                                                        the finite blocklength regime,” in IEEE Trans. Inf. Theory, vol. 56, no.
+(N, K) = (16384, 5461) code which is named as the “disper-              5, pp. 2307-2359, May 2010.
+sion bound” in Fig. 8. To achieve a rate R = 5461/16384 =
+1/3, the minimum Eb /N0 required is −0.186dB. Hence, polar
+code constructed by AGA-4 with Lmax = 128 is 0.696dB from
+the Shannon limit. When Lmax increases, this SNR gap will
+become smaller.
+
+                     VII. C ONCLUSION
+   In this paper, we introduced the concepts of PVS and
+PRS which explain the essential reason that polar codes
+constructed by conventional AGA expresses poor performance
+at long code lengths. Then we proposed a new metric, named
+CLE, to quantitatively evaluate the remainder error of AGA.
+We further derived the upper bound of CLE to simplify its
+calculation. Guided by PVS, PRS and CLE bound analysis, we
+proposed new rules to design AGA for polar codes. Simulation
+results show that the performance of all AGA schemes is
+consistent with CLE analysis. When the polarization levels
+increase, Chung’s conventional AGA scheme suffers from a
+catastrophic performance jitter. On the contrary, the proposed
+AGA methods guided by the proposed rules stably guarantee
+the excellent performance of polar codes for both the AWGN
+channels and the Rayleigh fading channels.
+

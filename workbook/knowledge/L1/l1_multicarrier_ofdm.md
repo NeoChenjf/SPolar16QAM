@@ -116,3 +116,8 @@ l2_p2_mechanism、l2_p2_auxiliary_preflight、l3_p2_distribution_reference、l3_
 精确集合覆盖和小码长穷举已核验；3seed×8码字只探索。正式1%功率、3×80 PMF和独立预测均待本轮预算确认，未将任何历史not_assessed自动改为supporting。
 
 Revision metadata: revision_id=p2_038f888b61ec_20261024; current_status=current; supersedes=[l1_multicarrier_p1_current_snapshot_20261011].
+
+
+## 2026-11-07 固定幅度瑞利策略首轮证据
+
+H2 本轮在固定16QAM幅度、固定参考噪声、27组p及20个独立测试信道下得到限定的折中证据：训练所得两档均选 [0.1,0.1,0.1]，没有实际自适应切换；相对均匀基线Goodput降低而假设二/四阶能量代理提高。三计划基线均已比较，不能由此宣称全局最优或实测直流收益。具体帧分母、配对区间和未知器件假设见 `学习文档/硬件前信息与非线性收能定量分析及瑞利策略优化-loop/E2瑞利策略首轮结果-2026-11-07.md`；本追加不改变旧P1/P2实验状态。

@@ -1,45 +1,46 @@
-# SPolar16QAM
+# 自适应无线信息与能量协同传输编码
 
-研究生课题：**自适应无线信息-能量协同传输编码**。当前在研实现是一个 MATLAB 仿真系统，
-研究 **16QAM 概率成形 + 极化码（Polar）** 在 BER / Goodput / 收获能量三维权衡下，
-面向无电池 6G IoT 场景的最优工作点。
+研究主线为固定16QAM概率成形与极化码，研究BER、Goodput和接收能量的权衡。多QAM仅作方法外推支撑。
 
-活跃代码在 `16QAM_Polar/v2/`。
+## 从这里开始
 
-## 文档与规则入口
+1. [当前工作与研究状态](next_plan.md)：先读顶部当前入口，再按链接查看最新证据。
+2. [项目指引](AGENTS.md)与[操作规则](workbook/README.md)：唯一Agent指引为AGENTS.md。
+3. [阶段B记录](周报/阶段B/B4：full-chain策略验证.md)：按文件末尾最新记录判断状态。
+4. [研究学习资料](学习文档/README.md)与[代码地图](16QAM_Polar/README.md)。
 
-| 入口 | 作用 |
-|------|------|
-| `CLAUDE.md` / `AGENTS.md` | AI agent 工作入口与项目地图 |
-| `workbook/` | 操作规则手册（`mandatory-rules.md` 为硬规则） |
-| `周报/` | 阶段文档与周报（研究范围/验收/结果解释的真相源） |
-| `next_plan.md` / `项目整体计划书.md` | 计划与总体规划 |
+## 当前状态（2026-10-28）
 
-## 科研 Spec-Harness（L1 / L2 / L3 知识库）
+P2首轮正式批次的功率门禁未通过：已完成6/23个任务，后续正式PMF、通信与模型验收未执行。当前优先分析现有数据、整理机制解释与论文证据；不自动重启长跑。已完成的软件实现不等于研究假设或模型验收通过。
 
-本项目接入了一套对标 **hic-spec** 的科研知识治理体系，把课题结构化为三层、可被 AI
-理解并量化完备度（RKS 评分）：
+## 目录导航
 
-- **L1 研究领域** — 研究问题 / 假设 / 物理量 / 理论边界 / 护栏（`workbook/knowledge/L1/`）
-- **L2 实验流程** — 每个 `run_*` 入口的端到端 pipeline / 参数 / 产物 / 验收（`workbook/knowledge/L2/`）
-- **L3 方法契约** — 每个 `.m` 函数的签名 / 公式 / 数值坑 / 依赖 / 健康度（`workbook/knowledge/L3/`）
+| 目录 | 职责 |
+| --- | --- |
+| [16QAM_Polar/v2](16QAM_Polar/v2/) | 当前MATLAB代码；results保留原始实验路径 |
+| [scripts](scripts/) | MATLAB启动、P2预算、审核与已批准批次调度工具 |
+| [workbook](workbook/README.md) | 项目规则与[L1/L2/L3知识库](workbook/knowledge/README.md) |
+| [周报](周报/) | 阶段验收、证据边界及工作记录 |
+| [学习文档](学习文档/README.md) | 机制解释、阅读讨论、专题学习与执行清单 |
+| [中期相关](中期相关/) / [开题相关](开题相关/) | 按阶段保留的交付材料与参考模板 |
+| 参考文献2026、参考文献Polar、研究生参考文献 | 原始文献资料，按原路径保留 |
+| [.agents/skills](.agents/skills/) | 当前项目Skill入口；.claude下旧材料保留兼容参考 |
+| [治理记录](治理记录/20261028/README.md) | 本次盘点、归档、恢复包与验证证据 |
 
-详见 `workbook/knowledge/README.md`。维护它的 skill 在 `.claude/skills/`：
-`research-meta-extractor`（提取）、`research-spec-checker`（校验）、
-`research-scan-orchestrator`（编排 + RKS 评分）。
+## 运行
 
-```bash
-# 快速看知识完备度评分（纯 Python 标准库，本地可跑）
-python3 .claude/skills/research-scan-orchestrator/scripts/rks_evaluate.py \
-  --project-root . --system-id spolar16qam --append-ledger --write-report
-```
+Windows环境使用MATLAB R2020b。环境自检：`scripts/run_matlab_local.ps1 "check_env"`。仿真前阅读[规则](workbook/mandatory-rules.md)，长跑须单独授权。不要通过旧版脚本启动当前实验。
 
-## 常用 MATLAB 命令（在 `16QAM_Polar/v2/`）
+[本次整理报告](仓库整理报告-2026-10-28.md)。本次治理的Markdown改写例外仅对本次有效。
 
-```matlab
-setup_paths; run_single;            % 快速冒烟测试（分钟级）
-setup_paths; run_sweep;             % 全 p×SNR 扫参（长跑，先确认）
-setup_paths; run_sc_theory_vs_sim;  % SC 理论 vs 仿真对照
-```
 
-> 长跑 / 高算力仿真须由用户本地运行（`workbook/mandatory-rules.md` §3）。
+## 2026-11-09 仓库清理入口
+
+已扫描全仓文件并集中审查验证脚本；10个一次性/固定历史结论的脚本已移出活跃MATLAB路径，原文件压缩保存，两个零字节占位文件移除。清单、保留边界和恢复方法见[本轮清理记录](治理记录/20261109/README.md)。历史文档与实验数据保留；旧文档中已退役脚本名仅作为历史记录，使用前查阅最新清单。
+
+
+## 2026-11-10 当前阅读入口与治理状态
+
+上方2026-10-28状态及早期计划属于历史；不要据旧“从顶部读”提示启动实验。当前优先读[当前研究路线](学习文档/硬件前信息与非线性收能定量分析及瑞利策略优化-loop/当前研究路线-2026-11-10.md)的末尾补充，再读[A0仿真正确性与统计可信度执行计划](学习文档/硬件前信息与非线性收能定量分析及瑞利策略优化-loop/A0仿真正确性与统计可信度执行计划-2026-11-10.md)及[next_plan末尾](next_plan.md)。这些计划不自行构成运行授权。
+
+[本轮全仓治理记录](治理记录/20261110_repo_governance/README.md)提供盘点范围、保留理由、代码维护热点和两份待批准缓存清单。当前已完成诊断与导航整理，未删除文件、合并算法或重启实验。既有退役脚本恢复仍见[11月9日记录](治理记录/20261109/README.md)。

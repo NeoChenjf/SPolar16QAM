@@ -1,0 +1,17 @@
+{
+  "A_D_raw_deleted": 1169,
+  "A_D_raw_bytes": 756302184,
+  "pre_midterm_duplicates_deleted": 36,
+  "pre_midterm_duplicate_bytes": 14083636,
+  "total_files": 1205,
+  "total_logical_bytes": 770385820,
+  "total_MiB": 734.6971702575684,
+  "nonselected_result_files_unexpectedly_missing": [],
+  "nonselected_original_result_file_size_changes": [],
+  "A_D_nonraw_hash_failures": [],
+  "all_36_replacement_hashes_verified": true,
+  "B_C_deleted": false,
+  "raw_AD_external_backup_verified": false,
+  "scope": "A+D approved raw list plus user-authorized byte-identical redundant pre-midterm table/figure files; no whole directory deletion",
+  "not_measured": "actual filesystem allocation/free-space delta"
+}

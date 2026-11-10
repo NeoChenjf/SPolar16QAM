@@ -1,0 +1,1905 @@
+[
+  {
+    "family": "ook_gettest_style_format_smoke",
+    "older": "16QAM_Polar/OOK/results/20260704_161819_ook_gettest_style_format_smoke",
+    "newest": "16QAM_Polar/OOK/results/20260704_161859_ook_gettest_style_format_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "bpsk_baseline",
+    "older": "16QAM_Polar/results/20260421_110930_bpsk_baseline",
+    "newest": "16QAM_Polar/results/20260421_113316_bpsk_baseline",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "bpsk_baseline.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "bpsk_baseline",
+    "older": "16QAM_Polar/results/20260421_111939_bpsk_baseline",
+    "newest": "16QAM_Polar/results/20260421_113316_bpsk_baseline",
+    "same_csv": [
+      "bpsk_baseline.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "bpsk_baseline",
+    "older": "16QAM_Polar/results/20260421_112050_bpsk_baseline",
+    "newest": "16QAM_Polar/results/20260421_113316_bpsk_baseline",
+    "same_csv": [
+      "bpsk_baseline.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "bpsk_baseline",
+    "older": "16QAM_Polar/results/20260421_112213_bpsk_baseline",
+    "newest": "16QAM_Polar/results/20260421_113316_bpsk_baseline",
+    "same_csv": [
+      "bpsk_baseline.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "bpsk_baseline",
+    "older": "16QAM_Polar/results/20260421_112445_bpsk_baseline",
+    "newest": "16QAM_Polar/results/20260421_113316_bpsk_baseline",
+    "same_csv": [
+      "bpsk_baseline.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_guardband_candidate_frozen",
+    "older": "16QAM_Polar/v2/experiments/results/20261009_210822_b4b_guardband_candidate_frozen",
+    "newest": "16QAM_Polar/v2/results/20261009_210928_b4b_guardband_candidate_frozen",
+    "same_csv": [
+      "b4b_strategy_summary.csv",
+      "policy_selection.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "sc_waterfall_refine",
+    "older": "16QAM_Polar/v2/results/20260520_164121_sc_waterfall_refine",
+    "newest": "16QAM_Polar/v2/results/20260520_180719_sc_waterfall_refine",
+    "same_csv": [
+      "coarse_scan.csv",
+      "coarse_scan_partial.csv",
+      "waterfall_window.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "sc_waterfall_refine",
+    "older": "16QAM_Polar/v2/results/20260520_173921_sc_waterfall_refine",
+    "newest": "16QAM_Polar/v2/results/20260520_180719_sc_waterfall_refine",
+    "same_csv": [
+      "coarse_scan.csv",
+      "coarse_scan_partial.csv",
+      "waterfall_window.csv"
+    ],
+    "different_or_missing_csv": [
+      "local_waterfall_curve.csv",
+      "local_waterfall_repetitions.csv",
+      "local_waterfall_repetitions_partial.csv",
+      "local_waterfall_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "singlecarrier_sc_closure",
+    "older": "16QAM_Polar/v2/results/20260520_231445_singlecarrier_sc_closure",
+    "newest": "16QAM_Polar/v2/results/20260826_105509_singlecarrier_sc_closure",
+    "same_csv": [
+      "fullchain_sc_closure.csv",
+      "mechanism_comparison.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_sc_final_global_curves",
+    "older": "16QAM_Polar/v2/results/20260521_150555_phaseA_sc_final_global_curves",
+    "newest": "16QAM_Polar/v2/results/20261009_193607_phaseA_sc_final_global_curves",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "codeonly_final_repetitions.csv",
+      "codeonly_final_repetitions_partial.csv",
+      "codeonly_final_summary.csv",
+      "fullchain_final_repetitions.csv",
+      "fullchain_final_repetitions_partial.csv",
+      "fullchain_final_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_sc_final_global_curves",
+    "older": "16QAM_Polar/v2/results/20261009_181301_phaseA_sc_final_global_curves",
+    "newest": "16QAM_Polar/v2/results/20261009_193607_phaseA_sc_final_global_curves",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "codeonly_final_repetitions.csv",
+      "codeonly_final_repetitions_partial.csv",
+      "codeonly_final_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_sc_final_global_curves",
+    "older": "16QAM_Polar/v2/results/20261009_193413_phaseA_sc_final_global_curves",
+    "newest": "16QAM_Polar/v2/results/20261009_193607_phaseA_sc_final_global_curves",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "codeonly_final_repetitions.csv",
+      "codeonly_final_repetitions_partial.csv",
+      "codeonly_final_summary.csv",
+      "codeonly_theory_partition_indices.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_sc_theory_fullchain_curves",
+    "older": "16QAM_Polar/v2/results/20260522_143507_phaseA_sc_theory_fullchain_curves",
+    "newest": "16QAM_Polar/v2/results/20260522_144919_phaseA_sc_theory_fullchain_curves",
+    "same_csv": [
+      "theory_p_summary.csv"
+    ],
+    "different_or_missing_csv": [
+      "theory_fullchain_curves.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_sc_theory_combine_sensitivity",
+    "older": "16QAM_Polar/v2/results/20260522_144755_phaseA_sc_theory_combine_sensitivity",
+    "newest": "16QAM_Polar/v2/results/20260522_144919_phaseA_sc_theory_combine_sensitivity",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "theory_combine_sensitivity.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_sc_mechanism_figures",
+    "older": "16QAM_Polar/v2/results/20260523_151000_phaseA_sc_mechanism_figures",
+    "newest": "16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures",
+    "same_csv": [
+      "codeonly_final_summary_source.csv",
+      "fullchain_final_summary_source.csv"
+    ],
+    "different_or_missing_csv": [
+      "geometry_only_ber.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_sc_mechanism_figures",
+    "older": "16QAM_Polar/v2/results/20260523_151621_phaseA_sc_mechanism_figures",
+    "newest": "16QAM_Polar/v2/results/20260523_175018_phaseA_sc_mechanism_figures",
+    "same_csv": [
+      "codeonly_final_summary_p01305.csv",
+      "codeonly_final_summary_source.csv",
+      "fullchain_final_summary_p01305.csv",
+      "fullchain_final_summary_source.csv",
+      "geometry_only_ber.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "ofdm_visual_check",
+    "older": "16QAM_Polar/v2/results/20260524_161926_ofdm_visual_check",
+    "newest": "16QAM_Polar/v2/results/20260524_163654_ofdm_visual_check",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "ofdm_visual_check",
+    "older": "16QAM_Polar/v2/results/20260524_162511_ofdm_visual_check",
+    "newest": "16QAM_Polar/v2/results/20260524_163654_ofdm_visual_check",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "ofdm_visual_check",
+    "older": "16QAM_Polar/v2/results/20260524_162953_ofdm_visual_check",
+    "newest": "16QAM_Polar/v2/results/20260524_163654_ofdm_visual_check",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "ofdm_visual_check",
+    "older": "16QAM_Polar/v2/results/20260524_163538_ofdm_visual_check",
+    "newest": "16QAM_Polar/v2/results/20260524_163654_ofdm_visual_check",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "subcarrier_strategy_compare",
+    "older": "16QAM_Polar/v2/results/20260526_182757_subcarrier_strategy_compare",
+    "newest": "16QAM_Polar/v2/results/20260614_212900_subcarrier_strategy_compare",
+    "same_csv": [
+      "subcarrier_strategy_assignment.csv"
+    ],
+    "different_or_missing_csv": [
+      "subcarrier_strategy_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "subcarrier_strategy_compare",
+    "older": "16QAM_Polar/v2/results/20260602_235630_subcarrier_strategy_compare",
+    "newest": "16QAM_Polar/v2/results/20260614_212900_subcarrier_strategy_compare",
+    "same_csv": [
+      "subcarrier_strategy_assignment.csv"
+    ],
+    "different_or_missing_csv": [
+      "subcarrier_strategy_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "subcarrier_strategy_compare",
+    "older": "16QAM_Polar/v2/results/20260603_000515_subcarrier_strategy_compare",
+    "newest": "16QAM_Polar/v2/results/20260614_212900_subcarrier_strategy_compare",
+    "same_csv": [
+      "subcarrier_strategy_assignment.csv",
+      "subcarrier_strategy_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "subcarrier_strategy_compare",
+    "older": "16QAM_Polar/v2/results/20260614_210559_subcarrier_strategy_compare",
+    "newest": "16QAM_Polar/v2/results/20260614_212900_subcarrier_strategy_compare",
+    "same_csv": [
+      "subcarrier_strategy_assignment.csv",
+      "subcarrier_strategy_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "subcarrier_strategy_compare",
+    "older": "16QAM_Polar/v2/results/20260614_211040_subcarrier_strategy_compare",
+    "newest": "16QAM_Polar/v2/results/20260614_212900_subcarrier_strategy_compare",
+    "same_csv": [
+      "subcarrier_strategy_assignment.csv",
+      "subcarrier_strategy_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "subcarrier_strategy_compare",
+    "older": "16QAM_Polar/v2/results/20260614_211439_subcarrier_strategy_compare",
+    "newest": "16QAM_Polar/v2/results/20260614_212900_subcarrier_strategy_compare",
+    "same_csv": [
+      "subcarrier_strategy_assignment.csv",
+      "subcarrier_strategy_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_fullchain_strategy_validation_smoke",
+    "older": "16QAM_Polar/v2/results/20260628_142037_b4_fullchain_strategy_validation_smoke",
+    "newest": "16QAM_Polar/v2/results/20260628_143653_b4_fullchain_strategy_validation_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "b4_p_block_results.csv",
+      "b4_strategy_realization_results.csv",
+      "b4_strategy_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "ook_shapedpolar_legacy_plot",
+    "older": "16QAM_Polar/v2/results/20260826_110315_ook_shapedpolar_legacy_plot",
+    "newest": "16QAM_Polar/v2/results/20260826_112955_ook_shapedpolar_legacy_plot",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "ook_shapedpolar_legacy_plot",
+    "older": "16QAM_Polar/v2/results/20260826_110544_ook_shapedpolar_legacy_plot",
+    "newest": "16QAM_Polar/v2/results/20260826_112955_ook_shapedpolar_legacy_plot",
+    "same_csv": [
+      "legacy_curves.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "16qam_energy_tradeoff_smoke",
+    "older": "16QAM_Polar/v2/results/20260912_171603_16qam_energy_tradeoff_smoke",
+    "newest": "16QAM_Polar/v2/results/20261009_183402_16qam_energy_tradeoff_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "frame_results.csv",
+      "point_summary.csv",
+      "repetition_results.csv",
+      "working_points.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "16qam_energy_tradeoff_smoke",
+    "older": "16QAM_Polar/v2/results/20260912_171726_16qam_energy_tradeoff_smoke",
+    "newest": "16QAM_Polar/v2/results/20261009_183402_16qam_energy_tradeoff_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "frame_results.csv",
+      "point_summary.csv",
+      "repetition_results.csv",
+      "working_points.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "16qam_energy_tradeoff_smoke",
+    "older": "16QAM_Polar/v2/results/20260912_171937_16qam_energy_tradeoff_smoke",
+    "newest": "16QAM_Polar/v2/results/20261009_183402_16qam_energy_tradeoff_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "frame_results.csv",
+      "point_summary.csv",
+      "repetition_results.csv",
+      "working_points.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "16qam_energy_tradeoff_smoke",
+    "older": "16QAM_Polar/v2/results/20260912_172003_16qam_energy_tradeoff_smoke",
+    "newest": "16QAM_Polar/v2/results/20261009_183402_16qam_energy_tradeoff_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "frame_results.csv",
+      "point_summary.csv",
+      "repetition_results.csv",
+      "working_points.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "16qam_energy_tradeoff_smoke",
+    "older": "16QAM_Polar/v2/results/20260912_172114_16qam_energy_tradeoff_smoke",
+    "newest": "16QAM_Polar/v2/results/20261009_183402_16qam_energy_tradeoff_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "frame_results.csv",
+      "point_summary.csv",
+      "repetition_results.csv",
+      "working_points.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "16qam_energy_tradeoff_smoke",
+    "older": "16QAM_Polar/v2/results/20260912_172318_16qam_energy_tradeoff_smoke",
+    "newest": "16QAM_Polar/v2/results/20261009_183402_16qam_energy_tradeoff_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "frame_results.csv",
+      "point_summary.csv",
+      "repetition_results.csv",
+      "working_points.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "16qam_energy_tradeoff_smoke",
+    "older": "16QAM_Polar/v2/results/20261009_175608_16qam_energy_tradeoff_smoke",
+    "newest": "16QAM_Polar/v2/results/20261009_183402_16qam_energy_tradeoff_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "frame_results.csv",
+      "point_summary.csv",
+      "repetition_results.csv",
+      "working_points.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "16qam_energy_tradeoff_formal",
+    "older": "16QAM_Polar/v2/results/20260915_122326_16qam_energy_tradeoff_formal",
+    "newest": "16QAM_Polar/v2/results/20261009_183509_16qam_energy_tradeoff_formal",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "frame_results.csv",
+      "point_summary.csv",
+      "repetition_results.csv",
+      "working_points.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "16qam_energy_tradeoff_formal",
+    "older": "16QAM_Polar/v2/results/20261009_175723_16qam_energy_tradeoff_formal",
+    "newest": "16QAM_Polar/v2/results/20261009_183509_16qam_energy_tradeoff_formal",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_strict_ofdm_rayleigh_smoke",
+    "older": "16QAM_Polar/v2/results/20260917_111849_b4_strict_ofdm_rayleigh_smoke",
+    "newest": "16QAM_Polar/v2/results/20260917_205407_b4_strict_ofdm_rayleigh_smoke",
+    "same_csv": [
+      "b4b_repetition_results.csv"
+    ],
+    "different_or_missing_csv": [
+      "b4b_strategy_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_strict_ofdm_rayleigh_smoke",
+    "older": "16QAM_Polar/v2/results/20260917_112216_b4_strict_ofdm_rayleigh_smoke",
+    "newest": "16QAM_Polar/v2/results/20260917_205407_b4_strict_ofdm_rayleigh_smoke",
+    "same_csv": [
+      "b4b_channel_realizations.csv",
+      "b4b_repetition_results.csv"
+    ],
+    "different_or_missing_csv": [
+      "b4b_strategy_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_strict_ofdm_rayleigh_pilot",
+    "older": "16QAM_Polar/v2/results/20260917_194212_b4_strict_ofdm_rayleigh_pilot",
+    "newest": "16QAM_Polar/v2/results/20260917_194823_b4_strict_ofdm_rayleigh_pilot",
+    "same_csv": [
+      "b4b_channel_realizations.csv",
+      "b4b_repetition_results.csv",
+      "b4b_strategy_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_strict_ofdm_rayleigh_pilot",
+    "older": "16QAM_Polar/v2/results/20260917_194419_b4_strict_ofdm_rayleigh_pilot",
+    "newest": "16QAM_Polar/v2/results/20260917_194823_b4_strict_ofdm_rayleigh_pilot",
+    "same_csv": [
+      "b4b_channel_realizations.csv",
+      "b4b_repetition_results.csv",
+      "b4b_strategy_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_paired_policy_analysis",
+    "older": "16QAM_Polar/v2/results/20260917_215732_b4b_paired_policy_analysis",
+    "newest": "16QAM_Polar/v2/results/20260929_192740_b4b_paired_policy_analysis",
+    "same_csv": [
+      "paired_differences.csv",
+      "pareto_points.csv",
+      "policy_selection.csv",
+      "strategy_summary_with_ci.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_paired_policy_analysis",
+    "older": "16QAM_Polar/v2/results/20260917_215938_b4b_paired_policy_analysis",
+    "newest": "16QAM_Polar/v2/results/20260929_192740_b4b_paired_policy_analysis",
+    "same_csv": [
+      "paired_differences.csv",
+      "pareto_points.csv",
+      "policy_selection.csv",
+      "strategy_summary_with_ci.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_paired_policy_analysis",
+    "older": "16QAM_Polar/v2/results/20260929_192407_b4b_paired_policy_analysis",
+    "newest": "16QAM_Polar/v2/results/20260929_192740_b4b_paired_policy_analysis",
+    "same_csv": [
+      "paired_differences.csv",
+      "pareto_points.csv",
+      "policy_selection.csv",
+      "strategy_summary_with_ci.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_fixed_policy_holdout_analysis",
+    "older": "16QAM_Polar/v2/results/20260917_222439_b4b_fixed_policy_holdout_analysis",
+    "newest": "16QAM_Polar/v2/results/20261009_223148_b4b_fixed_policy_holdout_analysis",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "fixed_policy_holdout_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_fixed_policy_holdout_analysis",
+    "older": "16QAM_Polar/v2/results/20261009_223034_b4b_fixed_policy_holdout_analysis",
+    "newest": "16QAM_Polar/v2/results/20261009_223148_b4b_fixed_policy_holdout_analysis",
+    "same_csv": [
+      "fixed_policy_holdout_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_guardband_policy_test_analysis",
+    "older": "16QAM_Polar/v2/results/20260917_225122_b4b_guardband_policy_test_analysis",
+    "newest": "16QAM_Polar/v2/results/20261009_230741_b4b_guardband_policy_test_analysis",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "guardband_policy_test_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_static",
+    "older": "16QAM_Polar/v2/results/20261008_211750_b4b_shaping_audit_static",
+    "newest": "16QAM_Polar/v2/results/20261008_213522_b4b_shaping_audit_static",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "frame_audit.csv",
+      "pmf_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_static",
+    "older": "16QAM_Polar/v2/results/20261008_212742_b4b_shaping_audit_static",
+    "newest": "16QAM_Polar/v2/results/20261008_213522_b4b_shaping_audit_static",
+    "same_csv": [
+      "conditioning_probe.csv",
+      "pmf_by_seed.csv",
+      "pmf_summary.csv"
+    ],
+    "different_or_missing_csv": [
+      "frame_audit.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_static",
+    "older": "16QAM_Polar/v2/results/20261008_212902_b4b_shaping_audit_static",
+    "newest": "16QAM_Polar/v2/results/20261008_213522_b4b_shaping_audit_static",
+    "same_csv": [
+      "conditioning_probe.csv",
+      "partition_summary.csv",
+      "pmf_by_seed.csv",
+      "pmf_summary.csv"
+    ],
+    "different_or_missing_csv": [
+      "frame_audit.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_static",
+    "older": "16QAM_Polar/v2/results/20261008_212942_b4b_shaping_audit_static",
+    "newest": "16QAM_Polar/v2/results/20261008_213522_b4b_shaping_audit_static",
+    "same_csv": [
+      "conditioning_probe.csv",
+      "partition_summary.csv",
+      "pmf_by_seed.csv",
+      "pmf_summary.csv"
+    ],
+    "different_or_missing_csv": [
+      "frame_audit.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_smoke",
+    "older": "16QAM_Polar/v2/results/20261008_212300_b4b_shaping_audit_smoke",
+    "newest": "16QAM_Polar/v2/results/20261008_213557_b4b_shaping_audit_smoke",
+    "same_csv": [
+      "conditioning_probe.csv",
+      "pmf_by_seed.csv"
+    ],
+    "different_or_missing_csv": [
+      "frame_audit.csv",
+      "pmf_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_smoke",
+    "older": "16QAM_Polar/v2/results/20261008_212518_b4b_shaping_audit_smoke",
+    "newest": "16QAM_Polar/v2/results/20261008_213557_b4b_shaping_audit_smoke",
+    "same_csv": [
+      "conditioning_probe.csv",
+      "pmf_by_seed.csv"
+    ],
+    "different_or_missing_csv": [
+      "frame_audit.csv",
+      "pmf_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_smoke",
+    "older": "16QAM_Polar/v2/results/20261008_212615_b4b_shaping_audit_smoke",
+    "newest": "16QAM_Polar/v2/results/20261008_213557_b4b_shaping_audit_smoke",
+    "same_csv": [
+      "conditioning_probe.csv",
+      "pmf_by_seed.csv",
+      "pmf_summary.csv"
+    ],
+    "different_or_missing_csv": [
+      "frame_audit.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_smoke",
+    "older": "16QAM_Polar/v2/results/20261008_213028_b4b_shaping_audit_smoke",
+    "newest": "16QAM_Polar/v2/results/20261008_213557_b4b_shaping_audit_smoke",
+    "same_csv": [
+      "conditioning_probe.csv",
+      "partition_summary.csv",
+      "pmf_by_seed.csv",
+      "pmf_summary.csv"
+    ],
+    "different_or_missing_csv": [
+      "frame_audit.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_blocklength_N256",
+    "older": "16QAM_Polar/v2/results/20261008_215403_b4b_shaping_audit_blocklength_N256",
+    "newest": "16QAM_Polar/v2/results/20261008_215852_b4b_shaping_audit_blocklength_N256",
+    "same_csv": [
+      "conditioning_probe.csv",
+      "partition_summary.csv",
+      "pmf_by_seed.csv"
+    ],
+    "different_or_missing_csv": [
+      "frame_audit.csv",
+      "pmf_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_blocklength_N1024",
+    "older": "16QAM_Polar/v2/results/20261008_215452_b4b_shaping_audit_blocklength_N1024",
+    "newest": "16QAM_Polar/v2/results/20261008_215552_b4b_shaping_audit_blocklength_N1024",
+    "same_csv": [
+      "conditioning_probe.csv",
+      "frame_audit.csv",
+      "partition_summary.csv",
+      "pmf_by_seed.csv",
+      "pmf_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_source_compare",
+    "older": "16QAM_Polar/v2/results/20261008_233717_b4b_shaping_audit_source_compare",
+    "newest": "16QAM_Polar/v2/results/20261008_233858_b4b_shaping_audit_source_compare",
+    "same_csv": [
+      "frame_audit.csv",
+      "partition_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "source_entropy_smoke",
+    "older": "16QAM_Polar/v2/results/20261009_174646_source_entropy_smoke",
+    "newest": "16QAM_Polar/v2/results/20261009_174813_source_entropy_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "source_entropy_smoke",
+    "older": "16QAM_Polar/v2/results/20261009_174727_source_entropy_smoke",
+    "newest": "16QAM_Polar/v2/results/20261009_174813_source_entropy_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_shaping_audit_formal_source_N1024_source_MC_GA",
+    "older": "16QAM_Polar/v2/results/20261009_175117_b4b_shaping_audit_formal_source_N1024_source_MC_GA",
+    "newest": "16QAM_Polar/v2/results/20261009_175322_b4b_shaping_audit_formal_source_N1024_source_MC_GA",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_blocklength_comparison",
+    "older": "16QAM_Polar/v2/results/20261009_181704_b4b_blocklength_comparison",
+    "newest": "16QAM_Polar/v2/results/20261009_182029_b4b_blocklength_comparison",
+    "same_csv": [
+      "blocklength_comparison.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_blocklength_comparison",
+    "older": "16QAM_Polar/v2/results/20261009_181759_b4b_blocklength_comparison",
+    "newest": "16QAM_Polar/v2/results/20261009_182029_b4b_blocklength_comparison",
+    "same_csv": [
+      "blocklength_comparison.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_blocklength_comparison",
+    "older": "16QAM_Polar/v2/results/20261009_181858_b4b_blocklength_comparison",
+    "newest": "16QAM_Polar/v2/results/20261009_182029_b4b_blocklength_comparison",
+    "same_csv": [
+      "blocklength_comparison.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_figures_from_energy_tradeoff",
+    "older": "16QAM_Polar/v2/results/20261009_193314_phaseA_figures_from_energy_tradeoff",
+    "newest": "16QAM_Polar/v2/results/20261009_193403_phaseA_figures_from_energy_tradeoff",
+    "same_csv": [
+      "point_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_codeonly_gap_analysis",
+    "older": "16QAM_Polar/v2/results/20261009_201949_phaseA_codeonly_gap_analysis",
+    "newest": "16QAM_Polar/v2/results/20261009_202540_phaseA_codeonly_gap_analysis",
+    "same_csv": [
+      "codeonly_final_repetitions.csv",
+      "codeonly_theory_partition_indices.csv",
+      "model_gap_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_codeonly_gap_analysis",
+    "older": "16QAM_Polar/v2/results/20261009_202051_phaseA_codeonly_gap_analysis",
+    "newest": "16QAM_Polar/v2/results/20261009_202540_phaseA_codeonly_gap_analysis",
+    "same_csv": [
+      "codeonly_final_repetitions.csv",
+      "codeonly_theory_partition_indices.csv",
+      "model_gap_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_codeonly_gap_analysis",
+    "older": "16QAM_Polar/v2/results/20261009_202222_phaseA_codeonly_gap_analysis",
+    "newest": "16QAM_Polar/v2/results/20261009_202540_phaseA_codeonly_gap_analysis",
+    "same_csv": [
+      "codeonly_final_repetitions.csv",
+      "codeonly_theory_partition_indices.csv",
+      "model_gap_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "phaseA_codeonly_gap_analysis",
+    "older": "16QAM_Polar/v2/results/20261009_202433_phaseA_codeonly_gap_analysis",
+    "newest": "16QAM_Polar/v2/results/20261009_202540_phaseA_codeonly_gap_analysis",
+    "same_csv": [
+      "codeonly_final_repetitions.csv",
+      "codeonly_theory_partition_indices.csv",
+      "model_gap_summary.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "source_entropy_partition_contract_test",
+    "older": "16QAM_Polar/v2/results/20261009_202104_source_entropy_partition_contract_test",
+    "newest": "16QAM_Polar/v2/results/20261009_230945_source_entropy_partition_contract_test",
+    "same_csv": [
+      "contract_cases.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_source_entropy_training_policy_analysis",
+    "older": "16QAM_Polar/v2/results/20261009_210511_b4b_source_entropy_training_policy_analysis",
+    "newest": "16QAM_Polar/v2/results/20261009_210714_b4b_source_entropy_training_policy_analysis",
+    "same_csv": [
+      "paired_differences.csv",
+      "pareto_points.csv",
+      "policy_selection.csv",
+      "strategy_summary_with_ci.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4b_source_entropy_training_policy_analysis",
+    "older": "16QAM_Polar/v2/results/20261009_210617_b4b_source_entropy_training_policy_analysis",
+    "newest": "16QAM_Polar/v2/results/20261009_210714_b4b_source_entropy_training_policy_analysis",
+    "same_csv": [
+      "paired_differences.csv",
+      "pareto_points.csv",
+      "policy_selection.csv",
+      "strategy_summary_with_ci.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_equal_power_p1",
+    "older": "16QAM_Polar/v2/results/20261010_210845_b4_equal_power_p1",
+    "newest": "16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_equal_power_p1",
+    "older": "16QAM_Polar/v2/results/20261010_211222_b4_equal_power_p1",
+    "newest": "16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_equal_power_p1",
+    "older": "16QAM_Polar/v2/results/20261010_211655_b4_equal_power_p1",
+    "newest": "16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_equal_power_p1",
+    "older": "16QAM_Polar/v2/results/20261010_212409_b4_equal_power_p1",
+    "newest": "16QAM_Polar/v2/results/20261010_220626_b4_equal_power_p1",
+    "same_csv": [
+      "frozen_strategy_scales.csv",
+      "power_calibration_validation.csv"
+    ],
+    "different_or_missing_csv": [
+      "pilot_repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p1_cal80_7001",
+    "older": "16QAM_Polar/v2/results/20261010_210859_p1_cal80_7001",
+    "newest": "16QAM_Polar/v2/results/20261010_211238_p1_cal80_7001",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p1_power_validation_a1_7101",
+    "older": "16QAM_Polar/v2/results/20261010_211710_p1_power_validation_a1_7101",
+    "newest": "16QAM_Polar/v2/results/20261010_212832_p1_power_validation_a1_7101",
+    "same_csv": [
+      "b4b_channel_realizations.csv"
+    ],
+    "different_or_missing_csv": [
+      "b4b_repetition_results.csv",
+      "b4b_strategy_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p1_power_validation_a1_7102",
+    "older": "16QAM_Polar/v2/results/20261010_211834_p1_power_validation_a1_7102",
+    "newest": "16QAM_Polar/v2/results/20261010_213004_p1_power_validation_a1_7102",
+    "same_csv": [
+      "b4b_channel_realizations.csv"
+    ],
+    "different_or_missing_csv": [
+      "b4b_repetition_results.csv",
+      "b4b_strategy_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p1_power_validation_a1_7103",
+    "older": "16QAM_Polar/v2/results/20261010_211953_p1_power_validation_a1_7103",
+    "newest": "16QAM_Polar/v2/results/20261010_213130_p1_power_validation_a1_7103",
+    "same_csv": [
+      "b4b_channel_realizations.csv"
+    ],
+    "different_or_missing_csv": [
+      "b4b_repetition_results.csv",
+      "b4b_strategy_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p1_equal_power_pilot_seed42",
+    "older": "16QAM_Polar/v2/results/20261010_215709_p1_equal_power_pilot_seed42",
+    "newest": "16QAM_Polar/v2/results/20261010_220640_p1_equal_power_pilot_seed42",
+    "same_csv": [
+      "b4b_channel_realizations.csv"
+    ],
+    "different_or_missing_csv": [
+      "b4b_repetition_results.csv",
+      "b4b_strategy_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "b4_equal_power_p1_formal",
+    "older": "16QAM_Polar/v2/results/20261010_215835_b4_equal_power_p1_formal",
+    "newest": "16QAM_Polar/v2/results/20261010_220806_b4_equal_power_p1_formal",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "b4b_repetition_partial.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_preflight",
+    "older": "16QAM_Polar/v2/results/20261024_220536_p2_preflight",
+    "newest": "16QAM_Polar/v2/results/20261024_222219_p2_preflight",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_preflight",
+    "older": "16QAM_Polar/v2/results/20261024_221258_p2_preflight",
+    "newest": "16QAM_Polar/v2/results/20261024_222219_p2_preflight",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261024_220537_p2_pilot_power_calibration",
+    "newest": "16QAM_Polar/v2/results/20261024_232517_p2_pilot_power_calibration",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261024_220547_p2_pilot_power_calibration",
+    "newest": "16QAM_Polar/v2/results/20261024_232517_p2_pilot_power_calibration",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261024_221259_p2_pilot_power_calibration",
+    "newest": "16QAM_Polar/v2/results/20261024_232517_p2_pilot_power_calibration",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261024_221312_p2_pilot_power_calibration",
+    "newest": "16QAM_Polar/v2/results/20261024_232517_p2_pilot_power_calibration",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261024_221414_p2_pilot_power_calibration",
+    "newest": "16QAM_Polar/v2/results/20261024_232517_p2_pilot_power_calibration",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261024_222219_p2_pilot_power_calibration",
+    "newest": "16QAM_Polar/v2/results/20261024_232517_p2_pilot_power_calibration",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261024_222227_p2_pilot_power_calibration",
+    "newest": "16QAM_Polar/v2/results/20261024_232517_p2_pilot_power_calibration",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261024_222310_p2_pilot_power_calibration",
+    "newest": "16QAM_Polar/v2/results/20261024_232517_p2_pilot_power_calibration",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261024_232507_p2_pilot_power_calibration",
+    "newest": "16QAM_Polar/v2/results/20261024_232517_p2_pilot_power_calibration",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_pilot",
+    "older": "16QAM_Polar/v2/results/20261024_220555_p2_pilot_pilot",
+    "newest": "16QAM_Polar/v2/results/20261024_232527_p2_pilot_pilot",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_pilot",
+    "older": "16QAM_Polar/v2/results/20261024_221322_p2_pilot_pilot",
+    "newest": "16QAM_Polar/v2/results/20261024_232527_p2_pilot_pilot",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_pilot",
+    "older": "16QAM_Polar/v2/results/20261024_222234_p2_pilot_pilot",
+    "newest": "16QAM_Polar/v2/results/20261024_232527_p2_pilot_pilot",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_pilot",
+    "older": "16QAM_Polar/v2/results/20261024_222842_p2_pilot_pilot",
+    "newest": "16QAM_Polar/v2/results/20261024_232527_p2_pilot_pilot",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_singlecarrier",
+    "older": "16QAM_Polar/v2/results/20261024_221416_p2_pilot_singlecarrier",
+    "newest": "16QAM_Polar/v2/results/20261024_222311_p2_pilot_singlecarrier",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_uniformity_exact",
+    "older": "16QAM_Polar/v2/results/20261024_221427_p2_uniformity_exact",
+    "newest": "16QAM_Polar/v2/results/20261025_000154_p2_uniformity_exact",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "exact_uniformity.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_uniformity_exact",
+    "older": "16QAM_Polar/v2/results/20261024_222326_p2_uniformity_exact",
+    "newest": "16QAM_Polar/v2/results/20261025_000154_p2_uniformity_exact",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "exact_uniformity.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_uniformity_exact",
+    "older": "16QAM_Polar/v2/results/20261024_235012_p2_uniformity_exact",
+    "newest": "16QAM_Polar/v2/results/20261025_000154_p2_uniformity_exact",
+    "same_csv": [
+      "exact_uniformity.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261024_222213_p2_smoke_pilot",
+    "newest": "16QAM_Polar/v2/results/20261106_161559_p2_smoke_pilot_4a9582b5",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261024_232502_p2_smoke_pilot",
+    "newest": "16QAM_Polar/v2/results/20261106_161559_p2_smoke_pilot_4a9582b5",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261024_234020_p2_smoke_pilot_edd9442e",
+    "newest": "16QAM_Polar/v2/results/20261106_161559_p2_smoke_pilot_4a9582b5",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261024_235008_p2_smoke_pilot_396477e4",
+    "newest": "16QAM_Polar/v2/results/20261106_161559_p2_smoke_pilot_4a9582b5",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261025_000204_p2_smoke_pilot_f3b047af",
+    "newest": "16QAM_Polar/v2/results/20261106_161559_p2_smoke_pilot_4a9582b5",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261025_001710_p2_smoke_pilot_3028e694",
+    "newest": "16QAM_Polar/v2/results/20261106_161559_p2_smoke_pilot_4a9582b5",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_pmf",
+    "older": "16QAM_Polar/v2/results/20261024_232600_p2_pilot_pmf",
+    "newest": "16QAM_Polar/v2/results/20261024_232635_p2_pilot_pmf",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_pilot_pmf",
+    "older": "16QAM_Polar/v2/results/20261024_232618_p2_pilot_pmf",
+    "newest": "16QAM_Polar/v2/results/20261024_232635_p2_pilot_pmf",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_budget_proposal",
+    "older": "16QAM_Polar/v2/results/20261024_235300_p2_budget_proposal",
+    "newest": "16QAM_Polar/v2/results/20261025_001500_p2_budget_proposal",
+    "same_csv": [
+      "budget.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_budget_proposal",
+    "older": "16QAM_Polar/v2/results/20261025_001100_p2_budget_proposal",
+    "newest": "16QAM_Polar/v2/results/20261025_001500_p2_budget_proposal",
+    "same_csv": [
+      "budget.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_formal_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261025_011837_p2_formal_power_calibration_0d8ec80b",
+    "newest": "16QAM_Polar/v2/results/20261025_020727_p2_formal_power_calibration_efa2f683",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_formal_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261025_014304_p2_formal_power_calibration_b1274c41",
+    "newest": "16QAM_Polar/v2/results/20261025_020727_p2_formal_power_calibration_efa2f683",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_formal_power_validation",
+    "older": "16QAM_Polar/v2/results/20261025_023419_p2_formal_power_validation_e076d21b",
+    "newest": "16QAM_Polar/v2/results/20261025_031555_p2_formal_power_validation_bcb56c0f",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_formal_power_validation",
+    "older": "16QAM_Polar/v2/results/20261025_025539_p2_formal_power_validation_7ab6a2be",
+    "newest": "16QAM_Polar/v2/results/20261025_031555_p2_formal_power_validation_bcb56c0f",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_161952_p2_common_env_smoke_pilot_585e164a",
+    "newest": "16QAM_Polar/v2/results/20261106_165739_p2_common_env_smoke_pilot_0dcb7294",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_162019_p2_common_env_smoke_pilot_1cf97e7c",
+    "newest": "16QAM_Polar/v2/results/20261106_165739_p2_common_env_smoke_pilot_0dcb7294",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_162154_p2_common_env_smoke_pilot_ede6d284",
+    "newest": "16QAM_Polar/v2/results/20261106_165739_p2_common_env_smoke_pilot_0dcb7294",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_162336_p2_common_env_smoke_pilot_65c5faf2",
+    "newest": "16QAM_Polar/v2/results/20261106_165739_p2_common_env_smoke_pilot_0dcb7294",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_162557_p2_common_env_smoke_pilot_fbf52935",
+    "newest": "16QAM_Polar/v2/results/20261106_165739_p2_common_env_smoke_pilot_0dcb7294",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_162839_p2_common_env_smoke_pilot_eccd61de",
+    "newest": "16QAM_Polar/v2/results/20261106_165739_p2_common_env_smoke_pilot_0dcb7294",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_163838_p2_common_env_smoke_pilot_a411e3c9",
+    "newest": "16QAM_Polar/v2/results/20261106_165739_p2_common_env_smoke_pilot_0dcb7294",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_163955_p2_common_env_smoke_pilot_b33e6f54",
+    "newest": "16QAM_Polar/v2/results/20261106_165739_p2_common_env_smoke_pilot_0dcb7294",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_164801_p2_common_env_smoke_pilot_96e034a9",
+    "newest": "16QAM_Polar/v2/results/20261106_165739_p2_common_env_smoke_pilot_0dcb7294",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_162507_p2_common_env_smoke_power_calibration_7c389f71",
+    "newest": "16QAM_Polar/v2/results/20261106_164821_p2_common_env_smoke_power_calibration_9cf35b52",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_163215_p2_common_env_smoke_power_calibration_b44be893",
+    "newest": "16QAM_Polar/v2/results/20261106_164821_p2_common_env_smoke_power_calibration_9cf35b52",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_model_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_163018_p2_common_env_smoke_model_calibration_a359941f",
+    "newest": "16QAM_Polar/v2/results/20261106_164823_p2_common_env_smoke_model_calibration_8409de82",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_model_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_163217_p2_common_env_smoke_model_calibration_a8288c4b",
+    "newest": "16QAM_Polar/v2/results/20261106_164823_p2_common_env_smoke_model_calibration_8409de82",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_test_seen",
+    "older": "16QAM_Polar/v2/results/20261106_163021_p2_common_env_smoke_test_seen_11c6c26f",
+    "newest": "16QAM_Polar/v2/results/20261106_164655_p2_common_env_smoke_test_seen_22bc2909",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_smoke_test_seen",
+    "older": "16QAM_Polar/v2/results/20261106_164432_p2_common_env_smoke_test_seen_58621dfd",
+    "newest": "16QAM_Polar/v2/results/20261106_164655_p2_common_env_smoke_test_seen_22bc2909",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_model_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_165340_p2_common_env_pilot_model_calibration_7557f295",
+    "newest": "16QAM_Polar/v2/results/20261106_213309_p2_common_env_pilot_model_calibration_5afe6200",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "exploratory_selection.csv",
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_model_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_165829_p2_common_env_pilot_model_calibration_37402adf",
+    "newest": "16QAM_Polar/v2/results/20261106_213309_p2_common_env_pilot_model_calibration_5afe6200",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "exploratory_selection.csv",
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_model_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_171304_p2_common_env_pilot_model_calibration_d3f24d14",
+    "newest": "16QAM_Polar/v2/results/20261106_213309_p2_common_env_pilot_model_calibration_5afe6200",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_model_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_171343_p2_common_env_pilot_model_calibration_4347fed4",
+    "newest": "16QAM_Polar/v2/results/20261106_213309_p2_common_env_pilot_model_calibration_5afe6200",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_model_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_210202_p2_common_env_pilot_model_calibration_fb3313d0",
+    "newest": "16QAM_Polar/v2/results/20261106_213309_p2_common_env_pilot_model_calibration_5afe6200",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_model_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_210209_p2_common_env_pilot_model_calibration_c207b50f",
+    "newest": "16QAM_Polar/v2/results/20261106_213309_p2_common_env_pilot_model_calibration_5afe6200",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_test_seen",
+    "older": "16QAM_Polar/v2/results/20261106_165514_p2_common_env_pilot_test_seen_89d0251b",
+    "newest": "16QAM_Polar/v2/results/20261106_171512_p2_common_env_pilot_test_seen_4a3a8174",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "exploratory_frozen_comparison.csv",
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_test_seen",
+    "older": "16QAM_Polar/v2/results/20261106_165900_p2_common_env_pilot_test_seen_2345a5ce",
+    "newest": "16QAM_Polar/v2/results/20261106_171512_p2_common_env_pilot_test_seen_4a3a8174",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "exploratory_frozen_three_baselines.csv",
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_strategy_training",
+    "older": "16QAM_Polar/v2/results/20261106_170217_p2_common_env_pilot_strategy_training_b657112d",
+    "newest": "16QAM_Polar/v2/results/20261106_205937_p2_common_env_pilot_strategy_training_bd1fe191",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "exploratory_selection.csv",
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_strategy_training",
+    "older": "16QAM_Polar/v2/results/20261106_170923_p2_common_env_pilot_strategy_training_b54a9de1",
+    "newest": "16QAM_Polar/v2/results/20261106_205937_p2_common_env_pilot_strategy_training_bd1fe191",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv",
+      "waterfall_window_summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_strategy_training",
+    "older": "16QAM_Polar/v2/results/20261106_172200_p2_common_env_pilot_strategy_training_d315f961",
+    "newest": "16QAM_Polar/v2/results/20261106_205937_p2_common_env_pilot_strategy_training_bd1fe191",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_strategy_training",
+    "older": "16QAM_Polar/v2/results/20261106_205927_p2_common_env_pilot_strategy_training_7cbb58bc",
+    "newest": "16QAM_Polar/v2/results/20261106_205937_p2_common_env_pilot_strategy_training_bd1fe191",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_common_env_pilot_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_171300_p2_common_env_pilot_power_calibration_073a6b9e",
+    "newest": "16QAM_Polar/v2/results/20261106_171339_p2_common_env_pilot_power_calibration_edf2d1ba",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_future_diagnostic_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_213654_p2_future_diagnostic_smoke_pilot_cb11ec46",
+    "newest": "16QAM_Polar/v2/results/20261106_220749_p2_future_diagnostic_smoke_pilot_c147dd0b",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_future_diagnostic_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_214300_p2_future_diagnostic_smoke_pilot_be437549",
+    "newest": "16QAM_Polar/v2/results/20261106_220749_p2_future_diagnostic_smoke_pilot_c147dd0b",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_future_diagnostic_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_220033_p2_future_diagnostic_smoke_pilot_97226751",
+    "newest": "16QAM_Polar/v2/results/20261106_220749_p2_future_diagnostic_smoke_pilot_c147dd0b",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_future_diagnostic_smoke_pilot",
+    "older": "16QAM_Polar/v2/results/20261106_220456_p2_future_diagnostic_smoke_pilot_7f0c5c6f",
+    "newest": "16QAM_Polar/v2/results/20261106_220749_p2_future_diagnostic_smoke_pilot_c147dd0b",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_future_diagnostic_smoke_power_calibration",
+    "older": "16QAM_Polar/v2/results/20261106_220344_p2_future_diagnostic_smoke_power_calibration_83dfd4b2",
+    "newest": "16QAM_Polar/v2/results/20261106_220751_p2_future_diagnostic_smoke_power_calibration_89cf8e9e",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_v2_strategy_batch_pilot_strategy_test",
+    "older": "16QAM_Polar/v2/results/20261107_114837_p2_v2_strategy_batch_pilot_strategy_test_aa2b0752",
+    "newest": "16QAM_Polar/v2/results/20261107_122435_p2_v2_strategy_batch_pilot_strategy_test_97917028",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "paired_strategy_comparison.csv",
+      "repetitions.csv",
+      "test_all_candidates.csv",
+      "test_candidate_summary.csv",
+      "test_choices.csv",
+      "test_policy_coverage.csv",
+      "test_selected.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "p2_v2_strategy_batch_pilot_strategy_test",
+    "older": "16QAM_Polar/v2/results/20261107_122246_p2_v2_strategy_batch_pilot_strategy_test_54e20150",
+    "newest": "16QAM_Polar/v2/results/20261107_122435_p2_v2_strategy_batch_pilot_strategy_test_97917028",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "repetitions.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "prediction_validation_smoke",
+    "older": "16QAM_Polar/v2/results/20261109_115315_prediction_validation_smoke",
+    "newest": "16QAM_Polar/v2/results/20261109_115406_prediction_validation_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "pmf_smoke",
+    "older": "16QAM_Polar/v3/results/20260828_195508_pmf_smoke",
+    "newest": "16QAM_Polar/v3/results/20260830_003724_pmf_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "M16_pmf.csv",
+      "M32_pmf.csv",
+      "M64_pmf.csv",
+      "M8_pmf.csv",
+      "summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "pmf_smoke",
+    "older": "16QAM_Polar/v3/results/20260828_230847_pmf_smoke",
+    "newest": "16QAM_Polar/v3/results/20260830_003724_pmf_smoke",
+    "same_csv": [],
+    "different_or_missing_csv": [
+      "M16_pmf.csv",
+      "M32_pmf.csv",
+      "M64_pmf.csv",
+      "M8_pmf.csv",
+      "summary.csv"
+    ],
+    "old_table_set_fully_matches": false,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "ber_coarse",
+    "older": "16QAM_Polar/v3/results/20260902_225358_ber_coarse",
+    "newest": "16QAM_Polar/v3/results/20260903_160356_ber_coarse",
+    "same_csv": [
+      "ber_coarse.csv",
+      "ber_coarse_partial.csv",
+      "window_candidates.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "ber_refine",
+    "older": "16QAM_Polar/v3/results/20260903_171843_ber_refine",
+    "newest": "16QAM_Polar/v3/results/20260903_210444_ber_refine",
+    "same_csv": [
+      "ber_refine_aggregate.csv",
+      "ber_refine_repetitions.csv",
+      "ber_refine_repetitions_partial.csv",
+      "ber_refine_validation.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "energy_lambda_blocklength_smoke",
+    "older": "16QAM_Polar/v3/results/20260916_221337_energy_lambda_blocklength_smoke",
+    "newest": "16QAM_Polar/v3/results/20260916_221629_energy_lambda_blocklength_smoke",
+    "same_csv": [
+      "M8_lambda_0p000_N1024_pmf.csv",
+      "M8_lambda_0p000_N256_pmf.csv",
+      "M8_lambda_0p500_N1024_pmf.csv",
+      "M8_lambda_0p500_N256_pmf.csv",
+      "blocklength_compare.csv",
+      "blocklength_compare_partial.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  },
+  {
+    "family": "energy_lambda_blocklength_smoke",
+    "older": "16QAM_Polar/v3/results/20260916_221455_energy_lambda_blocklength_smoke",
+    "newest": "16QAM_Polar/v3/results/20260916_221629_energy_lambda_blocklength_smoke",
+    "same_csv": [
+      "M8_lambda_0p000_N1024_pmf.csv",
+      "M8_lambda_0p000_N256_pmf.csv",
+      "M8_lambda_0p500_N1024_pmf.csv",
+      "M8_lambda_0p500_N256_pmf.csv",
+      "blocklength_compare.csv",
+      "blocklength_compare_partial.csv"
+    ],
+    "different_or_missing_csv": [],
+    "old_table_set_fully_matches": true,
+    "caveat": "Exact CSV bytes only; does not prove MAT, rendering, configurations or whole directories equivalent."
+  }
+]

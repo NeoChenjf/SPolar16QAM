@@ -105,3 +105,8 @@ Before explaining a theory-vs-simulation BER gap:
 ## Append-only scope clarification (2026-10-09)
 
 This clause supersedes the narrower `学习文档/` scope above: append-only applies to every repository Markdown document, including `AGENTS.md`, learning documents, weekly reports, stage documents, project plans, workbook rules, and L1/L2/L3 contracts. Existing text is not edited in place. Corrections and status changes are dated appendices; checklists use new complete snapshots. Code and generated non-Markdown data remain governed by their own reproducibility rules.
+
+
+## 2026-11-06 科研执行防空转规则索引
+
+遵循项目AGENTS.md末尾“科研执行防空转规则（实验与证据优先）”：科研进度以可分析数据和研究问题的证据为判据；默认30分钟准备时间盒，连续两个仅外围准备的工作段须收敛。此项不放松本文件的科学正确性、实验授权及历史记录保护要求。详细规则仅在AGENTS维护。

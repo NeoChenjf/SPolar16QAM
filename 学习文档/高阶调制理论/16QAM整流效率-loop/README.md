@@ -19,7 +19,7 @@
 
 ## 证据入口
 
-- 项目真相源：[CLAUDE.md](../../../CLAUDE.md)、[workbook](../../../workbook/README.md)。
+- 项目真相源：[CLAUDE.md](../../../AGENTS.md)、[workbook](../../../workbook/README.md)。
 - [开题报告原件](../../../开题相关/开题报告表_陈俊峰_202421011127.pdf)：印刷页7、8、10提出权衡目标；不修改原件。
 - [项目整体计划书](../../../项目整体计划书.md)：A1已有Goodput—能量Pareto要求，因此保留此分析。
 - [阶段A结论](../../../周报/阶段A：单载波关键结论.md)、[v2 README](../../../16QAM_Polar/v2/README.md)。

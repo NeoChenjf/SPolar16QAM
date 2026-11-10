@@ -1,0 +1,74 @@
+[
+  {
+    "path": "16QAM_Polar/v2/diagnostics/check_ofdm_per_bit_ber.m",
+    "bytes": 2339,
+    "sha256": "194a1bf07ecfac26e2d42ea6575d915d764a5b782cb2e8b46fe766f44bfa39c1",
+    "reason": "写死20260522结果目录的打印探针，无断言；保留原始MAT数据。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/quick_layer1_test.m",
+    "bytes": 2035,
+    "sha256": "b41541e952747d0c72c7ea29a3e66314ea56b2832c631079e148e0edc53b972b",
+    "reason": "旧Layer1单次修复探针；无固定种子与失败断言，打印完成不代表通过。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/quick_layer2_test.m",
+    "bytes": 2616,
+    "sha256": "2107855cde897217c9b230d1d975f5d7cc72c1b5d3ddbfc481fc5f90053b6621",
+    "reason": "旧Layer2符号约定探索；两种MI约定取最大值且无失败断言，不作为回归测试。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_bpsk_direct.m",
+    "bytes": 1842,
+    "sha256": "93d50b38fed3b8e64447c4d21b3f252ca1f8fbc4a4d8411b2fa8ffdd39d08502",
+    "reason": "重复手算BPSK探针；A/C表达式相同，未调用项目方法；保留test_bpsk_baseline。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_llr_inspection.m",
+    "bytes": 3067,
+    "sha256": "84bfb3465533d1ef934240f7ddec439272b383a7708a5a7755ca9a25336f80c3",
+    "reason": "伪16QAM与BPSK不同口径；末尾用1000元素掩码索引250元素llr_qam，不能作为可信测试。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/test_qamdemod_bug.m",
+    "bytes": 3099,
+    "sha256": "78b9b355309ca09f173e8e0639cfe0430fa216b9630b4d80c03c33b9b8831e3a",
+    "reason": "工具箱单符号旧排障探针，仅打印结果无失败断言；check_env及实际链路测试保留。"
+  },
+  {
+    "path": "16QAM_Polar/v2/experiments/sc_checks/run_local_12db_check.m",
+    "bytes": 7782,
+    "sha256": "da92e8e88c96c89cadfbb1b6cc0599dbffdfa111beb5f08b2ab2939f54eedc47",
+    "reason": "固定p=.5、11:0.5:13 dB及旧日期种子的局部问题实验；通用理论/瀑布区入口保留。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/verify_b4b_energy_by_strategy.m",
+    "bytes": 1675,
+    "sha256": "5f05da59dbf135a45c0dbb046a5eb5fb309f799eaf86f878ac34ba60c42da42a",
+    "reason": "固定180行、30 realization及能量策略极值的旧图验收器，非通用科学门禁。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/verify_b4b_fixed_policy_holdout_analysis.m",
+    "bytes": 2215,
+    "sha256": "b9ec556217b56a9099097c13c5170d93f1b5d9ed2ec81562d006d9e6927d53f1",
+    "reason": "写死24 dB失败、PARTIAL状态及旧码本的特定历史批次验收。"
+  },
+  {
+    "path": "16QAM_Polar/v2/diagnostics/multicarrier/verify_b4b_guardband_policy_test_analysis.m",
+    "bytes": 1221,
+    "sha256": "2f933332e7399785937e58b4ac8b75cea0d3c81ce2073d35cb5d00e988b01fb1",
+    "reason": "写死六点SNR、策略映射及全通过结论的第三拆分历史验收。"
+  },
+  {
+    "path": "questions.txt",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reason": "零字节占位文件。"
+  },
+  {
+    "path": "未命名.base",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reason": "零字节占位文件。"
+  }
+]

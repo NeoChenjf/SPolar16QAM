@@ -1,0 +1,424 @@
+                                           Performance and Construction of Polar Codes on
+                                            Symmetric Binary-Input Memoryless Channels
+                                                                        Ryuhei Mori                                            Toshiyuki Tanaka
+                                                              Department of Systems Science                             Department of Systems Science
+                                                                     Kyoto University                                         Kyoto University
+                                                                 Kyoto, 606-8501, Japan                                    Kyoto, 606-8501, Japan
+                                                              Email: rmori@sys.i.kyoto-u.ac.jp                            Email: tt@i.kyoto-u.ac.jp
+arXiv:0901.2207v2 [cs.IT] 23 May 2009
+
+
+
+
+                                           Abstract—Channel polarization is a method of constructing          N matrix GN , which he called the generator matrix, defined
+                                        capacity achieving codes for symmetric binary-input discrete          recursively as
+                                        memoryless channels (B-DMCs) [1]. In the original paper, the                                                             
+                                        construction complexity is exponential in the blocklength. In                                                        1 0
+                                                                                                                    G2n := R2n (F ⊗ G2n−1 ) , G2 := F :=
+                                        this paper, a new construction method for arbitrary symmetric                                                        1 1
+                                        binary memoryless channel (B-MC) with linear complexity in
+                                        the blocklength is proposed. Furthermore, new upper bound and         where ⊗ denotes Kronecker product and where R2n denotes
+                                        lower bound of the block error probability of polar codes are         the so-called reverse shuffle matrix, which is a permutation
+                                        derived for the BEC and arbitrary symmetric B-MC, respectively.       matrix.
+                                                                                                                For a given B-MC W : {0, 1} → Y, a log-likelihood ratio
+                                                              I. I NTRODUCTION                                (LLR) log(W (y | 0)/W (y | 1)) of W is a sufficient statistic
+                                           Channel polarization, introduced by Arıkan [1], is a method        for estimating input x ∈ {0, 1} given output y ∈ Y. Hence,
+                                        of constructing capacity achieving codes for symmetric binary-        we can associate to W a B-MC W ′ : {0, 1} → R with the
+                                        input discrete memoryless channels (B-DMCs). Polar codes              LLR of W as its output, and W ′ has the same performance
+                                                                                                              as W under maximum a posteriori (MAP) decoding. In this
+                                        which are realized by channel polarization require only low
+                                        encoding and decoding complexity for achieving capacity.              paper, we deal with symmetric B-MCs defined as follows.
+                                        Furthermore, it was shown by Arıkan and Telatar [2] that the          Definition 1. A B-MC W : {0, 1} → Y is said to be symmetric
+                                                                                               β
+                                        block error probability of polar codes is O(2−N ) for any             if its associated B-MC W ′ : {0, 1} → R introduced above
+                                        fixed β < 12 , where N is the blocklength. It is significantly fast   satisfies W ′ (y | 0) = W ′ (−y | 1).
+                                        since the block error probability of low-density parity-check
+                                                                                                              Let I(W ) denote the capacity between the input and the output
+                                        (LDPC) codes is polynomial in N [3]. However, in [1], code
+                                                                                                              of a symmetric B-MC W .
+                                        construction with polynomial complexity is introduced only
+                                                                                                                We consider communication over a symmetric B-MC W :
+                                        for the binary erasure channel (BEC). The main result of this
+                                                                                                              {0, 1} → R. Let uN    1 = (u1 , u2 , . . . , uN ) denote an N -
+                                        paper is to show code construction with O(N ) complexity for
+                                                                                                              dimensional row vector, and let uji = (ui , ui+1 , . . . , uj ) be a
+                                        arbitrary symmetric binary-input memoryless channel (B-MC).
+                                                                                                              subvector of uN1 . Let us consider a vector channel WN (y1 |
+                                                                                                                                                                               N
+                                        Furthermore, a new upper bound and a lower bound of the                N            N N         N
+                                                                                                              u1 ) := W (y1 | u1 GN ), with input u1 ∈ {0, 1}N  N
+                                        block error probability of polar codes are derived for the BEC
+                                                                                                              and output y1N ∈ RN , which is obtained
+                                                                                                                                                    QN by combining N
+                                        and arbitrary symmetric B-MC, respectively. In Section II,
+                                                                                                              parallel B-DMCs W N (y1N | xN  1 ) :=    i=1 W (yi | xi ) via the
+                                        channel polarization and polar codes introduced in [1] are
+                                                                                                              operation xN        N
+                                                                                                                           1 = u1 GN , which should be performed in the
+                                        described. In Section III, the construction method for arbitrary                                                         (i)
+                                        symmetric B-MC is shown. In Section IV, a lower bound                 modulo-2 arithmetic. We define subchannels WN as
+                                        of the block error probability of polar codes is derived for                   (i)                     1 X
+                                                                                                                    WN (y1N , ui−1
+                                                                                                                                1   | ui ) := N −1        WN (y1N | uN  1 ).
+                                        arbitrary symmetric B-MC. In Section V, a new upper bound                                            2      N   ui+1
+                                        of the block error probability of polar codes over the BEC is
+                                        derived. In Section VI, some techniques for tightening bounds         Let U1N ∈ {0, 1}N and Y1N ∈ RN be random variables which
+                                        are discussed. In Section VII, numerical calculation results are      follow the joint probability WN (y1N | uN      N
+                                                                                                                                                        1 )/2 . The mutual
+                                        compared with numerical simulation results. Finally, this paper                       N    N
+                                                                                                              information I(U1 ; Y1 ) is split by applying the chain rule, as
+                                        is concluded in Section VIII.                                                              N
+                                                                                                                                   X
+                                                            II. P RELIMINARIES                                   I(U1N ; Y1N ) =         I(Ui ; Y1N | U1i−1 )
+                                                                                                                                   i=1
+                                        A. Channel polarization
+                                                                                                                                   N
+                                          Let the blocklength N be an integer power of 2. In [1],
+                                                                                                                                   X
+                                                                                                                              =          I(Ui ; Y1N , U1i−1 ) − I(Ui ; U1i−1 )
+                                        Arıkan discussed channel polarization on the basis of an N ×                               i=1
+                      N                              N
+                      X                              X        (i)          000
+                 =          I(Ui ; Y1N , U1i−1 ) =         I(WN ).   (1)
+                      i=1                            i=1                   001
+Arıkan proved the channel polarization property, which states
+that every term in the last line of (1) takes a value near                 010
+zero or one, and that since I(U1N ; Y1N ) = N I(W ), the                   011
+approximate numbers of those terms which take values near
+one and zero are N I(W ) and N (1 − I(W )), respectively.                  100
+This property suggests the following approach to designing a
+capacity-achieving error-correcting code: Pick up elements of              101
+uN1 which correspond to those subchannels with high mutual                 110
+                  (i)
+information I(WN ), and use them as the information bits.
+Non-information bits in uN1 are clamped to prespecified values.            111
+The values of the non-information bits are assumed to be all-
+zero in this paper, since they do not affect performance of                Fig. 1. The decoding tree for n = 3, i = 4. A binary expansion of (i − 1)
+resulting codes if the transmitting channel is symmetric [1].              is 011. Bits 0 and 1 in the expansion correspond to check nodes and variable
+                                                                           nodes, which are described as filled squares and filled circles, respectively.
+Instead of choosing subchannels with high mutual information               Dashed nodes and edges have already been determined to 0 or 1 and thus
+     (i)
+I(WN ), Arıkan considered another strategy of construction:                eliminated. Thin nodes and edges are not useful for decoding for the fourth bit
+choosing subchannels with low Bhattacharyya parameters,                    since thin degree-3 check nodes are connected to a unknown variable node.
+                                                                           The leaf nodes are given messages from a channel.
+which is mentioned later in this section.
+B. Decoding
+   Arıkan considered successive cancellation (SC) decoding in              The equality is due to disjointness of {Bi,N }. The first
+order to achieve capacity with low complexity. In SC decoding,             inequality follows from the above-mentioned inclusion relation
+decoding results for the non-information bits are set to 0. The            between Ai,N and Bi,N . The last inequality is valid for arbi-
+                                                                                                                          (i)
+information bits are decoded sequentially in the ascending                 trary symmetric channels [3]. In particular, ZN = 2P (Ai,N )
+order of their indices, via maximum likelihood (ML) decoding               if and only if the channel is the BEC. Arıkan proposed a
+                   (i)
+of the channel WN . More precisely, the decoding result of i-              method of designing a code in which one chooses I that
+th bit is                                                                  minimizes the rightmost side of (3), and called the resulting
+                                                                           code a polar code. In this paper, we propose an alternative code
+                                          (i)
+        Ûi (y1N , ûi−1               N     i−1
+                     1 ) = argmax WN (y1 , û1   | ui ).             (2)   construction strategy in which P (Ai,N ) is directly evaluated,
+                               ui =0,1                                                    (i)                           P
+                                                                           instead of ZN , and I that minimizes           i∈I P (Ai,N ) is
+If the two likelihood values are equal, the decoder determines             chosen. We call the codes resulting from our strategy polar
+0 or 1 with probability 1/2.                                               codes as well.
+C. Upper bound of performance and construction                                In the rest of this paper, we use the notations Ai and
+                                                                           Bi instead of Ai,N and Bi,N , respectively, by dropping the
+   When a set I ⊆ {1, 2, . . . , N } of indices of the information
+                                                                           blocklength N , when it is evident from the context.
+bits is fixed, the block error event, denoted by E, of the
+resulting code with SC decoding is a union over I of the                                III. C ONSTRUCTION OF P OLAR CODES
+events Bi,N that the first bit error occurs at the i-th bit. One
+has                                                                           We show in this section that {P (Ai )} are regarded as decod-
+                                                                           ing error probabilities of belief propagation (BP) decoding on
+                            i−1
+  Bi,N = { uN    N N
+            1 , y1 , c1 | û1   = ui−1       N     i−1
+                                   1 , Ûi (y1 , û1 ) 6= ui }             tree graphs, so that they can be evaluated via density evolution.
+        = { uN    N N        i−1
+             1 , y1 , c1 | û1   = ui−1       N    i−1
+                                    1 , Ûi (y1 , u1 ) 6= ui }
+                                                                           The Tanner graph of a polar code for n = 3 is shown in Fig. 1.
+                                      i−1                                  Let us consider i-th step of SC decoding. Since ui−1        have
+        ⊆ { uN    N N            N
+             1 , y1 , c1 | Ûi (y1 , u1 ) 6= ui } =: Ai,N
+                                                                                                                                    1
+                                                                           been either determined as non-information bits or decoded
+where cN 1 ∈ {0, 1}
+                    N
+                       denote N independent fair coin flips,               in previous steps, the edges incident to these variable nodes
+with ci being used as the decoding result of ui if the two                 are eliminated. Since uN   i+1 do not affect the characteristics
+                                                                                                (i)
+likelihood values for ui are equal. In [1], P (Ai,N ) is upper             of the channel WN , the degree-3 check nodes connected to
+bounded by the Bhattacharyya parameter,                                    them do not work in this stage. Hence, these check nodes and
+    (i)
+           X q (i)                      (i)                               the edges incident to them are eliminated. Similarly, degree-3
+                    WN y1N , ui−1   | 0 WN y1N , ui−1
+                                                           
+  ZN :=                        1                     1   |1 .              check nodes incident to undetermined degree-1 variable nodes
+          y1N ,ui−1
+                1                                                          are also eliminated recursively. The resulting decoding graph
+Hence, the block error probability is upper bounded as                     for ui is tree-like, as shown in Fig. 1. Hence, the ML decision
+                                                                           (2) can be implemented by BP decoding on the tree graph. The
+            X              X                1 X (i)                        probability P (Ai ) is therefore regarded as the error probability
+   P (E) =     P (Bi,N ) ≤     P (Ai,N ) ≤       ZN .                (3)
+                                            2                              of the root node of the tree graph via BP decoding, where leaf
+             i∈I                  i∈I                  i∈I
+nodes have messages of the channel. Assume that the binary                  the complexity of code construction, not only for the BEC
+expansion of (i − 1) is bn . . . b1 , then nodes at depth t of the          but also for an arbitrary symmetric B-MC, is O(N ). To
+tree graph are check nodes and variable nodes if bt = 0 and                 see this, let χ(N ) denote the complexity of calculation of
+bt = 1, respectively, as shown in Fig. 11 .                                 {aiN }i=1,...,N where the complexities of computations of ⋆
+                                               (i)
+   An LLR for i-th bit, defined as LN (y1N , ûi−1      i   ) :=            and  are considered to be constant. Then, it is evaluated as
+       (i) N    i−1           (i) N       i−1
+log(WN (y1 , û1     | 0)/WN (y1 , û1        | 1)) is calculated                              
+                                                                                                N          N      N
+recursively as                                                               χ(N ) = N + χ          =N+       +     + · · · + 1 = O(N ).
+                                                                                                2           2     4
+    (2i−1)
+  LN         (y1N , û12i−2 )                                               Since the complexity of selecting the N R-th smallest P (Ai )
+                    −1          (i)   N/2   2i−2     2i−2                   is O(N ) even in the worst case [4], the complexity of code
+       = 2 tanh          (tanh(LN/2 (y1 , û1,e  ⊕ û1.o   )/2)
+                                                                            construction is O(N ).
+                                        (i)    N         2i−2
+                               × tanh(LN/2 (yN/2+1   , û1,e  )/2))            We would like to note that larger N requires higher-
+                                                                            precision representation of messages for reliable SC decoding
+    (2i)                        (i)                                         and density evolution computations. In this regard, the com-
+  LN (y1N , û12i−1 ) = LN/2 (yN/2+1
+                               N         2i−2
+                                     , û1,e  )
+                                                                            plexity of SC decoding discussed in [1] and the complexity
+                                         (i)   N/2       2i−2     2i−2
+                         + (−1)û2i−1 LN/2 (y1       , û1,e  ⊕ û1,o  )    of construction mentioned above should be understood as
+                                                                            referring to the number of the arithmetics of LLRs in BP and
+where ûi1,e and ûi1,o denote subvectors which consist of                  the number of the convolution operations in density evolution,
+elements of ûi1 with even and odd indices, respectively, and               respectively, not mentioning their precision. In practice, use of
+where ⊕ denotes modulo-2 addition. The above updating rules                 finite-sized binning in density evolution may lead to imprecise
+are originally derived by Arıkan [1].                                       upper bounds of the block error probabilities, which, however,
+   It is well known in the field of LDPC codes that the error               still provide upper bounds relevant to SC decoding with the
+probability of the root node of a tree graph after message                  same quantization as the binning scheme.
+passing decoding is calculated via density evolution. For
+the analysis of the error probability of symmetric channels,                 IV. L OWER BOUND OF THE BLOCK ERROR PROBABILITY
+without loss of generality, it is assumed that the all-zero                           FOR ARBITRARY SYMMETRIC B-MC
+message is transmitted. The following theorem for symmetric                    To the authors’ knowledge, no lower bound of the block
+B-MC is a consequence of a well-known result in [3] and also                error probability of polar codes has been known. In this
+obtained for the BEC by Arıkan [1].                                         section, we introduce a lower bound for a given choice of
+Theorem 1. For a symmetric B-MC which has a density aW                      information bits I. We use the following fundamental lemma.
+of LLR, it holds that P (Ai ) = E(aiN ) where
+                                                                                        S          S
+                                                                            Lemma 1. i∈I Bi = i∈I Ai .
+                                       1 +ǫ
+                     Z −ǫ               Z          
+     E(a) := lim             a(x)dx +         a(x)dx ,                            Proof: The direction ⊆ is trivial. Assume an event v
+               ǫ→+0     −∞             2 −ǫ                                 belongs to Ai . If ûi−1
+                                                                                                 1   = ui−1
+                                                                                                        1 , v belongs to Bi . Otherwise, v
+                                                                            belongs to Bj forSsome j < i which belongs to I.
+                                  2i−1
+     a2i    i    i
+      2N = aN ⋆ aN ,             a2N   = aiN  aiN ,       a11 = aW            Recalling  E = i∈I Bi , it immediately follows that P (E) =
+                                                                               S
+                                                                            P ( i∈I Ai ) holds. The events {Ai } are easier to deal with
+and where ⋆ and  denote the convolutions of LLR density
+                                                                            than {Bi }. Several bounds which use probabilities concerning
+functions, which are defined in [3], corresponding to variable
+                                                                            {Ai } are considered in what follows.
+and check nodes, respectively.
+                                                                               First, via Boole’s inequality, the following lower bound is
+On the basis of the availability of P (Ai )s assured by Theo-               obtained for any S ⊆ I
+rem 1, we propose the following code construction procedure:                               !               !
+Choose I which minimizes                                                            [                [
+                         X                                                     P        Ai ≥ P         Ai
+                              P (Ai ),                    (4)                      i∈I                i∈S
+                                                                                               X                     X
+                                 i∈I                                                       ≥         P (Ai ) −                    P (Ai ∩ Aj ) .   (5)
+subject to |I| = N R. The block error probability of the                                       i∈S               (i,j)∈S 2 ,i<j
+                                           β
+resulting codes also decays like O(2−N ) for any β < 12                        Maximization of the lower bound (5) with respect to S is
+as in [2], since the upper bound of the block error probability,            difficult since it is equivalent to the Max-Cut problem, which
+given in terms of Bhattacharyya parameters in [2], is also                  is NP-hard [5]. However, without strict optimization, one can
+an upper bound of the block error probability of the codes                  obtain practically accurate lower bounds for some rates and
+constructed via the proposed method.                                        channels.
+   In [1], complexity of code construction on the BEC is                       In order to obtain the lower bound (5), evaluations of
+explained as O(N log N ). However, Theorem 1 states that                    probabilities of intersections of two Ai s are required. For
+ 1 In counting the depth we omit nodes in the tree with degree 2, because   this purpose, we introduce a method which we call the joint
+messages of BP are passed through such nodes unprocessed.                   density evolution. Let (X1 , Y1 ) and (X2 , Y2 ) denote pairs
+of random variables which independently follow a(x, y) and             p2i−1,2j−1
+                                                                        2N        (0, 1) = pi,j     2    i,j      i,j
+                                                                                            N (0, 1) + 2pN (0, 1)pN (1, 1),
+b(x, y), respectively. The convolution a ⋆⋆ b is defined as the        p2i−1,2j−1 (1, 0) = pi,j     2    i,j      i,j
+                                                                        2N                  N (1, 0) + 2pN (1, 0)pN (1, 1),
+joint density function of messages (X, Y ) where X = X1 +X2
+and Y = Y1 + Y2 . Similarly, the convolutions a ⋆ b is                p2i−1,2j−1
+                                                                        2N        (1, 1) = pi,j     2
+                                                                                            N (1, 1) ,
+defined as the joint density function of messages (X, Y ) where        p2i−1,2j−1
+                                                                        2N        (0, 0) = 1 − p2i−1,2j−1
+                                                                                                2N        (0, 1)
+X = X1 + X2 and Y = 2 tanh−1 (tanh(Y1 /2) tanh(Y2 /2)).                                    − p2i−1,2j−1 (1, 0) − p2i−1,2j−1 (1, 1),
+                                                                                              2N                  2N
+The other convolutions a ⋆ b and a  b are also defined in
+the same way.
+Theorem 2. For a symmetric B-MC which has a density aW                        p11,1 (0, 0) = ǫ,          p11,1 (0, 1) = 0,
+of LLR, the joint density ai,j
+                           N of LLR for i-th bit and j-th bit                 p11,1 (1, 0) = 0,          p11,1 (1, 1) = 1 − ǫ
+after BP decoding is calculated recursively as
+      2i,2j                                                        and where δ∞ (x) denotes the Dirac delta function of unit mass
+     a2N    = ai,j    i,j
+               N ⋆ ⋆ aN ,               a2i,2j−1
+                                         2N      = ai,j    i,j
+                                                    N ⋆  aN ,     at infinity.
+   2i−1,2j
+  a2N      = ai,j    i,j
+              N  ⋆ aN ,             a2i−1,2j−1
+                                      2N        = ai,j    i,j
+                                                   N   aN ,
+                                                                       Higher-order joint probabilities such as P (Ai ∩ Aj ∩ Ak )
+  a11 (x, y) = δ(x − y)aW (x)                                      are calculated recursively by tracking real vectors of an
+where δ(x) denotes the Dirac delta function.                       appropriate dimension in a way similar to that described in
+                                                                   Corollary 1.
+The probabilities P (Ai ∩ Aj ), P (Aci ∩ Aj ), P (Ai ∩ Acj ) and       Complexity of computations (as measured in numbers of
+P (Aci ∩ Acj ) are calculated by appropriate integrations of the   convolution operations) of all ai,j           2
+                                                                                                       N s is O(N ) as N increases.
+joint density ai,j
+                 N . Extensions of joint density evolution to      Similarly, complexity of computations of all s-joint densities
+higher order joint distributions are also possible straightfor-    aiN1 ,...,is s is O(N s ) as N increases. On the other hand, the
+wardly.                                                            complexity grows exponentially in s since the dimension of
+   For the BEC, density evolution has only to evolve ex-           the densities is s.
+pectations of erasure probabilities [3]. Correspondingly, joint
+density evolution for the BEC is much simpler than that for a              V. N EW UPPER BOUND OF THE BLOCK ERROR
+general symmetric B-MC, as follows.                                                PROBABILITY FOR THE BEC
+Corollary 1. For the BEC with erasure probability ǫ,
+                                                                     The upper bound (4) of the block error probability of polar
+  ai,j         i,j                 i,j                             codes may yield poor results. In particular, it exceeds one near
+   N (x, y) = pN (0, 0)δ(x)δ(y) + pN (0, 1)δ(x)δ∞ (y)
+                                                                   the capacity, as observed in [1] for the BEC. In this section,
+            + pi,j                    i,j
+               N (1, 0)δ∞ (x)δ(y) + pN (1, 1)δ∞ (x)δ∞ (y)          a new upper bound which does not exceed one is derived for
+where                                                              the BEC. For the BEC, covariances among complements of
+                                                                   {Ai }, denoted by {Aci }, are always positive.
+          2i,2j
+         p2N    (0, 0) = pi,j     2
+                          N (0, 0) ,
+                                                                   Lemma 2. For the BEC, P ( i∈I Aci ) ≥ i∈I P (Aci ), for
+                                                                                                  T               Q
+          2i,2j
+         p2N    (0, 1) = pi,j     2    i,j      i,j
+                          N (0, 1) + 2pN (0, 0)pN (0, 1),          any I ⊆ {1, . . . , N }.
+          2i,2j
+         p2N    (1, 0) = pi,j     2    i,j      i,j
+                          N (1, 0) + 2pN (0, 0)pN (1, 0),
+          2i,2j                2i,2j
+                                                                        Outline of proof:       An event Aci is expressed as
+         p2N    (1, 1) = 1 − p2N     (0, 0)
+                                                                     k {ei,k * F }, where ei,k is an error pattern of erasure
+                                                                   T
+                            2i,2j           2i,2j                  messages for i-th bit, and where F is a set of indices of erasure
+                         − p2N (0, 1) − p2N       (1, 0),
+                                                                   messages.
+        p2i,2j−1 (0, 0) = pi,j     2    i,j      i,j                 Using this property, Q  the block error probability is upper
+         2N                N (0, 0) + 2pN (0, 0)pN (0, 1),
+                                                                   bounded simply by 1 − i∈I P (Aci ). Furthermore, it is more
+        p2i,2j−1
+         2N      (0, 1) = pi,j     2
+                           N (0, 1) ,                              accurately upper bounded by
+        p2i,2j−1
+         2N      (1, 1) = pi,j     2    i,j      i,j
+                           N (1, 1) + 2pN (1, 1)pN (0, 1),                                  Y                 
+        p2i,2j−1 (1, 0) = 1 − p2i,2j−1 (0, 0)                                          1−       P Aci | Acp(i)                   (6)
+         2N                    2N
+                                                                                              i∈I
+                          − p2i,2j−1
+                             2N      (0, 1) − p2i,2j−1
+                                               2N      (1, 1),
+                                                                   where p(i) ∈ I corresponds to a parent node of Ai in a
+         2i−1,2j
+        p2N      (0, 0) = pi,j       2       i,j      i,j          spanning tree of a perfect graph which has nodes correspond-
+                           N (0, 0) + 2pN (0, 0)pN (1, 0),
+         2i−1,2j                                                   ing to indices in I. P (Aci | Acp(i) ) is calculated via joint
+        p2N      (1, 0) = pi,j
+                           N (1, 0) ,
+                                     2
+                                                                   density evolution. In order to tighten the upper bound (6),
+         2i−1,2j
+        p2N      (1, 1) = pi,j       2       i,j      i,j
+                           N (1, 1) + 2pN (1, 1)pN (1, 0),         the maximum weight directed spanning tree should be chosen
+         2i−1,2j
+        p2N      (0, 1) = 1 − p2N2i−1,2j
+                                         (0, 0)                    from the perfect directed graph whose edges have weights
+                               2i−1,2j           2i−1,2j
+                                                                   P (Aci | Acj ), where i and j are sink and source nodes of the
+                          − p2N        (1, 0) − p2N      (1, 1),   directed edge, respectively, like Chow-Liu tree [6].
+        VI. T ECHNIQUES FOR TIGHTENING BOUNDS                                100
+
+       S section, some techniques for obtaining tighter bounds
+   In this
+of P ( i∈I Ai ) are shown. The first one is applicable to polar
+                                                    (i)
+codes over the BEC. In this case, the LLR LN (y1N , ûi−1    j )
+for i-th bit in SC decoding, when the all-zero information is               10-1
+transmitted, is either zero or infinity. Let A′i be the event that
+
+
+
+
+                                                                       PB
+the LLR for i-th bit is zero. We consider the events of erasure
+{A′i } rather than {Ai } for simplicity. We first define partial
+ordering on {1, . . . , 2n }.                                               10-2
+
+Definition 2. For i, j ∈ {1, . . . , 2n }, i ≺ j if and only if t-th
+bit of binary expansion of j − 1 is one when t-th bit of binary                                                                   (4)
+                                                                                                                                  (6)
+expansion of i − 1 is one for any t ∈ {1, . . . , n}.                                                                             (5)
+                                                                                                                          simulations
+                                                                            10-3
+The following theorem is useful for reducing time complexity                       0.3               0.4                  0.5                 0.6
+of calculations of the bounds.                                                                                  ǫ
+Lemma 3. j ≺ i ⇐⇒ A′i ⊆ A′j .                                          Fig. 2. Calculation results of upper bounds (4), (6) and lower bound (5).
+                                                                       Rate is 0.5. Blocklength is 1024.
+     Proof: If a variable node outputs an erased message, a
+check node with the same input as the variable node outputs
+an erased message. Hence if v ∈ A′i then v ∈ A′j . The proof           bounds. Although we optimized the upper bound (6) and the
+of the other direction is also obvious and is omitted.                 lower bound (5) only approximately, the lower bound is very
+Theorem 3. The block S   erasure probability of polar codes of         close to the upper bound for ǫ below 0.4. Our new upper bound
+information bits I is P ( i∈M(I) A′i ) where M (I) denotes the         is always smaller than 1 and closer to the simulation results,
+set of minimal elements of I with respect to ≺.                        whereas the union bound exceeds 1 when ǫ > 0.407.
+
+     Proof: From Lemma 3, i∈I A′i = i∈M(I) A′i .
+                              S           S                                         VIII. C ONCLUSION AND FUTURE WORKS
+From this Theorem, we have only to consider the set of                   The construction method of polar codes for symmetric B-
+minimal elements M (I) for the block erasure probability               MCs with complexity O(N ) is shown. New upper and lower
+of polar codes over the BEC, which can be used to tighten              bounds for the block error probability of particular polar codes
+bounds.                                                                and the method of joint density evolution are derived. The
+   For polar codes over a general symmetric B-MC, the                  method and the bounds are also applicable to generalized polar
+following result similar to Theorem 3 is obtained.                     codes [7].
+                                                                         Computing higher-order joint distributions and deriving
+Theorem 4. For integers 0 ≤ k ≤ n, and 0 ≤ i ≤ 2n−k − 1
+                                                                       other bounds (e.g., Boole’s inequality with higher-order terms)
+                                                                  k
+P (A2k i+1,2n ∪ · · · ∪ A2k (i+1),2n ) = 1 − (1 − P (Ai+1,2n−k ))2     are future works.
+Proof is omitted for lack of space. Although the joint proba-                                   ACKNOWLEDGMENT
+bility P (A2k i+1,2n ∪ · · · ∪ A2k (i+1),2n ) can be calculated via      TT acknowledges support of the Grant-in-Aid for Scientific
+joint density evolution, Theorem 4 allows us to calculate it           Research on Priority Areas (No. 18079010), MEXT, Japan.
+more efficiently via density evolution for depth-(n − k) trees
+and a few arithmetics.                                                                              R EFERENCES
+   From Theorem 4, one can efficiently obtain a tighter upper          [1] E. Arıkan, “Channel polarization: A method for constructing capacity-
+boundSthan (4) byS decomposing the block error event as                    achieving codes for symmetric binary-input memoryless channels,” 2008.
+                                                                           [Online]. Available: http://arxiv.org/abs/0807.3917
+E = i∈I Ai = j∈J Cj , where each Cj is expressed as                    [2] E. Arıkan and E. Telatar, “On the rate of channel polarization,” 2008.
+A2k i+1,2n ∪ · · · ∪ A2k (i+1),2n . For example, if we choose I =          [Online]. Available: http://arxiv.org/abs/0807.3806
+{4, 6, 7, 8} as information bits for a polar code with N = 8,          [3] T. Richardson and R. Urbanke, Modern Coding Theory. Cambridge
+                                                                           University Press, 2008.
+one obtains an upper bound P (A4 ) + P (A6 ) + P (A7 ∪ A8 ),           [4] M. Blüm, R. Floyd, V. Pratt, R. Rivest, and R. Tarjan, “Time bounds for
+which is tighter than P (A4 ) + P (A6 ) + P (A7 ) + P (A8 ).               selection,” Journal of Computer and System Sciences, vol. 7, pp. 448–461,
+                                                                           1973.
+   VII. N UMERICAL CALCULATIONS AND SIMULATIONS                        [5] A. Caprara, “Constrained 0–1 quadratic programming: Basic approaches
+                                                                           and extensions,” European Journal of Operational Research, vol. 187,
+   In this section, numerical calculation results are compared             no. 3, pp. 1494–1503, 2008.
+with numerical simulation results. Figure 2 shows calculation          [6] C. Chow and C. Liu, “Approximating discrete probability distributions
+                                                                           with dependence trees,” IEEE Trans. Inf. Theory, vol. 14, no. 3, pp. 462–
+results of the upper bounds (4), (6) and the lower bound (5) of            467, 1968.
+block erasure probability. Coding rate is 0.5 and blocklength          [7] S. Korada, E. Şaşoğlu, and R. Urbanke, “Polar codes: characterization
+is 1024. Only the minimal elements of information bits are                 of exponent, bounds, and constructions,” 2009. [Online]. Available:
+                                                                           http://arxiv.org/abs/0901.0536
+considered in view of Theorem 3 for calculation of these
+

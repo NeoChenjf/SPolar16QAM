@@ -1,0 +1,30 @@
+{
+  "append_only_prefix_preserved": {
+    "README.md": true,
+    "16QAM_Polar\\README.md": true,
+    "周报\\阶段B\\B4：full-chain策略验证.md": true
+  },
+  "navigation_targets_exist": {
+    "学习文档/硬件前信息与非线性收能定量分析及瑞利策略优化-loop/当前研究路线-2026-11-10.md": true,
+    "学习文档/硬件前信息与非线性收能定量分析及瑞利策略优化-loop/A0仿真正确性与统计可信度执行计划-2026-11-10.md": true,
+    "next_plan.md": true,
+    "治理记录/20261109/README.md": true,
+    "治理记录/20261110_repo_governance/README.md": true
+  },
+  "approved_deletions": 0,
+  "actual_deleted_files": 0,
+  "actual_moved_files": 0,
+  "matlab_run": false,
+  "business_code_changed": false,
+  "limits": "self-review, static evidence; no behavioral refactor performed",
+  "new_status_entries": [
+    "?? 治理记录/20261110_repo_governance/README.md",
+    "?? 治理记录/20261110_repo_governance/baseline-status.txt",
+    "?? 治理记录/20261110_repo_governance/findings.json",
+    "?? 治理记录/20261110_repo_governance/inventory.json",
+    "?? 治理记录/20261110_repo_governance/proposed-cleanup.json",
+    "?? 治理记录/20261110_repo_governance/validation.json"
+  ],
+  "removed_status_entries": [],
+  "new_links_missing": []
+}
