@@ -1419,3 +1419,17 @@ Rule reflection: no new durable rule。当前权限、复现和追加式规则�
 
 
 同步检查补充：暂存332个变更路径，敏感凭据特征扫描未发现私钥/GitHub令牌/AWS访问键特征（非完整安全审计）。git diff --cached --check未通过，原因是此前已有代码的行尾空白/文件末尾空行及历史patch空白；本次保留现状，不为同步改写历史材料或未复验代码。未声称全部检查通过。
+
+
+## 2026-11-10 全局会话归档前收尾Skill
+
+用户要求把会话产物回顾、旧版本治理与GitHub同步固化为全局Skill。已创建`C:/Users/11956/.codex/skills/session-closeout/`，入口SKILL.md与agents/openai.yaml，中文隐式触发“归档本会话/会话收尾/结束前整理并上传/清理后同步GitHub”。执行回顾产物→替代证据和保留判断→授权内精确清理→验证与阶段记录→绑定远端/分支/提交范围后commit/push→核对远端SHA及交接。
+
+quick_validate通过，UI摘要长度、默认提示词与隐式调用字段核对通过；按误触发、互补实验分段、唯一数据、append-only冲突及审批拒绝场景作本上下文规则自审，没有执行破坏性演练或宣称实际自动调用已验收。Skill不监听产品归档按钮、不安装hook、不把创建Skill当作新的删除或推送授权。上次6392ed0提交的推送仍因自动审批要求具体远端和payload确认而未完成，本轮没有重试推送。全局Skill不属于项目Git快照，本条阶段记录为仓库内新增改动。
+
+Rule reflection: no new durable rule。通用流程置于全局Skill；现有项目权限、复现和追加式规则保持。
+
+
+## 2026-11-10 GitHub推送范围确认
+
+用户针对此前推送明确确认“大型实验数据留在本机，其他的代码文档等上传”，绑定此前已展示的origin=git@github.com:NeoChenjf/SPolar16QAM.git及master分支。推送6392ed0现状提交和本条/全局收尾Skill阶段记录；大型被忽略实验产物不强制上传。发现新出现的未跟踪`16QAM_Polar/v2/diagnostics/run_a0_diagnostics.m`，属于并发后续工作，本次不纳入此前已核对快照，不移动/回滚该文件。远端推送前仍为5eac134，与原基点一致。Rule reflection: no new durable rule。
