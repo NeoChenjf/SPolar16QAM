@@ -1,0 +1,11 @@
+# L2 · 分层条件损失迁移
+- **flow_id**: l2_run_stratified_loss_extract
+- **entry_script**: 16QAM_Polar/v2/diagnostics/run_stratified_loss_extract.m
+- **runtime**: minutes
+- **needs_user_run**: false
+- **purpose**: 复用1200保存帧，判定跨标签共享损失表的适用性。
+- **pipeline**: l3_run_stratified_loss_extract → l3_analyze_stratified_loss → l3_check_loss_sensitivity。
+- **inputs**: 20261110_154811_fixed_h_E摘要，3H/2p/标签20和28。
+- **outputs**: results/20261110_170520_stratified_loss，表、图、参数、源码哈希、报告。
+- **acceptance**: 恒等式与覆盖核对；oracle与预测分开；偏差/稀疏/不足诚实交付，不以内部重算为模型成功。
+- **weekly_report_link**: 周报/阶段B/B4：full-chain策略验证.md

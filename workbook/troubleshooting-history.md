@@ -541,3 +541,21 @@ Revision metadata: revision_id=p2_resume_closeout_20261025; current_status=curre
 - **解决办法**：依append-only保留首版，追加明确作废/替代声明；用字符码92构造实际反斜杠，核验最终命令、换行及定界符；独立复核关闭P2。未修改算法、数据或实验结论。
 - **相关文件**：学习文档/硬件前信息与非线性收能定量分析及瑞利策略优化-loop/当前研究路线-2026-11-10.md末尾公式更正段。
 - **日期**：2026-11-10。
+
+### A0-20261110 诊断模板位置假设错误
+- **问题**：run_a0_production按前两模板假定p=.5/.3，实际五档模板前两项为.1/.2。
+- **触发场景**：复用20261109五档templates.mat，120新增case-帧已运行。
+- **解决办法**：停止新增样本，保留原始反例；后续必须按p_vec匹配并断言，当前预算无重跑余量。
+- **相关文件**：16QAM_Polar/v2/diagnostics/run_a0_production.m；results/20261110_142036_A0_production/templates.mat。
+- **日期**：2026-11-10
+
+## 2026-11-10 修复复验补充
+run_a0_production按p_vec唯一匹配；用户新增120帧批准后复验完成，verify_a0_saved重算360组I/S计数与首错通过。源码及hash在20261110_144834_A0_production/source。仍不宣称所有配置完整证明。
+
+
+### 2026-11-10 固定H集合比较形状误报
+- **问题**：run_fixed_h_existing独立集合相同但行列形状不同导致isequal失败。
+- **触发场景**：GA返回排序向量与state.I列向量比较。
+- **解决办法**：expected(:)与I(:)比较，重放1440路核验通过；无生产算法修改，无新增通信样本。
+- **相关文件**：16QAM_Polar/v2/diagnostics/run_fixed_h_existing.m。
+- **日期**：2026-11-10。

@@ -1,0 +1,22 @@
+{
+  "revision": "v1.1",
+  "prefix_preserved": [
+    "next_plan.md",
+    "信息估计当前总入口.md",
+    "协调协议.md",
+    "loop设计.md",
+    "进度表.md",
+    "README.md",
+    "评审记录.md"
+  ],
+  "hash_before": {
+    "next_plan.md": "18ed7a47c60614d372a4c0c8005cf14600d6e597f433d322aad2c2b4bae40c15",
+    "信息估计当前总入口.md": "2c857eaf6577edee74a5f164113c0a026c7d2cc3ff998b944c57dfbcd2c2250f",
+    "协调协议.md": "2b547cfc478b4368ddc43d89971d7e65c590a5c8ed3efb18ece582657c53cb02",
+    "loop设计.md": "a98788e3faba6070fb919634f3479c85b5ce18ffabd3879353852a5aea9f6a2d",
+    "进度表.md": "c043984b41a05e9062dc90e27240b74b2876c5cfe0bf94dd517ae384e7796270",
+    "README.md": "e25f1fadd194cddde6ea762ce8ad278da60bf91e4e3ce43bf97310adae6b097e",
+    "评审记录.md": "a2303d11188d0f162229551283b95eb3f4d71f590ec10e09545f358fbfc6ba3a"
+  },
+  "experiment": false
+}

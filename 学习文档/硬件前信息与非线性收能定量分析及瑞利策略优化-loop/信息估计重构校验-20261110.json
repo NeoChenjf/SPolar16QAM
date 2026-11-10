@@ -1,0 +1,16 @@
+{
+  "revision": "信息估计主线-v1-20261110",
+  "preserved_prefixes": {
+    "README.md": "45ee724deea2b4f42c2542bbc9880b7e22f0c0e9c0abd6fc5d021b0e0a327713",
+    "loop设计.md": "b68a2d1d2bb3df5ac5070760d986c081ab7127a8b76da66ab91cb22e9f829301",
+    "协调协议.md": "a8fc3cc5b98d443a006de078c5780fc480a1759008c5d540602f60960d5118e8",
+    "进度表.md": "512c09a2832f39788a9d5ac9f2527049b503e1eedf40a96c751c2430b619a463",
+    "问题记录.md": "d10d880fd5eff72c981656aed16f9b900ff0b13581b3590c29149f642ae170c1",
+    "next_plan.md": "8cbf8b740a4bd1ec1f9322d75914caac3b13cc17e4bb1de6ae670a1c2dda85d1",
+    "需求澄清.md": "10d0ed9beef84ad2e5b27705d0592b3d3816f036de0c906ae4c96312813368ca",
+    "当前研究路线-2026-11-10.md": "09f2ce4f54d36c9fd1d177162fe4d71ecc34a710be8a7d7d374784e048165d19"
+  },
+  "new_entry": "信息估计当前总入口.md",
+  "experiments": false,
+  "goal_started": false
+}

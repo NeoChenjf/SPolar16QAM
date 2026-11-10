@@ -1,0 +1,11 @@
+# L2 · run_fixed_h_independent
+- **flow_id**: l2_run_fixed_h_independent
+- **entry_script**: 16QAM_Polar/v2/diagnostics/run_fixed_h_independent.m
+- **runtime**: minutes
+- **needs_user_run**: true
+- **purpose**: 固定H机制阶段已授权批，后续重跑需新授权。
+- **inputs**: 已保存3个H、p=.5/.3、参考标签20/28、N1024/64/CP16/16tap。
+- **pipeline**: l3_run_fixed_h_independent；P独立核验→D已有数据→冻结后E1200帧→帧级描述分析。
+- **outputs**: results/20261110_154338_fixed_h及20261110_154811_fixed_h_E。
+- **acceptance**: 参照判决一致/轨迹误差≤1e-10；真实12格每100帧；证据不足单列，不扩样。
+- **weekly_report_link**: 周报/阶段B/B4：full-chain策略验证.md
