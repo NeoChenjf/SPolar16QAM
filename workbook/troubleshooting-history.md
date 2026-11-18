@@ -559,3 +559,47 @@ run_a0_production按p_vec唯一匹配；用户新增120帧批准后复验完成�
 - **解决办法**：expected(:)与I(:)比较，重放1440路核验通过；无生产算法修改，无新增通信样本。
 - **相关文件**：16QAM_Polar/v2/diagnostics/run_fixed_h_existing.m。
 - **日期**：2026-11-10。
+
+
+### 2026-11-10 P1诊断数值CDF单调性与路径依赖
+- **问题**：求积20阶时浮点累计概率末值略大于1，强设末元素1使CDF下降，histc拒绝；首次保存数据诊断调用整形发射器缺v3路径。
+- **触发场景**：analyze_p1_reliability数值分辨率检查；run_p1_saved_ga首次尝试。
+- **解决办法**：CDF整体除以末值后设末值1并断言非递减；保存u用polar_encoder恢复x，不重新运行整形发射器。均未新生成通信帧。受影响数值分析重跑，旧数据不改。
+- **相关文件**：16QAM_Polar/v2/diagnostics/analyze_p1_reliability.m、run_p1_saved_ga.m。
+- **日期**：2026-11-10。
+
+
+### 2026-11-10 P4离线缓存域检查的实际集合与cell指纹
+- **问题**：只比较state.fingerprint不能拒绝实际I/S/F被改但旧指纹未更新的输入；补充source_fingerprint比较时它实际为cell，strcmp返回向量，不能用于&&。
+- **触发场景**：P4有限域离线表的域外拒绝自审/回归，不涉及冻结预测值或通信链路错误。
+- **解决办法**：直接比较实际N/K/I/S/F及kind/source资产；cell指纹用isequal；36域内完全一致及H/N0/map/实际I保持旧指纹/kind改变的拒绝复验通过。无预测值调整、无重跑通信。
+- **相关文件**：16QAM_Polar/v2/analysis/p4_lookup_minsum.m、diagnostics/build_p4_lookup.m。
+- **日期**：2026-11-10。
+
+
+### 2026-11-11 独立排序分析的bootstrap矩阵维度
+- 问题：开发时二维数组G(ix,c)会展平重采样行索引，直接mean不能得到每次重采样均值。
+- 触发场景：50帧×2000次的配对区间计算。
+- 解决办法：在首次运行分析前显式reshape为50×2000再沿帧求均值；图横轴范围也按最大分数差扩展，避免截断点。仅影响分析草稿，通信和冻结预测未改。
+- 相关文件：16QAM_Polar/v2/diagnostics/analyze_information_score_independent.m。
+- 日期：2026-11-11。
+
+
+### 2026-11-12 分析CSV默认精度合并浮点近并列
+- 问题：MATLAB表格默认导出的小数位数会让不同binary64分数读回后变为完全相等，影响平坦信道的平局计数。原生MAT结果与MATLAB计算未受影响。
+- 触发：H9平坦信道约1e−15差距，Python从CSV重算精确平局与原生MAT统计不一致。
+- 解决：分析输出以17位有效数字写入，并以H9/16的125个简单与SC分数逐个验证MAT→CSV→MAT二进制精确相同；增加原生MAT近并列诊断。原预测与通信不重算。
+- 文件：16QAM_Polar/v2/analysis/analyze_information_frontier_main.m；diagnose_frontier_float_ties.m。
+- 日期：2026-11-12。
+
+### 2026-11-18 新认证入口路径与预算快照发布
+- **问题**：新入口未加载v3/polar，shape_stream_sc不可见；在首编码块前失败，没有完成通信帧。另只读审查发现证书计算跨预算时可能将截止后状态写入早期预算快照。
+- **解决办法**：入口显式加入v3/polar，与旧入口一致；证书发布前先捕获所有已过截止档位的旧状态。保留冻结前失败日志和评审记录，不改变生产SC。
+- **验证**：修复后3case帧smoke1.355秒，配对认证EB与betting公式的独立手算、边界和非法输入测试通过。冻结后独立批启动，不把功能测试当科研通过。
+- **相关文件**：16QAM_Polar/v2/diagnostics/run_information_certified_frontier.m；analysis/goodput_betting_certificate.m。
+
+
+## 2026-11-18 中断检查点与分析口径
+
+恢复时原进程句柄失效、无MATLAB，只有一个完整condition，无法定位终止原因。保留partial，ledger36423作为下界、每1000guard给保守上界37422；不重复通信。修正Python单H聚类bootstrap为NaN，避免零宽伪区间；SciPy载入MAT整数可能窄类型，I位累计先转int64。原模拟不因结果改参。
+

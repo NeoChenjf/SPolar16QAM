@@ -1,0 +1,17 @@
+{
+  "completed_conditions": 1,
+  "saved_case_frames_lower_bound": 36423,
+  "conservative_case_frames_upper_bound": 37422,
+  "evaluation": [
+    {
+      "condition": 1,
+      "evaluation_case_frames": 12500,
+      "evaluation_information_bits": 69450000,
+      "errors": 14693550,
+      "zero_error_candidates": 0
+    }
+  ],
+  "independent_uncoded_symbols": 0,
+  "result_bytes": 1388200,
+  "caveat": "Interrupted batch; ledger is a lower bound. One H cannot estimate cross-H uncertainty. No global validation or zero-risk claim."
+}

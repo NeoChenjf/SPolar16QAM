@@ -1,0 +1,4 @@
+condition,H,label,diagnostic,method,point_reversals,pair_denominator,reversal_fraction,point_ties
+1,1,16,0,1,454,7750,0.058580645161290322,0
+1,1,16,0,2,99,7750,0.012774193548387098,0
+1,1,16,0,4,98,7750,0.01264516129032258,0

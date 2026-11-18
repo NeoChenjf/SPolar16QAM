@@ -73,3 +73,13 @@ current-revision读取逻辑加入15项确定性测试，扫描器现只使用�
 随机S对照保留原S/I/F与接收端活动集I∪S，辅助位不计入有效K；独立供体必须与当前消息分离。均匀性先核对实际自由输入对生成矩阵的覆盖，再检验实际联合PMF。供体S不得预设为均匀或原p目标。未执行译码的校准/PMF记录须以NaN及communication_measured=false表示误码/Goodput，不能写0错误冒充测量。
 
 Revision metadata: revision_id=p2_d0a46f9f3a5a_20261024; current_status=current; supersedes=[baseline_p2_d0a46f9f3a5a].
+
+## 2026-11-12 候选排序的浮点存取与近并列
+
+以细微数值差判断候选排序或去重时，保留原生双精度数据，并验证文本导出读回不会改变相关比较。需要无损binary64往返的CSV可使用17位有效数字；浮点尺度的近并列与帧/模型不确定性分别报告，不把机器精度容差当作科研通过门槛。参见troubleshooting-history.md中MAT/CSV的N0比较及本次平坦信道平局记录。
+
+
+## 2026-11-18 单簇与证书发布时间
+
+仅一个独立H时不报告跨H bootstrap覆盖区间，输出不可估计；整帧区间与跨H区间分开。全时置信序列的事后越界证据不等于原策略在预算内完成发布，后者需证书完成时刻及冻结快照支持。
+

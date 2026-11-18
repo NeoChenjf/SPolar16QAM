@@ -28,3 +28,8 @@
 合同测试及小pilot入口见l2_p2_mechanism；正式1%功率、3×80 PMF及独立模型门槛等待预算，不因生成契约自动升级证据。
 
 Revision metadata: revision_id=p2_52d75da2a5cf_20261024; current_status=current; supersedes=[].
+
+
+## 2026-11-10 信息估计P1开发对照补充
+本轮固定实际I/S/F、幅度和资源映射；原始GA与校准输出分开，未拟合校准。联合PMF只是实际均匀likelihood LLR积分权重，不是在生产LLR插入成形先验。ga_mean=2mean²/variance是候选投影，不是匹配min-sum分布定理。实际位置sigma与N0映射已追踪。144单元开发对照出现显著绝对概率失配，独立边缘min-sum参照改善；不据此改构造或宣称通用GA失败。
+证据：results/20261110_182159_p1_reliability；信息估计P0-P3开发交付-2026-11-10.md。候选仍未P4独立验证或速度验收，health=degraded保持。
