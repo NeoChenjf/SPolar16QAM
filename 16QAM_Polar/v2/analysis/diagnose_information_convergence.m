@@ -1,4 +1,4 @@
-function rows=diagnose_information_convergence(source,out,tasks)
+function rows=diagnose_information_convergence(source,out,tasks,orders,particles)
 %DIAGNOSE_INFORMATION_CONVERGENCE Bounded development sensitivity, no frames.
 % tasks columns: channel index, label index, group index, probability index.
 % Cross order {80,160}, B {8192,16384}, and three fixed seeds.
@@ -7,13 +7,18 @@ root=fileparts(fileparts(mfilename('fullpath')));addpath(root);setup_paths;
 if nargin<3
  tasks=[5 2 1 4;5 2 1 5;5 2 2 4;5 2 2 5;5 2 3 4;5 2 3 5;8 4 3 1;8 4 3 5];
 end
+if nargin<4,orders=[80 160];end
+if nargin<5,particles=[8192 16384];end
+validateattributes(orders,{'numeric'},{'vector','integer','>=',4});
+validateattributes(particles,{'numeric'},{'vector','integer','positive'});
+orders=orders(:)';particles=particles(:)';
 validateattributes(tasks,{'numeric'},{'2d','integer','positive','ncols',4});
 if ischar(source)||isstring(source),z=load(source);else,z=source;end
 assert(all(tasks(:,1)<=size(z.channels,2))&&all(tasks(:,2)<=numel(z.protocol.labels)));
 assert(all(tasks(:,3)<=3)&&all(tasks(:,4)<=5));
 if ~isfolder(out),mkdir(out);end
 target=fullfile(out,'convergence_rows.csv');assert(~isfile(target),'Do not overwrite a diagnostic');
-rows=zeros(0,12);orders=[80 160];particles=[8192 16384];seeds=z.protocol.model_seed+(0:2);
+rows=zeros(0,12);seeds=z.protocol.model_seed+(0:2);
 fid=fopen(target,'w');assert(fid>=0);guard=onCleanup(@()fclose(fid));
 fprintf(fid,'H,label,group,p_index,order,B,seed,BER,group_goodput,particle_SE_BER,seconds,leaf_seconds\n');
 for q=1:size(tasks,1)

@@ -1,0 +1,15 @@
+condition,H,label,channel_role,method,adjacent_pairs,point_reversed,predicted_exact_ties,CI_cross_zero,supported_reverse,supported_correct,raw_ensemble_pair_changes,refinement_performed
+1,2,16,new_random,1,124,63,0,37,39,48,0,0
+1,2,16,new_random,2,124,30,0,110,0,14,0,0
+2,2,24,new_random,1,124,29,0,62,18,44,0,0
+2,2,24,new_random,2,124,15,50,82,0,42,0,0
+3,3,16,new_random,1,124,53,0,48,31,45,0,0
+3,3,16,new_random,2,124,46,0,91,8,25,0,0
+4,3,24,new_random,1,124,27,0,80,11,33,0,0
+4,3,24,new_random,2,124,26,50,99,0,25,0,0
+5,4,16,new_random,1,124,53,0,48,33,43,0,0
+5,4,16,new_random,2,124,33,0,114,0,10,0,0
+6,4,24,new_random,1,124,16,0,83,1,40,0,0
+6,4,24,new_random,2,124,6,30,90,0,34,0,0
+7,5,20,known_diagnostic,1,124,39,0,63,11,50,0,0
+7,5,20,known_diagnostic,2,124,25,0,85,0,39,0,0

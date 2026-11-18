@@ -143,7 +143,20 @@ def summarize(out):
         audit.append(dict(condition=int(a["ci"]), evaluation_case_frames=int(G.size), evaluation_information_bits=int(K.sum()*100), errors=int(np.round(errors).sum()), zero_error_candidates=int(np.sum(np.round(errors).sum(axis=0)==0))))
     actual = int(loadmat(out / "ledger.mat", simplify_cells=True)["actual"])
     write_csv(out / "certified_prefix_diagnostic.csv", prefix_diagnostic)
-    result = dict(completed_conditions=len(audit), saved_case_frames_lower_bound=actual, conservative_case_frames_upper_bound=actual+999, evaluation=audit, independent_uncoded_symbols=0, result_bytes=sum(p.stat().st_size for p in out.rglob("*") if p.is_file()), caveat="Interrupted batch; ledger is a lower bound. One H cannot estimate cross-H uncertainty. No global validation or zero-risk claim.")
+    finished = (out / "completed.mat").exists()
+    if finished:
+        assert int(loadmat(out / "completed.mat", simplify_cells=True)["actual"]) == actual
+    # The resumed run charges 999 frames to bound unrecorded work before interruption.
+    reserve = 999 if (out / "resume_accounting.mat").is_file() else 0
+    result = dict(completed_conditions=len(audit), batch_finished=finished,
+                  actual_case_frames=actual if finished and not reserve else None,
+                  charged_case_frames=actual,
+                  interruption_reserve_frames=reserve,
+                  saved_case_frames_lower_bound=actual-reserve,
+                  conservative_case_frames_upper_bound=actual if finished else actual+999,
+                  evaluation=audit, independent_uncoded_symbols=0,
+                  result_bytes=sum(p.stat().st_size for p in out.rglob("*") if p.is_file()),
+                  caveat="Exact total only for completed batch; otherwise checkpoint bounds. Few-H intervals descriptive, no cross-H safety or zero-risk claim.")
     (out / "summary_audit.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
     manifest = {str(p.relative_to(out)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.rglob("*")) if p.is_file() and p.suffix in (".mat", ".csv", ".json", ".png", ".pdf") and p.name != "artifact_manifest.json"}
     (out / "artifact_manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")

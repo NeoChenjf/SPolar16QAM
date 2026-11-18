@@ -1,0 +1,63 @@
+{
+  "completed_conditions": 7,
+  "batch_finished": true,
+  "actual_case_frames": null,
+  "charged_case_frames": 219958,
+  "interruption_reserve_frames": 999,
+  "saved_case_frames_lower_bound": 218959,
+  "conservative_case_frames_upper_bound": 219958,
+  "evaluation": [
+    {
+      "condition": 1,
+      "evaluation_case_frames": 12500,
+      "evaluation_information_bits": 69450000,
+      "errors": 14419075,
+      "zero_error_candidates": 0
+    },
+    {
+      "condition": 2,
+      "evaluation_case_frames": 12500,
+      "evaluation_information_bits": 69450000,
+      "errors": 10200825,
+      "zero_error_candidates": 0
+    },
+    {
+      "condition": 3,
+      "evaluation_case_frames": 12500,
+      "evaluation_information_bits": 69450000,
+      "errors": 12829975,
+      "zero_error_candidates": 0
+    },
+    {
+      "condition": 4,
+      "evaluation_case_frames": 12500,
+      "evaluation_information_bits": 69450000,
+      "errors": 5670625,
+      "zero_error_candidates": 0
+    },
+    {
+      "condition": 5,
+      "evaluation_case_frames": 12500,
+      "evaluation_information_bits": 69450000,
+      "errors": 13875000,
+      "zero_error_candidates": 0
+    },
+    {
+      "condition": 6,
+      "evaluation_case_frames": 12500,
+      "evaluation_information_bits": 69450000,
+      "errors": 959550,
+      "zero_error_candidates": 0
+    },
+    {
+      "condition": 7,
+      "evaluation_case_frames": 12500,
+      "evaluation_information_bits": 69450000,
+      "errors": 11937550,
+      "zero_error_candidates": 0
+    }
+  ],
+  "independent_uncoded_symbols": 0,
+  "result_bytes": 5001905,
+  "caveat": "Exact total only for completed batch; otherwise checkpoint bounds. Few-H intervals descriptive, no cross-H safety or zero-risk claim."
+}
